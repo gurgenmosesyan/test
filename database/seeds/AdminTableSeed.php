@@ -12,7 +12,7 @@ class AdminTableSeed extends Seeder
     public function run()
     {
         $data = [
-	        'email' => 'admin@helix.am',
+	        'email' => 'admin@admin.com',
 	        'password' => bcrypt('asdasd1')
         ];
 
