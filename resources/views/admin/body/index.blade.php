@@ -5,7 +5,7 @@ $pageMenu = 'body';
 ?>
 @extends('admin.layout')
 @section('navButtons')
-    <a href="{{url('/admpanel/body/create')}}" class="btn btn-primary pull-right">{{trans('admin.base.label.add')}}</a>
+    <a href="{{url('admin_body_create')}}" class="btn btn-primary pull-right">{{trans('admin.base.label.add')}}</a>
 @stop
 @section('content')
 <div class="box-body">

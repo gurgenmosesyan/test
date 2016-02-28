@@ -5,7 +5,7 @@ $pageMenu = 'mark';
 ?>
 @extends('admin.layout')
 @section('navButtons')
-    <a href="{{url('/admpanel/mark/create')}}" class="btn btn-primary pull-right">{{trans('admin.base.label.add')}}</a>
+    <a href="{{route('admin_mark_create')}}" class="btn btn-primary pull-right">{{trans('admin.base.label.add')}}</a>
 @stop
 @section('content')
 <div class="box-body">

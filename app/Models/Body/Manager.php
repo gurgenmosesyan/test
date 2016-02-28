@@ -63,8 +63,8 @@ class Manager
     public function delete($id)
     {
         DB::transaction(function() use($id) {
-            Body::find($id)->update(['show_status' => Body::STATUS_DELETED]);
-            BodyMl::where('id', $id)->update(['show_status' => Body::STATUS_DELETED]);
+            Body::active()->where('id', $id)->update(['show_status' => Body::STATUS_DELETED]);
+            BodyMl::active()->where('id', $id)->update(['show_status' => Body::STATUS_DELETED]);
         });
         return true;
     }

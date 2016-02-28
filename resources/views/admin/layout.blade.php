@@ -87,7 +87,7 @@ $jsTrans->addTrans([
     <aside class="main-sidebar">
         <section class="sidebar">
             <ul class="sidebar-menu">
-                <li class="treeview{{$pageMenu == 'mark' || $pageMenu == 'model_category' || $pageMenu == 'model' || $pageMenu == 'body' ? ' active' : ''}}">
+                <li class="treeview{{$pageMenu == 'mark' || $pageMenu == 'model_category' || $pageMenu == 'model' || $pageMenu == 'body' || $pageMenu == 'rudder' || $pageMenu == 'color' || $pageMenu == 'interior_color' || $pageMenu == 'transmission' || $pageMenu == 'engine' || $pageMenu == 'cylinder' || $pageMenu == 'train' || $pageMenu == 'door' || $pageMenu == 'wheel' ? ' active' : ''}}">
                     <a href="#">
                         <i class="fa fa-cog"></i> <span>{{trans('admin.admin_menu.auto_detail')}}</span> <i class="fa fa-angle-left pull-right"></i>
                     </a>
@@ -96,6 +96,15 @@ $jsTrans->addTrans([
                         <li{{$pageMenu == 'model_category' ? ' class=active' : ''}}><a href="{{route('admin_model_category_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.model_category.form.title')}}</a></li>
                         <li{{$pageMenu == 'model' ? ' class=active' : ''}}><a href="{{route('admin_model_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.model.form.title')}}</a></li>
                         <li{{$pageMenu == 'body' ? ' class=active' : ''}}><a href="{{route('admin_body_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.body.form.title')}}</a></li>
+                        <li{{$pageMenu == 'transmission' ? ' class=active' : ''}}><a href="{{route('admin_transmission_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.transmission.form.title')}}</a></li>
+                        <li{{$pageMenu == 'rudder' ? ' class=active' : ''}}><a href="{{route('admin_rudder_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.rudder.form.title')}}</a></li>
+                        <li{{$pageMenu == 'color' ? ' class=active' : ''}}><a href="{{route('admin_color_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.color.form.title')}}</a></li>
+                        <li{{$pageMenu == 'interior_color' ? ' class=active' : ''}}><a href="{{route('admin_interior_color_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.interior_color.form.title')}}</a></li>
+                        <li{{$pageMenu == 'engine' ? ' class=active' : ''}}><a href="{{route('admin_engine_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.engine.form.title')}}</a></li>
+                        <li{{$pageMenu == 'cylinder' ? ' class=active' : ''}}><a href="{{route('admin_cylinder_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.cylinder.form.title')}}</a></li>
+                        <li{{$pageMenu == 'train' ? ' class=active' : ''}}><a href="{{route('admin_train_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.train.form.title')}}</a></li>
+                        <li{{$pageMenu == 'door' ? ' class=active' : ''}}><a href="{{route('admin_door_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.door.form.title')}}</a></li>
+                        <li{{$pageMenu == 'wheel' ? ' class=active' : ''}}><a href="{{route('admin_wheel_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.wheel.form.title')}}</a></li>
                     </ul>
                 </li>
                 <li class="treeview{{$pageMenu == 'admin' || $pageMenu == 'language' || $pageMenu == 'dictionary' ? ' active' : ''}}">
@@ -108,7 +117,8 @@ $jsTrans->addTrans([
                         <li{{$pageMenu == 'dictionary' ? ' class=active' : ''}}><a href="{{route('admin_dictionary_table')}}"><i class="fa fa-book"></i> {{trans('admin.dictionary.form.title')}}</a></li>
                     </ul>
                 </li>
-                {{--<li><a href="documentation/index.html"><i class="fa fa-book"></i> <span>Documentation</span></a></li>--}}
+                <li{{$pageMenu == 'country' ? ' class=active' : ''}}><a href="{{route('admin_country_table')}}"><i class="fa fa-globe"></i> <span>{{trans('admin.country.form.title')}}</span></a></li>
+                <li{{$pageMenu == 'region' ? ' class=active' : ''}}><a href="{{route('admin_region_table')}}"><i class="fa fa-globe"></i> <span>{{trans('admin.region.form.title')}}</span></a></li>
             </ul>
         </section>
     </aside>

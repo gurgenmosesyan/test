@@ -22,7 +22,7 @@ class Manager
 
     public function delete($id)
     {
-        Category::find($id)->update(['show_status' => Category::STATUS_DELETED]);
+        Category::active()->where('id', $id)->update(['show_status' => Category::STATUS_DELETED]);
         return true;
     }
 }

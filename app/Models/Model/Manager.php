@@ -22,7 +22,7 @@ class Manager
 
     public function delete($id)
     {
-        Model::find($id)->update(['show_status' => Model::STATUS_DELETED]);
+        Model::active()->where('id', $id)->update(['show_status' => Model::STATUS_DELETED]);
         return true;
     }
 }

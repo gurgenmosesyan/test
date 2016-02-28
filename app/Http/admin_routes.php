@@ -84,6 +84,93 @@ Route::group($params, function () {
         Route::post('/body/update/{id}', ['uses' => 'BodyController@update', 'as' => 'admin_body_update']);
         Route::post('/body/delete/{id}', ['uses' => 'BodyController@delete', 'as' => 'admin_body_delete']);
 
+        Route::get('/rudder', ['uses' => 'RudderController@table', 'as' => 'admin_rudder_table']);
+        Route::get('/rudder/create', ['uses' => 'RudderController@create', 'as' => 'admin_rudder_create']);
+        Route::get('/rudder/edit/{id}', ['uses' => 'RudderController@edit', 'as' => 'admin_rudder_edit']);
+        Route::post('/rudder', ['uses' => 'RudderController@index', 'as' => 'admin_rudder_index']);
+        Route::post('/rudder/store', ['uses' => 'RudderController@store', 'as' => 'admin_rudder_store']);
+        Route::post('/rudder/update/{id}', ['uses' => 'RudderController@update', 'as' => 'admin_rudder_update']);
+        Route::post('/rudder/delete/{id}', ['uses' => 'RudderController@delete', 'as' => 'admin_rudder_delete']);
+
+        Route::get('/color', ['uses' => 'ColorController@table', 'as' => 'admin_color_table']);
+        Route::get('/color/create', ['uses' => 'ColorController@create', 'as' => 'admin_color_create']);
+        Route::get('/color/edit/{id}', ['uses' => 'ColorController@edit', 'as' => 'admin_color_edit']);
+        Route::post('/color', ['uses' => 'ColorController@index', 'as' => 'admin_color_index']);
+        Route::post('/color/store', ['uses' => 'ColorController@store', 'as' => 'admin_color_store']);
+        Route::post('/color/update/{id}', ['uses' => 'ColorController@update', 'as' => 'admin_color_update']);
+        Route::post('/color/delete/{id}', ['uses' => 'ColorController@delete', 'as' => 'admin_color_delete']);
+
+        Route::get('/interiorColor', ['uses' => 'InteriorColorController@table', 'as' => 'admin_interior_color_table']);
+        Route::get('/interiorColor/create', ['uses' => 'InteriorColorController@create', 'as' => 'admin_interior_color_create']);
+        Route::get('/interiorColor/edit/{id}', ['uses' => 'InteriorColorController@edit', 'as' => 'admin_interior_color_edit']);
+        Route::post('/interiorColor', ['uses' => 'InteriorColorController@index', 'as' => 'admin_interior_color_index']);
+        Route::post('/interiorColor/store', ['uses' => 'InteriorColorController@store', 'as' => 'admin_interior_color_store']);
+        Route::post('/interiorColor/update/{id}', ['uses' => 'InteriorColorController@update', 'as' => 'admin_interior_color_update']);
+        Route::post('/interiorColor/delete/{id}', ['uses' => 'InteriorColorController@delete', 'as' => 'admin_interior_color_delete']);
+
+        Route::get('/transmission', ['uses' => 'TransmissionController@table', 'as' => 'admin_transmission_table']);
+        Route::get('/transmission/create', ['uses' => 'TransmissionController@create', 'as' => 'admin_transmission_create']);
+        Route::get('/transmission/edit/{id}', ['uses' => 'TransmissionController@edit', 'as' => 'admin_transmission_edit']);
+        Route::post('/transmission', ['uses' => 'TransmissionController@index', 'as' => 'admin_transmission_index']);
+        Route::post('/transmission/store', ['uses' => 'TransmissionController@store', 'as' => 'admin_transmission_store']);
+        Route::post('/transmission/update/{id}', ['uses' => 'TransmissionController@update', 'as' => 'admin_transmission_update']);
+        Route::post('/transmission/delete/{id}', ['uses' => 'TransmissionController@delete', 'as' => 'admin_transmission_delete']);
+
+        Route::get('/engine', ['uses' => 'EngineController@table', 'as' => 'admin_engine_table']);
+        Route::get('/engine/create', ['uses' => 'EngineController@create', 'as' => 'admin_engine_create']);
+        Route::get('/engine/edit/{id}', ['uses' => 'EngineController@edit', 'as' => 'admin_engine_edit']);
+        Route::post('/engine', ['uses' => 'EngineController@index', 'as' => 'admin_engine_index']);
+        Route::post('/engine/store', ['uses' => 'EngineController@store', 'as' => 'admin_engine_store']);
+        Route::post('/engine/update/{id}', ['uses' => 'EngineController@update', 'as' => 'admin_engine_update']);
+        Route::post('/engine/delete/{id}', ['uses' => 'EngineController@delete', 'as' => 'admin_engine_delete']);
+
+        Route::get('/cylinder', ['uses' => 'CylinderController@table', 'as' => 'admin_cylinder_table']);
+        Route::get('/cylinder/create', ['uses' => 'CylinderController@create', 'as' => 'admin_cylinder_create']);
+        Route::get('/cylinder/edit/{id}', ['uses' => 'CylinderController@edit', 'as' => 'admin_cylinder_edit']);
+        Route::post('/cylinder', ['uses' => 'CylinderController@index', 'as' => 'admin_cylinder_index']);
+        Route::post('/cylinder/store', ['uses' => 'CylinderController@store', 'as' => 'admin_cylinder_store']);
+        Route::post('/cylinder/update/{id}', ['uses' => 'CylinderController@update', 'as' => 'admin_cylinder_update']);
+        Route::post('/cylinder/delete/{id}', ['uses' => 'CylinderController@delete', 'as' => 'admin_cylinder_delete']);
+
+        Route::get('/train', ['uses' => 'TrainController@table', 'as' => 'admin_train_table']);
+        Route::get('/train/create', ['uses' => 'TrainController@create', 'as' => 'admin_train_create']);
+        Route::get('/train/edit/{id}', ['uses' => 'TrainController@edit', 'as' => 'admin_train_edit']);
+        Route::post('/train', ['uses' => 'TrainController@index', 'as' => 'admin_train_index']);
+        Route::post('/train/store', ['uses' => 'TrainController@store', 'as' => 'admin_train_store']);
+        Route::post('/train/update/{id}', ['uses' => 'TrainController@update', 'as' => 'admin_train_update']);
+        Route::post('/train/delete/{id}', ['uses' => 'TrainController@delete', 'as' => 'admin_train_delete']);
+
+        Route::get('/door', ['uses' => 'DoorController@table', 'as' => 'admin_door_table']);
+        Route::get('/door/create', ['uses' => 'DoorController@create', 'as' => 'admin_door_create']);
+        Route::get('/door/edit/{id}', ['uses' => 'DoorController@edit', 'as' => 'admin_door_edit']);
+        Route::post('/door', ['uses' => 'DoorController@index', 'as' => 'admin_door_index']);
+        Route::post('/door/store', ['uses' => 'DoorController@store', 'as' => 'admin_door_store']);
+        Route::post('/door/update/{id}', ['uses' => 'DoorController@update', 'as' => 'admin_door_update']);
+        Route::post('/door/delete/{id}', ['uses' => 'DoorController@delete', 'as' => 'admin_door_delete']);
+
+        Route::get('/wheel', ['uses' => 'WheelController@table', 'as' => 'admin_wheel_table']);
+        Route::get('/wheel/create', ['uses' => 'WheelController@create', 'as' => 'admin_wheel_create']);
+        Route::get('/wheel/edit/{id}', ['uses' => 'WheelController@edit', 'as' => 'admin_wheel_edit']);
+        Route::post('/wheel', ['uses' => 'WheelController@index', 'as' => 'admin_wheel_index']);
+        Route::post('/wheel/store', ['uses' => 'WheelController@store', 'as' => 'admin_wheel_store']);
+        Route::post('/wheel/update/{id}', ['uses' => 'WheelController@update', 'as' => 'admin_wheel_update']);
+        Route::post('/wheel/delete/{id}', ['uses' => 'WheelController@delete', 'as' => 'admin_wheel_delete']);
+
+        Route::get('/country', ['uses' => 'CountryController@table', 'as' => 'admin_country_table']);
+        Route::get('/country/create', ['uses' => 'CountryController@create', 'as' => 'admin_country_create']);
+        Route::get('/country/edit/{id}', ['uses' => 'CountryController@edit', 'as' => 'admin_country_edit']);
+        Route::post('/country', ['uses' => 'CountryController@index', 'as' => 'admin_country_index']);
+        Route::post('/country/store', ['uses' => 'CountryController@store', 'as' => 'admin_country_store']);
+        Route::post('/country/update/{id}', ['uses' => 'CountryController@update', 'as' => 'admin_country_update']);
+        Route::post('/country/delete/{id}', ['uses' => 'CountryController@delete', 'as' => 'admin_country_delete']);
+
+        Route::get('/region', ['uses' => 'RegionController@table', 'as' => 'admin_region_table']);
+        Route::get('/region/create', ['uses' => 'RegionController@create', 'as' => 'admin_region_create']);
+        Route::get('/region/edit/{id}', ['uses' => 'RegionController@edit', 'as' => 'admin_region_edit']);
+        Route::post('/region', ['uses' => 'RegionController@index', 'as' => 'admin_region_index']);
+        Route::post('/region/store', ['uses' => 'RegionController@store', 'as' => 'admin_region_store']);
+        Route::post('/region/update/{id}', ['uses' => 'RegionController@update', 'as' => 'admin_region_update']);
+        Route::post('/region/delete/{id}', ['uses' => 'RegionController@delete', 'as' => 'admin_region_delete']);
     });
 
 });

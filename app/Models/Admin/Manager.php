@@ -22,7 +22,7 @@ class Manager
 
     public function delete($id)
     {
-        Admin::find($id)->delete();
+        Admin::where('id', $id)->delete();
         return true;
     }
 }

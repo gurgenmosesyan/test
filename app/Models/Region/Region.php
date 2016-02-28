@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Models\Region;
+
+use App\Models\Model;
+
+class Region extends Model
+{
+    protected $table = 'regions';
+
+    protected $fillable = [
+        'country_id',
+        //'show_status'
+    ];
+
+    public function ml()
+    {
+        return $this->hasMany(RegionMl::class, 'id', 'id')->active();
+    }
+
+    public function current()
+    {
+        return $this->ml()->where('lng_id', cLng('id'));
+    }
+}

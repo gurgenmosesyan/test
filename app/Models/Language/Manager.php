@@ -72,7 +72,7 @@ class Manager
 
     public function delete($id)
     {
-        Language::find($id)->delete();
+        Language::where('id', $id)->delete();
         return true;
     }
 }

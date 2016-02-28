@@ -44,7 +44,6 @@ class Search extends DataTable
             case 'name':
                 $orderCol = 'ml.name';
                 break;
-                break;
             default:
                 $orderCol = 'bodies.id';
         }
