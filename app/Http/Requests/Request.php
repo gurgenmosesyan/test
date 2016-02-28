@@ -41,6 +41,7 @@ abstract class Request extends FormRequest
 			'unique' => trans('admin.base.field.duplicate'),
 			'max*' => trans('admin.base.field.max_length', ['max' => ':max']),
 			'min*' => trans('admin.base.field.min_length', ['min' => ':min']),
+            'ml' => trans('admin.error.ml'),
 		];
 	}
 

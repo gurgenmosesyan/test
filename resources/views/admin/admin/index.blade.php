@@ -1,6 +1,6 @@
 <?php
 $head->appendScript('/admin/admin.js');
-$pageTitle = $pageSubTitle = trans('admin.admin_form.title');
+$pageTitle = $pageSubTitle = trans('admin.admin.form.title');
 $pageMenu = 'admin';
 ?>
 @extends('admin.layout')

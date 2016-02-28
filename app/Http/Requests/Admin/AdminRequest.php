@@ -21,7 +21,8 @@ class AdminRequest extends Request
         return [
             'email' => 'required|email|unique:adm_users,email'.$adminId,
             'password' => $passRequired.'|min:6|max:255|regex:/[a-z]{1,}[0-9]{1,}/i',
-            're_password' => $rePassRequired.'|same:password'
+            're_password' => $rePassRequired.'|same:password',
+            'lng_id' => 'required|integer|exists:languages,id'
         ];
     }
 }

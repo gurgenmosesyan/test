@@ -1,6 +1,6 @@
 <?php
 $head->appendScript('/admin/language.js');
-$pageTitle = $pageSubTitle = trans('admin.language_form.title');
+$pageTitle = $pageSubTitle = trans('admin.language.form.title');
 $pageMenu = 'language';
 ?>
 @extends('admin.layout')

@@ -16,6 +16,7 @@ class CreateAdmUsersTable extends Migration
             $table->increments('id');
             $table->string('email');
             $table->string('password');
+            $table->tinyInteger('lng_id')->unsigned();
             $table->rememberToken();
             $table->timestamps();
         });

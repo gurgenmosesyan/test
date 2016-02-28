@@ -17,4 +17,9 @@ class Language extends Model
         //'icon',
         'default'
     ];
+
+    public function scopeDefaultLng($query)
+    {
+        return $query->where('default', self::DEFAULT_LNG);
+    }
 }

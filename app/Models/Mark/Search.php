@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Language;
+namespace App\Models\Mark;
 
 use App\Models\DataTable;
 
@@ -8,7 +8,7 @@ class Search extends DataTable
 {
     public function totalCount()
     {
-        return Language::count();
+        return Mark::count();
     }
 
     public function filteredCount()
@@ -27,10 +27,9 @@ class Search extends DataTable
 
     protected function constructQuery()
     {
-        $query = Language::getProcessor();
+        $query = Mark::active();
         if ($this->search != null) {
-            $query->where('code', 'LIKE', '%'.$this->search.'%')
-                ->orWhere('name', 'LIKE', '%'.$this->search.'%');
+            $query->where('name', 'LIKE', '%'.$this->search.'%');
         }
         return $query;
     }
@@ -43,9 +42,6 @@ class Search extends DataTable
                 break;
             case 'name':
                 $orderCol = 'name';
-                break;
-            case 'code':
-                $orderCol = 'code';
                 break;
             default:
                 $orderCol = 'id';

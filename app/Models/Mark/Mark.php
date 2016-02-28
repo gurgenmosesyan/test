@@ -6,15 +6,10 @@ use App\Models\Model;
 
 class Mark extends Model
 {
-    protected $table = 'mark';
+    protected $table = 'marks';
 
-    public function ml()
-    {
-        return $this->hasMany(MarkMl::class, 'id', 'id');
-    }
-
-    public function current()
-    {
-        //return $this->ml()->where('lng_id', )
-    }
+    protected $fillable = [
+        'name',
+        'show_status'
+    ];
 }

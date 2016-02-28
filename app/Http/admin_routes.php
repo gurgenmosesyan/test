@@ -22,7 +22,7 @@ Route::group($params, function () {
     Route::get('/login', ['middleware' => 'guest:admin', 'uses' => 'AccountController@login', 'as' => 'admin_login']);
     Route::post('/login', ['uses' => 'AccountController@loginApi', 'as' => 'admin_login_api']);
 
-    Route::group(['middleware' => ['auth:admin']], function () {
+    Route::group(['middleware' => ['auth:admin', 'language']], function () {
 
         Route::get('/', 'IndexController@index');
         Route::get('/logout', ['uses' => 'AccountController@logout', 'as' => 'admin_logout']);
@@ -59,6 +59,15 @@ Route::group($params, function () {
         Route::post('/mark/update/{id}', ['uses' => 'MarkController@update', 'as' => 'admin_mark_update']);
         Route::post('/mark/delete/{id}', ['uses' => 'MarkController@delete', 'as' => 'admin_mark_delete']);
 
+        Route::get('/modelCategory', ['uses' => 'ModelCategoryController@table', 'as' => 'admin_model_category_table']);
+        Route::get('/modelCategory/create', ['uses' => 'ModelCategoryController@create', 'as' => 'admin_model_category_create']);
+        Route::get('/modelCategory/edit/{id}', ['uses' => 'ModelCategoryController@edit', 'as' => 'admin_model_category_edit']);
+        Route::post('/modelCategory', ['uses' => 'ModelCategoryController@index', 'as' => 'admin_model_category_index']);
+        Route::post('/modelCategory/store', ['uses' => 'ModelCategoryController@store', 'as' => 'admin_model_category_store']);
+        Route::post('/modelCategory/update/{id}', ['uses' => 'ModelCategoryController@update', 'as' => 'admin_model_category_update']);
+        Route::post('/modelCategory/delete/{id}', ['uses' => 'ModelCategoryController@delete', 'as' => 'admin_model_category_delete']);
+        Route::post('/api/modelCategory/get', ['uses' => 'ModelCategoryController@get']);
+
         Route::get('/model', ['uses' => 'ModelController@table', 'as' => 'admin_model_table']);
         Route::get('/model/create', ['uses' => 'ModelController@create', 'as' => 'admin_model_create']);
         Route::get('/model/edit/{id}', ['uses' => 'ModelController@edit', 'as' => 'admin_model_edit']);
@@ -66,6 +75,14 @@ Route::group($params, function () {
         Route::post('/model/store', ['uses' => 'ModelController@store', 'as' => 'admin_model_store']);
         Route::post('/model/update/{id}', ['uses' => 'ModelController@update', 'as' => 'admin_model_update']);
         Route::post('/model/delete/{id}', ['uses' => 'ModelController@delete', 'as' => 'admin_model_delete']);
+
+        Route::get('/body', ['uses' => 'BodyController@table', 'as' => 'admin_body_table']);
+        Route::get('/body/create', ['uses' => 'BodyController@create', 'as' => 'admin_body_create']);
+        Route::get('/body/edit/{id}', ['uses' => 'BodyController@edit', 'as' => 'admin_body_edit']);
+        Route::post('/body', ['uses' => 'BodyController@index', 'as' => 'admin_body_index']);
+        Route::post('/body/store', ['uses' => 'BodyController@store', 'as' => 'admin_body_store']);
+        Route::post('/body/update/{id}', ['uses' => 'BodyController@update', 'as' => 'admin_body_update']);
+        Route::post('/body/delete/{id}', ['uses' => 'BodyController@delete', 'as' => 'admin_body_delete']);
 
     });
 

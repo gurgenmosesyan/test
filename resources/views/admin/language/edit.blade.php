@@ -2,19 +2,19 @@
 use App\Models\Language\Language;
 
 $head->appendScript('/admin/language.js');
-$pageTitle = trans('admin.language_form.title');
+$pageTitle = trans('admin.language.form.title');
 $pageMenu = 'language';
 if ($saveMode == 'add') {
-    $pageSubTitle = trans('admin.language_form.add.sub_title');
-    $url = 'store';
+    $pageSubTitle = trans('admin.language.form.add.sub_title');
+    $url = route('admin_language_store');
 } else {
-    $pageSubTitle = trans('admin.language_form.edit.sub_title', ['id' => $language->id]);
-    $url = 'update/'.$language->id;
+    $pageSubTitle = trans('admin.language.form.edit.sub_title', ['id' => $language->id]);
+    $url = route('admin_language_update', $language->id);
 }
 ?>
 @extends('admin.layout')
 @section('content')
-<form id="edit-form" class="form-horizontal" method="post" action="{{url('/admpanel/language/'.$url)}}">
+<form id="edit-form" class="form-horizontal" method="post" action="{{$url}}">
     <div class="box-body">
         <div class="form-group">
             <label for="email" class="col-sm-2 control-label">{{trans('admin.base.label.name')}}</label>
@@ -41,7 +41,7 @@ if ($saveMode == 'add') {
     </div>
     <div class="box-footer">
         <input type="submit" class="nav-btn nav-btn-save btn btn-primary" value="{{trans('admin.base.label.save')}}">
-        <a href="{{url('/admpanel/language')}}" class="nav-btn nav-btn-cancel btn btn-default">{{trans('admin.base.label.cancel')}}</a>
+        <a href="{{route('admin_language_table')}}" class="nav-btn nav-btn-cancel btn btn-default">{{trans('admin.base.label.cancel')}}</a>
     </div>
 </form>
 @stop

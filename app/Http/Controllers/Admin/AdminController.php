@@ -6,6 +6,7 @@ use App\Models\Admin\Admin;
 use App\Models\Admin\Manager;
 use App\Models\Admin\Search;
 use App\Http\Requests\Admin\AdminRequest;
+use App\Models\Language\Language;
 
 class AdminController extends BaseController
 {
@@ -30,7 +31,12 @@ class AdminController extends BaseController
     public function create()
     {
         $admin = new Admin();
-        return view('admin.admin.edit')->with(['admin' => $admin, 'saveMode' => 'add']);
+        $languages = Language::all();
+        return view('admin.admin.edit')->with([
+            'admin' => $admin,
+            'languages' => $languages,
+            'saveMode' => 'add'
+        ]);
     }
 
     public function store(AdminRequest $request)
@@ -41,7 +47,12 @@ class AdminController extends BaseController
     public function edit($id)
     {
         $admin = Admin::findOrFail($id);
-        return view('admin.admin.edit')->with(['admin' => $admin, 'saveMode' => 'edit']);
+        $languages = Language::all();
+        return view('admin.admin.edit')->with([
+            'admin' => $admin,
+            'languages' => $languages,
+            'saveMode' => 'edit'
+        ]);
     }
 
     public function update(AdminRequest $request, $id)

@@ -87,13 +87,15 @@ $jsTrans->addTrans([
     <aside class="main-sidebar">
         <section class="sidebar">
             <ul class="sidebar-menu">
-                <li class="treeview{{$pageMenu == 'mark' || $pageMenu == 'model' ? ' active' : ''}}">
+                <li class="treeview{{$pageMenu == 'mark' || $pageMenu == 'model_category' || $pageMenu == 'model' || $pageMenu == 'body' ? ' active' : ''}}">
                     <a href="#">
                         <i class="fa fa-cog"></i> <span>{{trans('admin.admin_menu.auto_detail')}}</span> <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li{{$pageMenu == 'mark' ? ' class=active' : ''}}><a href="{{route('admin_mark_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.admin_menu.mark')}}</a></li>
-                        <li{{$pageMenu == 'model' ? ' class=active' : ''}}><a href="{{route('admin_model_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.admin_menu.model')}}</a></li>
+                        <li{{$pageMenu == 'mark' ? ' class=active' : ''}}><a href="{{route('admin_mark_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.mark.form.title')}}</a></li>
+                        <li{{$pageMenu == 'model_category' ? ' class=active' : ''}}><a href="{{route('admin_model_category_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.model_category.form.title')}}</a></li>
+                        <li{{$pageMenu == 'model' ? ' class=active' : ''}}><a href="{{route('admin_model_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.model.form.title')}}</a></li>
+                        <li{{$pageMenu == 'body' ? ' class=active' : ''}}><a href="{{route('admin_body_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.body.form.title')}}</a></li>
                     </ul>
                 </li>
                 <li class="treeview{{$pageMenu == 'admin' || $pageMenu == 'language' || $pageMenu == 'dictionary' ? ' active' : ''}}">
@@ -101,9 +103,9 @@ $jsTrans->addTrans([
                         <i class="fa fa-wrench"></i> <span>{{trans('admin.admin_menu.system')}}</span> <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li{{$pageMenu == 'admin' ? ' class=active' : ''}}><a href="{{route('admin_table')}}"><i class="fa fa-user"></i> {{trans('admin.admin_menu.admin')}}</a></li>
-                        <li{{$pageMenu == 'language' ? ' class=active' : ''}}><a href="{{route('admin_language_table')}}"><i class="fa fa-flag"></i> {{trans('admin.admin_menu.language')}}</a></li>
-                        <li{{$pageMenu == 'dictionary' ? ' class=active' : ''}}><a href="{{route('admin_dictionary_table')}}"><i class="fa fa-book"></i> {{trans('admin.admin_menu.dictionary')}}</a></li>
+                        <li{{$pageMenu == 'admin' ? ' class=active' : ''}}><a href="{{route('admin_table')}}"><i class="fa fa-user"></i> {{trans('admin.admin.form.title')}}</a></li>
+                        <li{{$pageMenu == 'language' ? ' class=active' : ''}}><a href="{{route('admin_language_table')}}"><i class="fa fa-flag"></i> {{trans('admin.language.form.title')}}</a></li>
+                        <li{{$pageMenu == 'dictionary' ? ' class=active' : ''}}><a href="{{route('admin_dictionary_table')}}"><i class="fa fa-book"></i> {{trans('admin.dictionary.form.title')}}</a></li>
                     </ul>
                 </li>
                 {{--<li><a href="documentation/index.html"><i class="fa fa-book"></i> <span>Documentation</span></a></li>--}}

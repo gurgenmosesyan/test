@@ -15,7 +15,8 @@ class Admin extends Model implements AuthenticatableContract
     protected $table = 'adm_users';
 
     protected $fillable = [
-        'email'
+        'email',
+        'lng_id'
     ];
 
     protected $hidden = [

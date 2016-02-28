@@ -1,12 +1,12 @@
 <?php
 $head->appendScript('/admin/admin.js');
-$pageTitle = trans('admin.admin_form.title');
+$pageTitle = trans('admin.admin.form.title');
 $pageMenu = 'admin';
 if ($saveMode == 'add') {
-    $pageSubTitle = trans('admin.admin_form.add.sub_title');
+    $pageSubTitle = trans('admin.admin.form.add.sub_title');
     $url = 'store';
 } else {
-    $pageSubTitle = trans('admin.admin_form.edit.sub_title', ['id' => $admin->id]);
+    $pageSubTitle = trans('admin.admin.form.edit.sub_title', ['id' => $admin->id]);
     $url = 'update/'.$admin->id;
 }
 ?>
@@ -33,6 +33,17 @@ if ($saveMode == 'add') {
             <div class="col-sm-9">
                 <input type="password" name="re_password" class="form-control" id="re_password">
                 <div id="form-error-re_password" class="form-error"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="re_password" class="col-sm-3 control-label data-req">{{trans('admin.base.label.language')}}</label>
+            <div class="col-sm-9">
+                <select name="lng_id" class="form-control">
+                    @foreach($languages as $lng)
+                        <option value="{{$lng->id}}"{{$lng->id == $admin->lng_id ? ' selected="selected"' : ''}}>{{$lng->name}}</option>
+                    @endforeach
+                </select>
+                <div id="form-error-lng_id" class="form-error"></div>
             </div>
         </div>
         {{csrf_field()}}

@@ -1,6 +1,6 @@
 <?php
 $head->appendScript('/admin/dictionary.js');
-$pageTitle = $pageSubTitle = trans('admin.dictionary_form.title');
+$pageTitle = $pageSubTitle = trans('admin.dictionary.form.title');
 $pageMenu = 'dictionary';
 ?>
 @extends('admin.layout')

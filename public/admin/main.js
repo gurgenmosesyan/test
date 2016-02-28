@@ -89,7 +89,7 @@ $main.removeErrors = function() {
 
 $main.showErrors = function(errors) {
     for (var i in errors) {
-        $('#form-error-'+i.replace('.', '_')).text(errors[i][0]).closest('.form-group').addClass('has-error');
+        $('#form-error-'+i.replace(/\./g, '_')).text(errors[i][0]).closest('.form-group').addClass('has-error');
     }
 };
 

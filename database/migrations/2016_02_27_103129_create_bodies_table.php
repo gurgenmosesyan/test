@@ -2,8 +2,9 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use App\Models\Model;
 
-class CreateMarkMlTable extends Migration
+class CreateBodiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +13,10 @@ class CreateMarkMlTable extends Migration
      */
     public function up()
     {
-        Schema::create('mark_ml', function (Blueprint $table) {
-            $table->integer('id')->unsignd();
-            $table->tinyInteger('lng_id')->unsignd();
-            $table->string('name');
-            $table->primary(['id', 'lng_id']);
+        Schema::create('bodies', function (Blueprint $table) {
+            $table->increments('id');
+            $table->timestamps();
+            $table->enum('show_status', [Model::STATUS_ACTIVE, Model::STATUS_DELETED]);
         });
     }
 
@@ -27,6 +27,6 @@ class CreateMarkMlTable extends Migration
      */
     public function down()
     {
-        Schema::drop('mark_ml');
+        Schema::drop('bodies');
     }
 }

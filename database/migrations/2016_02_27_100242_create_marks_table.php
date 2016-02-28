@@ -4,7 +4,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use App\Models\Model;
 
-class CreateMarkTable extends Migration
+class CreateMarksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateMarkTable extends Migration
      */
     public function up()
     {
-        Schema::create('mark', function (Blueprint $table) {
+        Schema::create('marks', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
             $table->timestamps();
             $table->enum('show_status', [Model::STATUS_ACTIVE, Model::STATUS_DELETED]);
         });
@@ -27,6 +28,6 @@ class CreateMarkTable extends Migration
      */
     public function down()
     {
-        Schema::drop('mark');
+        Schema::drop('marks');
     }
 }
