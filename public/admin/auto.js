@@ -4,6 +4,8 @@ $auto.listPath = '/admpanel/auto';
 $auto.initSearchPage = function() {
     $auto.listColumns = [
         {data: 'id'},
+        {data: 'mark_name'},
+        {data: 'model_name'},
         {data: 'year'}
     ];
     $auto.initSearch();

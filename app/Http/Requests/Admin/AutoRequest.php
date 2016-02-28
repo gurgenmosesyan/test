@@ -14,7 +14,6 @@ class AutoRequest extends Request
 
         return [
             'mark_id' => 'required|integer|exists:marks,id',
-            'model_category_id' => 'required|integer|exists:model_categories,id,mark_id,'.$markId,
             'model_id' => 'required|integer|exists:models,id,mark_id,'.$markId,
             'body_id' => 'required|integer|exists:bodies,id',
             'transmission_id' => 'required|integer|exists:transmissions,id',
@@ -29,12 +28,12 @@ class AutoRequest extends Request
             'country_id' => 'required|integer|exists:countries,id',
             'region_id' => 'integer|exists:regions,id,country_id,'.$countryId,
             'tuning' => 'max:255',
-            'year' => 'required|integer|max:4',
+            'year' => 'required|integer',
             'mileage' => 'required|integer',
             'mileage_measurement' => 'required|in:'.Auto::MILEAGE_MEASUREMENT_KM.','.Auto::MILEAGE_MEASUREMENT_MILE,
             'volume_1' => 'required_with:volume_2|integer|max:15',
             'volume_2' => 'required_with:volume_1|integer|max:15',
-            'horsepower' => 'integer|max:4',
+            'horsepower' => 'integer|max:9999',
             'place' => 'max:255'
         ];
     }

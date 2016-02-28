@@ -106,4 +106,10 @@ return array (
   'base.label.wheel' => 'Wheel',
   'base.label.region' => 'Region',
   'base.label.tuning' => 'Tuning',
+  'base.label.mileage' => 'Mileage',
+  'base.measurement.km' => 'կմ',
+  'base.measurement.mile' => 'մղոն',
+  'base.label.engine_volume' => 'Engine volume',
+  'base.label.horsepower' => 'Ձիաուժ',
+  'base.label.place' => 'Place',
 );

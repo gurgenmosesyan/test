@@ -14,7 +14,7 @@ use App\Models\Door\Door;
 use App\Models\Engine\Engine;
 use App\Models\InteriorColor\Color as InteriorColor;
 use App\Models\Mark\Mark;
-use App\Models\Region\Region;
+use App\Models\Model\Model;
 use App\Models\Rudder\Rudder;
 use App\Models\Train\Train;
 use App\Models\Transmission\Transmission;
@@ -43,7 +43,6 @@ class AutoController extends BaseController
     public function create()
     {
         $auto = new Auto();
-
         $marks = Mark::active()->get();
         $bodies = Body::active()->with('current')->get();
         $transmissions = Transmission::active()->with('current')->get();
@@ -56,10 +55,10 @@ class AutoController extends BaseController
         $doors = Door::active()->get();
         $wheels = Wheel::active()->get();
         $countries = Country::active()->with('current')->get();
-
         return view('admin.auto.edit')->with([
             'auto' => $auto,
             'marks' => $marks,
+            'models' => [],
             'bodies' => $bodies,
             'transmissions' => $transmissions,
             'rudders' => $rudders,
@@ -83,10 +82,36 @@ class AutoController extends BaseController
     public function edit($id)
     {
         $auto = Auto::findOrFail($id);
+        $marks = Mark::active()->get();
+        $models = Model::active()->where('mark_id', $auto->mark_id)->get();
+        $bodies = Body::active()->with('current')->get();
+        $transmissions = Transmission::active()->with('current')->get();
+        $rudders = Rudder::active()->with('current')->get();
+        $colors = Color::active()->with('current')->get();
+        $interiorColors = InteriorColor::active()->with('current')->get();
+        $engines = Engine::active()->with('current')->get();
+        $cylinders = Cylinder::active()->get();
+        $trains = Train::active()->with('current')->get();
+        $doors = Door::active()->get();
+        $wheels = Wheel::active()->get();
+        $countries = Country::active()->with('current')->get();
         return view('admin.auto.edit')->with([
             'auto' => $auto,
-            'saveMode' => 'edit']);
-
+            'marks' => $marks,
+            'models' => $models,
+            'bodies' => $bodies,
+            'transmissions' => $transmissions,
+            'rudders' => $rudders,
+            'colors' => $colors,
+            'interiorColors' => $interiorColors,
+            'engines' => $engines,
+            'cylinders' => $cylinders,
+            'trains' => $trains,
+            'doors' => $doors,
+            'wheels' => $wheels,
+            'countries' => $countries,
+            'saveMode' => 'edit'
+        ]);
     }
 
     public function update(AutoRequest $request, $id)

@@ -27,13 +27,18 @@ class Search extends DataTable
 
     protected function constructQuery()
     {
-        $query = Auto::select('autos.id', 'ml.name')
-            ->join('autos_ml AS ml', function($query) {
-                $query->on('ml.id', '=', 'autos.id')->where('ml.lng_id', '=', cLng('id'))->where('ml.show_status', '=', Auto::STATUS_ACTIVE);
+        $query = Auto::select('autos.id', 'autos.year', 'marks.name AS mark_name', 'models.name AS model_name')
+            ->leftJoin('marks', function($query) {
+                $query->on('marks.id', '=', 'autos.mark_id')->where('marks.show_status', '=', Auto::STATUS_ACTIVE);
+            })
+            ->leftJoin('models', function($query) {
+                $query->on('models.id', '=', 'autos.model_id')->where('models.show_status', '=', Auto::STATUS_ACTIVE);
             })
             ->where('autos.show_status', Auto::STATUS_ACTIVE);
         if ($this->search != null) {
-            $query->where('ml.name', 'LIKE', '%'.$this->search.'%');
+            $query->where('autos.year', $this->search)
+                ->orWhere('marks.name', 'LIKE', '%'.$this->search.'%')
+                ->orWhere('models.name', 'LIKE', '%'.$this->search.'%');
         }
         return $query;
     }
@@ -41,8 +46,14 @@ class Search extends DataTable
     protected function constructOrder($query)
     {
         switch ($this->orderCol) {
-            case 'name':
-                $orderCol = 'ml.name';
+            case 'mark_name':
+                $orderCol = 'marks.name';
+                break;
+            case 'model_name':
+                $orderCol = 'models.name';
+                break;
+            case 'year':
+                $orderCol = 'autos.year';
                 break;
             default:
                 $orderCol = 'autos.id';

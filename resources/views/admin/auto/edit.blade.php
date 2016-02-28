@@ -34,6 +34,9 @@ $jsTrans->addTrans(['admin.base.label.select']);
             <div class="col-sm-9">
                 <select id="model-select" name="model_id" class="form-control">
                     <option value="">{{trans('admin.base.label.select')}}</option>
+                    @foreach($models as $value)
+                        <option value="{{$value->id}}"{{$value->id == $auto->model_id ? ' selected="selected"' : ''}}>{{$value->name}}</option>
+                    @endforeach
                 </select>
                 <div id="form-error-model_id" class="form-error"></div>
             </div>
@@ -71,14 +74,16 @@ $jsTrans->addTrans(['admin.base.label.select']);
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label data-req">{{trans('admin.base.label.mileage')}}</label>
-            <div class="col-sm-9">
+            <div class="col-sm-2">
+                <input type="text" name="mileage" class="form-control" value="{{$auto->mileage or ''}}">
+                <div id="form-error-mileage" class="form-error"></div>
+            </div>
+            <div class="col-sm-2">
                 <select name="mileage_measurement" class="form-control">
-                    <option value="">{{trans('admin.base.label.select')}}</option>
-                    @for($i = date('Y'); $i > 1909; $i--)
-                        <option value="{{$i}}"{{$i == $auto->year ? ' selected="selected"' : ''}}>{{$i}}</option>
-                    @endfor
+                    <option value="{{Auto::MILEAGE_MEASUREMENT_KM}}"{{$auto->mileage_measurement == Auto::MILEAGE_MEASUREMENT_KM ? ' selected="selected"' : ''}}>{{trans('admin.base.measurement.km')}}</option>
+                    <option value="{{Auto::MILEAGE_MEASUREMENT_MILE}}"{{$auto->mileage_measurement == Auto::MILEAGE_MEASUREMENT_MILE ? ' selected="selected"' : ''}}>{{trans('admin.base.measurement.mile')}}</option>
                 </select>
-                <div id="form-error-body_id" class="form-error"></div>
+                <div id="form-error-mileage_measurement" class="form-error"></div>
             </div>
         </div>
         <div class="form-group">
@@ -139,6 +144,34 @@ $jsTrans->addTrans(['admin.base.label.select']);
                     @endforeach
                 </select>
                 <div id="form-error-engine_id" class="form-error"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">{{trans('admin.base.label.engine_volume')}}</label>
+            <div class="col-sm-2">
+                <select name="volume_1" class="form-control">
+                    <option value="">{{trans('admin.base.label.select')}}</option>
+                    @for($i = 0; $i < 16; $i++)
+                        <option value="{{$i}}"{{($auto->volume_1 != 0 || $auto->volume_2 != 0) && $i == $auto->volume_1 ? ' selected="selected"' : ''}}>{{$i}}</option>
+                    @endfor
+                </select>
+                <div id="form-error-volume_1" class="form-error"></div>
+            </div>
+            <div class="col-sm-2">
+                <select name="volume_2" class="form-control">
+                    <option value="">{{trans('admin.base.label.select')}}</option>
+                    @for($i = 0; $i < 16; $i++)
+                        <option value="{{$i}}"{{($auto->volume_1 != 0 || $auto->volume_2 != 0) && $i == $auto->volume_2 ? ' selected="selected"' : ''}}>{{$i}}</option>
+                    @endfor
+                </select>
+                <div id="form-error-volume_2" class="form-error"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">{{trans('admin.base.label.horsepower')}}</label>
+            <div class="col-sm-2">
+                <input type="text" name="horsepower" class="form-control" maxlength="4" value="{{$auto->horsepower or ''}}">
+                <div id="form-error-horsepower" class="form-error"></div>
             </div>
         </div>
         <div class="form-group">
@@ -208,10 +241,10 @@ $jsTrans->addTrans(['admin.base.label.select']);
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label data-req">{{trans('admin.base.label.year')}}</label>
+            <label class="col-sm-3 control-label">{{trans('admin.base.label.place')}}</label>
             <div class="col-sm-9">
-                <input type="text" name="year" class="form-control" value="{{$auto->year or ''}}">
-                <div id="form-error-year" class="form-error"></div>
+                <input type="text" name="place" class="form-control" value="{{$auto->place or ''}}">
+                <div id="form-error-place" class="form-error"></div>
             </div>
         </div>
     </div>
