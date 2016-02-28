@@ -89,7 +89,7 @@ $jsTrans->addTrans([
             <ul class="sidebar-menu">
                 <li class="treeview{{$pageMenu == 'mark' || $pageMenu == 'model_category' || $pageMenu == 'model' || $pageMenu == 'body' || $pageMenu == 'rudder' || $pageMenu == 'color' || $pageMenu == 'interior_color' || $pageMenu == 'transmission' || $pageMenu == 'engine' || $pageMenu == 'cylinder' || $pageMenu == 'train' || $pageMenu == 'door' || $pageMenu == 'wheel' ? ' active' : ''}}">
                     <a href="#">
-                        <i class="fa fa-cog"></i> <span>{{trans('admin.admin_menu.auto_detail')}}</span> <i class="fa fa-angle-left pull-right"></i>
+                        <i class="fa fa-cog"></i> <span>{{trans('admin.admin_menu.detail')}}</span> <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
                         <li{{$pageMenu == 'mark' ? ' class=active' : ''}}><a href="{{route('admin_mark_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.mark.form.title')}}</a></li>
@@ -107,6 +107,10 @@ $jsTrans->addTrans([
                         <li{{$pageMenu == 'wheel' ? ' class=active' : ''}}><a href="{{route('admin_wheel_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.wheel.form.title')}}</a></li>
                     </ul>
                 </li>
+                <li{{$pageMenu == 'option' ? ' class=active' : ''}}><a href="{{route('admin_option_table')}}"><i class="fa fa-bars"></i> <span>{{trans('admin.option.form.title')}}</span></a></li>
+                <li{{$pageMenu == 'country' ? ' class=active' : ''}}><a href="{{route('admin_country_table')}}"><i class="fa fa-globe"></i> <span>{{trans('admin.country.form.title')}}</span></a></li>
+                <li{{$pageMenu == 'region' ? ' class=active' : ''}}><a href="{{route('admin_region_table')}}"><i class="fa fa-globe"></i> <span>{{trans('admin.region.form.title')}}</span></a></li>
+                <li{{$pageMenu == 'auto' ? ' class=active' : ''}}><a href="{{route('admin_auto_table')}}"><i class="fa fa-car"></i> <span>{{trans('admin.auto.form.title')}}</span></a></li>
                 <li class="treeview{{$pageMenu == 'admin' || $pageMenu == 'language' || $pageMenu == 'dictionary' ? ' active' : ''}}">
                     <a href="#">
                         <i class="fa fa-wrench"></i> <span>{{trans('admin.admin_menu.system')}}</span> <i class="fa fa-angle-left pull-right"></i>
@@ -117,8 +121,6 @@ $jsTrans->addTrans([
                         <li{{$pageMenu == 'dictionary' ? ' class=active' : ''}}><a href="{{route('admin_dictionary_table')}}"><i class="fa fa-book"></i> {{trans('admin.dictionary.form.title')}}</a></li>
                     </ul>
                 </li>
-                <li{{$pageMenu == 'country' ? ' class=active' : ''}}><a href="{{route('admin_country_table')}}"><i class="fa fa-globe"></i> <span>{{trans('admin.country.form.title')}}</span></a></li>
-                <li{{$pageMenu == 'region' ? ' class=active' : ''}}><a href="{{route('admin_region_table')}}"><i class="fa fa-globe"></i> <span>{{trans('admin.region.form.title')}}</span></a></li>
             </ul>
         </section>
     </aside>

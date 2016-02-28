@@ -8,6 +8,7 @@ use App\Models\Region\Search;
 use App\Http\Requests\Admin\RegionRequest;
 use App\Models\Language\Language;
 use App\Models\Country\Country;
+use Illuminate\Http\Request;
 
 class RegionController extends BaseController
 {
@@ -68,5 +69,19 @@ class RegionController extends BaseController
     public function delete($id)
     {
         return $this->api('OK', $this->manager->delete($id));
+    }
+
+    public function get(Request $request)
+    {
+        $countryId = $request->input('country_id');
+        $regions = Region::select('regions.id', 'ml.name')
+            ->join('regions_ml AS ml', function($query) {
+                $query->on('ml.id', '=', 'regions.id')->where('ml.lng_id', '=', cLng('id'));
+            })
+            ->where('regions.country_id', $countryId)
+            ->where('regions.show_status', Region::STATUS_ACTIVE)
+            ->get();
+
+        return $this->api('OK', $regions);
     }
 }

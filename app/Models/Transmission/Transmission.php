@@ -19,6 +19,6 @@ class Transmission extends Model
 
     public function current()
     {
-        return $this->ml()->where('lng_id', cLng('id'));
+        return $this->hasOne(TransmissionMl::class, 'id', 'id')->where('lng_id', cLng('id'))->active();
     }
 }

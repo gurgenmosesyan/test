@@ -19,6 +19,6 @@ class Color extends Model
 
     public function current()
     {
-        return $this->ml()->where('lng_id', cLng('id'));
+        return $this->hasOne(ColorMl::class, 'id', 'id')->where('lng_id', cLng('id'))->active();
     }
 }

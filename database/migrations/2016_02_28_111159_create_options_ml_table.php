@@ -4,7 +4,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use App\Models\Model;
 
-class CreateTrainsMlTable extends Migration
+class CreateOptionsMlTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTrainsMlTable extends Migration
      */
     public function up()
     {
-        Schema::create('trains_ml', function (Blueprint $table) {
+        Schema::create('options_ml', function (Blueprint $table) {
             $table->integer('id')->unsignd();
             $table->tinyInteger('lng_id')->unsignd();
             $table->string('name');
@@ -29,6 +29,6 @@ class CreateTrainsMlTable extends Migration
      */
     public function down()
     {
-        Schema::drop('trains_ml');
+        Schema::drop('options_ml');
     }
 }

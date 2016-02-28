@@ -8,6 +8,7 @@ use App\Models\Model\Search;
 use App\Http\Requests\Admin\ModelRequest;
 use App\Models\Mark\Mark;
 use App\Models\ModelCategory\Category;
+use Illuminate\Http\Request;
 
 class ModelController extends BaseController
 {
@@ -67,5 +68,12 @@ class ModelController extends BaseController
     public function delete($id)
     {
         return $this->api('OK', $this->manager->delete($id));
+    }
+
+    public function get(Request $request)
+    {
+        $markId = $request->input('mark_id');
+        $models = Model::active()->where('mark_id', $markId)->get();
+        return $this->api('OK', $models);
     }
 }

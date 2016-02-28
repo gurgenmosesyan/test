@@ -75,6 +75,7 @@ Route::group($params, function () {
         Route::post('/model/store', ['uses' => 'ModelController@store', 'as' => 'admin_model_store']);
         Route::post('/model/update/{id}', ['uses' => 'ModelController@update', 'as' => 'admin_model_update']);
         Route::post('/model/delete/{id}', ['uses' => 'ModelController@delete', 'as' => 'admin_model_delete']);
+        Route::post('/api/model/get', ['uses' => 'ModelController@get']);
 
         Route::get('/body', ['uses' => 'BodyController@table', 'as' => 'admin_body_table']);
         Route::get('/body/create', ['uses' => 'BodyController@create', 'as' => 'admin_body_create']);
@@ -171,6 +172,23 @@ Route::group($params, function () {
         Route::post('/region/store', ['uses' => 'RegionController@store', 'as' => 'admin_region_store']);
         Route::post('/region/update/{id}', ['uses' => 'RegionController@update', 'as' => 'admin_region_update']);
         Route::post('/region/delete/{id}', ['uses' => 'RegionController@delete', 'as' => 'admin_region_delete']);
+        Route::post('/api/region/get', ['uses' => 'RegionController@get']);
+
+        Route::get('/option', ['uses' => 'OptionController@table', 'as' => 'admin_option_table']);
+        Route::get('/option/create', ['uses' => 'OptionController@create', 'as' => 'admin_option_create']);
+        Route::get('/option/edit/{id}', ['uses' => 'OptionController@edit', 'as' => 'admin_option_edit']);
+        Route::post('/option', ['uses' => 'OptionController@index', 'as' => 'admin_option_index']);
+        Route::post('/option/store', ['uses' => 'OptionController@store', 'as' => 'admin_option_store']);
+        Route::post('/option/update/{id}', ['uses' => 'OptionController@update', 'as' => 'admin_option_update']);
+        Route::post('/option/delete/{id}', ['uses' => 'OptionController@delete', 'as' => 'admin_option_delete']);
+
+        Route::get('/auto', ['uses' => 'AutoController@table', 'as' => 'admin_auto_table']);
+        Route::get('/auto/create', ['uses' => 'AutoController@create', 'as' => 'admin_auto_create']);
+        Route::get('/auto/edit/{id}', ['uses' => 'AutoController@edit', 'as' => 'admin_auto_edit']);
+        Route::post('/auto', ['uses' => 'AutoController@index', 'as' => 'admin_auto_index']);
+        Route::post('/auto/store', ['uses' => 'AutoController@store', 'as' => 'admin_auto_store']);
+        Route::post('/auto/update/{id}', ['uses' => 'AutoController@update', 'as' => 'admin_auto_update']);
+        Route::post('/auto/delete/{id}', ['uses' => 'AutoController@delete', 'as' => 'admin_auto_delete']);
     });
 
 });

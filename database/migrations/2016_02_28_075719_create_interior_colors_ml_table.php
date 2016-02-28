@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use App\Models\Mark\Mark;
+use App\Models\Model;
 
 class CreateInteriorColorsMlTable extends Migration
 {
@@ -17,7 +17,7 @@ class CreateInteriorColorsMlTable extends Migration
             $table->integer('id')->unsignd();
             $table->tinyInteger('lng_id')->unsignd();
             $table->string('name');
-            $table->enum('show_status', [Mark::STATUS_ACTIVE, Mark::STATUS_DELETED]);
+            $table->enum('show_status', [Model::STATUS_ACTIVE, Model::STATUS_DELETED]);
             $table->primary(['id', 'lng_id']);
         });
     }
