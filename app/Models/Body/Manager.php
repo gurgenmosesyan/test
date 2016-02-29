@@ -34,7 +34,7 @@ class Manager
         $i = 0;
         foreach ($data as $lngId => $mlData) {
             $mlData['lng_id'] = $lngId;
-            $ml[$i] = new bodyMl($mlData);
+            $ml[$i] = new BodyMl($mlData);
             $ml[$i]->show_status = Body::STATUS_ACTIVE;
             $i++;
         }

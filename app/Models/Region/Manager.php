@@ -33,7 +33,7 @@ class Manager
         $i = 0;
         foreach ($data as $lngId => $mlData) {
             $mlData['lng_id'] = $lngId;
-            $ml[$i] = new regionMl($mlData);
+            $ml[$i] = new RegionMl($mlData);
             $ml[$i]->show_status = Region::STATUS_ACTIVE;
             $i++;
         }

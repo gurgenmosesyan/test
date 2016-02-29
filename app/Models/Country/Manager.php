@@ -34,7 +34,7 @@ class Manager
         $i = 0;
         foreach ($data as $lngId => $mlData) {
             $mlData['lng_id'] = $lngId;
-            $ml[$i] = new countryMl($mlData);
+            $ml[$i] = new CountryMl($mlData);
             $ml[$i]->show_status = Country::STATUS_ACTIVE;
             $i++;
         }

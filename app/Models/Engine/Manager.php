@@ -34,7 +34,7 @@ class Manager
         $i = 0;
         foreach ($data as $lngId => $mlData) {
             $mlData['lng_id'] = $lngId;
-            $ml[$i] = new engineMl($mlData);
+            $ml[$i] = new EngineMl($mlData);
             $ml[$i]->show_status = Engine::STATUS_ACTIVE;
             $i++;
         }

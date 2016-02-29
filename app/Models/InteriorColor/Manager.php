@@ -34,7 +34,7 @@ class Manager
         $i = 0;
         foreach ($data as $lngId => $mlData) {
             $mlData['lng_id'] = $lngId;
-            $ml[$i] = new colorMl($mlData);
+            $ml[$i] = new ColorMl($mlData);
             $ml[$i]->show_status = Color::STATUS_ACTIVE;
             $i++;
         }

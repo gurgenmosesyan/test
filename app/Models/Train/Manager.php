@@ -34,7 +34,7 @@ class Manager
         $i = 0;
         foreach ($data as $lngId => $mlData) {
             $mlData['lng_id'] = $lngId;
-            $ml[$i] = new trainMl($mlData);
+            $ml[$i] = new TrainMl($mlData);
             $ml[$i]->show_status = Train::STATUS_ACTIVE;
             $i++;
         }

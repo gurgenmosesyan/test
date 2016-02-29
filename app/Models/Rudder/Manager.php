@@ -34,7 +34,7 @@ class Manager
         $i = 0;
         foreach ($data as $lngId => $mlData) {
             $mlData['lng_id'] = $lngId;
-            $ml[$i] = new rudderMl($mlData);
+            $ml[$i] = new RudderMl($mlData);
             $ml[$i]->show_status = Rudder::STATUS_ACTIVE;
             $i++;
         }
