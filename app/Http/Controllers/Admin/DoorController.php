@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Core\BaseController;
 use App\Models\Door\Door;
 use App\Models\Door\Manager;
 use App\Models\Door\Search;

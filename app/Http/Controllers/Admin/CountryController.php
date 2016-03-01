@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Core\BaseController;
 use App\Models\Country\Country;
 use App\Models\Country\Manager;
 use App\Models\Country\Search;

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Core\BaseController;
 use App\Http\Requests\Admin\LoginRequest;
 use Auth;
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Core\BaseController;
 use App\Models\Language\Language;
 use App\Models\Language\Manager;
 use App\Models\Language\Search;

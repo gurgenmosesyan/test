@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Core\BaseController;
 use App\Models\Dictionary\Manager;
 use App\Models\Dictionary\Search;
 use App\Http\Requests\Admin\DictionaryRequest;

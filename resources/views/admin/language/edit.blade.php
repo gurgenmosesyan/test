@@ -1,5 +1,6 @@
 <?php
 use App\Models\Language\Language;
+use App\Core\Helpers\ImgUploader;
 
 $head->appendScript('/admin/language.js');
 $pageTitle = trans('admin.language.form.title');
@@ -28,6 +29,12 @@ if ($saveMode == 'add') {
             <div class="col-sm-10">
                 <input type="text" name="code" class="form-control" id="code" value="{{$language->code or ''}}">
                 <div id="form-error-code" class="form-error"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="code" class="col-sm-2 control-label">{{trans('admin.base.label.icon')}}</label>
+            <div class="col-sm-10">
+                <?php ImgUploader::uploader('language', 'icon', 'data[icon]', $language->icon); ?>
             </div>
         </div>
         <div class="form-group">

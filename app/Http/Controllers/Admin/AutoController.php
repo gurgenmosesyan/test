@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Core\BaseController;
 use App\Models\Auto\Auto;
 use App\Models\Auto\Manager;
 use App\Models\Auto\Search;

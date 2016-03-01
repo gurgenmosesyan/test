@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Core\BaseController;
 use App\Models\Color\Color;
 use App\Models\Color\Manager;
 use App\Models\Color\Search;

@@ -3,10 +3,12 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Helpers\Head;
-use App\Helpers\JsTrans;
-use Validator;
+use App\Core\Helpers\Head;
+use App\Core\Helpers\JsTrans;
 use App\Models\Language\Language;
+use App\Core\Image\Uploader;
+use Validator;
+use DB;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -31,6 +33,18 @@ class AppServiceProvider extends ServiceProvider
                 }
             }
             return true;
+        });
+
+        Validator::extend('image', function($attribute, $value, $parameters, $validator) {
+            if (empty($value) || $value === 'same') {
+                return true;
+            } else {
+                $tempFile = Uploader::getTempImage($value, false, true);
+                if (empty($tempFile)) {
+                    return false;
+                }
+                return true;
+            }
         });
 	}
 

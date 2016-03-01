@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Core\BaseController;
 use App\Models\Rudder\Rudder;
 use App\Models\Rudder\Manager;
 use App\Models\Rudder\Search;

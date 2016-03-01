@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Core\BaseController;
 use App\Models\Wheel\Wheel;
 use App\Models\Wheel\Manager;
 use App\Models\Wheel\Search;

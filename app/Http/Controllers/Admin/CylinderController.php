@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Core\BaseController;
 use App\Models\Cylinder\Cylinder;
 use App\Models\Cylinder\Manager;
 use App\Models\Cylinder\Search;

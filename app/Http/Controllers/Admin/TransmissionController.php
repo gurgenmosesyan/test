@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Core\BaseController;
 use App\Models\Transmission\Transmission;
 use App\Models\Transmission\Manager;
 use App\Models\Transmission\Search;

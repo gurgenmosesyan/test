@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Core\BaseController;
 use App\Models\Option\Option;
 use App\Models\Option\Manager;
 use App\Models\Option\Search;
