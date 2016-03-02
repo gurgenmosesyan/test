@@ -35,7 +35,7 @@ class AppServiceProvider extends ServiceProvider
             return true;
         });
 
-        Validator::extend('image', function($attribute, $value, $parameters, $validator) {
+        Validator::extend('core_image', function($attribute, $value, $parameters, $validator) {
             if (empty($value) || $value === 'same') {
                 return true;
             } else {

@@ -112,4 +112,5 @@ return array (
   'base.label.engine_volume' => 'Engine volume',
   'base.label.horsepower' => 'Ձիաուժ',
   'base.label.place' => 'Place',
+  'base.label.icon' => 'Icon',
 );

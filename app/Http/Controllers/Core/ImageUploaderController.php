@@ -47,7 +47,6 @@ class ImageUploaderController extends BaseController
 		try {
 			$imageUploader = new Uploader();
 			$uploadedFile = $imageUploader->saveToTemp('image', $module);
-			//$uploadedFile['img_path'] = route('/core/image/show?id='.$uploadedFile['id']);
             $uploadedFile['img_path'] = route('core_image_show', 'id='.$uploadedFile['id']);
 			$status = 'OK';
 			$data = $uploadedFile;

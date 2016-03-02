@@ -18,14 +18,14 @@ if ($saveMode == 'add') {
 <form id="edit-form" class="form-horizontal" method="post" action="{{$url}}">
     <div class="box-body">
         <div class="form-group">
-            <label for="email" class="col-sm-2 control-label">{{trans('admin.base.label.name')}}</label>
+            <label for="email" class="col-sm-2 control-label data-req">{{trans('admin.base.label.name')}}</label>
             <div class="col-sm-10">
                 <input type="text" name="name" class="form-control" id="name" value="{{$language->name or ''}}">
                 <div id="form-error-name" class="form-error"></div>
             </div>
         </div>
         <div class="form-group">
-            <label for="code" class="col-sm-2 control-label">{{trans('admin.base.label.code')}}</label>
+            <label for="code" class="col-sm-2 control-label data-req">{{trans('admin.base.label.code')}}</label>
             <div class="col-sm-10">
                 <input type="text" name="code" class="form-control" id="code" value="{{$language->code or ''}}">
                 <div id="form-error-code" class="form-error"></div>
@@ -34,7 +34,7 @@ if ($saveMode == 'add') {
         <div class="form-group">
             <label for="code" class="col-sm-2 control-label">{{trans('admin.base.label.icon')}}</label>
             <div class="col-sm-10">
-                <?php ImgUploader::uploader('language', 'icon', 'data[icon]', $language->icon); ?>
+                <?php ImgUploader::uploader('language', 'icon', 'icon', $language->icon); ?>
             </div>
         </div>
         <div class="form-group">

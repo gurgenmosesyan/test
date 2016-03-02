@@ -2,7 +2,7 @@
 
 namespace App\Models\Language;
 
-use App\Exceptions\LanguageNotFound;
+use App\Core\Image\SaveImage;
 
 class Manager
 {
@@ -39,6 +39,7 @@ class Manager
     {
         $data = $this->processSave($data);
         $language = new Language($data);
+        SaveImage::save($data['icon'], $language, 'icon');
         $language->save();
         $this->updateDefault($language);
         return $language;
@@ -47,6 +48,7 @@ class Manager
     public function update($id, $data)
     {
         $language = Language::findOrFail($id);
+        SaveImage::save($data['icon'], $language, 'icon');
         $data = $this->processSave($data);
         $language->update($data);
         $this->updateDefault($language);

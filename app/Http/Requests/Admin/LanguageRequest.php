@@ -12,7 +12,7 @@ class LanguageRequest extends Request
         return [
             'code' => 'required|max:30',
             'name' => 'required',
-            'icon' => 'required|image',
+            'icon' => 'core_image',
             'default' => 'in:'.Language::DEFAULT_LNG.','.Language::NOT_DEFAULT_LNG
         ];
     }
