@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="58fc3ed4-d55e-454d-8b01-808fd6ca3c0d" name="Default" comment="">
+    <list default="true" id="58fc3ed4-d55e-454d-8b01-808fd6ca3c0d" name="Default" comment="commit">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
     </list>
     <ignored path="autotrade.loc.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,7 +30,7 @@
       <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="0" selection-start="73" selection-end="73" vertical-scroll-proportion="0.17170112" vertical-offset="0" max-vertical-offset="629">
+            <state line="6" column="1" selection-start="74" selection-end="74" vertical-scroll-proportion="0.17170112" vertical-offset="0" max-vertical-offset="629">
               <folding />
             </state>
           </provider>
@@ -163,7 +165,11 @@
       <created>1456907949150</created>
       <updated>1456907949150</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="commit">
+      <created>1456907955428</created>
+      <updated>1456907955428</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -213,7 +219,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="73" selection-end="73" vertical-scroll-proportion="0.17170112" vertical-offset="0" max-vertical-offset="629">
+        <state line="6" column="1" selection-start="74" selection-end="74" vertical-scroll-proportion="0.17170112" vertical-offset="0" max-vertical-offset="629">
           <folding />
         </state>
       </provider>
