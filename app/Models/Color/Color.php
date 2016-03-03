@@ -2,7 +2,7 @@
 
 namespace App\Models\Color;
 
-use App\Models\Model;
+use App\Core\Model;
 
 class Color extends Model
 {

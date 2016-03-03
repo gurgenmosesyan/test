@@ -2,7 +2,7 @@
 
 namespace App\Models\Mark;
 
-use App\Models\DataTable;
+use App\Core\DataTable;
 
 class Search extends DataTable
 {

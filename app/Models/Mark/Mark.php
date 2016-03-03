@@ -2,7 +2,7 @@
 
 namespace App\Models\Mark;
 
-use App\Models\Model;
+use App\Core\Model;
 
 class Mark extends Model
 {

@@ -2,7 +2,7 @@
 
 namespace App\Models\Region;
 
-use App\Models\Model;
+use App\Core\Model;
 
 class RegionMl extends Model
 {

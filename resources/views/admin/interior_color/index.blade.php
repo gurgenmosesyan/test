@@ -3,7 +3,7 @@ $head->appendScript('/admin/interior_color.js');
 $pageTitle = $pageSubTitle = trans('admin.interior_color.form.title');
 $pageMenu = 'interior_color';
 ?>
-@extends('admin.layout')
+@extends('core.layout')
 @section('navButtons')
     <a href="{{route('admin_interior_color_create')}}" class="btn btn-primary pull-right">{{trans('admin.base.label.add')}}</a>
 @stop

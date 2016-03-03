@@ -7,7 +7,7 @@ use App\Models\Option\Option;
 use App\Models\Option\Manager;
 use App\Models\Option\Search;
 use App\Http\Requests\Admin\OptionRequest;
-use App\Models\Language\Language;
+use App\Core\Language\Language;
 
 class OptionController extends BaseController
 {

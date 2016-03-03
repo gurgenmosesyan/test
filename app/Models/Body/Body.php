@@ -2,7 +2,7 @@
 
 namespace App\Models\Body;
 
-use App\Models\Model;
+use App\Core\Model;
 
 class Body extends Model
 {

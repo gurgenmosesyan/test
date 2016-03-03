@@ -7,7 +7,7 @@ use App\Models\Color\Color;
 use App\Models\Color\Manager;
 use App\Models\Color\Search;
 use App\Http\Requests\Admin\ColorRequest;
-use App\Models\Language\Language;
+use App\Core\Language\Language;
 
 class ColorController extends BaseController
 {

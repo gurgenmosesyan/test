@@ -2,9 +2,9 @@
 
 namespace App\Models\Model;
 
-use App\Models\Model as LaravelModel;
+use App\Core\Model as CoreModel;
 
-class Model extends LaravelModel
+class Model extends CoreModel
 {
     protected $table = 'models';
 

@@ -2,7 +2,7 @@
 
 namespace App\Models\Rudder;
 
-use App\Models\Model;
+use App\Core\Model;
 
 class RudderMl extends Model
 {

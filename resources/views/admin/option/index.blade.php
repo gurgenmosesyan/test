@@ -3,7 +3,7 @@ $head->appendScript('/admin/option.js');
 $pageTitle = $pageSubTitle = trans('admin.option.form.title');
 $pageMenu = 'option';
 ?>
-@extends('admin.layout')
+@extends('core.layout')
 @section('navButtons')
     <a href="{{route('admin_option_create')}}" class="btn btn-primary pull-right">{{trans('admin.base.label.add')}}</a>
 @stop

@@ -3,7 +3,7 @@ $head->appendScript('/admin/transmission.js');
 $pageTitle = $pageSubTitle = trans('admin.transmission.form.title');
 $pageMenu = 'transmission';
 ?>
-@extends('admin.layout')
+@extends('core.layout')
 @section('navButtons')
     <a href="{{route('admin_transmission_create')}}" class="btn btn-primary pull-right">{{trans('admin.base.label.add')}}</a>
 @stop

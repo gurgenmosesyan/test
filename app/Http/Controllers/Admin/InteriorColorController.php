@@ -7,7 +7,7 @@ use App\Models\InteriorColor\Color;
 use App\Models\InteriorColor\Manager;
 use App\Models\InteriorColor\Search;
 use App\Http\Requests\Admin\InteriorColorRequest;
-use App\Models\Language\Language;
+use App\Core\Language\Language;
 
 class InteriorColorController extends BaseController
 {

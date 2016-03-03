@@ -12,7 +12,7 @@ if ($saveMode == 'add') {
     $url = route('admin_wheel_update', $wheel->id);
 }
 ?>
-@extends('admin.layout')
+@extends('core.layout')
 @section('content')
 <form id="edit-form" class="form-horizontal" method="post" action="{{$url}}">
     <div class="box-body">

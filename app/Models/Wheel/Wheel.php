@@ -2,7 +2,7 @@
 
 namespace App\Models\Wheel;
 
-use App\Models\Model;
+use App\Core\Model;
 
 class Wheel extends Model
 {

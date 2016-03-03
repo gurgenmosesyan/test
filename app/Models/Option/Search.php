@@ -2,7 +2,7 @@
 
 namespace App\Models\Option;
 
-use App\Models\DataTable;
+use App\Core\DataTable;
 
 class Search extends DataTable
 {

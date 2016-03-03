@@ -2,7 +2,7 @@
 
 namespace App\Models\Auto;
 
-use App\Models\DataTable;
+use App\Core\DataTable;
 
 class Search extends DataTable
 {

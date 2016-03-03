@@ -2,7 +2,7 @@
 
 namespace App\Models\Auto;
 
-use App\Models\Model;
+use App\Core\Model;
 
 class Auto extends Model
 {

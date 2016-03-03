@@ -3,7 +3,7 @@ $head->appendScript('/admin/body.js');
 $pageTitle = $pageSubTitle = trans('admin.body.form.title');
 $pageMenu = 'body';
 ?>
-@extends('admin.layout')
+@extends('core.layout')
 @section('navButtons')
     <a href="{{route('admin_body_create')}}" class="btn btn-primary pull-right">{{trans('admin.base.label.add')}}</a>
 @stop

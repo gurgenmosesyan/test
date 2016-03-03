@@ -3,7 +3,7 @@ $head->appendScript('/admin/mark.js');
 $pageTitle = $pageSubTitle = trans('admin.mark.form.title');
 $pageMenu = 'mark';
 ?>
-@extends('admin.layout')
+@extends('core.layout')
 @section('navButtons')
     <a href="{{route('admin_mark_create')}}" class="btn btn-primary pull-right">{{trans('admin.base.label.add')}}</a>
 @stop

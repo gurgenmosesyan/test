@@ -7,7 +7,7 @@ use App\Models\Country\Country;
 use App\Models\Country\Manager;
 use App\Models\Country\Search;
 use App\Http\Requests\Admin\CountryRequest;
-use App\Models\Language\Language;
+use App\Core\Language\Language;
 
 class CountryController extends BaseController
 {

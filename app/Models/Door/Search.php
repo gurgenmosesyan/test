@@ -2,7 +2,7 @@
 
 namespace App\Models\Door;
 
-use App\Models\DataTable;
+use App\Core\DataTable;
 
 class Search extends DataTable
 {

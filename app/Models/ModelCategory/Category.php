@@ -2,7 +2,7 @@
 
 namespace App\Models\ModelCategory;
 
-use App\Models\Model;
+use App\Core\Model;
 
 class Category extends Model
 {

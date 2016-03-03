@@ -7,7 +7,7 @@ use App\Models\Region\Region;
 use App\Models\Region\Manager;
 use App\Models\Region\Search;
 use App\Http\Requests\Admin\RegionRequest;
-use App\Models\Language\Language;
+use App\Core\Language\Language;
 use App\Models\Country\Country;
 use Illuminate\Http\Request;
 

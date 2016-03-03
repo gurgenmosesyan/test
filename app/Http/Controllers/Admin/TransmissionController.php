@@ -7,7 +7,7 @@ use App\Models\Transmission\Transmission;
 use App\Models\Transmission\Manager;
 use App\Models\Transmission\Search;
 use App\Http\Requests\Admin\TransmissionRequest;
-use App\Models\Language\Language;
+use App\Core\Language\Language;
 
 class TransmissionController extends BaseController
 {

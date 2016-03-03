@@ -3,7 +3,7 @@ $head->appendScript('/admin/door.js');
 $pageTitle = $pageSubTitle = trans('admin.door.form.title');
 $pageMenu = 'door';
 ?>
-@extends('admin.layout')
+@extends('core.layout')
 @section('navButtons')
     <a href="{{route('admin_door_create')}}" class="btn btn-primary pull-right">{{trans('admin.base.label.add')}}</a>
 @stop

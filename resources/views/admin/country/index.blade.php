@@ -3,7 +3,7 @@ $head->appendScript('/admin/country.js');
 $pageTitle = $pageSubTitle = trans('admin.country.form.title');
 $pageMenu = 'country';
 ?>
-@extends('admin.layout')
+@extends('core.layout')
 @section('navButtons')
     <a href="{{route('admin_country_create')}}" class="btn btn-primary pull-right">{{trans('admin.base.label.add')}}</a>
 @stop

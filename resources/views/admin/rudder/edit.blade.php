@@ -13,7 +13,7 @@ if ($saveMode == 'add') {
 }
 $mls = $rudder->ml->keyBy('lng_id');
 ?>
-@extends('admin.layout')
+@extends('core.layout')
 @section('content')
 <form id="edit-form" class="form-horizontal" method="post" action="{{$url}}">
     <div class="box-body">

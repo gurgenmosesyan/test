@@ -2,7 +2,7 @@
 
 namespace App\Models\Cylinder;
 
-use App\Models\Model;
+use App\Core\Model;
 
 class Cylinder extends Model
 {

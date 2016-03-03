@@ -2,7 +2,7 @@
 
 namespace App\Models\Color;
 
-use App\Models\DataTable;
+use App\Core\DataTable;
 
 class Search extends DataTable
 {

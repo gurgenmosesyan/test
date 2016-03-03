@@ -3,7 +3,7 @@ $head->appendScript('/admin/auto.js');
 $pageTitle = $pageSubTitle = trans('admin.auto.form.title');
 $pageMenu = 'auto';
 ?>
-@extends('admin.layout')
+@extends('core.layout')
 @section('navButtons')
     <a href="{{route('admin_auto_create')}}" class="btn btn-primary pull-right">{{trans('admin.base.label.add')}}</a>
 @stop

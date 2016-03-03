@@ -3,7 +3,7 @@ $head->appendScript('/admin/train.js');
 $pageTitle = $pageSubTitle = trans('admin.train.form.title');
 $pageMenu = 'train';
 ?>
-@extends('admin.layout')
+@extends('core.layout')
 @section('navButtons')
     <a href="{{route('admin_train_create')}}" class="btn btn-primary pull-right">{{trans('admin.base.label.add')}}</a>
 @stop

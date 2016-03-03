@@ -2,7 +2,7 @@
 
 namespace App\Models\Transmission;
 
-use App\Models\Model;
+use App\Core\Model;
 
 class TransmissionMl extends Model
 {

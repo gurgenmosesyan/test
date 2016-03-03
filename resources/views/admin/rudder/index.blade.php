@@ -3,7 +3,7 @@ $head->appendScript('/admin/rudder.js');
 $pageTitle = $pageSubTitle = trans('admin.rudder.form.title');
 $pageMenu = 'rudder';
 ?>
-@extends('admin.layout')
+@extends('core.layout')
 @section('navButtons')
     <a href="{{route('admin_rudder_create')}}" class="btn btn-primary pull-right">{{trans('admin.base.label.add')}}</a>
 @stop

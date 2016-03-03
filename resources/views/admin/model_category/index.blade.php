@@ -3,7 +3,7 @@ $head->appendScript('/admin/model_category.js');
 $pageTitle = $pageSubTitle = trans('admin.model_category.form.title');
 $pageMenu = 'model_category';
 ?>
-@extends('admin.layout')
+@extends('core.layout')
 @section('navButtons')
     <a href="{{route('admin_model_category_create')}}" class="btn btn-primary pull-right">{{trans('admin.base.label.add')}}</a>
 @stop

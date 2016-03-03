@@ -2,7 +2,7 @@
 
 namespace App\Models\Train;
 
-use App\Models\Model;
+use App\Core\Model;
 
 class Train extends Model
 {

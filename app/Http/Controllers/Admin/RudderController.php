@@ -7,7 +7,7 @@ use App\Models\Rudder\Rudder;
 use App\Models\Rudder\Manager;
 use App\Models\Rudder\Search;
 use App\Http\Requests\Admin\RudderRequest;
-use App\Models\Language\Language;
+use App\Core\Language\Language;
 
 class RudderController extends BaseController
 {

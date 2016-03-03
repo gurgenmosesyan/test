@@ -13,7 +13,7 @@ if ($saveMode == 'add') {
 }
 $jsTrans->addTrans(['admin.base.label.select']);
 ?>
-@extends('admin.layout')
+@extends('core.layout')
 @section('content')
 <form id="edit-form" class="form-horizontal" method="post" action="{{$url}}">
     <div class="box-body">

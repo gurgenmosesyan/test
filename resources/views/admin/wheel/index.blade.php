@@ -3,7 +3,7 @@ $head->appendScript('/admin/wheel.js');
 $pageTitle = $pageSubTitle = trans('admin.wheel.form.title');
 $pageMenu = 'wheel';
 ?>
-@extends('admin.layout')
+@extends('core.layout')
 @section('navButtons')
     <a href="{{route('admin_wheel_create')}}" class="btn btn-primary pull-right">{{trans('admin.base.label.add')}}</a>
 @stop

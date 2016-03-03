@@ -7,7 +7,7 @@ use App\Models\Body\Body;
 use App\Models\Body\Manager;
 use App\Models\Body\Search;
 use App\Http\Requests\Admin\BodyRequest;
-use App\Models\Language\Language;
+use App\Core\Language\Language;
 
 class BodyController extends BaseController
 {

@@ -7,7 +7,7 @@ use App\Models\Engine\Engine;
 use App\Models\Engine\Manager;
 use App\Models\Engine\Search;
 use App\Http\Requests\Admin\EngineRequest;
-use App\Models\Language\Language;
+use App\Core\Language\Language;
 
 class EngineController extends BaseController
 {

@@ -2,7 +2,7 @@
 
 namespace App\Models\Engine;
 
-use App\Models\Model;
+use App\Core\Model;
 
 class EngineMl extends Model
 {

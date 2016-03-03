@@ -7,7 +7,7 @@ use App\Models\Train\Train;
 use App\Models\Train\Manager;
 use App\Models\Train\Search;
 use App\Http\Requests\Admin\TrainRequest;
-use App\Models\Language\Language;
+use App\Core\Language\Language;
 
 class TrainController extends BaseController
 {

@@ -5,7 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Core\Helpers\Head;
 use App\Core\Helpers\JsTrans;
-use App\Models\Language\Language;
+use App\Core\Language\Language;
 use App\Core\Image\Uploader;
 use Validator;
 use DB;

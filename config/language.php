@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Language\Language;
+use App\Core\Language\Language;
 
 return [
     'images' => [

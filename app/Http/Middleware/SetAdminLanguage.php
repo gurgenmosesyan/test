@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Language\Manager as LngManager;
+use App\Core\Language\Manager as LngManager;
 use Closure;
 use Auth;
 
