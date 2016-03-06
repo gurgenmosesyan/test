@@ -40,7 +40,7 @@ if ($saveMode == 'add') {
         <div class="form-group">
             <label for="default" class="col-sm-2 control-label">{{trans('admin.base.label.default')}}</label>
             <div class="col-sm-10">
-                <input type="checkbox" id="default" name="default" class="minimal form-control" value="{{Language::DEFAULT_LNG}}" {{$language->default == Language::DEFAULT_LNG ? ' checked="checked"' : ''}}>
+                <input type="checkbox" id="default" name="default" class="minimal-checkbox" value="{{Language::DEFAULT_LNG}}" {{$language->default == Language::DEFAULT_LNG ? ' checked="checked"' : ''}}>
                 <div id="form-error-default" class="form-error"></div>
             </div>
         </div>

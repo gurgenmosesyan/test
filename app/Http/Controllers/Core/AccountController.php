@@ -17,7 +17,7 @@ class AccountController extends BaseController
         $data = $request->all();
         $auth = auth()->guard('admin');
         if ($auth->attempt(['email' => $data['email'], 'password' => $data['password']])) {
-            return $this->api('OK', ['path' => route('admin_table')]);
+            return $this->api('OK', ['path' => route('core_admin_table')]);
         }
         return $this->api('INVALID_DATA', null, ['email' => 'Invalid credentials']);
     }
@@ -25,6 +25,6 @@ class AccountController extends BaseController
     public function logout()
     {
         Auth::guard('admin')->logout();
-        return redirect()->route('admin_login');
+        return redirect()->route('core_admin_login');
     }
 }

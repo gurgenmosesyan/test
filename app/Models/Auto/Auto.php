@@ -12,6 +12,7 @@ class Auto extends Model
     protected $table = 'autos';
 
     protected $fillable = [
+        'user_id',
         'mark_id',
         'model_category_id',
         'model_id',
@@ -36,4 +37,14 @@ class Auto extends Model
         'horsepower',
         'place'
     ];
+
+    public function options()
+    {
+        return $this->hasMany(AutoOption::class, 'auto_id', 'id');
+    }
+
+    public function images()
+    {
+        return $this->hasMany(AutoImage::class, 'auto_id', 'id');
+    }
 }

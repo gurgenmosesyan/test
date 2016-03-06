@@ -2,55 +2,38 @@
 
 namespace App\Core\Image;
 
-use App\Core\File\SubmittedFile;
-use App\Core\File\UploadedTempFile;
-
 class SaveImage
 {
-    public static function save($image, $model, $column)
+    public static function save($image, $model, $column = 'image')
     {
         $image = trim($image);
-        $submittedImage = new SubmittedImage();
-        if (empty($image)) {
-            $submittedImage->setImageType(SubmittedImage::FILE_TYPE_EMPTY);
-        } elseif ($image === 'same') {
-            $submittedImage->setImageType(SubmittedImage::FILE_TYPE_SAME);
-        } else {
-            $submittedImage->setImageType(SubmittedImage::FILE_TYPE_NEW);
-            $tempFile = Uploader::getTempImage($image, false, true);
-            $submittedImage->setTempImage($tempFile);
-        }
-
-        self::saveFile($submittedImage, $model, $column);
-    }
-
-    protected static function saveFile(SubmittedFile $file, $model, $column)
-    {
-        if ($file->isSame()) {
-            return;
-        }
-
-        if ($file->isEmpty()) {
+        if ($image === 'same') {
+            return null;
+        } else if (empty($image)) {
             $filePath = public_path($model->getStorePath());
             if (!empty($model->getFile($column)) && file_exists($filePath . '/' . $model->getFile($column))) {
                 unlink($filePath . '/' . $model->getFile($column));
             }
             $model->setFile('', $column);
-            return ;
-        }
+            return '';
+        } else {
+            $file = new SubmittedImage();
+            $file->setImageType(SubmittedImage::FILE_TYPE_NEW);
+            $tempFile = Uploader::getTempImage($image, false, true);
+            $file->setTempImage($tempFile);
 
-        if ($file->isNew()) {
             $tempFile = $file->getTempFile();
-            list($filePath, $subDir, $fileName) = self::createPathInfo($model, $tempFile);
+            list($filePath, $subDir, $fileName) = self::createPathInfo($model, $tempFile->getExtension());
             $tempFile->save($filePath . '/' . $subDir, $fileName);
             if (!empty($model->getFile($column)) && file_exists($filePath . '/' . $model->getFile($column))) {
                 unlink($filePath . '/' . $model->getFile($column));
             }
             $model->setFile($subDir . '/' . $fileName, $column);
+            return $subDir . '/' . $fileName;
         }
     }
 
-    protected static function createPathInfo($model, UploadedTempFile $tempFile)
+    public static function createPathInfo($model, $extension)
     {
         $filePath = public_path($model->getStorePath());
         if (!is_dir($filePath)) {
@@ -62,7 +45,7 @@ class SaveImage
         if (!file_exists($filePath . '/' . $subDir)) {
             mkdir($filePath . '/' . $subDir);
         }
-        $fileName = str_replace('.', '', microtime(true) . '') . '.' . $tempFile->getExtension();
+        $fileName = str_replace('.', '', microtime(true) . '') . '.' . $extension;
 
         return [$filePath, $subDir, $fileName];
     }

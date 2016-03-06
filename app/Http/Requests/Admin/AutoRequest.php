@@ -34,7 +34,12 @@ class AutoRequest extends Request
             'volume_1' => 'required_with:volume_2|integer|max:15',
             'volume_2' => 'required_with:volume_1|integer|max:15',
             'horsepower' => 'integer|max:9999',
-            'place' => 'max:255'
+            'place' => 'max:255',
+            'options.*' => 'required|integer|exists:options,id',
+            'images' => 'array',
+            'images.*.id' => 'integer',
+            'images.*.image' => 'required|core_image',
+            'images.*.rotate' => 'numeric'
         ];
     }
 }

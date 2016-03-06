@@ -87,8 +87,6 @@ class Image
             default:
                 throw new InvalidArgumentException('Do not support '.$mime.' type of image.');
         }
-
-        return;
     }
 
     /**
@@ -285,8 +283,12 @@ class Image
 
     public function rotate($degree, $color = 'FFFFFF')
     {
-        $rgb = $this->html2rgb($color);
-        $this->image = imagerotate($this->image, $degree, imagecolorallocate($this->image, $rgb[0], $rgb[1], $rgb[2]));
+        //$rgb = $this->html2rgb($color);
+        //$this->image = imagerotate($this->image, $degree, imagecolorallocate($this->image, $rgb[0], $rgb[1], $rgb[2]));
+        $this->image = imagerotate($this->image, $degree, imagecolorallocatealpha($this->image, 0, 0, 0, 127), 1);
+        imagealphablending($this->image, false);
+        imagesavealpha($this->image, true);
+
         $this->info['width'] = imagesx($this->image);
         $this->info['height'] = imagesy($this->image);
     }

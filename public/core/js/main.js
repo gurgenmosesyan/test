@@ -127,6 +127,11 @@ $main.initForm = function() {
         self.save();
         return false;
     });
+
+    $('.minimal-checkbox').iCheck({
+        checkboxClass: 'icheckbox_minimal-blue',
+        radioClass: 'iradio_minimal-blue'
+    });
 };
 
 $main.init = function() {

@@ -1,11 +1,11 @@
 <?php
 
-use App\Core\Language\Language;
+use App\Models\Auto\AutoImage;
 
 return [
     'images' => [
-        'path' => '/'.Language::IMAGES_PATH,
-        'icon' => [
+        'path' => '/'.AutoImage::IMAGES_PATH,
+        'images' => [
             'extensions' => [
                 'jpg', 'jpeg', 'png'
             ],

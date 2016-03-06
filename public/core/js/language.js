@@ -12,11 +12,6 @@ $language.initSearchPage = function() {
 
 $language.initEditPage = function() {
     $language.initForm();
-
-    $('input[type="checkbox"]').iCheck({
-        checkboxClass: 'icheckbox_minimal-blue',
-        radioClass: 'iradio_minimal-blue'
-    });
 };
 
 $language.init();

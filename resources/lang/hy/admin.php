@@ -113,4 +113,7 @@ return array (
   'base.label.horsepower' => 'Ձիաուժ',
   'base.label.place' => 'Place',
   'base.label.icon' => 'Icon',
+  'base.label.options' => 'Options',
+  'base.label.images' => 'Images',
+  'base.label.upload' => 'Upload',
 );

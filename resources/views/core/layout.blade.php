@@ -35,7 +35,7 @@ $jsTrans->addTrans([
     $head->appendMainScript('/assets/plugins/iCheck/icheck.min.js');
     $head->appendMainScript('/assets/plugins/datepicker/bootstrap-datepicker.js');
     $head->appendMainScript('/assets/dist/js/app.js');
-    $head->appendMainScript('/admin/main.js');
+    $head->appendMainScript('/core/js/main.js');
 
     //$head->appendMainScript('/assets/plugins/timepicker/bootstrap-timepicker.min.js');
 

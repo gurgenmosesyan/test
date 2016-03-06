@@ -1,20 +1,29 @@
 <?php
 use App\Models\Auto\Auto;
 
+$head->appendStyle('/admin/auto.css');
 $head->appendScript('/admin/auto.js');
+
 $pageTitle = trans('admin.auto.form.title');
 $pageMenu = 'auto';
 if ($saveMode == 'add') {
     $pageSubTitle = trans('admin.auto.form.add.sub_title');
     $url = route('admin_auto_store');
+    $autoOptions = [];
+    $autoImages = [];
 } else {
     $pageSubTitle = trans('admin.auto.form.edit.sub_title', ['id' => $auto->id]);
     $url = route('admin_auto_update', $auto->id);
+    $autoOptions = $auto->options->keyBy('option_id');
+    $autoImages = $auto->images;
 }
 $jsTrans->addTrans(['admin.base.label.select']);
 ?>
 @extends('core.layout')
 @section('content')
+<script type="text/javascript">
+    $auto.images = {!!json_encode($autoImages)!!};
+</script>
 <form id="edit-form" class="form-horizontal" method="post" action="{{$url}}">
     <div class="box-body">
         <div class="form-group">
@@ -69,7 +78,7 @@ $jsTrans->addTrans(['admin.base.label.select']);
                         <option value="{{$i}}"{{$i == $auto->year ? ' selected="selected"' : ''}}>{{$i}}</option>
                     @endfor
                 </select>
-                <div id="form-error-body_id" class="form-error"></div>
+                <div id="form-error-year" class="form-error"></div>
             </div>
         </div>
         <div class="form-group">
@@ -247,6 +256,29 @@ $jsTrans->addTrans(['admin.base.label.select']);
                 <div id="form-error-place" class="form-error"></div>
             </div>
         </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">{{trans('admin.base.label.options')}}</label>
+            <div class="col-sm-9">
+                @foreach($options as $key => $option)
+                    <div class="form-group col-sm-4" style="margin-bottom: 0;">
+                        <input type="checkbox" id="{{$key}}" class="minimal-checkbox" name="options[]" value="{{$option->id}}"{{isset($autoOptions[$option->id]) ? ' checked="checked"' : ''}}>
+                        <label class="control-label" for="{{$key}}" style="margin-left: 3px;">{{$option->current->name}}</label>
+                        <div id="form-error-options_{{$key}}" class="form-error"></div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+
+        <div id="image-group" class="form-group">
+            <label class="col-sm-3 control-label">{{trans('admin.base.label.images')}}</label>
+            <div class="col-sm-9">
+                <a href="#" id="upload-image" class="btn btn-default">{{trans('admin.base.label.upload')}}</a>
+                <div id="form-error-images" class="form-error"></div>
+                <div id="images-block"></div>
+            </div>
+        </div>
+
     </div>
     {{csrf_field()}}
     <div class="box-footer">

@@ -20,6 +20,7 @@ use App\Models\Rudder\Rudder;
 use App\Models\Train\Train;
 use App\Models\Transmission\Transmission;
 use App\Models\Wheel\Wheel;
+use App\Models\Option\Option;
 
 class AutoController extends BaseController
 {
@@ -56,6 +57,7 @@ class AutoController extends BaseController
         $doors = Door::active()->get();
         $wheels = Wheel::active()->get();
         $countries = Country::active()->with('current')->get();
+        $options = Option::active()->with('current')->get();
         return view('admin.auto.edit')->with([
             'auto' => $auto,
             'marks' => $marks,
@@ -71,6 +73,7 @@ class AutoController extends BaseController
             'doors' => $doors,
             'wheels' => $wheels,
             'countries' => $countries,
+            'options' => $options,
             'saveMode' => 'add'
         ]);
     }
@@ -96,6 +99,7 @@ class AutoController extends BaseController
         $doors = Door::active()->get();
         $wheels = Wheel::active()->get();
         $countries = Country::active()->with('current')->get();
+        $options = Option::active()->with('current')->get();
         return view('admin.auto.edit')->with([
             'auto' => $auto,
             'marks' => $marks,
@@ -111,6 +115,7 @@ class AutoController extends BaseController
             'doors' => $doors,
             'wheels' => $wheels,
             'countries' => $countries,
+            'options' => $options,
             'saveMode' => 'edit'
         ]);
     }
