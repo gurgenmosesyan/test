@@ -66,12 +66,25 @@ class Manager
             $images[$i] = new AutoImage(['show_status' => Auto::STATUS_ACTIVE]);
             $fileName = SaveImage::save($value['image'], $images[$i]);
             $images[$i]->save();
-            if (!empty($value['rotate'])) {
+
+            /*if (!empty($value['rotate'])) {
                 $filePath = public_path($images[$i]->getStorePath().'/'.$fileName);
                 $image = new Image($filePath);
                 $image->rotate($value['rotate']);
                 $image->save($filePath);
+            }*/
+
+            $filePath = public_path($images[$i]->getStorePath().'/'.$fileName);
+            $image = new Image($filePath);
+            if (!empty($value['rotate'])) {
+                $image->rotate($value['rotate']);
             }
+            $watermark = imagecreatefrompng(public_path('images/draft.png'));
+            imagealphablending($watermark, false);
+            imagesavealpha($watermark, true);
+            $image->watermarkImage($watermark, 10);
+            $image->save($filePath);
+
             $i++;
         }
         if (!empty($images)) {

@@ -112,6 +112,9 @@ class Image
             throw new UnexpectedValueException('this->image is not resource, file-'.$this->file);
         }
 
+        imagealphablending($this->image, false);
+        imagesavealpha($this->image, true);
+
         $extension = strtolower(pathinfo($file)['extension']);
         if ($extension == 'jpeg' || $extension == 'jpg') {
             imagejpeg($this->image, $file, $quality);
@@ -242,7 +245,7 @@ class Image
         $this->info['height'] = $height;
     }
 
-	public function watermarkImage($overlayFile, $position = Image::POS_BOTTOM_RIGHT)
+	public function watermarkImage($overlayFile, $margin = 0, $position = Image::POS_BOTTOM_RIGHT)
 	{
 		if (is_resource($overlayFile)) {
 			$watermark = $overlayFile;
@@ -254,24 +257,24 @@ class Image
 
 		switch($position) {
 			case Image::POS_TOP_LEFT:
-				$watermark_pos_x = 0;
-				$watermark_pos_y = 0;
+				$watermark_pos_x = $margin;
+				$watermark_pos_y = $margin;
 				break;
 			case Image::POS_TOP_RIGHT:
-				$watermark_pos_x = $this->info['width'] - $watermark_width;
-				$watermark_pos_y = 0;
+				$watermark_pos_x = $this->info['width'] - $watermark_width - $margin;
+				$watermark_pos_y = $margin;
 				break;
 			case Image::POS_MIDDLE_CENTER:
 				$watermark_pos_x = ( $this->info['width'] - $watermark_width )/ 2;
 				$watermark_pos_y = ( $this->info['height'] - $watermark_height )/ 2;
 				break;
 			case Image::POS_BOTTOM_LEFT:
-				$watermark_pos_x = 0;
-				$watermark_pos_y = $this->info['height'] - $watermark_height;
+				$watermark_pos_x = $margin;
+				$watermark_pos_y = $this->info['height'] - $watermark_height - $margin;
 				break;
 			case Image::POS_BOTTOM_RIGHT:
-				$watermark_pos_x = $this->info['width'] - $watermark_width;
-				$watermark_pos_y = $this->info['height'] - $watermark_height;
+				$watermark_pos_x = $this->info['width'] - $watermark_width - $margin;
+				$watermark_pos_y = $this->info['height'] - $watermark_height - $margin;
 				break;
 			default:
 				throw new InvalidArgumentException('Do not support '.$position.' type of position');
@@ -286,8 +289,8 @@ class Image
         //$rgb = $this->html2rgb($color);
         //$this->image = imagerotate($this->image, $degree, imagecolorallocate($this->image, $rgb[0], $rgb[1], $rgb[2]));
         $this->image = imagerotate($this->image, $degree, imagecolorallocatealpha($this->image, 0, 0, 0, 127), 1);
-        imagealphablending($this->image, false);
-        imagesavealpha($this->image, true);
+        /*imagealphablending($this->image, false);
+        imagesavealpha($this->image, true);*/
 
         $this->info['width'] = imagesx($this->image);
         $this->info['height'] = imagesy($this->image);
