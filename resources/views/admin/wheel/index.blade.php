@@ -1,5 +1,5 @@
 <?php
-$head->appendScript('/admin/wheel.js');
+$head->appendScript('/admin/wheel/wheel.js');
 $pageTitle = $pageSubTitle = trans('admin.wheel.form.title');
 $pageMenu = 'wheel';
 ?>

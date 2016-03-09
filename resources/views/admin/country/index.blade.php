@@ -1,5 +1,5 @@
 <?php
-$head->appendScript('/admin/country.js');
+$head->appendScript('/admin/country/country.js');
 $pageTitle = $pageSubTitle = trans('admin.country.form.title');
 $pageMenu = 'country';
 ?>

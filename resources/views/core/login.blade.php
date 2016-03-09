@@ -8,15 +8,15 @@
 
     <?php
     $head->appendStyle('/assets/bootstrap/css/bootstrap.min.css');
-    $head->appendStyle('/assets/plugins/iCheck/square/blue.css');
+    //$head->appendStyle('/assets/plugins/iCheck/square/blue.css');
     $head->appendStyle('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css');
     //$head->appendStyle('https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css');
     $head->appendStyle('/assets/dist/css/main.css');
 
     $head->appendMainScript('/assets/plugins/jQuery/jQuery-2.1.4.min.js');
     $head->appendMainScript('/assets/bootstrap/js/bootstrap.min.js');
-    $head->appendMainScript('/assets/plugins/iCheck/icheck.min.js');
-    $head->appendMainScript('/admin/login.js');
+    //$head->appendMainScript('/assets/plugins/iCheck/icheck.min.js');
+    $head->appendMainScript('/core/js/login.js');
 
     $head->renderStyles();
     $head->renderScripts();
@@ -63,14 +63,5 @@
     </div>
 </div>
 
-{{--<script>
-    $(function () {
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_square-blue',
-            radioClass: 'iradio_square-blue',
-            increaseArea: '20%' // optional
-        });
-    });
-</script>--}}
 </body>
 </html>

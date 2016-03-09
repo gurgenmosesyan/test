@@ -1,5 +1,5 @@
 <?php
-$head->appendScript('/admin/model.js');
+$head->appendScript('/admin/model/model.js');
 $pageTitle = $pageSubTitle = trans('admin.model.form.title');
 $pageMenu = 'model';
 ?>

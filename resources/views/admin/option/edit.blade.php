@@ -1,7 +1,7 @@
 <?php
 use App\Models\Option\Option;
 
-$head->appendScript('/admin/option.js');
+$head->appendScript('/admin/option/option.js');
 $pageTitle = trans('admin.option.form.title');
 $pageMenu = 'option';
 if ($saveMode == 'add') {

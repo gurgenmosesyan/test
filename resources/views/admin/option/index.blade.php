@@ -1,5 +1,5 @@
 <?php
-$head->appendScript('/admin/option.js');
+$head->appendScript('/admin/option/option.js');
 $pageTitle = $pageSubTitle = trans('admin.option.form.title');
 $pageMenu = 'option';
 ?>

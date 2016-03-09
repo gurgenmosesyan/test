@@ -1,7 +1,7 @@
 <?php
 use App\Models\Cylinder\Cylinder;
 
-$head->appendScript('/admin/cylinder.js');
+$head->appendScript('/admin/cylinder/cylinder.js');
 $pageTitle = trans('admin.cylinder.form.title');
 $pageMenu = 'cylinder';
 if ($saveMode == 'add') {

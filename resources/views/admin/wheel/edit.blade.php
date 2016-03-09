@@ -1,7 +1,7 @@
 <?php
 use App\Models\Wheel\Wheel;
 
-$head->appendScript('/admin/wheel.js');
+$head->appendScript('/admin/wheel/wheel.js');
 $pageTitle = trans('admin.wheel.form.title');
 $pageMenu = 'wheel';
 if ($saveMode == 'add') {

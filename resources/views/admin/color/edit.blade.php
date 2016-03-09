@@ -1,7 +1,7 @@
 <?php
 use App\Models\Color\Color;
 
-$head->appendScript('/admin/color.js');
+$head->appendScript('/admin/color/color.js');
 $pageTitle = trans('admin.color.form.title');
 $pageMenu = 'color';
 if ($saveMode == 'add') {

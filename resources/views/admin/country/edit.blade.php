@@ -1,7 +1,7 @@
 <?php
 use App\Models\Country\Country;
 
-$head->appendScript('/admin/country.js');
+$head->appendScript('/admin/country/country.js');
 $pageTitle = trans('admin.country.form.title');
 $pageMenu = 'country';
 if ($saveMode == 'add') {

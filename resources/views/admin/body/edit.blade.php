@@ -1,7 +1,7 @@
 <?php
 use App\Models\Body\Body;
 
-$head->appendScript('/admin/body.js');
+$head->appendScript('/admin/body/body.js');
 $pageTitle = trans('admin.body.form.title');
 $pageMenu = 'body';
 if ($saveMode == 'add') {

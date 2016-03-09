@@ -1,5 +1,5 @@
 <?php
-$head->appendScript('/admin/color.js');
+$head->appendScript('/admin/color/color.js');
 $pageTitle = $pageSubTitle = trans('admin.color.form.title');
 $pageMenu = 'color';
 ?>

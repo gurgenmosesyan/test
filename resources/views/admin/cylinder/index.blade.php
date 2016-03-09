@@ -1,5 +1,5 @@
 <?php
-$head->appendScript('/admin/cylinder.js');
+$head->appendScript('/admin/cylinder/cylinder.js');
 $pageTitle = $pageSubTitle = trans('admin.cylinder.form.title');
 $pageMenu = 'cylinder';
 ?>

@@ -1,7 +1,7 @@
 <?php
 use App\Models\InteriorColor\Color;
 
-$head->appendScript('/admin/interior_color.js');
+$head->appendScript('/admin/interior_color/interior_color.js');
 $pageTitle = trans('admin.interior_color.form.title');
 $pageMenu = 'interior_color';
 if ($saveMode == 'add') {

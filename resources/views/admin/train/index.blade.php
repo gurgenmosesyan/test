@@ -1,5 +1,5 @@
 <?php
-$head->appendScript('/admin/train.js');
+$head->appendScript('/admin/train/train.js');
 $pageTitle = $pageSubTitle = trans('admin.train.form.title');
 $pageMenu = 'train';
 ?>

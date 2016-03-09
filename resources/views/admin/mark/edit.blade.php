@@ -1,7 +1,7 @@
 <?php
 use App\Models\Mark\Mark;
 
-$head->appendScript('/admin/mark.js');
+$head->appendScript('/admin/mark/mark.js');
 $pageTitle = trans('admin.mark.form.title');
 $pageMenu = 'mark';
 if ($saveMode == 'add') {

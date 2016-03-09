@@ -1,5 +1,5 @@
 <?php
-$head->appendScript('/admin/region.js');
+$head->appendScript('/admin/region/region.js');
 $pageTitle = $pageSubTitle = trans('admin.region.form.title');
 $pageMenu = 'region';
 ?>

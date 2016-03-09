@@ -1,7 +1,7 @@
 <?php
 use App\Models\Door\Door;
 
-$head->appendScript('/admin/door.js');
+$head->appendScript('/admin/door/door.js');
 $pageTitle = trans('admin.door.form.title');
 $pageMenu = 'door';
 if ($saveMode == 'add') {

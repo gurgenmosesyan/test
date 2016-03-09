@@ -1,5 +1,5 @@
 <?php
-$head->appendScript('/admin/rudder.js');
+$head->appendScript('/admin/rudder/rudder.js');
 $pageTitle = $pageSubTitle = trans('admin.rudder.form.title');
 $pageMenu = 'rudder';
 ?>

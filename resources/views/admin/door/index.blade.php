@@ -1,5 +1,5 @@
 <?php
-$head->appendScript('/admin/door.js');
+$head->appendScript('/admin/door/door.js');
 $pageTitle = $pageSubTitle = trans('admin.door.form.title');
 $pageMenu = 'door';
 ?>

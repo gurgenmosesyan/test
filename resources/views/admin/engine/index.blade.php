@@ -1,5 +1,5 @@
 <?php
-$head->appendScript('/admin/engine.js');
+$head->appendScript('/admin/engine/engine.js');
 $pageTitle = $pageSubTitle = trans('admin.engine.form.title');
 $pageMenu = 'engine';
 ?>

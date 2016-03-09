@@ -1,5 +1,5 @@
 <?php
-$head->appendScript('/admin/transmission.js');
+$head->appendScript('/admin/transmission/transmission.js');
 $pageTitle = $pageSubTitle = trans('admin.transmission.form.title');
 $pageMenu = 'transmission';
 ?>

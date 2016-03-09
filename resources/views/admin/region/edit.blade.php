@@ -1,7 +1,7 @@
 <?php
 use App\Models\Region\Region;
 
-$head->appendScript('/admin/region.js');
+$head->appendScript('/admin/region/region.js');
 $pageTitle = trans('admin.region.form.title');
 $pageMenu = 'region';
 if ($saveMode == 'add') {

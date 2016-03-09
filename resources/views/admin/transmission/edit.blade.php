@@ -1,7 +1,7 @@
 <?php
 use App\Models\Transmission\Transmission;
 
-$head->appendScript('/admin/transmission.js');
+$head->appendScript('/admin/transmission/transmission.js');
 $pageTitle = trans('admin.transmission.form.title');
 $pageMenu = 'transmission';
 if ($saveMode == 'add') {

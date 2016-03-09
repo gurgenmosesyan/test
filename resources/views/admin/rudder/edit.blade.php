@@ -1,7 +1,7 @@
 <?php
 use App\Models\Rudder\Rudder;
 
-$head->appendScript('/admin/rudder.js');
+$head->appendScript('/admin/rudder/rudder.js');
 $pageTitle = trans('admin.rudder.form.title');
 $pageMenu = 'rudder';
 if ($saveMode == 'add') {

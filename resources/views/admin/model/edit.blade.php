@@ -1,7 +1,7 @@
 <?php
 use App\Models\Model\Model;
 
-$head->appendScript('/admin/model.js');
+$head->appendScript('/admin/model/model.js');
 $pageTitle = trans('admin.model.form.title');
 $pageMenu = 'model';
 if ($saveMode == 'add') {

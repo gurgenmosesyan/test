@@ -1,5 +1,5 @@
 <?php
-$head->appendScript('/admin/mark.js');
+$head->appendScript('/admin/mark/mark.js');
 $pageTitle = $pageSubTitle = trans('admin.mark.form.title');
 $pageMenu = 'mark';
 ?>
