@@ -4759,3 +4759,20 @@ table.text-center th {
     color: #999;
     margin-top: 4px;
 }
+#win-status, #data-table_processing {
+    background-color: #f9edbe;
+    border: 1px solid #f0c36d;
+    display: none;
+    font-weight: bold;
+    left: 50%;
+    margin-left: -60px;
+    padding: 0 14px;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 120px;
+    z-index: 9999;
+}
+#win-status.invalid {
+    color: #dd4b39;
+}

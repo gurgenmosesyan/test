@@ -1,8 +1,8 @@
 <?php
 use App\Models\Auto\Auto;
 
-$head->appendStyle('/admin/auto.css');
-$head->appendScript('/admin/auto.js');
+$head->appendStyle('/admin/auto/auto.css');
+$head->appendScript('/admin/auto/auto.js');
 
 $pageTitle = trans('admin.auto.form.title');
 $pageMenu = 'auto';
@@ -286,4 +286,18 @@ $jsTrans->addTrans(['admin.base.label.select']);
         <a href="{{route('admin_auto_table')}}" class="nav-btn nav-btn-cancel btn btn-default">{{trans('admin.base.label.cancel')}}</a>
     </div>
 </form>
+<div id="auto-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{trans('admin.base.label.attention')}}</h4>
+            </div>
+            <div class="modal-body">{{trans('admin.auto.max_images.text')}}</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{trans('admin.base.label.close')}}</button>
+            </div>
+        </div>
+    </div>
+</div>
 @stop

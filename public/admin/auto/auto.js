@@ -81,7 +81,7 @@ $auto.initRegion = function() {
 };
 
 $auto.initUploaderForm = function() {
-    var html =  '<div id="iframe-img-uploader-block" style="display: none">'+
+    var html =  '<div id="iframe-img-uploader" style="display: none">'+
                     '<form target="iframe-uploader" action="/admpanel/core/image/upload" method="post" enctype="multipart/form-data">'+
                         '<input type="file" name="image" />'+
                         '<input type="text" name="module" value="auto.images.images" />'+
@@ -109,7 +109,6 @@ $auto.initUploaderForm = function() {
             }
         });
     });
-
     $('body').append(html);
     $('input[type="file"]', html).trigger('click');
 };
@@ -172,7 +171,11 @@ $auto.generateImages = function() {
 
 $auto.initImageUpload = function() {
     $('#upload-image').on('click', function() {
-        $('#iframe-img-uploader-block').remove();
+        if ($('#images-block').find('.img-block').length > 9) {
+            $('#auto-modal').modal();
+            return false;
+        }
+        $('#iframe-img-uploader').remove();
         $auto.initUploaderForm();
         return false;
     });

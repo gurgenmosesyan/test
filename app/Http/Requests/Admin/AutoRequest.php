@@ -36,7 +36,7 @@ class AutoRequest extends Request
             'horsepower' => 'integer|max:9999',
             'place' => 'max:255',
             'options.*' => 'required|integer|exists:options,id',
-            'images' => 'array',
+            'images' => 'array|max:10',
             'images.*.id' => 'integer',
             'images.*.image' => 'required|core_image',
             'images.*.rotate' => 'numeric'

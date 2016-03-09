@@ -4,6 +4,9 @@ $jsTrans->addTrans([
     'admin.delete.modal.text',
     'admin.base.label.delete',
     'admin.base.label.close',
+    'admin.base.label.loading',
+    'admin.base.label.saved',
+    'admin.base.label.invalid_data'
 ]);
 ?><!DOCTYPE html>
 <html>
@@ -150,5 +153,6 @@ $jsTrans->addTrans([
     </div>
     <div class="control-sidebar-bg"></div>
 </div>
+<div id="win-status"></div>
 </body>
 </html>

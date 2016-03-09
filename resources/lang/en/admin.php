@@ -116,4 +116,9 @@ return array (
   'base.label.options' => 'Options',
   'base.label.images' => 'Images',
   'base.label.upload' => 'Upload',
+  'base.label.attention' => 'Attention',
+  'auto.max_images.text' => 'Max 10 images',
+  'base.label.loading' => 'Loading...',
+  'base.label.saved' => 'Saved',
+  'base.label.invalid_data' => 'Invalid data',
 );

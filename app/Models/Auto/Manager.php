@@ -41,6 +41,9 @@ class Manager
         if (!isset($data['options'])) {
             $data['options'] = [];
         }
+        if (!isset($data['images'])) {
+            $data['images'] = [];
+        }
         return $data;
     }
 
@@ -79,7 +82,7 @@ class Manager
             if (!empty($value['rotate'])) {
                 $image->rotate($value['rotate']);
             }
-            $watermark = imagecreatefrompng(public_path('images/draft.png'));
+            $watermark = imagecreatefrompng(public_path('images/watermark.png'));
             imagealphablending($watermark, false);
             imagesavealpha($watermark, true);
             $image->watermarkImage($watermark, 10);

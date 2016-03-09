@@ -17,6 +17,9 @@ $main.initSearch = function() {
     $main.table = $('#data-table').DataTable({
         "autoWidth": false,
         "processing": true,
+        "oLanguage": {
+            "sProcessing": $trans.get('admin.base.label.loading')
+        },
         "serverSide": true,
         "ajax": {
             "url": self.getListPath(),
@@ -100,6 +103,7 @@ $main.save = function() {
         return false;
     }
     $('.nav-btn', form).prop('disabled', true);
+    $main.winStatus($trans.get('admin.base.label.loading'));
     $.ajax({
         method: 'post',
         url: form.attr('action'),
@@ -108,11 +112,12 @@ $main.save = function() {
         success: function(result) {
             $main.removeErrors();
             if (result.status == 'OK') {
-                //alert('Saved successfully');
+                $main.winStatus($trans.get('admin.base.label.saved'), true);
                 document.location.href = self.getListPath();
             } else if (result.status == 'UNAUTHORIZED') {
                 document.location.href = result.path;
             } else {
+                $main.winStatus($trans.get('admin.base.label.invalid_data'), true, 'invalid');
                 $main.showErrors(result.errors);
             }
             $('.nav-btn', form).prop('disabled', false);
@@ -132,6 +137,17 @@ $main.initForm = function() {
         checkboxClass: 'icheckbox_minimal-blue',
         radioClass: 'iradio_minimal-blue'
     });
+};
+
+$main.winStatus = function(text, autoClose, invalid) {
+    var classStr = invalid ? 'invalid' : '';
+    var winStatusBox = $('#win-status');
+    winStatusBox.text(text).removeClass('invalid').addClass(classStr).show();
+    if (autoClose) {
+        setTimeout(function() {
+            winStatusBox.hide();
+        }, 500);
+    }
 };
 
 $main.init = function() {

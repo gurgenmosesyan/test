@@ -1,5 +1,5 @@
 <?php
-$head->appendScript('/admin/auto.js');
+$head->appendScript('/admin/auto/auto.js');
 $pageTitle = $pageSubTitle = trans('admin.auto.form.title');
 $pageMenu = 'auto';
 ?>
