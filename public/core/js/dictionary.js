@@ -19,6 +19,9 @@ $dictionary.initSearchPage = function() {
     $dictionary.table = $('#data-table').DataTable({
         "autoWidth": false,
         "processing": true,
+        "oLanguage": {
+            "sProcessing": $trans.get('admin.base.label.loading')
+        },
         "serverSide": true,
         "ajax": {
             "url": '/admpanel/core/dictionary?app='+$dictionary.appId,

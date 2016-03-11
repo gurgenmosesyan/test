@@ -38,6 +38,27 @@ class Manager
 
     protected function processSave($data)
     {
+        if (!isset($data['contract'])) {
+            $data['contract'] = AUTO::NOT_CONTRACT;
+        }
+        if (!isset($data['auction'])) {
+            $data['contract'] = AUTO::NOT_AUCTION;
+        }
+        if (!isset($data['bank'])) {
+            $data['bank'] = AUTO::NOT_BANK;
+        }
+        if (!isset($data['exchange'])) {
+            $data['exchange'] = AUTO::NOT_EXCHANGE;
+        }
+        if (!isset($data['partial_pay'])) {
+            $data['partial_pay'] = AUTO::NOT_PARTIAL_PAY;
+        }
+        if (!isset($data['custom_cleared'])) {
+            $data['custom_cleared'] = AUTO::NOT_CUSTOM_CLEARED;
+        }
+        if (!isset($data['damaged'])) {
+            $data['damaged'] = AUTO::NOT_DAMAGED;
+        }
         if (!isset($data['options'])) {
             $data['options'] = [];
         }

@@ -39,6 +39,18 @@ class CreateAutosTable extends Migration
             $table->tinyInteger('volume_2')->unsigned();
             $table->smallInteger('horsepower')->unsigned();
             $table->string('place');
+            $table->integer('price_amd')->unsigned();
+            $table->integer('price_usd')->unsigned();
+            $table->integer('price_eur')->unsigned();
+            $table->enum('contract', [Auto::NOT_CONTRACT, Auto::CONTRACT]);
+            $table->enum('auction', [Auto::NOT_AUCTION, Auto::AUCTION]);
+            $table->enum('bank', [Auto::NOT_BANK, Auto::BANK]);
+            $table->enum('exchange', [Auto::NOT_EXCHANGE, Auto::EXCHANGE]);
+            $table->enum('partial_pay', [Auto::NOT_PARTIAL_PAY, Auto::PARTIAL_PAY]);
+            $table->enum('custom_cleared', [Auto::NOT_CUSTOM_CLEARED, Auto::CUSTOM_CLEARED]);
+            $table->enum('damaged', [Auto::NOT_DAMAGED, Auto::DAMAGED]);
+            $table->string('vin');
+            $table->text('description');
             $table->timestamps();
             $table->enum('show_status', [Auto::STATUS_ACTIVE, Auto::STATUS_DELETED]);
         });

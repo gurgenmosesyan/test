@@ -256,6 +256,93 @@ $jsTrans->addTrans(['admin.base.label.select']);
                 <div id="form-error-place" class="form-error"></div>
             </div>
         </div>
+        <div id="price-group" class="form-group">
+            <label class="col-sm-3 control-label">{{trans('admin.base.label.price')}}</label>
+            <div class="col-sm-3">
+                <div class="input-group">
+                    <input type="text" name="price_amd" class="form-control" value="{{$auto->price_amd or ''}}">
+                    <span class="input-group-addon">AMD</span>
+                </div>
+                <div id="form-error-price_amd" class="form-error"></div>
+            </div>
+            <div class="col-sm-3">
+                <div class="input-group">
+                    <input type="text" name="price_usd" class="form-control" value="{{$auto->price_usd or ''}}">
+                    <span class="input-group-addon">USD</span>
+                </div>
+                <div id="form-error-price_usd" class="form-error"></div>
+            </div>
+            <div class="col-sm-3">
+                <div class="input-group">
+                    <input type="text" name="price_eur" class="form-control" value="{{$auto->price_eur or ''}}">
+                    <span class="input-group-addon">EUR</span>
+                </div>
+                <div id="form-error-price_eur" class="form-error"></div>
+            </div>
+        </div>
+        <div id="contract-group" class="form-group">
+            <label class="col-sm-3 control-label">{{trans('admin.base.label.contract')}}</label>
+            <div class="col-sm-9">
+                <input type="checkbox" id="contract" name="contract" class="form-control minimal-checkbox" value="{{Auto::CONTRACT}}"{{$auto->contract == Auto::CONTRACT ? ' checked="checked"' : ''}}>
+                <div id="form-error-contract" class="form-error"></div>
+            </div>
+        </div>
+        <div id="auction-group" class="form-group">
+            <label class="col-sm-3 control-label">{{trans('admin.base.label.auction')}}</label>
+            <div class="col-sm-9">
+                <input type="checkbox" id="auction" name="auction" class="form-control minimal-checkbox" value="{{Auto::AUCTION}}"{{$auto->auction == Auto::AUCTION ? ' checked="checked"' : ''}}>
+                <div id="form-error-auction" class="form-error"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">{{trans('admin.base.label.bank')}}</label>
+            <div class="col-sm-9">
+                <input type="checkbox" name="bank" class="form-control minimal-checkbox" value="{{Auto::BANK}}"{{$auto->bank == Auto::BANK ? ' checked="checked"' : ''}}>
+                <div id="form-error-bank" class="form-error"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">{{trans('admin.base.label.exchange')}}</label>
+            <div class="col-sm-9">
+                <input type="checkbox" name="exchange" class="form-control minimal-checkbox" value="{{Auto::EXCHANGE}}"{{$auto->exchange == Auto::EXCHANGE ? ' checked="checked"' : ''}}>
+                <div id="form-error-exchange" class="form-error"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">{{trans('admin.base.label.partial_pay')}}</label>
+            <div class="col-sm-9">
+                <input type="checkbox" name="partial_pay" class="form-control minimal-checkbox" value="{{Auto::PARTIAL_PAY}}"{{$auto->partial_pay == Auto::PARTIAL_PAY ? ' checked="checked"' : ''}}>
+                <div id="form-error-partial_pay" class="form-error"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">{{trans('admin.base.label.custom_cleared')}}</label>
+            <div class="col-sm-9">
+                <input type="checkbox" name="custom_cleared" class="form-control minimal-checkbox" value="{{Auto::CUSTOM_CLEARED}}"{{$auto->custom_cleared == Auto::CUSTOM_CLEARED ? ' checked="checked"' : ''}}>
+                <div id="form-error-custom_cleared" class="form-error"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">{{trans('admin.base.label.damaged')}}</label>
+            <div class="col-sm-9">
+                <input type="checkbox" name="damaged" class="form-control minimal-checkbox" value="{{Auto::DAMAGED}}"{{$auto->damaged == Auto::DAMAGED ? ' checked="checked"' : ''}}>
+                <div id="form-error-damaged" class="form-error"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">{{trans('admin.base.label.vin')}}</label>
+            <div class="col-sm-9">
+                <input type="text" name="vin" class="form-control" value="{{$auto->vin or ''}}">
+                <div id="form-error-vin" class="form-error"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">{{trans('admin.base.label.description')}}</label>
+            <div class="col-sm-9">
+                <textarea name="description" class="form-control" rows="3">{{$auto->description}}</textarea>
+                <div id="form-error-description" class="form-error"></div>
+            </div>
+        </div>
 
         <div class="form-group">
             <label class="col-sm-3 control-label">{{trans('admin.base.label.options')}}</label>

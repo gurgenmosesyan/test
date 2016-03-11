@@ -183,6 +183,31 @@ $auto.initImageUpload = function() {
     $auto.generateImages();
 };
 
+$auto.initPrice = function() {
+    var contract = $('#contract'),
+        auction = $('#auction'),
+        priceGroup = $('#price-group');
+    contract.on('ifChanged', function() {
+        if ($(this).prop('checked')) {
+            priceGroup.find('input').val('').attr('disabled', 'disabled');
+            auction.prop('checked', false).trigger('ifChanged');
+            $('#auction-group').find('.icheckbox_minimal-blue').removeClass('checked');
+        } else if (!auction.prop('checked')) {
+            priceGroup.find('input').attr('disabled', false);
+        }
+    }).trigger('ifChanged');
+
+    auction.on('ifChanged', function() {
+        if ($(this).prop('checked')) {
+            priceGroup.find('input').val('').attr('disabled', 'disabled');
+            contract.prop('checked', false).trigger('ifChanged');
+            $('#contract-group').find('.icheckbox_minimal-blue').removeClass('checked');
+        } else if (!contract.prop('checked')) {
+            priceGroup.find('input').attr('disabled', false);
+        }
+    }).trigger('ifChanged');
+};
+
 $auto.initEditPage = function() {
     $auto.initForm();
 
@@ -190,7 +215,9 @@ $auto.initEditPage = function() {
 
     $auto.initRegion();
 
-    $auto.initImageUpload()
+    $auto.initImageUpload();
+
+    $auto.initPrice();
 };
 
 $auto.init();
