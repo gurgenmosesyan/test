@@ -343,6 +343,23 @@ $jsTrans->addTrans(['admin.base.label.select']);
                 <div id="form-error-description" class="form-error"></div>
             </div>
         </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label{{$saveMode == 'add' ? ' data-req' : ''}}">{{trans('admin.base.label.term')}}</label>
+            @if($saveMode == 'edit')
+                <div class="col-sm-2" style="padding-top: 7px;">
+                    <label>{{date('d-m-Y', strtotime($auto->term))}}</label>
+                </div>
+            @endif
+            <div class="col-sm-3">
+                <select name="term" class="form-control">
+                    <option value="">{{trans('admin.base.label.select')}}</option>
+                    @for($i = 10; $i > 0; $i--)
+                        <option value="{{$i}}">{{trans('admin.auto.term.week', ['week' => $i])}}</option>
+                    @endfor
+                </select>
+                <div id="form-error-term" class="form-error"></div>
+            </div>
+        </div>
 
         <div class="form-group">
             <label class="col-sm-3 control-label">{{trans('admin.base.label.options')}}</label>
@@ -367,6 +384,7 @@ $jsTrans->addTrans(['admin.base.label.select']);
         </div>
 
     </div>
+    <input type="hidden" name="save_mode" value="{{$saveMode}}">
     {{csrf_field()}}
     <div class="box-footer">
         <input type="submit" class="nav-btn nav-btn-save btn btn-primary" value="{{trans('admin.base.label.save')}}">

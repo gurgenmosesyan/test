@@ -47,6 +47,7 @@ class AutoRequest extends Request
             'damaged' => 'in:'.Auto::DAMAGED.','.Auto::NOT_DAMAGED,
             'vin' => 'max:255',
             'description' => 'max:50000',
+            'term' => 'required_if:save_mode,add|integer|between:1,10',
             'options.*' => 'required|integer|exists:options,id',
             'images' => 'array|max:10',
             'images.*.id' => 'integer',

@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use App\Models\Language\Language;
+use App\Core\Language\Language;
 
 class CreateLanguagesTable extends Migration
 {

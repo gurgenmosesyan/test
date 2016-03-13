@@ -1,5 +1,6 @@
 <?php
 use App\Models\Mark\Mark;
+use App\Core\Helpers\ImgUploader;
 
 $head->appendScript('/admin/mark/mark.js');
 $pageTitle = trans('admin.mark.form.title');
@@ -23,6 +24,13 @@ if ($saveMode == 'add') {
                 <div id="form-error-name" class="form-error"></div>
             </div>
         </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">{{trans('admin.base.label.image')}}</label>
+            <div class="col-sm-9">
+                <?php ImgUploader::uploader('mark', 'image', 'image', $mark->image); ?>
+            </div>
+        </div>
+
         {{csrf_field()}}
     </div>
     <div class="box-footer">

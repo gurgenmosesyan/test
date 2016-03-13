@@ -131,4 +131,7 @@ return array (
   'base.label.price' => 'Price',
   'base.label.auction' => 'Auction',
   'base.label.bank' => 'Bank',
+  'base.label.term' => 'Срок',
+  'auto.term.week' => ':week неделя',
+  'base.label.image' => 'Image',
 );

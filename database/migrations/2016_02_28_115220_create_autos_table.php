@@ -51,6 +51,7 @@ class CreateAutosTable extends Migration
             $table->enum('damaged', [Auto::NOT_DAMAGED, Auto::DAMAGED]);
             $table->string('vin');
             $table->text('description');
+            $table->date('term');
             $table->timestamps();
             $table->enum('show_status', [Auto::STATUS_ACTIVE, Auto::STATUS_DELETED]);
         });

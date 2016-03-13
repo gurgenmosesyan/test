@@ -37,6 +37,7 @@ abstract class Request extends FormRequest
 	{
 		return [
 			'required' => trans('admin.base.field.required'),
+			'required_if' => trans('admin.base.field.required'),
 			'required_with' => trans('admin.base.field.required'),
 			'unique' => trans('admin.base.field.duplicate'),
 			'max*' => trans('admin.base.field.max_length', ['max' => ':max']),

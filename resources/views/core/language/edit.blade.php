@@ -32,7 +32,7 @@ if ($saveMode == 'add') {
             </div>
         </div>
         <div class="form-group">
-            <label for="code" class="col-sm-2 control-label">{{trans('admin.base.label.icon')}}</label>
+            <label class="col-sm-2 control-label">{{trans('admin.base.label.icon')}}</label>
             <div class="col-sm-10">
                 <?php ImgUploader::uploader('language', 'icon', 'icon', $language->icon); ?>
             </div>

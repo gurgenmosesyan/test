@@ -2,18 +2,19 @@
 
 namespace App\Models\Auto;
 
-use App\Core\Image\Image;
 use App\Core\Image\SaveImage;
+use Intervention\Image\ImageManagerStatic as ImageManager;
 use DB;
 
 class Manager
 {
     public function store($data)
     {
+        $data = $this->processSave($data);
         $auto = new Auto($data);
         $auto->user_id = 1; // FIXME
+        $auto->term = date('Y-m-d', time()+(60*60*24*7*$data['term']));
         $auto->show_status = Auto::STATUS_ACTIVE;
-        $data = $this->processSave($data);
         DB::transaction(function() use($data, $auto) {
             $auto->save();
             $this->updateOptions($data['options'], $auto);
@@ -26,7 +27,8 @@ class Manager
     {
         $auto = Auto::active()->findOrFail($id);
         $data['user_id'] = 1; // FIXME
-        $data['show_status'] = Auto::STATUS_ACTIVE;
+        //$data['show_status'] = Auto::STATUS_ACTIVE;
+        $data['term'] = empty($data['term']) ? $auto->term : date('Y-m-d', time()+(60*60*24*7*$data['term']));
         $data = $this->processSave($data);
         DB::transaction(function() use($data, $auto) {
             $auto->update($data);
@@ -91,15 +93,26 @@ class Manager
             $fileName = SaveImage::save($value['image'], $images[$i]);
             $images[$i]->save();
 
-            /*if (!empty($value['rotate'])) {
-                $filePath = public_path($images[$i]->getStorePath().'/'.$fileName);
-                $image = new Image($filePath);
-                $image->rotate($value['rotate']);
-                $image->save($filePath);
-            }*/
-
             $filePath = public_path($images[$i]->getStorePath().'/'.$fileName);
-            $image = new Image($filePath);
+            $image = ImageManager::make($filePath);
+            $width = $image->width();
+            $height = $image->height();
+            if ($width > $height && $width > 1200) {
+                $image->resize(1200, null, function($constraint) {
+                    $constraint->aspectRatio();
+                });
+            } else if ($height > 1200) {
+                $image->resize(null, 1200, function($constraint) {
+                    $constraint->aspectRatio();
+                });
+            }
+            if (!empty($value['rotate'])) {
+                $image->rotate($value['rotate']);
+            }
+            $image->insert(public_path('images/watermark.png'), 'bottom-right', 10, 10);
+            $image->save($filePath);
+
+            /*$image = new Image($filePath);
             if (!empty($value['rotate'])) {
                 $image->rotate($value['rotate']);
             }
@@ -107,7 +120,7 @@ class Manager
             imagealphablending($watermark, false);
             imagesavealpha($watermark, true);
             $image->watermarkImage($watermark, 10);
-            $image->save($filePath);
+            $image->save($filePath);*/
 
             $i++;
         }
@@ -127,12 +140,19 @@ class Manager
                 $autoImage = AutoImage::findOrFail($value['id']);
                 if (!empty($value['rotate'])) {
                     $filePath = public_path($autoImage->getStorePath().'/'.$autoImage->image);
-                    $image = new Image($filePath);
+                    $image = ImageManager::make($filePath);
                     $image->rotate($value['rotate']);
                     list($newFilePath, $subDir, $fileName) = SaveImage::createPathInfo($autoImage, pathinfo($filePath, PATHINFO_EXTENSION));
                     $image->save($newFilePath.'/'.$subDir.'/'.$fileName);
                     $autoImage->setFile($subDir.'/'.$fileName, 'image');
                     unlink($filePath);
+
+                    /*$image = new Image($filePath);
+                    $image->rotate($value['rotate']);
+                    list($newFilePath, $subDir, $fileName) = SaveImage::createPathInfo($autoImage, pathinfo($filePath, PATHINFO_EXTENSION));
+                    $image->save($newFilePath.'/'.$subDir.'/'.$fileName);
+                    $autoImage->setFile($subDir.'/'.$fileName, 'image');
+                    unlink($filePath);*/
                 }
                 $autoImage->show_status = Auto::STATUS_ACTIVE;
                 $autoImage->save();

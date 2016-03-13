@@ -10,6 +10,7 @@ class MarkRequest extends Request
     {
         return [
             'name' => 'required|max:255',
+            'image' => 'core_image'
         ];
     }
 }

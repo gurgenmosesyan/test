@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use App\Models\Model;
+use App\Core\Model;
 
 class CreateMarksTable extends Migration
 {
@@ -16,6 +16,7 @@ class CreateMarksTable extends Migration
         Schema::create('marks', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('image');
             $table->timestamps();
             $table->enum('show_status', [Model::STATUS_ACTIVE, Model::STATUS_DELETED]);
         });

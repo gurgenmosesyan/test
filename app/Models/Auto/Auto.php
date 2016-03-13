@@ -61,7 +61,8 @@ class Auto extends Model
         'custom_cleared',
         'damaged',
         'vin',
-        'description'
+        'description',
+        'term'
     ];
 
     public function options()
