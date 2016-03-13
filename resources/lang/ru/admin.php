@@ -134,4 +134,7 @@ return array (
   'base.label.term' => 'Срок',
   'auto.term.week' => ':week неделя',
   'base.label.image' => 'Image',
+  'base.label.status' => 'Status',
+  'auto.modal.status.text' => 'Are you sure want to change status ?',
+  'base.label.ok' => 'OK',
 );

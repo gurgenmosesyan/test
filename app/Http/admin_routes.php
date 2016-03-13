@@ -146,5 +146,6 @@ Route::group($params, function () {
     Route::post('/auto/store', ['uses' => 'AutoController@store', 'as' => 'admin_auto_store']);
     Route::post('/auto/update/{id}', ['uses' => 'AutoController@update', 'as' => 'admin_auto_update']);
     Route::post('/auto/delete/{id}', ['uses' => 'AutoController@delete', 'as' => 'admin_auto_delete']);
+    Route::post('/auto/changeStatus', ['uses' => 'AutoController@changeStatus', 'as' => 'admin_auto_change_status']);
 
 });

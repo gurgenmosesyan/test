@@ -1,7 +1,14 @@
 <?php
+$head->appendStyle('/admin/auto/auto.css');
 $head->appendScript('/admin/auto/auto.js');
 $pageTitle = $pageSubTitle = trans('admin.auto.form.title');
 $pageMenu = 'auto';
+
+$jsTrans->addTrans([
+    'admin.base.label.attention',
+    'admin.base.label.ok',
+    'admin.auto.modal.status.text'
+]);
 ?>
 @extends('core.layout')
 @section('navButtons')
@@ -16,6 +23,7 @@ $pageMenu = 'auto';
             <th>{{trans('admin.base.label.mark')}}</th>
             <th>{{trans('admin.base.label.model')}}</th>
             <th>{{trans('admin.base.label.year')}}</th>
+            <th width="150">{{trans('admin.base.label.status')}}</th>
             <th class="th-actions"></th>
         </tr>
         </thead>

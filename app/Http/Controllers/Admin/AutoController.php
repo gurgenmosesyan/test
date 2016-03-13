@@ -21,6 +21,7 @@ use App\Models\Train\Train;
 use App\Models\Transmission\Transmission;
 use App\Models\Wheel\Wheel;
 use App\Models\Option\Option;
+use Illuminate\Http\Request;
 
 class AutoController extends BaseController
 {
@@ -128,5 +129,16 @@ class AutoController extends BaseController
     public function delete($id)
     {
         return $this->api('OK', $this->manager->delete($id));
+    }
+
+    public function changeStatus(Request $request)
+    {
+        $id = $request->input('id');
+        $status = $request->input('status');
+        if ($status != Auto::STATUS_APPROVED && $status != Auto::STATUS_BLOCKED) {
+            return $this->api('INVALID_DATA');
+        }
+        Auto::active()->where('id', $id)->update(['status' => $status]);
+        return $this->api('OK');
     }
 }

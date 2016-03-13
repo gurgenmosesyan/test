@@ -3,13 +3,126 @@ $auto.listPath = '/admpanel/auto';
 $auto.imgIndex = 0;
 
 $auto.initSearchPage = function() {
-    $auto.listColumns = [
+    /*$auto.listColumns = [
         {data: 'id'},
         {data: 'mark_name'},
         {data: 'model_name'},
         {data: 'year'}
     ];
-    $auto.initSearch();
+    $auto.initSearch();*/
+
+    var self = this;
+    $main.table = $('#data-table').DataTable({
+        "autoWidth": false,
+        "processing": true,
+        "oLanguage": {
+            "sProcessing": $trans.get('admin.base.label.loading')
+        },
+        "serverSide": true,
+        "ajax": {
+            "url": self.listPath,
+            "type": "post",
+            "data": {
+                '_token': $main.token
+            }
+        },
+        "columns": [
+            {data: 'id'},
+            {data: 'mark_name'},
+            {data: 'model_name'},
+            {data: 'year'},
+            {
+                data: 'status',
+                render: function(status) {
+                    var html = '<span>'+ status + '</span> ';
+                    if (status == 'pending' || status == 'approved') {
+                        html += '<a href="#" class="btn btn-xs btn-danger status-btn" data-status="blocked">Block</a>';
+                    }
+                    if (status == 'pending' || status == 'blocked') {
+                        html += '<a href="#" class="btn btn-xs btn-success status-btn" data-status="approved">Approve</a> ';
+                    }
+                    return html;
+                }
+            },
+            {
+                data: null,
+                render: function(data) {
+                    return '<div class="text-center"><a href="'+ self.listPath +'/edit/'+data.id+'"><i class="fa fa-pencil"></i></a>'+
+                        '<a class="action-remove" href="#"><i class="fa fa-trash"></i></a></div>';
+                },
+                "orderable": false
+            }
+        ],
+        "order": [[4, "asc"]],
+        "fnRowCallback": function(row, data) {
+            console.log(row);
+            console.log(data);
+            if (data.status == 'pending') {
+                $('td', row).addClass('pending');
+            }
+        }
+    });
+    $('#data-table tbody').on('click', '.action-remove', function() {
+        var data = $main.table.row($(this).parents('tr')).data();
+        $main.confirmModal = $main.getConfirmModal();
+        $main.confirmModal.modal();
+        $('.delete', $main.confirmModal).on('click', function() {
+            self.deleteObj(data.id);
+            return false;
+        });
+        return false;
+    });
+    $('#data-table tbody').on('click', '.status-btn', function() {
+        var status = $(this).data('status');
+        var data = $main.table.row($(this).parents('tr')).data();
+        $auto.confirmModal = $auto.getStatusConfirmModal();
+        $auto.confirmModal.modal();
+        $('.change', $auto.confirmModal).on('click', function() {
+            $auto.changeStatus(data.id, status);
+            return false;
+        });
+        return false;
+    });
+};
+
+$auto.changeStatus = function(id, status) {
+    $.ajax({
+        type: 'post',
+        url: '/admpanel/auto/changeStatus',
+        data: {
+            id: id,
+            status: status,
+            _token: $main.token
+        },
+        dataType: 'json',
+        success: function(result) {
+            $auto.confirmModal.modal('hide');
+            if (result.status == 'OK') {
+                $main.table.ajax.reload();
+            } else {
+                alert('Error! Don\'t change');
+            }
+        }
+    });
+};
+
+$auto.getStatusConfirmModal = function() {
+    return $('<div id="delete-confirm" class="modal fade" tabindex="-1" role="dialog">'+
+                '<div class="modal-dialog">'+
+                    '<div class="modal-content">'+
+                        '<div class="modal-header">'+
+                            '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+                            '<h4 class="modal-title">'+ $trans.get('admin.base.label.attention') +'</h4>'+
+                        '</div>'+
+                        '<div class="modal-body">'+$trans.get('admin.auto.modal.status.text')+
+                        '</div>'+
+                        '<div class="modal-footer">'+
+                            '<button type="button" class="btn btn-default" data-dismiss="modal">'+ $trans.get('admin.base.label.close') +'</button>'+
+                            '<button type="button" class="btn btn-primary change">'+ $trans.get('admin.base.label.ok') +'</button>'+
+                        '</div>'+
+                    '</div>'+
+                '</div>'+
+            '</div>');
 };
 
 $auto.generateModels = function(data) {

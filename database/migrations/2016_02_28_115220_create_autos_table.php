@@ -53,6 +53,7 @@ class CreateAutosTable extends Migration
             $table->text('description');
             $table->date('term');
             $table->timestamps();
+            $table->enum('status', [Auto::STATUS_PENDING, Auto::STATUS_APPROVED, Auto::STATUS_BLOCKED]);
             $table->enum('show_status', [Auto::STATUS_ACTIVE, Auto::STATUS_DELETED]);
         });
     }

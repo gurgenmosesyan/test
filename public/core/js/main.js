@@ -51,8 +51,8 @@ $main.deleteObj = function(id) {
         data: {_token: $main.token},
         dataType: 'json',
         success: function(result) {
+            $main.confirmModal.modal('hide');
             if (result.status == 'OK') {
-                $main.confirmModal.modal('hide');
                 $main.table.ajax.reload();
             } else {
                 alert('Error delete');

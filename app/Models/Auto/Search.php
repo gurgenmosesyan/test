@@ -27,7 +27,7 @@ class Search extends DataTable
 
     protected function constructQuery()
     {
-        $query = Auto::select('autos.id', 'autos.year', 'marks.name AS mark_name', 'models.name AS model_name')
+        $query = Auto::select('autos.id', 'autos.year', 'autos.status', 'marks.name as mark_name', 'models.name as model_name')
             ->leftJoin('marks', function($query) {
                 $query->on('marks.id', '=', 'autos.mark_id')->where('marks.show_status', '=', Auto::STATUS_ACTIVE);
             })
@@ -54,6 +54,9 @@ class Search extends DataTable
                 break;
             case 'year':
                 $orderCol = 'autos.year';
+                break;
+            case 'status':
+                $orderCol = 'autos.status';
                 break;
             default:
                 $orderCol = 'autos.id';

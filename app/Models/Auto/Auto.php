@@ -22,6 +22,9 @@ class Auto extends Model
     const NOT_CUSTOM_CLEARED = '0';
     const DAMAGED = '1';
     const NOT_DAMAGED = '0';
+    const STATUS_PENDING = 'pending';
+    const STATUS_APPROVED = 'approved';
+    const STATUS_BLOCKED = 'blocked';
 
     protected $table = 'autos';
 
@@ -62,7 +65,8 @@ class Auto extends Model
         'damaged',
         'vin',
         'description',
-        'term'
+        'term',
+        'status'
     ];
 
     public function options()
