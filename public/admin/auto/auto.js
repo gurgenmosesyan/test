@@ -2,6 +2,23 @@ var $auto = $.extend(true, {}, $main);
 $auto.listPath = '/admpanel/auto';
 $auto.imgIndex = 0;
 
+$.fn.dataTable.ext.search.push(
+    function( settings, data, dataIndex ) { alert('a');
+        var min = parseInt( $('#min').val(), 10 );
+        var max = parseInt( $('#max').val(), 10 );
+        var age = parseFloat( data[3] ) || 0; // use data for the age column
+
+        if ( ( isNaN( min ) && isNaN( max ) ) ||
+            ( isNaN( min ) && age <= max ) ||
+            ( min <= age   && isNaN( max ) ) ||
+            ( min <= age   && age <= max ) )
+        {
+            return true;
+        }
+        return false;
+    }
+);
+
 $auto.initSearchPage = function() {
     /*$auto.listColumns = [
         {data: 'id'},
@@ -13,6 +30,15 @@ $auto.initSearchPage = function() {
 
     var self = this;
     $main.table = $('#data-table').DataTable({
+        //"bFilter": false,
+        "searching": false,
+        /*"oSearch": {
+            "sSearch": {
+                status: $('#aaa').val(),
+                bbb: 'bbb'
+            }
+
+        },*/
         "autoWidth": false,
         "processing": true,
         "oLanguage": {
@@ -55,8 +81,6 @@ $auto.initSearchPage = function() {
         ],
         "order": [[4, "asc"]],
         "fnRowCallback": function(row, data) {
-            console.log(row);
-            console.log(data);
             if (data.status == 'pending') {
                 $('td', row).addClass('pending');
             }

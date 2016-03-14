@@ -16,6 +16,7 @@ $jsTrans->addTrans([
 @stop
 @section('content')
 <div class="box-body">
+    <input type="text" id="aaa" aria-controls="data-table" />
     <table id="data-table" class="table table-bordered table-striped table-hover">
         <thead>
         <tr>
