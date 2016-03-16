@@ -31,10 +31,10 @@ $auto.initSearchPage = function() {
     var self = this;
     $main.table = $('#data-table').DataTable({
         //"bFilter": false,
-        "searching": false,
+        //"search": false,
         /*"oSearch": {
             "sSearch": {
-                status: $('#aaa').val(),
+                status: '',
                 bbb: 'bbb'
             }
 
@@ -86,6 +86,19 @@ $auto.initSearchPage = function() {
             }
         }
     });
+
+    /*$main.table.columns().every( function () {
+        var that = this;
+
+        $( 'input', this.footer() ).on( 'keyup change', function () {
+            if ( that.search() !== this.value ) {
+                that
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );*/
+
     $('#data-table tbody').on('click', '.action-remove', function() {
         var data = $main.table.row($(this).parents('tr')).data();
         $main.confirmModal = $main.getConfirmModal();

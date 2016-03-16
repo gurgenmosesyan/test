@@ -27,7 +27,7 @@ class Search extends DataTable
 
     protected function constructQuery()
     {
-        $query = Auto::select('autos.id', 'autos.year', 'autos.status', 'marks.name as mark_name', 'models.name as model_name')
+        $query = Auto::select('autos.id','autos.color_id', 'autos.year', 'autos.status', 'marks.name as mark_name', 'models.name as model_name')
             ->leftJoin('marks', function($query) {
                 $query->on('marks.id', '=', 'autos.mark_id')->where('marks.show_status', '=', Auto::STATUS_ACTIVE);
             })
