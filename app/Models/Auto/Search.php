@@ -36,15 +36,18 @@ class Search extends DataTable
             })
             ->where('autos.show_status', Auto::STATUS_ACTIVE);
 
-        if (isset($this->search['status']) && !empty($this->search['status'])) {
-            $query->where('status', $this->search['status']);
+        if (!empty($this->columns[0]['search']['value'])) {
+            $query->where('autos.id', $this->columns[0]['search']['value']);
+        }
+        if (!empty($this->columns[4]['search']['value'])) {
+            $query->where('autos.status', $this->columns[4]['search']['value']);
         }
 
-        if ($this->search != null) {
-            /*$query->where('autos.year', $this->search)
+        /*if ($this->search != null) {
+            $query->where('autos.year', $this->search)
                 ->orWhere('marks.name', 'LIKE', '%'.$this->search.'%')
-                ->orWhere('models.name', 'LIKE', '%'.$this->search.'%');*/
-        }
+                ->orWhere('models.name', 'LIKE', '%'.$this->search.'%');
+        }*/
         return $query;
     }
 

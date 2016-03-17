@@ -16,14 +16,6 @@ $pageMenu = 'dictionary';
     @endforeach
 </script>
 <div class="box-body">
-    <div class="col-sm-6 no-padding">
-        <div class="pull-left">
-            <select id="app-select" class="form-control">
-                <option value="1"{{$appId == '1' ? ' selected="selected"' : ''}}>{{trans('admin.dictionary.type.admin')}}</option>
-                <option value="2"{{$appId == '2' ? ' selected="selected"' : ''}}>{{trans('admin.dictionary.type.www')}}</option>
-            </select>
-        </div>
-    </div>
     <table id="data-table" class="table table-bordered table-striped table-hover">
         <thead>
         <tr>
@@ -36,6 +28,14 @@ $pageMenu = 'dictionary';
         </thead>
         <tbody></tbody>
     </table>
+
+    <div class="dataTables_length">
+        <select id="app-select" class="form-control">
+            <option value="1"{{$appId == '1' ? ' selected="selected"' : ''}}>{{trans('admin.dictionary.type.admin')}}</option>
+            <option value="2"{{$appId == '2' ? ' selected="selected"' : ''}}>{{trans('admin.dictionary.type.www')}}</option>
+        </select>
+    </div>
+
 </div>
 
 <div id="dictionary-modal" class="modal fade" tabindex="-1" role="dialog">

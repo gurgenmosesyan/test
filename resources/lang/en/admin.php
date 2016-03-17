@@ -137,4 +137,8 @@ return array (
   'base.label.status' => 'Status',
   'auto.modal.status.text' => 'Are you sure want to change status ?',
   'base.label.ok' => 'OK',
+  'auto.status.pending' => 'Pending',
+  'auto.status.approved' => 'Approved',
+  'auto.status.blocked' => 'Blocked',
+  'base.label.search' => 'Search',
 );

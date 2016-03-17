@@ -51,6 +51,8 @@ $dictionary.initSearchPage = function() {
         });
         return false;
     });
+
+    $('.dataTables_length').appendTo($('#data-table_filter').parent('div').next('div'));
 };
 
 $dictionary.deleteObj = function(key) {

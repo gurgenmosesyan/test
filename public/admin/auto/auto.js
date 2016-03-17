@@ -2,43 +2,9 @@ var $auto = $.extend(true, {}, $main);
 $auto.listPath = '/admpanel/auto';
 $auto.imgIndex = 0;
 
-$.fn.dataTable.ext.search.push(
-    function( settings, data, dataIndex ) { alert('a');
-        var min = parseInt( $('#min').val(), 10 );
-        var max = parseInt( $('#max').val(), 10 );
-        var age = parseFloat( data[3] ) || 0; // use data for the age column
-
-        if ( ( isNaN( min ) && isNaN( max ) ) ||
-            ( isNaN( min ) && age <= max ) ||
-            ( min <= age   && isNaN( max ) ) ||
-            ( min <= age   && age <= max ) )
-        {
-            return true;
-        }
-        return false;
-    }
-);
-
 $auto.initSearchPage = function() {
-    /*$auto.listColumns = [
-        {data: 'id'},
-        {data: 'mark_name'},
-        {data: 'model_name'},
-        {data: 'year'}
-    ];
-    $auto.initSearch();*/
-
     var self = this;
     $main.table = $('#data-table').DataTable({
-        //"bFilter": false,
-        //"search": false,
-        /*"oSearch": {
-            "sSearch": {
-                status: '',
-                bbb: 'bbb'
-            }
-
-        },*/
         "autoWidth": false,
         "processing": true,
         "oLanguage": {
@@ -87,18 +53,6 @@ $auto.initSearchPage = function() {
         }
     });
 
-    /*$main.table.columns().every( function () {
-        var that = this;
-
-        $( 'input', this.footer() ).on( 'keyup change', function () {
-            if ( that.search() !== this.value ) {
-                that
-                    .search( this.value )
-                    .draw();
-            }
-        } );
-    } );*/
-
     $('#data-table tbody').on('click', '.action-remove', function() {
         var data = $main.table.row($(this).parents('tr')).data();
         $main.confirmModal = $main.getConfirmModal();
@@ -118,6 +72,24 @@ $auto.initSearchPage = function() {
             $auto.changeStatus(data.id, status);
             return false;
         });
+        return false;
+    });
+
+    $auto.initFilters();
+};
+
+$auto.initFilters = function() {
+    $('#filters').appendTo($('#data-table_length').parent('div').prev('div'));
+    $('#init-search').on('click', function() {
+        $('#search-box').toggleClass('dn');
+        return false;
+    });
+    $('#filters input, #filters select').change(function() {
+        var self = $(this);
+        $main.table.column(self.data('column')).search(self.val());
+    });
+    $('#search-form').submit(function() {
+        $main.table.draw();
         return false;
     });
 };
