@@ -65,6 +65,7 @@ class Auto extends Model
         'damaged',
         'vin',
         'description',
+        'additional_phone',
         'term',
         'status'
     ];

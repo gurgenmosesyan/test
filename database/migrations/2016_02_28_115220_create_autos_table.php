@@ -15,6 +15,7 @@ class CreateAutosTable extends Migration
     {
         Schema::create('autos', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('auto_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->integer('mark_id')->unsigned();
             $table->integer('model_category_id')->unsigned();
@@ -51,6 +52,7 @@ class CreateAutosTable extends Migration
             $table->enum('damaged', [Auto::NOT_DAMAGED, Auto::DAMAGED]);
             $table->string('vin');
             $table->text('description');
+            $table->string('additional_phone', 30);
             $table->date('term');
             $table->timestamps();
             $table->enum('status', [Auto::STATUS_PENDING, Auto::STATUS_APPROVED, Auto::STATUS_BLOCKED]);

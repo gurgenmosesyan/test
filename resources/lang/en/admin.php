@@ -141,4 +141,5 @@ return array (
   'auto.status.approved' => 'Approved',
   'auto.status.blocked' => 'Blocked',
   'base.label.search' => 'Search',
+  'base.label.additional_phone' => 'Additional phone',
 );

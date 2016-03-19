@@ -94,6 +94,9 @@ $main.showErrors = function(errors) {
     for (var i in errors) {
         $('#form-error-'+i.replace(/\./g, '_')).text(errors[i][0]).closest('.form-group').addClass('has-error');
     }
+    $('html, body').animate({
+        scrollTop: $('.form-group.has-error:first').offset().top-10
+    }, 500);
 };
 
 $main.save = function() {
