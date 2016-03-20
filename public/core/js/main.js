@@ -14,7 +14,11 @@ $main.initSearch = function() {
         "orderable": false
     };
     listColumns.push(actions);
-    $main.table = $('#data-table').DataTable({
+    $main.table = $('#data-table')./*on('xhr.dt', function (e, settings, json) {
+        if (json.status == 'UNAUTHORIZED') {
+            document.location.href = json.path;
+        }
+    }).*/DataTable({
         "autoWidth": false,
         "processing": true,
         "oLanguage": {
@@ -26,6 +30,11 @@ $main.initSearch = function() {
             "type": "post",
             "data": {
                 '_token': $main.token
+            },
+            error: function (xhr) {
+                if (xhr.status === 401) {
+                    document.location.href = xhr.responseJSON.path;
+                }
             }
         },
         "columns": listColumns,
@@ -117,13 +126,16 @@ $main.save = function() {
             if (result.status == 'OK') {
                 $main.winStatus($trans.get('admin.base.label.saved'), true);
                 document.location.href = self.getListPath();
-            } else if (result.status == 'UNAUTHORIZED') {
-                document.location.href = result.path;
             } else {
                 $main.winStatus($trans.get('admin.base.label.invalid_data'), true, 'invalid');
                 $main.showErrors(result.errors);
             }
             $('.nav-btn', form).prop('disabled', false);
+        },
+        error: function (xhr) {
+            if (xhr.status === 401) {
+                document.location.href = xhr.responseJSON.path;
+            }
         }
     });
 };

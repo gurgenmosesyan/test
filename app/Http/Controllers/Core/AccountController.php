@@ -19,7 +19,7 @@ class AccountController extends BaseController
         if ($auth->attempt(['email' => $data['email'], 'password' => $data['password']])) {
             return $this->api('OK', ['path' => route('core_admin_table')]);
         }
-        return $this->api('INVALID_DATA', null, ['email' => 'Invalid credentials']);
+        return $this->api('INVALID_DATA', null, ['email' => [trans('admin.login.invalid_credentials')]]);
     }
 
     public function logout()

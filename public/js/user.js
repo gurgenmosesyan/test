@@ -10,32 +10,55 @@ $user.showErrors = function(errors) {
     }
 };
 
-$user.initRegistration = function() {
-    $('#registration-form').submit(function() {
-        var form = $(this);
-        if (form.hasClass('sending')) {
-            return false;
-        }
-        form.addClass('sening');
-        $.ajax({
-            type: 'post',
-            url: form.attr('action'),
-            data: form.serializeArray(),
-            dataType: 'json',
-            success: function(result) {
-                $user.resetErrors();
-                if (result.status == 'OK') {
-                    alert('You have successfully registered!');
-                } else {
-                    $user.showErrors(result.errors);
-                }
-                form.removeClass('sending');
+$user.sendForm = function(form, callback) {
+    if (form.hasClass('sending')) {
+        return false;
+    }
+    form.addClass('sending');
+    $.ajax({
+        type: 'post',
+        url: form.attr('action'),
+        data: form.serializeArray(),
+        dataType: 'json',
+        success: function(result) {
+            $user.resetErrors();
+            if (result.status == 'OK') {
+                callback(result.data.link);
+            } else {
+                $user.showErrors(result.errors);
             }
+            form.removeClass('sending');
+        }
+    });
+};
+
+$user.init = function() {
+    $('#registration-form').submit(function() {
+        $user.sendForm($(this), function() {
+            alert('You have successfully registered');
+        });
+        return false;
+    });
+    $('#login-form').submit(function() {
+        $user.sendForm($(this), function(path) {
+            document.location.href = path;
+        });
+        return false;
+    });
+    $('#forgot-form').submit(function() {
+        $user.sendForm($(this), function() {
+            alert('Check your email');
+        });
+        return false;
+    });
+    $('#reset-form').submit(function() {
+        $user.sendForm($(this), function() {
+            alert('Password successfully changed');
         });
         return false;
     });
 };
 
 $(document).ready(function() {
-    $user.initRegistration();
+    $user.init();
 });

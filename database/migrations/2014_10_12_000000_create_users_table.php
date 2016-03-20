@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use App\Core\Model;
+use App\Models\User\User;
 
 class CreateUsersTable extends Migration
 {
@@ -23,7 +23,8 @@ class CreateUsersTable extends Migration
             $table->string('hash');
             $table->rememberToken();
             $table->timestamps();
-            $table->enum('show_status', [Model::STATUS_ACTIVE, Model::STATUS_DELETED]);
+            $table->enum('status', [User::STATUS_REGISTERED, User::STATUS_CONFIRMED, user::STATUS_BLOCKED]);
+            $table->enum('show_status', [User::STATUS_ACTIVE, User::STATUS_DELETED]);
         });
     }
 

@@ -19,11 +19,12 @@ class Authenticate
 	public function handle($request, Closure $next, $guard = null)
 	{
 		if (Auth::guard($guard)->guest()) {
+            $route = $guard == 'admin' ? route('core_admin_login') : route('user_login', cLng('code'));
 			if ($request->ajax()) {
 				//return response('Unauthorized.', 401);
-				return new JsonResponse(['status' => 'UNAUTHORIZED', 'path' => route('core_admin_login')]);
+				return new JsonResponse(['path' => $route], 401);
 			} else {
-				return redirect()->route('core_admin_login');
+				return redirect($route);
 			}
 		}
 

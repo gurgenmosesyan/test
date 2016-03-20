@@ -142,4 +142,5 @@ return array (
   'auto.status.blocked' => 'Blocked',
   'base.label.search' => 'Search',
   'base.label.additional_phone' => 'Additional phone',
+  'login.invalid_credentials' => 'Invalid credentials',
 );

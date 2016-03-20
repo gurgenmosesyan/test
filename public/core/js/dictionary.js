@@ -28,6 +28,11 @@ $dictionary.initSearchPage = function() {
             "type": "post",
             "data": {
                 '_token': $main.token
+            },
+            error: function (xhr) {
+                if (xhr.status === 401) {
+                    document.location.href = xhr.responseJSON.path;
+                }
             }
         },
         "columns": $dictionary.listColumns,
@@ -117,12 +122,15 @@ $dictionary.save = function() {
                 if (result.status == 'OK') {
                     $dictionary.modal.modal('hide');
                     $dictionary.table.ajax.reload();
-                } else if (result.status == 'UNAUTHORIZED') {
-                    document.location.href = result.path;
                 } else {
                     $dictionary.showErrors(result.errors);
                 }
                 $('button', $dictionary.form).prop('disabled', false);
+            },
+            error: function (xhr) {
+                if (xhr.status === 401) {
+                    document.location.href = xhr.responseJSON.path;
+                }
             }
         });
         return false;

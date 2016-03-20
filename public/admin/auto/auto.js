@@ -16,6 +16,11 @@ $auto.initSearchPage = function() {
             "type": "post",
             "data": {
                 '_token': $main.token
+            },
+            error: function (xhr) {
+                if (xhr.status === 401) {
+                    document.location.href = xhr.responseJSON.path;
+                }
             }
         },
         "columns": [

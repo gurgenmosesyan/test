@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\User;
 
-class UserRequest extends Request
+use App\Http\Requests\Request;
+
+class RegRequest extends Request
 {
     public function rules()
     {
