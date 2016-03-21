@@ -6,8 +6,12 @@ use App\Http\Requests\User\RegRequest;
 use App\Http\Requests\User\LoginRequest;
 use App\Http\Requests\User\ForgotRequest;
 use App\Http\Requests\User\ResetRequest;
+use Illuminate\Http\Request;
 use App\Models\User\User;
 use App\Models\User\UserManager;
+use Facebook\Facebook;
+use Facebook\Exceptions\FacebookResponseException;
+use Facebook\Exceptions\FacebookSDKException;
 
 class UserApiController extends Controller
 {
@@ -38,6 +42,35 @@ class UserApiController extends Controller
             $error = trans('www.user.login.invalid_credentials');
         }
         return $this->api('INVALID_DATA', null, ['email' => [$error]]);
+    }
+
+    public function fbLogin(Request $request)
+    {
+        $accessToken = $request->input('access_token');
+        $fb = new Facebook([
+            'app_id' => config('social.fb.app_id'),
+            'app_secret' => config('social.fb.app_secret'),
+            'default_graph_version' => 'v2.5',
+        ]);
+        try {
+            $oAuth2Client = $fb->getOAuth2Client();
+            $longLivedAccessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
+        } catch (FacebookResponseException $e) {
+            echo 'Graph returned an error: ' . $e->getMessage();
+            exit;
+        }
+        $fb->setDefaultAccessToken($longLivedAccessToken);
+        try {
+            $response = $fb->get('/me');
+            $userNode = $response->getGraphUser();
+        } catch(FacebookResponseException $e) {
+            echo 'Graph returned an error: ' . $e->getMessage();
+            exit;
+        } catch(FacebookSDKException $e) {
+            echo 'Facebook SDK returned an error: ' . $e->getMessage();
+            exit;
+        }
+        dd($userNode);
     }
 
     public function registration(RegRequest $request)

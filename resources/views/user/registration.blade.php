@@ -35,6 +35,10 @@ $head->appendScript('/js/user.js');
     <input type="submit" />
 </form>
 
+<br><br><br>
+
+<a href="#" id="fb-login">FB login</a>
+
 <style>
     div { margin-bottom: 10px; }
 </style>

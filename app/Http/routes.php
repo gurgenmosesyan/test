@@ -18,6 +18,8 @@ Route::group(['middleware' => ['web', 'front']], function() {
             Route::post('/api/registration', 'UserApiController@registration');
             Route::post('/api/forgot', 'UserApiController@forgot');
             Route::post('/api/reset', 'UserApiController@reset');
+
+            Route::post('/api/fbLogin', 'UserApiController@fbLogin');
         });
 
         Route::group(['middleware' => 'auth:user'], function() {

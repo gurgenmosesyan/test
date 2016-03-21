@@ -32,6 +32,49 @@ $user.sendForm = function(form, callback) {
     });
 };
 
+$user.FBLogin = function(accessToken) {
+    $.ajax({
+        type: 'post',
+        url: $main.basePath('api/fbLogin'),
+        data: {
+            access_token: accessToken,
+            _token: $main.token
+        },
+        dataType: 'json',
+        success: function(result) {
+            console.log(result);
+            if (result.status == 'OK') {
+
+            } else {
+
+            }
+        }
+    });
+};
+
+$user.FBReg = function() {
+    if (typeof FB !== 'undefined') {
+        var accessToken;
+        FB.getLoginStatus(function(response) {
+            if (response.status === 'connected') {
+                accessToken = response.authResponse.accessToken;
+                $user.FBLogin(accessToken);
+            } else {
+                FB.login(function(res){
+                    if (res.authResponse !== null) {
+                        accessToken = res.authResponse.accessToken;
+                        $user.FBLogin(accessToken);
+                    } else {
+                        //$userLogin.enable();
+                        //$userLogin.enableFacebookLogin();
+                        //$('.login-form .facebook-btn').css({'cursor':'default'});
+                    }
+                }, {scope: 'public_profile, email, user_birthday, user_location'});
+            }
+        });
+    }
+};
+
 $user.init = function() {
     $('#registration-form').submit(function() {
         $user.sendForm($(this), function() {
@@ -55,6 +98,10 @@ $user.init = function() {
         $user.sendForm($(this), function() {
             alert('Password successfully changed');
         });
+        return false;
+    });
+    $('#fb-login').on('click', function() {
+        $user.FBReg();
         return false;
     });
 };
