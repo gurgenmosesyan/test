@@ -46,7 +46,7 @@ $user.FBLogin = function(accessToken) {
             if (result.status == 'OK') {
 
             } else {
-
+                alert(result.errors);
             }
         }
     });

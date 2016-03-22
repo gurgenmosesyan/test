@@ -26,32 +26,6 @@ $jsTrans->addTrans(['admin.base.label.select']);
 </script>
 <form id="edit-form" class="form-horizontal" method="post" action="{{$url}}">
     <div class="box-body">
-
-        <div class="form-group">
-            <label class="col-sm-3 control-label data-req">{{trans('admin.base.label.mark')}}</label>
-            <div class="col-sm-9">
-                <select id="mark-select" name="mark_id" class="form-control">
-                    <option value="">{{trans('admin.base.label.select')}}</option>
-                    @foreach($marks as $value)
-                        <option value="{{$value->id}}"{{$value->id == $auto->mark_id ? ' selected="selected"' : ''}}>{{$value->name}}</option>
-                    @endforeach
-                </select>
-                <div id="form-error-mark_id" class="form-error"></div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-3 control-label data-req">{{trans('admin.base.label.model')}}</label>
-            <div class="col-sm-9">
-                <select id="model-select" name="model_id" class="form-control">
-                    <option value="">{{trans('admin.base.label.select')}}</option>
-                    @foreach($models as $value)
-                        <option value="{{$value->id}}"{{$value->id == $auto->model_id ? ' selected="selected"' : ''}}>{{$value->name}}</option>
-                    @endforeach
-                </select>
-                <div id="form-error-model_id" class="form-error"></div>
-            </div>
-        </div>
-
         <div class="form-group">
             <label class="col-sm-3 control-label data-req">{{trans('admin.base.label.mark')}}</label>
             <div class="col-sm-9">

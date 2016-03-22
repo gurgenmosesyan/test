@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Core;
 
-use App\Http\Requests\Admin\LoginRequest;
+use App\Http\Requests\Core\LoginRequest;
 use Auth;
 
 class AccountController extends BaseController

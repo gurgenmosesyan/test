@@ -11,8 +11,8 @@ class ModelRequest extends Request
         $markId = $this->get('mark_id');
 
         return [
-            'mark_id' => 'required|integer|exists:marks,id',
-            'category_id' => 'integer|exists:model_categories,id,mark_id,'.$markId,
+            'mark_id' => 'required|integer|exists:marks,id,show_status,1',
+            'category_id' => 'integer|exists:model_categories,id,mark_id,'.$markId.',show_status,1',
             'name' => 'required|max:255',
         ];
     }

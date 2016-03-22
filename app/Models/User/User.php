@@ -12,6 +12,8 @@ class User extends Model implements AuthenticatableContract
     const STATUS_CONFIRMED = 'confirmed';
     const STATUS_BLOCKED = 'blocked';
     const REMEMBER_ME = '1';
+    const SOCIAL_FB = 'fb';
+    const SOCIAL_GP = 'gp';
 
     use Authenticatable;
 
@@ -24,7 +26,8 @@ class User extends Model implements AuthenticatableContract
         'password',
         'first_name',
         'last_name',
-        'phone'
+        'phone',
+        'social_id'
     ];
 
     protected $hidden = [

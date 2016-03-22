@@ -52,25 +52,32 @@ class UserApiController extends Controller
             'app_secret' => config('social.fb.app_secret'),
             'default_graph_version' => 'v2.5',
         ]);
+        $status = 'OK';
+        $error = null;
         try {
             $oAuth2Client = $fb->getOAuth2Client();
             $longLivedAccessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
-        } catch (FacebookResponseException $e) {
-            echo 'Graph returned an error: ' . $e->getMessage();
-            exit;
-        }
-        $fb->setDefaultAccessToken($longLivedAccessToken);
-        try {
+
+            $fb->setDefaultAccessToken($longLivedAccessToken);
             $response = $fb->get('/me');
             $userNode = $response->getGraphUser();
-        } catch(FacebookResponseException $e) {
-            echo 'Graph returned an error: ' . $e->getMessage();
-            exit;
+
+            $userManager = new UserManager();
+            $user = $userManager->getFBUser($userNode);
+
+            $auth = auth()->guard('user');
+            $auth->login($user);
+
+        } catch (FacebookResponseException $e) {
+            //echo 'Graph returned an error: ' . $e->getMessage();
+            $status = 'INVALID_DATA';
+            $error = $e->getMessage();
         } catch(FacebookSDKException $e) {
-            echo 'Facebook SDK returned an error: ' . $e->getMessage();
-            exit;
+            //echo 'Facebook SDK returned an error: ' . $e->getMessage();
+            $status = 'INVALID_DATA';
+            $error = $e->getMessage();
         }
-        dd($userNode);
+        return $this->api($status, null, $error);
     }
 
     public function registration(RegRequest $request)

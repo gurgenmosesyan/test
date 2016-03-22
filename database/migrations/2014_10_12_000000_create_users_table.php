@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('phone', 30);
+            $table->enum('social', [User::SOCIAL_FB, User::SOCIAL_GP]);
+            $table->string('social_id', 50);
             $table->string('hash');
             $table->rememberToken();
             $table->timestamps();
