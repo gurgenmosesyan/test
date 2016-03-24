@@ -19,7 +19,8 @@ Route::group(['middleware' => ['web', 'front']], function() {
             Route::post('/api/forgot', 'UserApiController@forgot');
             Route::post('/api/reset', 'UserApiController@reset');
 
-            Route::post('/api/fbLogin', 'UserApiController@fbLogin');
+            Route::post('/api/fb/login', 'UserApiController@fbLogin');
+            Route::get('/api/google/login', ['uses' => 'UserApiController@googleLogin', 'as' => 'google_login']);
         });
 
         Route::group(['middleware' => 'auth:user'], function() {

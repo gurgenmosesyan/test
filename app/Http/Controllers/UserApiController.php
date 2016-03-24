@@ -12,6 +12,8 @@ use App\Models\User\UserManager;
 use Facebook\Facebook;
 use Facebook\Exceptions\FacebookResponseException;
 use Facebook\Exceptions\FacebookSDKException;
+use Google_Client;
+use Google_Service_Plus;
 
 class UserApiController extends Controller
 {
@@ -78,6 +80,32 @@ class UserApiController extends Controller
             $error = $e->getMessage();
         }
         return $this->api($status, null, $error);
+    }
+
+    public function googleLogin(Request $request)
+    {
+        $code = $request->input('code');
+        $client = new Google_Client();
+        $client->setClientId(config('social.google.client_id'));
+        $client->setClientSecret(config('social.google.client_secret'));
+        $client->setRedirectUri(route('google_login', cLng('code')));
+
+        $client->addScope(\Google_Service_Urlshortener::URLSHORTENER);
+        $client->setScopes(['https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/userinfo.profile']);
+
+        if (empty($code)) {
+            $authUrl = $client->createAuthUrl();
+            return redirect($authUrl);
+        } else {
+            $client->authenticate($code);
+            $plus = new Google_Service_Plus($client);
+            $person = $plus->people->get('me');
+            $userData = array();
+            $userData["id"] = "{$person->getId()}";
+            $userData["first_name"] = $person->getName()->givenName;
+            $userData["last_name"] = $person->getName()->familyName;
+            dd($userData);
+        }
     }
 
     public function registration(RegRequest $request)

@@ -38,6 +38,9 @@ $head->appendScript('/js/user.js');
 <br><br><br>
 
 <a href="#" id="fb-login">FB login</a>
+<br>
+<br>
+<a href="#" id="google-login">Google login</a>
 
 <style>
     div { margin-bottom: 10px; }

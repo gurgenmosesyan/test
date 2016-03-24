@@ -8,7 +8,9 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
         "intervention/image": "2.3.*",
-        "facebook/php-sdk-v4" : "~5.0"
+        "facebook/php-sdk-v4" : "~5.0",
+        "google/apiclient": "dev-master",
+        "google/apiclient-services": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

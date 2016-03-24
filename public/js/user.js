@@ -35,7 +35,7 @@ $user.sendForm = function(form, callback) {
 $user.FBLogin = function(accessToken) {
     $.ajax({
         type: 'post',
-        url: $main.basePath('api/fbLogin'),
+        url: $main.basePath('api/fb/login'),
         data: {
             access_token: accessToken,
             _token: $main.token
@@ -52,7 +52,7 @@ $user.FBLogin = function(accessToken) {
     });
 };
 
-$user.FBReg = function() {
+$user.FBConnect = function() {
     if (typeof FB !== 'undefined') {
         var accessToken;
         FB.getLoginStatus(function(response) {
@@ -69,10 +69,15 @@ $user.FBReg = function() {
                         //$userLogin.enableFacebookLogin();
                         //$('.login-form .facebook-btn').css({'cursor':'default'});
                     }
-                }, {scope: 'public_profile, email, user_birthday, user_location'});
+                }, {scope: 'public_profile, email, user_location'});
             }
         });
     }
+};
+
+$user.GoogleConnect = function() {
+    var url = $main.basePath('api/google/login');
+    var popup = window.open(url, 'VK', 'width = 500, height = 300');
 };
 
 $user.init = function() {
@@ -101,7 +106,11 @@ $user.init = function() {
         return false;
     });
     $('#fb-login').on('click', function() {
-        $user.FBReg();
+        $user.FBConnect();
+        return false;
+    });
+    $('#google-login').on('click', function() {
+        $user.GoogleConnect();
         return false;
     });
 };
