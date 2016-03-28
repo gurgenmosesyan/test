@@ -10,7 +10,8 @@
     $head->renderScripts();
     ?>
     <script type="text/javascript">
-        $main.baseUrl = '{{url_with_lng('')}}';
+        $main.baseUrl = '{{url('')}}';
+        $main.baseUrlWithLng = '{{url_with_lng('', false)}}';
         $main.token = '{{csrf_token()}}';
     </script>
 </head>

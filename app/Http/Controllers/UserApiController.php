@@ -71,11 +71,9 @@ class UserApiController extends Controller
             $auth->login($user);
 
         } catch (FacebookResponseException $e) {
-            //echo 'Graph returned an error: ' . $e->getMessage();
             $status = 'INVALID_DATA';
             $error = $e->getMessage();
         } catch(FacebookSDKException $e) {
-            //echo 'Facebook SDK returned an error: ' . $e->getMessage();
             $status = 'INVALID_DATA';
             $error = $e->getMessage();
         }
@@ -88,9 +86,9 @@ class UserApiController extends Controller
         $client = new Google_Client();
         $client->setClientId(config('social.google.client_id'));
         $client->setClientSecret(config('social.google.client_secret'));
-        $client->setRedirectUri(route('google_login', cLng('code')));
+        $client->setRedirectUri(route('google_login'));
 
-        $client->addScope(\Google_Service_Urlshortener::URLSHORTENER);
+        //$client->addScope(\Google_Service_Urlshortener::URLSHORTENER);
         $client->setScopes(['https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/userinfo.profile']);
 
         if (empty($code)) {
@@ -100,11 +98,14 @@ class UserApiController extends Controller
             $client->authenticate($code);
             $plus = new Google_Service_Plus($client);
             $person = $plus->people->get('me');
-            $userData = array();
-            $userData["id"] = "{$person->getId()}";
-            $userData["first_name"] = $person->getName()->givenName;
-            $userData["last_name"] = $person->getName()->familyName;
-            dd($userData);
+
+            $userManager = new UserManager();
+            $user = $userManager->getGoogleUser($person);
+
+            $auth = auth()->guard('user');
+            $auth->login($user);
+
+            return '<script>opener.window.$user.googleCallback();</script>';
         }
     }
 

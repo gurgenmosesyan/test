@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "99590f59e52ba0af1ed05b32e84600e6",
-    "content-hash": "1b67b98f1fecbb727045e024af4e1da9",
+    "hash": "3ea5c1ece11457b18248a880aa334545",
+    "content-hash": "588d37e281316f5711aa42f916c68c4b",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -217,91 +217,35 @@
             "time": "2015-11-19 21:07:36"
         },
         {
-            "name": "firebase/php-jwt",
-            "version": "v3.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/firebase/php-jwt.git",
-                "reference": "fa8a06e96526eb7c0eeaa47e4f39be59d21f16e1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/fa8a06e96526eb7c0eeaa47e4f39be59d21f16e1",
-                "reference": "fa8a06e96526eb7c0eeaa47e4f39be59d21f16e1",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Firebase\\JWT\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Neuman Vong",
-                    "email": "neuman+pear@twilio.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Anant Narayanan",
-                    "email": "anant@php.net",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
-            "homepage": "https://github.com/firebase/php-jwt",
-            "time": "2015-07-22 18:31:08"
-        },
-        {
             "name": "google/apiclient",
-            "version": "dev-master",
+            "version": "1.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/google/google-api-php-client.git",
-                "reference": "998067619ce59a849948b0a8647499b90f70ab41"
+                "reference": "400f250a30ae1dd4c4a0a4f750fe973fc70e6311"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/google/google-api-php-client/zipball/998067619ce59a849948b0a8647499b90f70ab41",
-                "reference": "998067619ce59a849948b0a8647499b90f70ab41",
+                "url": "https://api.github.com/repos/google/google-api-php-client/zipball/400f250a30ae1dd4c4a0a4f750fe973fc70e6311",
+                "reference": "400f250a30ae1dd4c4a0a4f750fe973fc70e6311",
                 "shasum": ""
             },
             "require": {
-                "firebase/php-jwt": "~2.0|~3.0",
-                "google/apiclient-services": "*@dev",
-                "google/auth": "0.7",
-                "guzzlehttp/guzzle": "~5.2|~6.0",
-                "guzzlehttp/psr7": "1.2.*",
-                "monolog/monolog": "^1.17",
-                "php": ">=5.4",
-                "phpseclib/phpseclib": "~2.0",
-                "psr/http-message": "1.0.*"
+                "php": ">=5.2.1"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4",
-                "squizlabs/php_codesniffer": "~2.3",
-                "symfony/css-selector": "~2.0",
-                "symfony/dom-crawler": "~2.0"
+                "phpunit/phpunit": "3.7.*",
+                "squizlabs/php_codesniffer": "~2.3"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.x-dev"
+                    "dev-master": "1.1.x-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Google_": "src/"
-                },
                 "classmap": [
-                    "src/Google/Service/"
+                    "src/"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -313,89 +257,7 @@
             "keywords": [
                 "google"
             ],
-            "time": "2016-03-15 18:55:57"
-        },
-        {
-            "name": "google/apiclient-services",
-            "version": "dev-master",
-            "target-dir": "Google/Service",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/google/google-api-php-client-services.git",
-                "reference": "7e193165bf66445ae0a6dd2e760311b1f595317b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/google/google-api-php-client-services/zipball/7e193165bf66445ae0a6dd2e760311b1f595317b",
-                "reference": "7e193165bf66445ae0a6dd2e760311b1f595317b",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Google_Service_": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "description": "Client library for Google APIs",
-            "homepage": "http://developers.google.com/api-client-library/php",
-            "keywords": [
-                "google"
-            ],
-            "time": "2016-03-21 18:23:49"
-        },
-        {
-            "name": "google/auth",
-            "version": "v0.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/google/google-auth-library-php.git",
-                "reference": "f3288860ce7b3076a6768e4ff7b85e0f6100e221"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/google/google-auth-library-php/zipball/f3288860ce7b3076a6768e4ff7b85e0f6100e221",
-                "reference": "f3288860ce7b3076a6768e4ff7b85e0f6100e221",
-                "shasum": ""
-            },
-            "require": {
-                "firebase/php-jwt": "~2.0|~3.0",
-                "guzzlehttp/guzzle": "~5.2|~6.0",
-                "guzzlehttp/psr7": "1.2.*",
-                "php": ">=5.4",
-                "psr/http-message": "1.0.*"
-            },
-            "require-dev": {
-                "phplint/phplint": "0.0.1",
-                "phpunit/phpunit": "3.7.*"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ],
-                "psr-4": {
-                    "Google\\Auth\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "description": "Google Auth Library for PHP",
-            "homepage": "http://github.com/google/google-auth-library-php",
-            "keywords": [
-                "Authentication",
-                "google",
-                "oauth2"
-            ],
-            "time": "2016-03-03 02:03:58"
+            "time": "2016-02-02 18:50:42"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -777,16 +639,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.2.25",
+            "version": "v5.2.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "d2817d2773dc3f405b561762489a76bbe66bd673"
+                "reference": "b73ac62506c5c2bd49d87fcb1089f7759431e173"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/d2817d2773dc3f405b561762489a76bbe66bd673",
-                "reference": "d2817d2773dc3f405b561762489a76bbe66bd673",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/b73ac62506c5c2bd49d87fcb1089f7759431e173",
+                "reference": "b73ac62506c5c2bd49d87fcb1089f7759431e173",
                 "shasum": ""
             },
             "require": {
@@ -901,7 +763,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-03-24 15:06:38"
+            "time": "2016-03-25 17:12:52"
         },
         {
             "name": "league/flysystem",
@@ -1253,95 +1115,6 @@
                 "random"
             ],
             "time": "2016-03-18 20:34:03"
-        },
-        {
-            "name": "phpseclib/phpseclib",
-            "version": "2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "ba6fb78f727cd09f2a649113b95468019e490585"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/ba6fb78f727cd09f2a649113b95468019e490585",
-                "reference": "ba6fb78f727cd09f2a649113b95468019e490585",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "require-dev": {
-                "phing/phing": "~2.7",
-                "phpunit/phpunit": "~4.0",
-                "sami/sami": "~2.0",
-                "squizlabs/php_codesniffer": "~2.0"
-            },
-            "suggest": {
-                "ext-gmp": "Install the GMP (GNU Multiple Precision) extension in order to speed up arbitrary precision integer arithmetic operations.",
-                "ext-libsodium": "SSH2/SFTP can make use of some algorithms provided by the libsodium-php extension.",
-                "ext-mcrypt": "Install the Mcrypt extension in order to speed up a few other cryptographic operations.",
-                "ext-openssl": "Install the OpenSSL extension in order to speed up a wide variety of cryptographic operations."
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "phpseclib\\": "phpseclib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jim Wigginton",
-                    "email": "terrafrost@php.net",
-                    "role": "Lead Developer"
-                },
-                {
-                    "name": "Patrick Monnerat",
-                    "email": "pm@datasphere.ch",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Andreas Fischer",
-                    "email": "bantu@phpbb.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Hans-Jürgen Petrich",
-                    "email": "petrich@tronic-media.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Graham Campbell",
-                    "email": "graham@alt-three.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "PHP Secure Communications Library - Pure-PHP implementations of RSA, AES, SSH2, SFTP, X.509 etc.",
-            "homepage": "http://phpseclib.sourceforge.net",
-            "keywords": [
-                "BigInteger",
-                "aes",
-                "asn.1",
-                "asn1",
-                "blowfish",
-                "crypto",
-                "cryptography",
-                "encryption",
-                "rsa",
-                "security",
-                "sftp",
-                "signature",
-                "signing",
-                "ssh",
-                "twofish",
-                "x.509",
-                "x509"
-            ],
-            "time": "2016-01-18 17:07:21"
         },
         {
             "name": "psr/http-message",
@@ -3613,10 +3386,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "google/apiclient": 20,
-        "google/apiclient-services": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

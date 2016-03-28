@@ -84,6 +84,40 @@ class UserManager
         return $user;
     }
 
+    public function getGoogleUser($person)
+    {
+        $user = User::active()->where('social', User::SOCIAL_GP)->where('social_id', $person->getId())->first();
+        if ($user == null) {
+            $userData = $this->getGoogleUserData($person);
+            $this->resetAfterDay();
+            $user = User::active()->where('email', $userData['email'])->first();
+            if ($user != null) {
+                $userData['email'] = '';
+            }
+            $user = $this->addGoogleUser($userData);
+        }
+        return $user;
+    }
+
+    public function getGoogleUserData($person)
+    {
+        return [
+            'social_id' => $person->getId(),
+            'email' => $person->getEmails()[0]->value,
+            'first_name' => $person->getName()->givenName,
+            'last_name' => $person->getName()->familyName
+        ];
+    }
+
+    public function addGoogleUser($data)
+    {
+        $user = new User($data);
+        $user->hash = self::generateRandomUniqueHash();
+        $user->status = User::STATUS_CONFIRMED;
+        $user->save();
+        return $user;
+    }
+
     public function forgot($data)
     {
         $user = User::active()->where('email', $data['email'])->firstOrFail();
