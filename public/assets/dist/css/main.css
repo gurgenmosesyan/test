@@ -4776,3 +4776,6 @@ table.text-center th {
 #win-status.invalid {
     color: #dd4b39;
 }
+.img-uploader-image {
+    max-width: 100%;
+}

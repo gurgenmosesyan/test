@@ -4,15 +4,15 @@ $pageTitle = trans('admin.admin.form.title');
 $pageMenu = 'admin';
 if ($saveMode == 'add') {
     $pageSubTitle = trans('admin.admin.form.add.sub_title');
-    $url = 'store';
+    $url = route('core_admin_store');
 } else {
     $pageSubTitle = trans('admin.admin.form.edit.sub_title', ['id' => $admin->id]);
-    $url = 'update/'.$admin->id;
+    $url = route('core_admin_update', $admin->id);
 }
 ?>
 @extends('core.layout')
 @section('content')
-<form id="edit-form" class="form-horizontal" method="post" action="{{route('core_admin_store')}}">
+<form id="edit-form" class="form-horizontal" method="post" action="{{$url}}">
     <div class="box-body">
         <div class="form-group">
             <label for="email" class="col-sm-3 control-label data-req">{{trans('admin.base.label.email')}}</label>
