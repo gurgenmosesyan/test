@@ -15,7 +15,7 @@ class CreateAutosTable extends Migration
     {
         Schema::create('autos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('auto_id')->unsigned();
+            $table->string('auto_id', 11);
             $table->integer('user_id')->unsigned();
             $table->integer('mark_id')->unsigned();
             $table->integer('model_category_id')->unsigned();

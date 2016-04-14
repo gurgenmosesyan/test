@@ -14,11 +14,7 @@ $main.initSearch = function() {
         "orderable": false
     };
     listColumns.push(actions);
-    $main.table = $('#data-table')./*on('xhr.dt', function (e, settings, json) {
-        if (json.status == 'UNAUTHORIZED') {
-            document.location.href = json.path;
-        }
-    }).*/DataTable({
+    $main.table = $('#data-table').DataTable({
         "autoWidth": false,
         "processing": true,
         "oLanguage": {

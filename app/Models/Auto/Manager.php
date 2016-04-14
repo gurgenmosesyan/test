@@ -12,6 +12,7 @@ class Manager
     {
         $data = $this->processSave($data);
         $auto = new Auto($data);
+	    $auto->auto_id = $this->generateUniqueAutoId();
         $auto->user_id = 1; // FIXME
         $auto->term = date('Y-m-d', time()+(60*60*24*7*$data['term']));
         $auto->show_status = Auto::STATUS_ACTIVE;
@@ -37,6 +38,16 @@ class Manager
         });
         return true;
     }
+
+	protected function generateUniqueAutoId()
+	{
+		$autoId = str_random(11);
+		$auto = Auto::active()->where('auto_id', $autoId)->first();
+		if ($auto == null) {
+			return $autoId;
+		}
+		return $this->generateUniqueAutoId();
+	}
 
     protected function processSave($data)
     {
