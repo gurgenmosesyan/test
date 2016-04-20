@@ -13,7 +13,6 @@ Route::group($params, function() {
 
 	Route::group(['middleware' => ['auth:admin', 'language']], function() {
 
-		Route::get('/', 'IndexController@index');
 		Route::get('/logout', ['uses' => 'AccountController@logout', 'as' => 'core_admin_logout']);
 
 		Route::get('/admin', ['uses' => 'AdminController@table', 'as' => 'core_admin_table']);

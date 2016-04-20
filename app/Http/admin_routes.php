@@ -8,6 +8,8 @@ $params = [
 
 Route::group($params, function () {
 
+	Route::get('/', 'AutoController@table');
+
     Route::get('/mark', ['uses' => 'MarkController@table', 'as' => 'admin_mark_table']);
     Route::get('/mark/create', ['uses' => 'MarkController@create', 'as' => 'admin_mark_create']);
     Route::get('/mark/edit/{id}', ['uses' => 'MarkController@edit', 'as' => 'admin_mark_edit']);
