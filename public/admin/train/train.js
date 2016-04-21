@@ -1,5 +1,5 @@
 var $train = $.extend(true, {}, $main);
-$train.listPath = '/admpanel/train';
+$train.listPath = '/management/cms/train';
 
 $train.initSearchPage = function() {
     $train.listColumns = [

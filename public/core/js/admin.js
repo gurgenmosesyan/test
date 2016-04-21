@@ -1,5 +1,5 @@
 var $admin = $.extend(true, {}, $main);
-$admin.listPath = '/admpanel/core/admin';
+$admin.listPath = '/management/cms/core/admin';
 
 $admin.initSearchPage = function() {
     $admin.listColumns = [

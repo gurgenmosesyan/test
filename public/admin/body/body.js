@@ -1,5 +1,5 @@
 var $body = $.extend(true, {}, $main);
-$body.listPath = '/admpanel/body';
+$body.listPath = '/management/cms/body';
 
 $body.initSearchPage = function() {
     $body.listColumns = [

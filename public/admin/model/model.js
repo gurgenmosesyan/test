@@ -1,5 +1,5 @@
 var $model = $.extend(true, {}, $main);
-$model.listPath = '/admpanel/model';
+$model.listPath = '/management/cms/model';
 
 $model.initSearchPage = function() {
     $model.listColumns = [
@@ -27,7 +27,7 @@ $model.generateCategories = function(data) {
 $model.getCategories = function (markId) {
     $.ajax({
         type: 'post',
-        url: '/admpanel/api/modelCategory/get',
+        url: '/management/cms/api/modelCategory/get',
         data: {
             mark_id: markId,
             _token: $main.token

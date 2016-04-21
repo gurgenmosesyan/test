@@ -1,5 +1,5 @@
 var $transmission = $.extend(true, {}, $main);
-$transmission.listPath = '/admpanel/transmission';
+$transmission.listPath = '/management/cms/transmission';
 
 $transmission.initSearchPage = function() {
     $transmission.listColumns = [

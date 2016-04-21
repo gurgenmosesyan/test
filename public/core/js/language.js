@@ -1,5 +1,5 @@
 var $language = $.extend(true, {}, $main);
-$language.listPath = '/admpanel/core/language';
+$language.listPath = '/management/cms/core/language';
 
 $language.initSearchPage = function() {
     $language.listColumns = [

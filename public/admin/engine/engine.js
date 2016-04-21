@@ -1,5 +1,5 @@
 var $engine = $.extend(true, {}, $main);
-$engine.listPath = '/admpanel/engine';
+$engine.listPath = '/management/cms/engine';
 
 $engine.initSearchPage = function() {
     $engine.listColumns = [

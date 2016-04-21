@@ -5,7 +5,7 @@ $dictionary.initSearchPage = function() {
         "data": null,
         "render": function(data) {
             return  '<div class="text-center">'+
-                        '<a href="/admpanel/core/dictionary/edit/'+data.id+'" class="action-edit">'+
+                        '<a href="/management/cms/core/dictionary/edit/'+data.id+'" class="action-edit">'+
                             '<i class="fa fa-pencil"></i>'+
                         '</a>'+
                         '<a class="action-remove" href="#">'+
@@ -24,7 +24,7 @@ $dictionary.initSearchPage = function() {
         },
         "serverSide": true,
         "ajax": {
-            "url": '/admpanel/core/dictionary?app='+$dictionary.appId,
+            "url": '/management/cms/core/dictionary?app='+$dictionary.appId,
             "type": "post",
             "data": {
                 '_token': $main.token
@@ -63,7 +63,7 @@ $dictionary.initSearchPage = function() {
 $dictionary.deleteObj = function(key) {
     $.ajax({
         type: 'post',
-        url: '/admpanel/core/dictionary/delete',
+        url: '/management/cms/core/dictionary/delete',
         data: {
             key: key,
             app_id: $dictionary.appId,
@@ -147,7 +147,7 @@ $dictionary.initAdd = function() {
 
 $dictionary.initApp = function() {
     $('#app-select').change(function() {
-        document.location.href = '/admpanel/core/dictionary?app='+$(this).val();
+        document.location.href = '/management/cms/core/dictionary?app='+$(this).val();
     });
 };
 

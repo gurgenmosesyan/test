@@ -4,7 +4,7 @@ $uploader.index = 1;
 
 $uploader.initForm = function(imgObj) {
     var html =  '<div id="iframe-img-uploader-block" style="display: none">'+
-                    '<form target="iframe-uploader-'+ $uploader.index +'" action="/admpanel/core/image/upload" method="post" enctype="multipart/form-data">'+
+                    '<form target="iframe-uploader-'+ $uploader.index +'" action="/management/cms/core/image/upload" method="post" enctype="multipart/form-data">'+
                         '<input type="file" name="image" />'+
                         '<input type="text" name="module" value="'+ imgObj.data('module') +'" />'+
                         '<input type="hidden" name="_token" value="'+ $main.token +'" />'+

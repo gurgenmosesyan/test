@@ -1,5 +1,5 @@
 var $color = $.extend(true, {}, $main);
-$color.listPath = '/admpanel/color';
+$color.listPath = '/management/cms/color';
 
 $color.initSearchPage = function() {
     $color.listColumns = [

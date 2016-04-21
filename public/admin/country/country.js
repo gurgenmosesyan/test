@@ -1,5 +1,5 @@
 var $country = $.extend(true, {}, $main);
-$country.listPath = '/admpanel/country';
+$country.listPath = '/management/cms/country';
 
 $country.initSearchPage = function() {
     $country.listColumns = [

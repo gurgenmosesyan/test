@@ -1,5 +1,5 @@
 var $rudder = $.extend(true, {}, $main);
-$rudder.listPath = '/admpanel/rudder';
+$rudder.listPath = '/management/cms/rudder';
 
 $rudder.initSearchPage = function() {
     $rudder.listColumns = [

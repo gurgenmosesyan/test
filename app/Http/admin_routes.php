@@ -2,7 +2,7 @@
 
 $params = [
     'middleware' => ['web', 'auth:admin', 'language'],
-    'prefix' => 'admpanel',
+    'prefix' => 'management/cms',
     'namespace' => 'Admin'
 ];
 

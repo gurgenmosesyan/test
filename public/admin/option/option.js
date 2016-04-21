@@ -1,5 +1,5 @@
 var $option = $.extend(true, {}, $main);
-$option.listPath = '/admpanel/option';
+$option.listPath = '/management/cms/option';
 
 $option.initSearchPage = function() {
     $option.listColumns = [

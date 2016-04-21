@@ -1,5 +1,5 @@
 var $region = $.extend(true, {}, $main);
-$region.listPath = '/admpanel/region';
+$region.listPath = '/management/cms/region';
 
 $region.initSearchPage = function() {
     $region.listColumns = [

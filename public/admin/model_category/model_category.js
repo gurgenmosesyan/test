@@ -1,5 +1,5 @@
 var $category = $.extend(true, {}, $main);
-$category.listPath = '/admpanel/modelCategory';
+$category.listPath = '/management/cms/modelCategory';
 
 $category.initSearchPage = function() {
     $category.listColumns = [

@@ -1,5 +1,5 @@
 var $mark = $.extend(true, {}, $main);
-$mark.listPath = '/admpanel/mark';
+$mark.listPath = '/management/cms/mark';
 
 $mark.initSearchPage = function() {
     $mark.listColumns = [

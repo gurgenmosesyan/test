@@ -1,5 +1,5 @@
 var $cylinder = $.extend(true, {}, $main);
-$cylinder.listPath = '/admpanel/cylinder';
+$cylinder.listPath = '/management/cms/cylinder';
 
 $cylinder.initSearchPage = function() {
     $cylinder.listColumns = [

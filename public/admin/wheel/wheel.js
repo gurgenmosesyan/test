@@ -1,5 +1,5 @@
 var $wheel = $.extend(true, {}, $main);
-$wheel.listPath = '/admpanel/wheel';
+$wheel.listPath = '/management/cms/wheel';
 
 $wheel.initSearchPage = function() {
     $wheel.listColumns = [

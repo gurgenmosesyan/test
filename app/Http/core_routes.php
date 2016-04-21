@@ -2,7 +2,7 @@
 
 $params = [
     'middleware' => ['web'],
-    'prefix' => 'admpanel/core',
+    'prefix' => 'management/cms/core',
     'namespace' => 'Core'
 ];
 

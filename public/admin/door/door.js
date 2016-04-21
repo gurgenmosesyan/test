@@ -1,5 +1,5 @@
 var $door = $.extend(true, {}, $main);
-$door.listPath = '/admpanel/door';
+$door.listPath = '/management/cms/door';
 
 $door.initSearchPage = function() {
     $door.listColumns = [

@@ -1,5 +1,5 @@
 var $auto = $.extend(true, {}, $main);
-$auto.listPath = '/admpanel/auto';
+$auto.listPath = '/management/cms/auto';
 $auto.imgIndex = 0;
 
 $auto.initSearchPage = function() {
@@ -102,7 +102,7 @@ $auto.initFilters = function() {
 $auto.changeStatus = function(id, status) {
     $.ajax({
         type: 'post',
-        url: '/admpanel/auto/changeStatus',
+        url: '/management/cms/auto/changeStatus',
         data: {
             id: id,
             status: status,
@@ -150,7 +150,7 @@ $auto.generateModels = function(data) {
 $auto.getModels = function(markId) {
     $.ajax({
         type: 'post',
-        url: '/admpanel/api/model/get',
+        url: '/management/cms/api/model/get',
         data: {
             mark_id: markId,
             _token: $main.token
@@ -184,7 +184,7 @@ $auto.generateRegions = function(data) {
 $auto.getRegions = function(countryId) {
     $.ajax({
         type: 'post',
-        url: '/admpanel/api/region/get',
+        url: '/management/cms/api/region/get',
         data: {
             country_id: countryId,
             _token: $main.token
@@ -209,7 +209,7 @@ $auto.initRegion = function() {
 
 $auto.initUploaderForm = function() {
     var html =  '<div id="iframe-img-uploader" style="display: none">'+
-                    '<form target="iframe-uploader" action="/admpanel/core/image/upload" method="post" enctype="multipart/form-data">'+
+                    '<form target="iframe-uploader" action="/management/cms/core/image/upload" method="post" enctype="multipart/form-data">'+
                         '<input type="file" name="image" />'+
                         '<input type="text" name="module" value="auto.images.images" />'+
                         '<input type="hidden" name="_token" value="'+ $main.token +'" />'+
