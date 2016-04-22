@@ -8,7 +8,7 @@ class Search extends DataTable
 {
     public function totalCount()
     {
-        return Cylinder::count();
+        return Cylinder::active()->count();
     }
 
     public function filteredCount()

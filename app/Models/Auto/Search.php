@@ -8,7 +8,7 @@ class Search extends DataTable
 {
     public function totalCount()
     {
-        return Auto::count();
+        return Auto::active()->count();
     }
 
     public function filteredCount()

@@ -74,7 +74,7 @@ $jsTrans->addTrans(['admin.base.label.select']);
             <div class="col-sm-9">
                 <select name="year" class="form-control">
                     <option value="">{{trans('admin.base.label.select')}}</option>
-                    @for($i = date('Y'); $i > 1909; $i--)
+                    @for($i = intval(date('Y'))+2; $i > 1909; $i--)
                         <option value="{{$i}}"{{$i == $auto->year ? ' selected="selected"' : ''}}>{{$i}}</option>
                     @endfor
                 </select>
@@ -169,7 +169,7 @@ $jsTrans->addTrans(['admin.base.label.select']);
             <div class="col-sm-2">
                 <select name="volume_2" class="form-control">
                     <option value="">{{trans('admin.base.label.select')}}</option>
-                    @for($i = 0; $i < 16; $i++)
+                    @for($i = 0; $i < 10; $i++)
                         <option value="{{$i}}"{{($auto->volume_1 != 0 || $auto->volume_2 != 0) && $i == $auto->volume_2 ? ' selected="selected"' : ''}}>{{$i}}</option>
                     @endfor
                 </select>

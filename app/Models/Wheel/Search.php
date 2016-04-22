@@ -8,7 +8,7 @@ class Search extends DataTable
 {
     public function totalCount()
     {
-        return Wheel::count();
+        return Wheel::active()->count();
     }
 
     public function filteredCount()

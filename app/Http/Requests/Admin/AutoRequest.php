@@ -32,7 +32,7 @@ class AutoRequest extends Request
             'mileage' => 'required|integer',
             'mileage_measurement' => 'required|in:'.Auto::MILEAGE_MEASUREMENT_KM.','.Auto::MILEAGE_MEASUREMENT_MILE,
             'volume_1' => 'required_with:volume_2|integer|max:15',
-            'volume_2' => 'required_with:volume_1|integer|max:15',
+            'volume_2' => 'required_with:volume_1|integer|max:9',
             'horsepower' => 'integer|max:9999',
             'place' => 'max:255',
             'price_amd' => 'integer',

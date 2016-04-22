@@ -8,7 +8,7 @@ class Search extends DataTable
 {
     public function totalCount()
     {
-        return Body::count();
+        return Body::active()->count();
     }
 
     public function filteredCount()

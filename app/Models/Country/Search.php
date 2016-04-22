@@ -8,7 +8,7 @@ class Search extends DataTable
 {
     public function totalCount()
     {
-        return Country::count();
+        return Country::active()->count();
     }
 
     public function filteredCount()

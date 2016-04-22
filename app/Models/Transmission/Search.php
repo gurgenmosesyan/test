@@ -8,7 +8,7 @@ class Search extends DataTable
 {
     public function totalCount()
     {
-        return Transmission::count();
+        return Transmission::active()->count();
     }
 
     public function filteredCount()
