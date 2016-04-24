@@ -150,4 +150,7 @@ Route::group($params, function () {
     Route::post('/auto/delete/{id}', ['uses' => 'AutoController@delete', 'as' => 'admin_auto_delete']);
     Route::post('/auto/changeStatus', ['uses' => 'AutoController@changeStatus', 'as' => 'admin_auto_change_status']);
 
+    Route::get('/config/edit', ['uses' => 'ConfigController@edit', 'as' => 'admin_config_edit']);
+    Route::post('/auto/update', ['uses' => 'ConfigController@update', 'as' => 'admin_config_update']);
+
 });

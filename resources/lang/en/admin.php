@@ -143,4 +143,6 @@ return array (
   'base.label.search' => 'Search',
   'base.label.additional_phone' => 'Additional phone',
   'login.invalid_credentials' => 'Invalid credentials',
+  'config.form.title' => 'Config',
+  'base.label.watermark' => 'Watermark',
 );

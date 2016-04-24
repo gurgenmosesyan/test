@@ -4,6 +4,7 @@ namespace App\Models\Auto;
 
 use App\Core\Image\SaveImage;
 use Intervention\Image\ImageManagerStatic as ImageManager;
+use App\Models\Config\Config;
 use DB;
 
 class Manager
@@ -97,6 +98,7 @@ class Manager
 
     protected function storeImages($data, Auto $auto)
     {
+        $watermark = Config::where('key', Config::KEY_WATERMARK)->first();
         $images = [];
         $i = 0;
         foreach ($data as $value) {
@@ -120,7 +122,9 @@ class Manager
             if (!empty($value['rotate'])) {
                 $image->rotate($value['rotate']);
             }
-            $image->insert(public_path('images/watermark.png'), 'bottom-right', 10, 10);
+            if ($watermark != null) {
+                $image->insert(public_path(Config::IMAGES_PATH.'/'.$watermark->value), 'bottom-right', 10, 10);
+            }
             $image->save($filePath);
 
             /*$image = new Image($filePath);

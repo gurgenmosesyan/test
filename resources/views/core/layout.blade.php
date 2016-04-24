@@ -114,6 +114,7 @@ $jsTrans->addTrans([
                 <li{{$pageMenu == 'country' ? ' class=active' : ''}}><a href="{{route('admin_country_table')}}"><i class="fa fa-globe"></i> <span>{{trans('admin.country.form.title')}}</span></a></li>
                 <li{{$pageMenu == 'region' ? ' class=active' : ''}}><a href="{{route('admin_region_table')}}"><i class="fa fa-globe"></i> <span>{{trans('admin.region.form.title')}}</span></a></li>
                 <li{{$pageMenu == 'auto' ? ' class=active' : ''}}><a href="{{route('admin_auto_table')}}"><i class="fa fa-car"></i> <span>{{trans('admin.auto.form.title')}}</span></a></li>
+                <li{{$pageMenu == 'config' ? ' class=active' : ''}}><a href="{{route('admin_config_edit')}}"><i class="fa fa-edit"></i> <span>{{trans('admin.config.form.title')}}</span></a></li>
                 <li class="treeview{{$pageMenu == 'admin' || $pageMenu == 'language' || $pageMenu == 'dictionary' ? ' active' : ''}}">
                     <a href="#">
                         <i class="fa fa-wrench"></i> <span>{{trans('admin.admin_menu.system')}}</span> <i class="fa fa-angle-left pull-right"></i>

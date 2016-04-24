@@ -1,5 +1,4 @@
 <?php
-use App\Models\Mark\Mark;
 use App\Core\Helpers\ImgUploader;
 
 $head->appendScript('/admin/mark/mark.js');
