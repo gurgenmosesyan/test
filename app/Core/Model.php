@@ -14,4 +14,9 @@ class Model extends EloquentModel
     {
         return $query->where('show_status', self::STATUS_ACTIVE);
     }
+
+    public function scopeCurrent($query)
+    {
+        return $query->where('lng_id', cLng('id'));
+    }
 }

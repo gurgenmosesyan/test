@@ -4,6 +4,10 @@ Route::group(['middleware' => ['web', 'guest:user']], function() {
     Route::get('/api/google/login', ['uses' => 'UserApiController@googleLogin', 'as' => 'google_login']);
 });
 
+Route::group(['middleware' => ['web']], function() {
+    Route::post('/api/model', 'ApiController@model');
+});
+
 Route::group(['middleware' => ['web', 'front']], function() {
 
     Route::get('/', 'IndexController@index');
