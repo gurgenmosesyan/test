@@ -34,4 +34,11 @@ return array (
   'checkbox.damaged' => 'Damaged',
   'checkbox.partial_pay' => 'Partial Pay',
   'search.btn' => 'Search',
+  'urgent_cars.title' => 'Urgent Sale',
+  'recently_cars.title' => 'Recently Added',
+  'parts_calculator.title' => 'Parts Calculator',
+  'calculator.mark.select.default' => 'Make',
+  'calculator.model.select.default' => 'Model',
+  'calculator.year.select.default' => 'Year',
+  'calculators.calculate' => 'Calculate',
 );

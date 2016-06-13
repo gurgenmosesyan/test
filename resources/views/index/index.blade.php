@@ -18,7 +18,7 @@ $prices = config('autotrade.prices');
     <div id="top-cars" class="fl">
         <h2 class="orange fb"><span class="dib">{{trans('www.top_cars.title')}}</span></h2>
         <div class="help"><a href="#" class="db"></a></div>
-        <div class="top-block owl-carousel">
+        <div class="car-block owl-carousel">
             <?php
             $topAutos = [];
             for ($i = 0; $i < 18; $i++) {
@@ -132,23 +132,20 @@ $prices = config('autotrade.prices');
 
             <div class="custom-cleared fl">
                 <label class="checkbox-label no-select">
-                    <span class="ch-icon"></span>
-                    <span class="ch-title">{{trans('www.checkbox.customs_cleared')}}</span>
+                    {{trans('www.checkbox.customs_cleared')}}
                     <input type="checkbox" name="custom_cleared" value="{{Auto::CUSTOM_CLEARED}}" />
                 </label>
             </div>
             <div class="damaged fl">
                 <label class="checkbox-label no-select">
-                    <span class="ch-icon"></span>
-                    <span class="ch-title">{{trans('www.checkbox.damaged')}}</span>
+                    {{trans('www.checkbox.damaged')}}
                     <input type="checkbox" name="damaged" value="{{Auto::DAMAGED}}" />
                 </label>
             </div>
             <div class="cb"></div>
             <div class="partial-pay">
                 <label class="checkbox-label no-select">
-                    <span class="ch-icon"></span>
-                    <span class="ch-title">{{trans('www.checkbox.partial_pay')}}</span>
+                    {{trans('www.checkbox.partial_pay')}}
                     <input type="checkbox" name="partial_pay" value="{{Auto::PARTIAL_PAY}}" />
                 </label>
             </div>
@@ -185,49 +182,159 @@ $prices = config('autotrade.prices');
         <div class="cb"></div>
     </div>
 
-    <div id="urgent-cars" class="fl">
-        <h2 class="orange fb"><span class="dib">{{trans('www.urgent_cars.title')}}</span></h2>
-        <div class="help"><a href="#" class="db"></a></div>
-        <div class="top-block owl-carousel">
-            <?php
-            $urgentAutos = [];
-            for ($i = 0; $i < 31; $i++) {
-                $urgentAutos[] = [
-                        'image' => '/images/temp/auto2.jpg',
-                        'price' => '50000$',
-                        'title' => 'Mercedes-Benz E63 AMG',
-                        'country' => 'Russia',
-                        'region' => 'St. Peterburg',
-                        'mileage' => '32000',
-                        'mileage_measurement' => 'km',
-                        'year' => 2015
-                ];
-            }
-            ?>
-            <div class="box-part">
-                @foreach($urgentAutos as $key => $auto)
-                    @if(($key == 6 || $key == 12) && isset($topAutos[$key+1]))
-                        <div class="cb"></div>
-                        </div><div class="box-part">
-                @endif
-                <a href="#" class="auto-item db fl{{$key%3 == 0 ? ' mln' : ''}}">
+    <div id="homepage-left" class="fl">
+        <div id="urgent-cars" class="small-box">
+            <h2 class="orange fb"><span class="dib">{{trans('www.urgent_cars.title')}}</span></h2>
+            <div class="help"><a href="#" class="db"></a></div>
+            <div class="car-block owl-carousel">
+                <?php
+                $urgentAutos = [];
+                for ($i = 0; $i < 32; $i++) {
+                    $urgentAutos[] = [
+                            'image' => '/images/temp/auto2.jpg',
+                            'price' => '50000$',
+                            'title' => 'Mercedes-Benz E63 AMG',
+                            'country' => 'Russia',
+                            'region' => 'St. Peterburg',
+                            'mileage' => '32000',
+                            'mileage_measurement' => 'km',
+                            'year' => 2015
+                    ];
+                }
+                ?>
+                <div class="box-part">
+                    @foreach($urgentAutos as $key => $auto)
+                        @if(($key == 16) && isset($urgentAutos[$key+1]))
+                            <div class="cb"></div>
+                </div><div class="box-part">
+                    @endif
+                    <a href="#" class="auto-item db fl{{$key%4 == 0 ? ' mln' : ''}}">
                         <span class="auto-img db" style="background-image: url('{{$auto['image']}}');">
                             <span class="favorite-icon db"></span>
                             <span class="auto-price orange-bg tc db">{{$auto['price']}}</span>
                         </span>
-                    <span class="auto-title db">{{$auto['title']}}</span>
-                    <span class="auto-info db">{{$auto['country']}}@if(!empty($auto['region'])), {{$auto['region']}}@endif</span>
-                    <span class="auto-info db">{{number_format($auto['mileage'], 0, ',', '.')}} * {{$auto['year']}}</span>
-                </a>
-                @endforeach
-                <div class="cb"></div>
+                        <span class="auto-title db">{{$auto['title']}}</span>
+                        <span class="auto-info db">{{$auto['country']}}@if(!empty($auto['region'])), {{$auto['region']}}@endif</span>
+                        <span class="auto-info db">{{number_format($auto['mileage'], 0, ',', '.')}} * {{$auto['year']}}</span>
+                    </a>
+                    @endforeach
+                    <div class="cb"></div>
+                </div>
             </div>
+        </div>
+        <div class="banner tc">
+            <a href="#">
+                <img src="/images/temp/urgent-banner.jpg" />
+            </a>
+        </div>
+        <div id="recently-cars" class="small-box">
+            <h2 class="orange fb"><span class="dib">{{trans('www.recently_cars.title')}}</span></h2>
+            <div class="car-block owl-carousel">
+                <?php
+                $recentlyCars = [];
+                for ($i = 0; $i < 12; $i++) {
+                    $recentlyCars[] = [
+                            'image' => '/images/temp/auto2.jpg',
+                            'price' => '50000$',
+                            'title' => 'Mercedes-Benz E63 AMG',
+                            'country' => 'Russia',
+                            'region' => 'St. Peterburg',
+                            'mileage' => '32000',
+                            'mileage_measurement' => 'km',
+                            'year' => 2015
+                    ];
+                }
+                ?>
+                <div class="box-part">
+                    @foreach($recentlyCars as $key => $auto)
+                        @if(($key == 4 || $key == 8) && isset($recentlyCars[$key+1]))
+                            <div class="cb"></div>
+                </div><div class="box-part">
+                    @endif
+                    <a href="#" class="auto-item db fl{{$key%4 == 0 ? ' mln' : ''}}">
+                        <span class="auto-img db" style="background-image: url('{{$auto['image']}}');">
+                            <span class="favorite-icon db"></span>
+                            <span class="auto-price orange-bg tc db">{{$auto['price']}}</span>
+                        </span>
+                        <span class="auto-title db">{{$auto['title']}}</span>
+                        <span class="auto-info db">{{$auto['country']}}@if(!empty($auto['region'])), {{$auto['region']}}@endif</span>
+                        <span class="auto-info db">{{number_format($auto['mileage'], 0, ',', '.')}} * {{$auto['year']}}</span>
+                    </a>
+                    @endforeach
+                    <div class="cb"></div>
+                </div>
+            </div>
+        </div>
+        <div class="home-ads">
+            <img src="/images/temp/h-ads.jpg">
         </div>
     </div>
 
     <div id="calculators" class="fl">
         <div id="parts-calculator">
-
+            <h2 class="fl fb">{{trans('www.parts_calculator.title')}}</h2>
+            <div class="help fr"><a href="#" class="db"></a></div>
+            <div class="cb"></div>
+            <form id="parts-form" action="" method="post">
+                <div class="mark-select fl">
+                    <div class="select-box">
+                        <div class="select-arrow"></div>
+                        <div class="select-title"></div>
+                        <select name="mark">
+                            <option value="">{{trans('www.calculator.mark.select.default')}}</option>
+                            @foreach($marks as $mark)
+                                <option value="{{$mark->id}}">{{$mark->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="model-select fl">
+                    <div class="select-box disabled">
+                        <div class="select-arrow"></div>
+                        <div class="select-title"></div>
+                        <select name="model" disabled="disabled">
+                            <option value="">{{trans('www.calculator.model.select.default')}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="year-select fl">
+                    <div class="select-box">
+                        <div class="select-arrow"></div>
+                        <div class="select-title"></div>
+                        <select name="year_to">
+                            <option value="">{{trans('www.calculator.year.select.default')}}</option>
+                            @for($i = date('Y'); $i > 1909; $i--)
+                                <option value="{{$i}}">{{$i}}</option>
+                            @endfor
+                        </select>
+                    </div>
+                </div>
+                <div class="cb"></div>
+                <div class="parts-left fl">
+                    @for($i = 0; $i < 5; $i++)
+                        <div class="part-checkbox">
+                            <label class="checkbox-label no-select">
+                                Wheels<br />5000AMD
+                                <input type="checkbox" value="1" />
+                            </label>
+                        </div>
+                    @endfor
+                </div>
+                <div class="parts-right fl">
+                    @for($i = 0; $i < 5; $i++)
+                        <div class="part-checkbox">
+                            <label class="checkbox-label no-select">
+                                Some Car Part<br />5000AMD
+                                <input type="checkbox" value="1" />
+                            </label>
+                        </div>
+                    @endfor
+                </div>
+                <div class="cb"></div>
+                <div class="submit">
+                    <input type="submit" class="fb" value="{{trans('www.calculators.calculate')}}" />
+                </div>
+            </form>
         </div>
         <div id="tax-calculator"></div>
     </div>

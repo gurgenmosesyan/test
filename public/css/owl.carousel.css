@@ -87,12 +87,22 @@
     background-image: url('../images/arrow-right.png');
     border-radius: 0 4px 4px 0;
 }
-#top-cars .owl-buttons div {
+#top-cars .owl-buttons div,
+#urgent-cars .owl-buttons div,
+#recently-cars .owl-buttons div {
     top: -40px;
 }
-#top-cars .owl-buttons .owl-prev {
+#top-cars .owl-buttons .owl-prev,
+#urgent-cars .owl-buttons .owl-prev {
     right: 88px;
 }
-#top-cars .owl-buttons .owl-next {
+#top-cars .owl-buttons .owl-next,
+#urgent-cars .owl-buttons .owl-next {
     right: 47px;
+}
+#recently-cars .owl-buttons .owl-prev {
+    right: 58px;
+}
+#recently-cars .owl-buttons .owl-next {
+    right: 17px;
 }

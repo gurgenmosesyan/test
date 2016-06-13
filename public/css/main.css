@@ -194,39 +194,48 @@ body textarea {
 #top-cars {
     background-color: #ffffff;
     margin-right: 12px;
-    padding: 26px 14px 2px 27px;
+    padding: 26px 20px 2px 21px;
     position: relative;
     width: 777px;
 }
-#top-cars .help {
+.help {
     background: url('../images/help.png') no-repeat;
     height: 22px;
+    width: 21px;
+}
+.help a {
+    height: 100%;
+}
+#top-cars .help,
+#urgent-cars .help {
     position: absolute;
     top: 25px;
     right: 28px;
-    width: 21px;
 }
-#top-cars .help a {
-    height: 100%;
-}
-#top-cars h2 {
+#top-cars h2,
+#urgent-cars h2,
+#recently-cars h2 {
     background: url('../images/top-cars.png') no-repeat left center;
     font-size: 13px;
     height: 21px;
     margin-bottom: 17px;
     line-height: 21px;
+    margin-left: 6px;
     padding-left: 22px;
     letter-spacing: 1px;
 }
-#top-cars h2 span {
+#top-cars h2 span,
+#urgent-cars h2 span,
+#recently-cars h2 span {
     height: 18px;
     border-bottom: 2px solid #FFA000;
 }
 #top-cars .box-part {
-    padding-right: 13px;
+    padding: 0 7px 0 6px;
 }
 .auto-item {
     margin: 0 0 20px 14px;
+    width: 245px;
 }
 .auto-item.mln {
     margin-left: 0;
@@ -237,7 +246,7 @@ body textarea {
     height: 177px;
     margin-bottom: 5px;
     position: relative;
-    width: 245px;
+    width: 100%;
 }
 .auto-item .auto-price {
     bottom: 13px;
@@ -310,6 +319,9 @@ body textarea {
     height: 100%;
     line-height: 33px;
     padding: 0 30px 0 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .select-box .select-arrow {
     background: url('../images/arrow-down.png') no-repeat center center;
@@ -394,28 +406,18 @@ body textarea {
     margin-right: 19px;
 }
 .checkbox-label {
+    background: url('../images/checkbox.png') no-repeat;
     display: block;
     cursor: pointer;
     font-size: 14px;
-    height: 24px;
+    line-height: 24px;
+    padding-left: 34px;
 }
 .checkbox-label input {
     opacity: 0;
 }
-.checkbox-label .ch-icon {
-    background: url('../images/checkbox.png') no-repeat;
-    display: inline-block;
-    height: 24px;
-    margin-right: 7px;
-    vertical-align: middle;
-    width: 24px;
-}
-.checkbox-label.active .ch-icon {
-    background-position: 0 -24px;
-}
-.checkbox-label .ch-title {
-    display: inline-block;
-    vertical-align: middle;
+.checkbox-label.active {
+    background-image: url('../images/checkbox-active.png');
 }
 
 #quick-search .custom-cleared {
@@ -484,16 +486,123 @@ body textarea {
     width: 50%;
 }
 
-#urgent-cars {
+#homepage-left {
     margin-right: 12px;
-    padding: 26px 27px;
-    width: 831px;
+    width: 885px;
 }
+#homepage-left .banner {
+    margin: 22px 0;
+}
+#homepage-left .small-box {
+    background-color: #ffffff;
+    padding: 26px 10px 2px 11px;
+    position: relative;
+    width: 864px;
+}
+#homepage-left .small-box .box-part {
+    padding: 0 17px 0 16px;
+}
+#urgent-cars h2 {
+    background-image: url('../images/urgent.png');
+    margin-left: 16px;
+}
+#recently-cars h2 {
+    background: none;
+    margin-left: 16px;
+    padding-left: 0;
+}
+.small-box .auto-item {
+    margin-left: 33px;
+    width: 183px;
+}
+.small-box .auto-item.mln {
+    margin-left: 0;
+}
+.small-box .auto-img {
+    height: 132px;
+    width: 100%;
+}
+.small-box .favorite-icon {
+    background: url('../images/favorite-small.png') no-repeat;
+    height: 17px;
+    top: 5px;
+    right: 5px;
+    width: 17px;
+}
+.small-box .auto-item .favorite-icon:hover,
+.small-box .auto-item .favorite-icon.active {
+    background-position: 0 -17px;
+}
+.small-box .auto-item .favorite-icon.sending {
+    background-position: 0 -51px;
+}
+.small-box .auto-item .auto-price {
+    font-size: 11px;
+    height: 17px;
+    line-height: 17px;
+    min-width: 65px;
+}
+.small-box .auto-item .auto-title {
+    font-size: 14px;
+}
+.small-box .auto-item .auto-info {
+    font-size: 11px;
+}
+#homepage-left .home-ads {
+    padding: 28px 0 32px 0;
+}
+
 #calculators {
     width: 303px;
 }
 #parts-calculator {
+    background-color: #ffffff;
     border: 1px solid #FFA000;
-    padding: 30px 15px 17px 15px;
+    padding: 28px 15px 17px 15px;
     width: 271px;
+}
+#calculators h2 {
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    max-width: 245px;
+}
+#parts-calculator .mark-select,
+#parts-calculator .model-select,
+#parts-calculator .year-select {
+    width: 85px;
+    margin: 0 8px 12px 0;
+}
+#parts-calculator .year-select {
+    margin-right: 0;
+}
+#parts-calculator .parts-left,
+#parts-calculator .parts-right {
+    margin-bottom: 5px;
+    width: 132px;
+}
+#parts-calculator .parts-right {
+    margin-left: 7px;
+}
+#parts-calculator .checkbox-label {
+    font-size: 11px;
+    line-height: normal;
+    padding-left: 30px;
+}
+#parts-calculator .part-checkbox {
+    margin-bottom: 10px;
+}
+#calculators .submit {
+    height: 40px;
+}
+#calculators .submit input {
+    background: #FFA000;
+    border: none;
+    border-radius: 4px;
+    color: #ffffff;
+    cursor: pointer;
+    height: 100%;
+    line-height: 40px;
+    text-align: center;
+    letter-spacing: 1px;
+    width: 100%;
 }

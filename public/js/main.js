@@ -39,6 +39,15 @@ $main.basePath = function(path, lngCode) {
     return baseUrl + path;
 };
 
+$main.preloadImages = function() {
+    var images = ['/images/checkbox-active.png'],
+        img;
+    for (var i in images) {
+        img = new Image();
+        img.src = images[i];
+    }
+};
+
 $main.initHeaderBlocks = function() {
     $('#currency-link').on('click', function() {
         var list = $('#currency-list');
@@ -67,7 +76,7 @@ $main.initHeaderBlocks = function() {
 };
 
 $main.initTopCars = function() {
-    $('#top-cars').find('.top-block').owlCarousel({
+    $('#top-cars').find('.car-block').owlCarousel({
         singleItem: true,
         autoPlay: 7000,
         navigation: true,
@@ -80,14 +89,26 @@ $main.initTopCars = function() {
 };
 
 $main.initUrgentCars = function() {
-    $('#urgent-cars').find('.top-block').owlCarousel({
+    $('#urgent-cars').find('.car-block').owlCarousel({
+        singleItem: true,
+        //autoPlay: 8000,
+        navigation: true,
+        navigationText: ['',''],
+        paginationSpeed: 1700,
+        slideSpeed: 1700,
+        rewindSpeed: 1700
+    });
+};
+
+$main.initRecentlyCars = function() {
+    $('#recently-cars').find('.car-block').owlCarousel({
         singleItem: true,
         autoPlay: 7000,
         navigation: true,
         navigationText: ['',''],
-        paginationSpeed: 1400,
-        slideSpeed: 1400,
-        rewindSpeed: 2500
+        paginationSpeed: 1500,
+        slideSpeed: 1500,
+        rewindSpeed: 1500
     });
 };
 
@@ -102,7 +123,7 @@ $main.initSelect = function() {
 $main.initMarkSelect = function() {
     $('.mark-select select').change(function() {
         var self = $(this),
-            modelSelBox = $('.model-select .select-box'),
+            modelSelBox = self.parents('.mark-select').next('.model-select').find('.select-box'),
             modelSelect = modelSelBox.find('select'),
             html = '<option value="">'+$trans.get('www.model.select.default')+'</option>';
         if (self.val()) {
@@ -168,6 +189,8 @@ $(document).ready(function() {
 
     $main.initUrgentCars();
 
+    $main.initRecentlyCars();
+
     $main.initSelect();
 
     $main.initMarkSelect();
@@ -176,5 +199,5 @@ $(document).ready(function() {
 
     $main.initCheckbox();
 
-
+    $main.preloadImages();
 });
