@@ -79,6 +79,18 @@ $main.initTopCars = function() {
     });
 };
 
+$main.initUrgentCars = function() {
+    $('#urgent-cars').find('.top-block').owlCarousel({
+        singleItem: true,
+        autoPlay: 7000,
+        navigation: true,
+        navigationText: ['',''],
+        paginationSpeed: 1400,
+        slideSpeed: 1400,
+        rewindSpeed: 2500
+    });
+};
+
 $main.initSelect = function() {
     $('select').change(function() {
         var self = $(this),
@@ -121,12 +133,48 @@ $main.initMarkSelect = function() {
     });
 };
 
+$main.initPriceRange = function() {
+    var priceRangeBox = $('#price-range-box');
+    $('#price-range').slider({
+        range: true,
+        min: 0,
+        max: $main.priceMax,
+        values: [$main.priceFrom, $main.priceTo],
+        slide: function(event, ui) {
+            priceRangeBox.find('.price-from').val(ui.values[0]);
+            priceRangeBox.find('.price-to').val(ui.values[1]);
+            priceRangeBox.find('.price-from-text').text(ui.values[0]);
+            priceRangeBox.find('.price-to-text').text(ui.values[1]);
+        }
+    });
+};
+
+$main.initCheckbox = function() {
+    $('.checkbox-label input').on('change', function() {
+        $('.checkbox-label input').each(function() {
+            if ($(this).prop('checked')) {
+                $(this).parent('.checkbox-label').addClass('active');
+            } else {
+                $(this).parent('.checkbox-label').removeClass('active');
+            }
+        });
+    });
+};
+
 $(document).ready(function() {
     $main.initHeaderBlocks();
 
     $main.initTopCars();
 
+    $main.initUrgentCars();
+
     $main.initSelect();
 
     $main.initMarkSelect();
+
+    $main.initPriceRange();
+
+    $main.initCheckbox();
+
+
 });

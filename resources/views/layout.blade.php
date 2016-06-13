@@ -10,10 +10,12 @@ $languages = Language::all();
     <title>{{$title.' - autotrade.am'}}</title>
     <link rel="shortcut icon" href="{{url('/favicon.ico')}}" type="image/x-icon" />
     <?php
+    $head->appendMainStyle('/css/jquery-ui.css');
     $head->appendMainStyle('/css/owl.carousel.css');
     $head->appendMainStyle('/css/main.css');
 
     $head->appendMainScript('/js/jquery-2.1.4.min.js');
+    $head->appendMainScript('/js/jquery-ui.min.js');
     $head->appendMainScript('/js/owl.carousel.min.js');
     $head->appendMainScript('/js/main.js');
 

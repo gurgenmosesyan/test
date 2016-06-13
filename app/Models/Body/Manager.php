@@ -2,6 +2,7 @@
 
 namespace App\Models\Body;
 
+use App\Core\Image\SaveImage;
 use DB;
 
 class Manager
@@ -9,6 +10,7 @@ class Manager
     public function store($data)
     {
         $body = new Body($data);
+        SaveImage::save($data['image'], $body);
         $body->show_status = Body::STATUS_ACTIVE;
         DB::transaction(function() use($data, $body) {
             $body->save();
@@ -20,6 +22,7 @@ class Manager
     public function update($id, $data)
     {
         $body = Body::active()->findOrFail($id);
+        SaveImage::save($data['image'], $body);
         $data['show_status'] = Body::STATUS_ACTIVE;
         DB::transaction(function() use($data, $body) {
             $body->update($data);

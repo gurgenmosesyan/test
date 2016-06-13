@@ -145,4 +145,6 @@ return array (
   'login.invalid_credentials' => 'Invalid credentials',
   'config.form.title' => 'Config',
   'base.label.watermark' => 'Watermark',
+  'base.label.sort_order' => 'Sort order',
+  'base.label.show_in_search' => 'Show in search',
 );

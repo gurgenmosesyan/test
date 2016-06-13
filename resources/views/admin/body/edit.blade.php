@@ -1,5 +1,6 @@
 <?php
 use App\Models\Body\Body;
+use App\Core\Helpers\ImgUploader;
 
 $head->appendScript('/admin/body/body.js');
 $pageTitle = trans('admin.body.form.title');
@@ -27,6 +28,26 @@ $mls = $body->ml->keyBy('lng_id');
                     </div>
                 @endforeach
                 <div id="form-error-ml" class="form-error"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="show-in-search" class="col-sm-3 control-label">{{trans('admin.base.label.show_in_search')}}</label>
+            <div class="col-sm-9">
+                <input type="checkbox" id="show-in-search" name="show_in_search" class="minimal-checkbox" value="{{Body::SHOW_IN_SEARCH}}" {{$body->show_in_search == Body::SHOW_IN_SEARCH ? ' checked="checked"' : ''}}>
+                <div id="form-error-show_in_search" class="form-error"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label img-label">{{trans('admin.base.label.image')}}</label>
+            <div class="col-sm-9">
+                <?php ImgUploader::uploader('mark', 'image', 'image', $body->image); ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">{{trans('admin.base.label.sort_order')}}</label>
+            <div class="col-sm-9">
+                <input type="text" name="sort_order" class="form-control" value="{{$body->sort_order or ''}}">
+                <div id="form-error-sort_order" class="form-error"></div>
             </div>
         </div>
         {{csrf_field()}}

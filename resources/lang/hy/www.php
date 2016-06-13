@@ -27,4 +27,11 @@ return array (
   'country.select.default' => 'All Countries',
   'mark.select.default' => 'Any Make',
   'model.select.default' => 'Any Model',
+  'price_range.text' => 'Price:',
+  'year_from' => 'Year From',
+  'year_to' => 'Year To',
+  'checkbox.customs_cleared' => 'Customs Cleared',
+  'checkbox.damaged' => 'Damaged',
+  'checkbox.partial_pay' => 'Partial Pay',
+  'search.btn' => 'Search',
 );

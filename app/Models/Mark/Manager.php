@@ -9,7 +9,7 @@ class Manager
     public function store($data)
     {
         $mark = new Mark($data);
-        SaveImage::save($data['image'], $mark, 'image');
+        SaveImage::save($data['image'], $mark);
         $mark->show_status = Mark::STATUS_ACTIVE;
         $mark->save();
         return true;
@@ -18,7 +18,7 @@ class Manager
     public function update($id, $data)
     {
         $mark = Mark::active()->findOrFail($id);
-        SaveImage::save($data['image'], $mark, 'image');
+        SaveImage::save($data['image'], $mark);
         $data['show_status'] = Mark::STATUS_ACTIVE;
         $mark->update($data);
         return true;
