@@ -555,10 +555,11 @@ body textarea {
 #calculators {
     width: 303px;
 }
-#parts-calculator {
+#calculators .calc-box {
     background-color: #ffffff;
     border: 1px solid #FFA000;
-    padding: 28px 15px 17px 15px;
+    margin-bottom: 10px;
+    padding: 28px 15px 7px 15px;
     width: 271px;
 }
 #calculators h2 {
@@ -570,14 +571,14 @@ body textarea {
 #parts-calculator .model-select,
 #parts-calculator .year-select {
     width: 85px;
-    margin: 0 8px 12px 0;
+    margin: 0 8px 15px 0;
 }
 #parts-calculator .year-select {
     margin-right: 0;
 }
 #parts-calculator .parts-left,
 #parts-calculator .parts-right {
-    margin-bottom: 5px;
+    margin-bottom: 7px;
     width: 132px;
 }
 #parts-calculator .parts-right {
@@ -593,6 +594,7 @@ body textarea {
 }
 #calculators .submit {
     height: 40px;
+    margin-bottom: 15px;
 }
 #calculators .submit input {
     background: #FFA000;
@@ -605,4 +607,34 @@ body textarea {
     text-align: center;
     letter-spacing: 1px;
     width: 100%;
+}
+#calculators .calc-price {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+#calculators .calc-result {
+    max-width: 210px;
+}
+#page input[type="text"] {
+    background: #f5f5f5;
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+    height: 33px;
+    /*line-height: 33px;*/
+    padding: 0 13px;
+    width: 100%;
+}
+#tax-calculator .price-box {
+    margin-bottom: 15px;
+}
+#tax-calculator .year-select {
+    margin-bottom: 27px;
+}
+#tax-calculator .submit {
+    margin-bottom: 27px;
+}
+#tax-calculator .calc-price {
+    margin-bottom: 15px;
 }

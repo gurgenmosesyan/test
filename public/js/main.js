@@ -125,7 +125,7 @@ $main.initMarkSelect = function() {
         var self = $(this),
             modelSelBox = self.parents('.mark-select').next('.model-select').find('.select-box'),
             modelSelect = modelSelBox.find('select'),
-            html = '<option value="">'+$trans.get('www.model.select.default')+'</option>';
+            html = '';
         if (self.val()) {
             modelSelBox.addClass('loading');
             $.ajax({
@@ -139,17 +139,19 @@ $main.initMarkSelect = function() {
                 success: function(result) {
                     if (result.status == 'OK') {
                         for (var i in result.data) {
-                            html += '<option value="'+result.data[i].id+'">'+result.data[i].name+'</option>';
+                            html += '<option class="opt" value="'+result.data[i].id+'">'+result.data[i].name+'</option>';
                         }
                         modelSelBox.removeClass('disabled');
-                        modelSelect.html(html).attr('disabled', false).change();
+                        modelSelect.find('.opt').remove();
+                        modelSelect.append(html).attr('disabled', false).change();
                     }
                     modelSelBox.removeClass('loading');
                 }
             });
         } else {
             modelSelBox.addClass('disabled');
-            modelSelect.html(html).attr('disabled', 'disabled').change();
+            modelSelect.find('.opt').remove();
+            modelSelect.append(html).attr('disabled', 'disabled').change();
         }
     });
 };

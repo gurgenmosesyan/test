@@ -271,7 +271,7 @@ $prices = config('autotrade.prices');
     </div>
 
     <div id="calculators" class="fl">
-        <div id="parts-calculator">
+        <div id="parts-calculator" class="calc-box">
             <h2 class="fl fb">{{trans('www.parts_calculator.title')}}</h2>
             <div class="help fr"><a href="#" class="db"></a></div>
             <div class="cb"></div>
@@ -301,7 +301,7 @@ $prices = config('autotrade.prices');
                     <div class="select-box">
                         <div class="select-arrow"></div>
                         <div class="select-title"></div>
-                        <select name="year_to">
+                        <select name="year">
                             <option value="">{{trans('www.calculator.year.select.default')}}</option>
                             @for($i = date('Y'); $i > 1909; $i--)
                                 <option value="{{$i}}">{{$i}}</option>
@@ -335,8 +335,66 @@ $prices = config('autotrade.prices');
                     <input type="submit" class="fb" value="{{trans('www.calculators.calculate')}}" />
                 </div>
             </form>
+            <div class="calc-price">
+                <p class="calc-result fl">{{trans('www.calculator.service.text')}}</p>
+                <p class="service-price fr">--</p>
+                <div class="cb"></div>
+            </div>
+            <div class="calc-price fb">
+                <p class="calc-result fl">{{trans('www.calculator.total.text')}}</p>
+                <p class="total-price fr">--</p>
+                <div class="cb"></div>
+            </div>
         </div>
-        <div id="tax-calculator"></div>
+        <div id="tax-calculator" class="calc-box">
+            <h2 class="fl fb">{{trans('www.tax_calculator.title')}}</h2>
+            <div class="help fr"><a href="#" class="db"></a></div>
+            <div class="cb"></div>
+            <form id="tax-form" action="" method="post">
+                <div class="price-box">
+                    <input type="text" placeholder="{{trans('www.calculator.price.placeholder')}}" />
+                </div>
+                <div class="year-select">
+                    <div class="select-box">
+                        <div class="select-arrow"></div>
+                        <div class="select-title"></div>
+                        <select name="year">
+                            <option value="">{{trans('www.calculator.year.select.default')}}</option>
+                            @for($i = date('Y'); $i > 1909; $i--)
+                                <option value="{{$i}}">{{$i}}</option>
+                            @endfor
+                        </select>
+                    </div>
+                </div>
+                <div class="submit">
+                    <input type="submit" class="fb" value="{{trans('www.calculators.calculate')}}" />
+                </div>
+            </form>
+            <div class="calc-price">
+                <p class="calc-result fl">{{trans('www.calculator.tax.text')}}</p>
+                <p class="service-price fr">--</p>
+                <div class="cb"></div>
+            </div>
+            <div class="calc-price">
+                <p class="calc-result fl">{{trans('www.calculator.vat.text')}}</p>
+                <p class="service-price fr">--</p>
+                <div class="cb"></div>
+            </div>
+            <div class="calc-price">
+                <p class="calc-result fl">{{trans('www.calculator.ecology.text')}}</p>
+                <p class="service-price fr">--</p>
+                <div class="cb"></div>
+            </div>
+            <div class="calc-price fb">
+                <p class="calc-result fl">{{trans('www.calculator.total.text')}}</p>
+                <p class="total-price fr">--</p>
+                <div class="cb"></div>
+            </div>
+        </div>
+
+        <div class="home-right-ad">
+            <img src="/images/temp/r-ad-1.jpg">
+        </div>
     </div>
     <div class="cb"></div>
 

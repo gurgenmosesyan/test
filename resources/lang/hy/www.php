@@ -41,4 +41,11 @@ return array (
   'calculator.model.select.default' => 'Model',
   'calculator.year.select.default' => 'Year',
   'calculators.calculate' => 'Calculate',
+  'calculator.service.text' => '+ Service Free:',
+  'calculator.total.text' => 'Total:',
+  'tax_calculator.title' => 'Tax Calculator',
+  'calculator.price.placeholder' => 'Price',
+  'calculator.tax.text' => 'Tax:',
+  'calculator.vat.text' => 'VAT:',
+  'calculator.ecology.text' => 'Ecology:',
 );

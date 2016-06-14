@@ -21,8 +21,7 @@ $languages = Language::all();
 
     $head->renderStyles();
     $head->renderScripts();
-
-    $jsTrans->addTrans(['www.model.select.default']);
+        
     ?>
 </head>
 <body>
