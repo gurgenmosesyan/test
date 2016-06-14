@@ -21,7 +21,7 @@ $languages = Language::all();
 
     $head->renderStyles();
     $head->renderScripts();
-        
+
     ?>
 </head>
 <body>
@@ -106,6 +106,67 @@ $languages = Language::all();
 
     <div id="content">
     @yield('content')
+    </div>
+
+    <div id="footer-block">
+        <div class="page">
+            <div id="footer">
+                <div class="footer-left fl">
+                    <ul class="footer-menu">
+                        <li class="fl"><a href="#">{{trans('www.footer.menu.contact')}}</a></li>
+                        <li class="fl"><a href="#">{{trans('www.footer.menu.faq')}}</a></li>
+                        <li class="fl"><a href="#">{{trans('www.footer.menu.privacy_policy')}}</a></li>
+                        <li class="fl"><a href="#">{{trans('www.footer.menu.terms')}}</a></li>
+                        <li class="fl"><a href="#">{{trans('www.footer.menu.advertisement')}}</a></li>
+                        <li class="fl last"><a href="#">{{trans('www.footer.menu.sell_car')}}</a></li>
+                        <li class="cb"></li>
+                    </ul>
+                    <div class="footer-contacts fl">
+                        <p class="footer-contact">{!!trans('www.footer.contact.phone')!!}</p>
+                        <p class="footer-contact">{!!trans('www.footer.contact.email')!!}</p>
+                        <p class="footer-contact">{!!trans('www.footer.contact.copyright')!!}</p>
+                    </div>
+                    <div class="footer-join fl">
+                        <p class="tc">{{trans('www.footer.join.title')}}</p>
+                        <ul>
+                            <li class="fl">
+                                <a href="{{trans('www.footer.social.fb.link')}}" class="facebook db" target="_blank"></a>
+                            </li>
+                            <li class="fl">
+                                <a href="{{trans('www.footer.social.intagram.link')}}" class="instagram db" target="_blank"></a>
+                            </li>
+                            <li class="cb"></li>
+                        </ul>
+                    </div>
+                    <div class="footer-payments fl">
+                        <p class="tc">{{trans('www.footer.payments.title')}}</p>
+                        <ul>
+                            <li class="fl">
+                                <a href="{{trans('www.footer.payment.paypal.link')}}" class="paypal db" target="_blank"></a>
+                            </li>
+                            <li class="fl">
+                                <a href="{{trans('www.footer.payment.telcell.link')}}" class="telcell db" target="_blank"></a>
+                            </li>
+                            <li class="fl">
+                                <a href="{{trans('www.footer.payment.arca.link')}}" class="arca db" target="_blank"></a>
+                            </li>
+                            <li class="cb"></li>
+                        </ul>
+                    </div>
+                    <div class="cb"></div>
+                </div>
+                <div class="footer-right fr">
+                    <p>{{trans('www.footer.right.text')}}</p>
+                    <div><span class="dib"></span> Autotrade.am</div>
+                </div>
+                <div class="cb"></div>
+                <div class="website-by tc">
+                    <div class="dib">
+                        {!!trans('www.footer.website_by.text')!!}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>

@@ -638,3 +638,105 @@ body textarea {
 #tax-calculator .calc-price {
     margin-bottom: 15px;
 }
+
+#footer-block {
+    background-color: #263238;
+}
+#footer {
+    color: #ffffff;
+    font-size: 14px;
+    padding: 38px 35px 15px;
+    letter-spacing: 1px;
+}
+#footer a {
+    color: #ffffff;
+}
+#footer .footer-menu {
+    margin-bottom: 65px;
+}
+#footer .footer-menu li {
+    margin-right: 23px;
+}
+#footer .footer-menu li.last {
+    margin-right: 0;
+}
+#footer .footer-menu li a {
+    border-bottom: 2px solid #8E9497;
+}
+#footer .footer-menu li a:hover {
+    border-bottom: none;
+}
+#footer .footer-contacts {
+    margin-right: 120px;
+}
+#footer .footer-contact {
+    margin-bottom: 15px;
+}
+#footer .footer-contact a:hover {
+    text-decoration: underline;
+}
+#footer .footer-join {
+    margin-right: 135px;
+}
+#footer .footer-join p,
+#footer .footer-payments p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+#footer .footer-join ul li {
+    height: 37px;
+    margin: 0 10px;
+}
+#footer .footer-payments ul li {
+    height: 35px;
+    margin: 0 10px;
+}
+#footer .footer-join ul li a,
+#footer .footer-payments ul li a {
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 37px;
+}
+#footer .footer-join ul li a.facebook {
+    background-image: url('../images/join-fb.png');
+}
+#footer .footer-join ul li a.instagram {
+    background-image: url('../images/join-instagram.png');
+}
+#footer .footer-payments ul li a.paypal {
+    background-image: url('../images/paypal.png');
+    width: 56px;
+}
+#footer .footer-payments ul li a.telcell {
+    background-image: url('../images/telcell.png');
+    width: 55px;
+}
+#footer .footer-payments ul li a.arca {
+    background-image: url('../images/arca.png');
+    width: 54px;
+}
+#footer .footer-right {
+    color: #CCCFD0;
+    text-align: right;
+    width: 240px;
+}
+#footer .footer-right p {
+    font-style: italic;
+    margin-bottom: 15px;
+    line-height: 25px;
+}
+#footer .footer-right span {
+    background-color: #CCCFD0;
+    height: 2px;
+    vertical-align: middle;
+    width: 14px;
+}
+#footer .website-by {
+    color: #CCCFD0;
+    font-size: 13px;
+    margin-top: 15px;
+}
+#footer .website-by div {
+    text-align: left;
+    line-height: 22px;
+}
