@@ -153,4 +153,12 @@ Route::group($params, function () {
     Route::get('/config/edit', ['uses' => 'ConfigController@edit', 'as' => 'admin_config_edit']);
     Route::post('/auto/update', ['uses' => 'ConfigController@update', 'as' => 'admin_config_update']);
 
+    Route::get('/currency', ['uses' => 'CurrencyController@table', 'as' => 'admin_currency_table']);
+    Route::get('/currency/create', ['uses' => 'CurrencyController@create', 'as' => 'admin_currency_create']);
+    Route::get('/currency/edit/{id}', ['uses' => 'CurrencyController@edit', 'as' => 'admin_currency_edit']);
+    Route::post('/currency', ['uses' => 'CurrencyController@index', 'as' => 'admin_currency_index']);
+    Route::post('/currency/store', ['uses' => 'CurrencyController@store', 'as' => 'admin_currency_store']);
+    Route::post('/currency/update/{id}', ['uses' => 'CurrencyController@update', 'as' => 'admin_currency_update']);
+    Route::post('/currency/delete/{id}', ['uses' => 'CurrencyController@delete', 'as' => 'admin_currency_delete']);
+
 });

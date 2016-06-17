@@ -147,4 +147,8 @@ return array (
   'base.label.watermark' => 'Watermark',
   'base.label.sort_order' => 'Sort order',
   'base.label.show_in_search' => 'Show in search',
+  'currency.form.title' => 'Currencies',
+  'base.label.rate' => 'Rate',
+  'currency.form.add.sub_title' => 'Add new currency',
+  'currency.form.edit.sub_title' => 'Currency № :id',
 );
