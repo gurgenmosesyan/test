@@ -1,7 +1,12 @@
 <?php
 use App\Core\Language\Language;
+use App\Models\Currency\CurrencyManager;
 
 $languages = Language::all();
+$currencyManager = new CurrencyManager();
+$currencies = $currencyManager->all();
+$defCurrency = $currencyManager->defaultCurrency();
+$cCurrency = $currencyManager->currentCurrency();
 
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -64,10 +69,13 @@ $languages = Language::all();
                 </div>
                 <div class="right-box currency-lng fl">
                     <div class="right-inner-box currency fl">
-                        <a id="currency-link" href="#" class="box-link db" style="background-image: url('/images/temp/amd.png');">AMD</a>
+                        <a id="currency-link" href="#" class="box-link tu db" style="background-image: url('{{url($cCurrency->getIcon())}}');">{{$cCurrency->code}}</a>
                         <ul id="currency-list" class="dpn">
-                            <li><a href="#" class="db">USD</a></li>
-                            <li><a href="#" class="db">RUR</a></li>
+                            @foreach($currencies as $currency)
+                                @if($currency->id != $cCurrency->id)
+                                    <li><a href="{{url_with_lng('/currency?id='.$currency->id, false)}}" class="db tu tc">{{$currency->code}}</a></li>
+                                @endif
+                            @endforeach
                         </ul>
                     </div>
                     <div class="right-inner-box lng fl">

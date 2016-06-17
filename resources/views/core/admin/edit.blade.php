@@ -15,28 +15,28 @@ if ($saveMode == 'add') {
 <form id="edit-form" class="form-horizontal" method="post" action="{{$url}}">
     <div class="box-body">
         <div class="form-group">
-            <label for="email" class="col-sm-3 control-label data-req">{{trans('admin.base.label.email')}}</label>
+            <label class="col-sm-3 control-label data-req">{{trans('admin.base.label.email')}}</label>
             <div class="col-sm-9">
-                <input type="text" name="email" class="form-control" id="username" value="{{$admin->email or ''}}">
+                <input type="text" name="email" class="form-control" value="{{$admin->email or ''}}">
                 <div id="form-error-email" class="form-error"></div>
             </div>
         </div>
         <div class="form-group">
-            <label for="password" class="col-sm-3 control-label data-req">{{trans('admin.base.label.password')}}</label>
+            <label class="col-sm-3 control-label data-req">{{trans('admin.base.label.password')}}</label>
             <div class="col-sm-9">
-                <input type="password" name="password" class="form-control" id="password">
+                <input type="password" name="password" class="form-control">
                 <div id="form-error-password" class="form-error"></div>
             </div>
         </div>
         <div class="form-group">
-            <label for="re_password" class="col-sm-3 control-label data-req">{{trans('admin.base.label.re_password')}}</label>
+            <label class="col-sm-3 control-label data-req">{{trans('admin.base.label.re_password')}}</label>
             <div class="col-sm-9">
-                <input type="password" name="re_password" class="form-control" id="re_password">
+                <input type="password" name="re_password" class="form-control">
                 <div id="form-error-re_password" class="form-error"></div>
             </div>
         </div>
         <div class="form-group">
-            <label for="re_password" class="col-sm-3 control-label data-req">{{trans('admin.base.label.language')}}</label>
+            <label class="col-sm-3 control-label data-req">{{trans('admin.base.label.language')}}</label>
             <div class="col-sm-9">
                 <select name="lng_id" class="form-control">
                     @foreach($languages as $lng)

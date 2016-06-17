@@ -19,6 +19,7 @@ class CreateCurrenciesTable extends Migration
             $table->enum('default', [Currency::IS_NOT_DEFAULT, Currency::IS_DEFAULT]);
             $table->float('rate');
             $table->string('icon');
+            $table->smallInteger('sort_order')->unsignd();
             $table->timestamps();
             $table->enum('show_status', [Currency::STATUS_ACTIVE, Currency::STATUS_DELETED]);
         });

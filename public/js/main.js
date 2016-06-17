@@ -78,6 +78,7 @@ $main.initHeaderBlocks = function() {
 $main.initTopCars = function() {
     $('#top-cars').find('.car-block').owlCarousel({
         singleItem: true,
+        stopOnHover: true,
         autoPlay: 7000,
         navigation: true,
         navigationText: ['',''],
@@ -103,6 +104,7 @@ $main.initUrgentCars = function() {
 $main.initRecentlyCars = function() {
     $('#recently-cars').find('.car-block').owlCarousel({
         singleItem: true,
+        stopOnHover: true,
         autoPlay: 7000,
         navigation: true,
         navigationText: ['',''],

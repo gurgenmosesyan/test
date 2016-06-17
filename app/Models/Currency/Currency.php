@@ -15,8 +15,19 @@ class Currency extends Model
     protected $fillable = [
         'code',
         'default',
-        'rate'
+        'rate',
+        'sort_order'
     ];
+
+    public function isDefault()
+    {
+        return $this->default == self::IS_DEFAULT;
+    }
+
+    public function getIcon()
+    {
+        return url('/'.self::IMAGES_PATH.'/'.$this->icon);
+    }
 
     public function scopeDefault($query)
     {

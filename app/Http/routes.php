@@ -14,6 +14,8 @@ Route::group(['middleware' => ['web', 'front']], function() {
 
     Route::group(['prefix' => '{lngCode}'], function() {
 
+        Route::get('/currency', 'CurrencyController@index');
+
         Route::get('/', ['uses' => 'IndexController@index', 'as' => 'homepage']);
 
         Route::group(['middleware' => 'guest:user'], function() {

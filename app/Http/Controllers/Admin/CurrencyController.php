@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Core\BaseController;
 use App\Models\Currency\Currency;
-use App\Models\Currency\Manager;
+use App\Models\Currency\CurrencyManager;
 use App\Models\Currency\Search;
 use App\Http\Requests\Admin\CurrencyRequest;
 
@@ -12,7 +12,7 @@ class CurrencyController extends BaseController
 {
     protected $manager = null;
 
-    public function __construct(Manager $manager)
+    public function __construct(CurrencyManager $manager)
     {
         $this->manager = $manager;
     }

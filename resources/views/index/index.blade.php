@@ -1,5 +1,6 @@
 <?php
 use App\Models\Auto\Auto;
+use App\Helpers\Base;
 
 $title = trans('www.homepage.title');
 $prices = config('autotrade.prices');
@@ -24,7 +25,8 @@ $prices = config('autotrade.prices');
             for ($i = 0; $i < 18; $i++) {
                 $topAutos[] = [
                     'image' => '/images/temp/auto.jpg',
-                    'price' => '50000$',
+                    'price' => '2000000',
+                    'currency_id' => '2',
                     'title' => 'Mercedes-Benz E63 AMG',
                     'country' => 'Armenia',
                     'region' => 'Yerevan',
@@ -43,7 +45,7 @@ $prices = config('autotrade.prices');
                     <a href="#" class="auto-item db fl{{$key%3 == 0 ? ' mln' : ''}}">
                         <span class="auto-img db" style="background-image: url('{{$auto['image']}}');">
                             <span class="favorite-icon db"></span>
-                            <span class="auto-price orange-bg tc db">{{$auto['price']}}</span>
+                            <span class="auto-price orange-bg tc db">{{Base::price($auto)}}</span>
                         </span>
                         <span class="auto-title db">{{$auto['title']}}</span>
                         <span class="auto-info db">{{$auto['country']}}@if(!empty($auto['region'])), {{$auto['region']}}@endif</span>
@@ -192,7 +194,8 @@ $prices = config('autotrade.prices');
                 for ($i = 0; $i < 32; $i++) {
                     $urgentAutos[] = [
                             'image' => '/images/temp/auto2.jpg',
-                            'price' => '50000$',
+                            'price' => '5000',
+                            'currency_id' => '1',
                             'title' => 'Mercedes-Benz E63 AMG',
                             'country' => 'Russia',
                             'region' => 'St. Peterburg',
@@ -211,7 +214,7 @@ $prices = config('autotrade.prices');
                     <a href="#" class="auto-item db fl{{$key%4 == 0 ? ' mln' : ''}}">
                         <span class="auto-img db" style="background-image: url('{{$auto['image']}}');">
                             <span class="favorite-icon db"></span>
-                            <span class="auto-price orange-bg tc db">{{$auto['price']}}</span>
+                            <span class="auto-price orange-bg tc db">{{Base::price($auto)}}</span>
                         </span>
                         <span class="auto-title db">{{$auto['title']}}</span>
                         <span class="auto-info db">{{$auto['country']}}@if(!empty($auto['region'])), {{$auto['region']}}@endif</span>
@@ -235,7 +238,8 @@ $prices = config('autotrade.prices');
                 for ($i = 0; $i < 12; $i++) {
                     $recentlyCars[] = [
                             'image' => '/images/temp/auto2.jpg',
-                            'price' => '50000$',
+                            'price' => '250000',
+                            'currency_id' => '3',
                             'title' => 'Mercedes-Benz E63 AMG',
                             'country' => 'Russia',
                             'region' => 'St. Peterburg',
@@ -254,7 +258,7 @@ $prices = config('autotrade.prices');
                     <a href="#" class="auto-item db fl{{$key%4 == 0 ? ' mln' : ''}}">
                         <span class="auto-img db" style="background-image: url('{{$auto['image']}}');">
                             <span class="favorite-icon db"></span>
-                            <span class="auto-price orange-bg tc db">{{$auto['price']}}</span>
+                            <span class="auto-price orange-bg tc db">{{Base::price($auto)}}</span>
                         </span>
                         <span class="auto-title db">{{$auto['title']}}</span>
                         <span class="auto-info db">{{$auto['country']}}@if(!empty($auto['region'])), {{$auto['region']}}@endif</span>

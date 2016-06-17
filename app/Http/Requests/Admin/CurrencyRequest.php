@@ -19,7 +19,8 @@ class CurrencyRequest extends Request
             'code' => 'required|max:50',
             'default' => 'in:'.Currency::IS_DEFAULT.','.Currency::IS_NOT_DEFAULT,
             'rate' => $rateRule.'numeric',
-            'icon' => 'required|core_image'
+            'icon' => 'required|core_image',
+            'sort_order' => 'integer',
         ];
     }
 }

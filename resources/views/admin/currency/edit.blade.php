@@ -18,23 +18,23 @@ if ($saveMode == 'add') {
 <form id="edit-form" class="form-horizontal" method="post" action="{{$url}}">
     <div class="box-body">
         <div class="form-group">
-            <label for="code" class="col-sm-2 control-label data-req">{{trans('admin.base.label.code')}}</label>
-            <div class="col-sm-10">
-                <input type="text" name="code" class="form-control" id="code" value="{{$currency->code or ''}}">
+            <label class="col-sm-2 control-label data-req">{{trans('admin.base.label.code')}}</label>
+            <div class="col-sm-4">
+                <input type="text" name="code" class="form-control" value="{{$currency->code or ''}}">
                 <div id="form-error-code" class="form-error"></div>
             </div>
         </div>
         <div class="form-group">
-            <label for="default" class="col-sm-2 control-label">{{trans('admin.base.label.default')}}</label>
-            <div class="col-sm-10">
+            <label class="col-sm-2 control-label">{{trans('admin.base.label.default')}}</label>
+            <div class="col-sm-4">
                 <input type="checkbox" id="default" name="default" class="minimal-checkbox" value="{{Currency::IS_DEFAULT}}" {{$currency->default == Currency::IS_DEFAULT ? ' checked="checked"' : ''}}>
                 <div id="form-error-default" class="form-error"></div>
             </div>
         </div>
         <div class="form-group">
-            <label for="email" class="col-sm-2 control-label data-req rate-label">{{trans('admin.base.label.rate')}}</label>
-            <div class="col-sm-10">
-                <input type="text" name="rate" class="form-control" id="name" value="{{$currency->rate or ''}}">
+            <label class="col-sm-2 control-label data-req rate-label">{{trans('admin.base.label.rate')}}</label>
+            <div class="col-sm-4">
+                <input type="text" name="rate" class="form-control" value="{{$currency->rate or ''}}">
                 <div id="form-error-rate" class="form-error"></div>
             </div>
         </div>
@@ -42,6 +42,13 @@ if ($saveMode == 'add') {
             <label class="col-sm-2 control-label data-req">{{trans('admin.base.label.icon')}}</label>
             <div class="col-sm-10">
                 <?php ImgUploader::uploader('currency', 'icon', 'icon', $currency->icon); ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{{trans('admin.base.label.sort_order')}}</label>
+            <div class="col-sm-4">
+                <input type="text" name="sort_order" class="form-control" value="{{$currency->sort_order or ''}}">
+                <div id="form-error-sort_order" class="form-error"></div>
             </div>
         </div>
         {{csrf_field()}}
