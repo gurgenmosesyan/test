@@ -21,6 +21,7 @@ use App\Models\Train\Train;
 use App\Models\Transmission\Transmission;
 use App\Models\Wheel\Wheel;
 use App\Models\Option\Option;
+use App\Models\Currency\Currency;
 use Illuminate\Http\Request;
 
 class AutoController extends BaseController
@@ -59,6 +60,7 @@ class AutoController extends BaseController
         $wheels = Wheel::active()->get();
         $countries = Country::active()->with('current')->get();
         $options = Option::active()->with('current')->get();
+        $currencies = Currency::active()->ordered()->get();
         return view('admin.auto.edit')->with([
             'auto' => $auto,
             'marks' => $marks,
@@ -75,6 +77,7 @@ class AutoController extends BaseController
             'wheels' => $wheels,
             'countries' => $countries,
             'options' => $options,
+            'currencies' => $currencies,
             'saveMode' => 'add'
         ]);
     }
@@ -101,6 +104,7 @@ class AutoController extends BaseController
         $wheels = Wheel::active()->get();
         $countries = Country::active()->with('current')->get();
         $options = Option::active()->with('current')->get();
+        $currencies = Currency::active()->ordered()->get();
         return view('admin.auto.edit')->with([
             'auto' => $auto,
             'marks' => $marks,
@@ -117,6 +121,7 @@ class AutoController extends BaseController
             'wheels' => $wheels,
             'countries' => $countries,
             'options' => $options,
+            'currencies' => $currencies,
             'saveMode' => 'edit'
         ]);
     }

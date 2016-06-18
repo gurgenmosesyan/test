@@ -316,21 +316,27 @@ $auto.initPrice = function() {
         priceGroup = $('#price-group');
     contract.on('ifChanged', function() {
         if ($(this).prop('checked')) {
-            priceGroup.find('input').val('').attr('disabled', 'disabled');
+            //priceGroup.find('input').val('').attr('disabled', 'disabled');
+            //priceGroup.find('select').attr('disabled', 'disabled');
+            priceGroup.find('label').removeClass('data-req');
             auction.prop('checked', false).trigger('ifChanged');
             $('#auction-group').find('.icheckbox_minimal-blue').removeClass('checked');
         } else if (!auction.prop('checked')) {
-            priceGroup.find('input').attr('disabled', false);
+            //priceGroup.find('input, select').attr('disabled', false);
+            priceGroup.find('label').addClass('data-req');
         }
     }).trigger('ifChanged');
 
     auction.on('ifChanged', function() {
         if ($(this).prop('checked')) {
-            priceGroup.find('input').val('').attr('disabled', 'disabled');
+            //priceGroup.find('input').val('').attr('disabled', 'disabled');
+            //priceGroup.find('select').attr('disabled', 'disabled');
+            priceGroup.find('label').removeClass('data-req');
             contract.prop('checked', false).trigger('ifChanged');
             $('#contract-group').find('.icheckbox_minimal-blue').removeClass('checked');
         } else if (!contract.prop('checked')) {
-            priceGroup.find('input').attr('disabled', false);
+            //priceGroup.find('input, select').attr('disabled', false);
+            priceGroup.find('label').addClass('data-req');
         }
     }).trigger('ifChanged');
 };

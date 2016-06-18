@@ -11,6 +11,13 @@ class AutoRequest extends Request
     {
         $markId = $this->get('mark_id');
         $countryId = $this->get('country_id');
+        $contract = $this->get('contract');
+        $auction = $this->get('auction');
+        if ($contract == Auto::CONTRACT || $auction == Auto::AUCTION) {
+            $priceRule = '';
+        } else {
+            $priceRule = 'required|';
+        }
 
         return [
             'mark_id' => 'required|integer|exists:marks,id,show_status,1',
@@ -35,9 +42,8 @@ class AutoRequest extends Request
             'volume_2' => 'required_with:volume_1|integer|max:9',
             'horsepower' => 'integer|max:9999',
             'place' => 'max:255',
-            'price_amd' => 'integer',
-            'price_usd' => 'integer',
-            'price_eur' => 'integer',
+            'currency_id' => 'required|integer|exists:currencies,id,show_status,1',
+            'price' => $priceRule.'integer',
             'contract' => 'in:'.Auto::CONTRACT.','.Auto::NOT_CONTRACT,
             'auction' => 'in:'.Auto::AUCTION.','.Auto::NOT_AUCTION,
             'bank' => 'in:'.Auto::BANK.','.Auto::NOT_BANK,

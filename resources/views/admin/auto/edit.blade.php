@@ -83,11 +83,11 @@ $jsTrans->addTrans(['admin.base.label.select']);
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label data-req">{{trans('admin.base.label.mileage')}}</label>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <input type="text" name="mileage" class="form-control" value="{{$auto->mileage or ''}}">
                 <div id="form-error-mileage" class="form-error"></div>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <select name="mileage_measurement" class="form-control">
                     <option value="{{Auto::MILEAGE_MEASUREMENT_KM}}"{{$auto->mileage_measurement == Auto::MILEAGE_MEASUREMENT_KM ? ' selected="selected"' : ''}}>{{trans('admin.base.measurement.km')}}</option>
                     <option value="{{Auto::MILEAGE_MEASUREMENT_MILE}}"{{$auto->mileage_measurement == Auto::MILEAGE_MEASUREMENT_MILE ? ' selected="selected"' : ''}}>{{trans('admin.base.measurement.mile')}}</option>
@@ -157,7 +157,7 @@ $jsTrans->addTrans(['admin.base.label.select']);
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label">{{trans('admin.base.label.engine_volume')}}</label>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <select name="volume_1" class="form-control">
                     <option value="">{{trans('admin.base.label.select')}}</option>
                     @for($i = 0; $i < 16; $i++)
@@ -166,7 +166,7 @@ $jsTrans->addTrans(['admin.base.label.select']);
                 </select>
                 <div id="form-error-volume_1" class="form-error"></div>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <select name="volume_2" class="form-control">
                     <option value="">{{trans('admin.base.label.select')}}</option>
                     @for($i = 0; $i < 10; $i++)
@@ -178,7 +178,7 @@ $jsTrans->addTrans(['admin.base.label.select']);
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label">{{trans('admin.base.label.horsepower')}}</label>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <input type="text" name="horsepower" class="form-control" maxlength="4" value="{{$auto->horsepower or ''}}">
                 <div id="form-error-horsepower" class="form-error"></div>
             </div>
@@ -257,27 +257,18 @@ $jsTrans->addTrans(['admin.base.label.select']);
             </div>
         </div>
         <div id="price-group" class="form-group">
-            <label class="col-sm-3 control-label">{{trans('admin.base.label.price')}}</label>
+            <label class="col-sm-3 control-label data-req">{{trans('admin.base.label.price')}}</label>
             <div class="col-sm-3">
-                <div class="input-group">
-                    <input type="text" name="price_amd" class="form-control" value="{{$auto->price_amd or ''}}">
-                    <span class="input-group-addon">AMD</span>
-                </div>
-                <div id="form-error-price_amd" class="form-error"></div>
+                <input type="text" name="price" class="form-control" value="{{$auto->price or ''}}">
+                <div id="form-error-price" class="form-error"></div>
             </div>
             <div class="col-sm-3">
-                <div class="input-group">
-                    <input type="text" name="price_usd" class="form-control" value="{{$auto->price_usd or ''}}">
-                    <span class="input-group-addon">USD</span>
-                </div>
-                <div id="form-error-price_usd" class="form-error"></div>
-            </div>
-            <div class="col-sm-3">
-                <div class="input-group">
-                    <input type="text" name="price_eur" class="form-control" value="{{$auto->price_eur or ''}}">
-                    <span class="input-group-addon">EUR</span>
-                </div>
-                <div id="form-error-price_eur" class="form-error"></div>
+                <select name="currency_id" class="form-control text-uppercase">
+                    @foreach($currencies as $currency)
+                        <option value="{{$currency->id}}"{{$currency->id == $auto->currency_id ? ' selected="selected"' : ''}}>{{$currency->code}}</option>
+                    @endforeach
+                </select>
+                <div id="form-error-currency_id" class="form-error"></div>
             </div>
         </div>
         <div id="contract-group" class="form-group">
