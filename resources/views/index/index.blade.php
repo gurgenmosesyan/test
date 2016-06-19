@@ -301,18 +301,6 @@ $prices = config('autotrade.prices');
                         </select>
                     </div>
                 </div>
-                <div class="year-select fl">
-                    <div class="select-box">
-                        <div class="select-arrow"></div>
-                        <div class="select-title"></div>
-                        <select name="year">
-                            <option value="">{{trans('www.calculator.year.select.default')}}</option>
-                            @for($i = date('Y'); $i > 1909; $i--)
-                                <option value="{{$i}}">{{$i}}</option>
-                            @endfor
-                        </select>
-                    </div>
-                </div>
                 <div class="cb"></div>
                 <div class="parts-left fl">
                     @for($i = 0; $i < 5; $i++)

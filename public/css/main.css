@@ -568,12 +568,11 @@ body textarea {
     max-width: 245px;
 }
 #parts-calculator .mark-select,
-#parts-calculator .model-select,
-#parts-calculator .year-select {
-    width: 85px;
-    margin: 0 8px 15px 0;
+#parts-calculator .model-select {
+    width: 131px;
+    margin: 0 9px 15px 0;
 }
-#parts-calculator .year-select {
+#parts-calculator .model-select {
     margin-right: 0;
 }
 #parts-calculator .parts-left,
