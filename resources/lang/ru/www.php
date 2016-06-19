@@ -41,7 +41,7 @@ return array (
   'calculator.model.select.default' => 'Model',
   'calculator.year.select.default' => 'Year',
   'calculators.calculate' => 'Calculate',
-  'calculator.service.text' => '+ Service Free:',
+  'calculator.service.text' => '+ Service Fee:',
   'calculator.total.text' => 'Total:',
   'tax_calculator.title' => 'Tax Calculator',
   'calculator.price.placeholder' => 'Price',
