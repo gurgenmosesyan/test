@@ -3,7 +3,6 @@ use App\Models\Auto\Auto;
 use App\Helpers\Base;
 
 $title = trans('www.homepage.title');
-$prices = config('autotrade.prices');
 ?>
 @extends('layout')
 
@@ -45,7 +44,7 @@ $prices = config('autotrade.prices');
                     <a href="#" class="auto-item db fl{{$key%3 == 0 ? ' mln' : ''}}">
                         <span class="auto-img db" style="background-image: url('{{$auto['image']}}');">
                             <span class="favorite-icon db"></span>
-                            <span class="auto-price orange-bg tc db">{{Base::price($auto)}}</span>
+                            <span class="auto-price orange-bg tc db">{{Base::price($auto, $currencies, $defCurrency, $cCurrency)}}</span>
                         </span>
                         <span class="auto-title db">{{$auto['title']}}</span>
                         <span class="auto-info db">{{$auto['country']}}@if(!empty($auto['region'])), {{$auto['region']}}@endif</span>
@@ -99,11 +98,11 @@ $prices = config('autotrade.prices');
             <div id="price-range-box">
                 <div class="price-text-box">
                     <span class="price-text">{{trans('www.price_range.text')}}</span>
-                    <span class="price-from-text">{{$prices['price_from']}}</span>$ -
-                    <span class="price-to-text">{{$prices['price_to']}}</span>$
+                    <span class="price-from-text">{{$cCurrency['price_from']}}</span>{{$cCurrency['sign']}} -
+                    <span class="price-to-text">{{$cCurrency['price_to']}}</span>{{$cCurrency['sign']}}
                 </div>
-                <input type="hidden" name="price_from" class="price-from" value="{{$prices['price_from']}}" />
-                <input type="hidden" name="price_to" class="price-to" value="{{$prices['price_to']}}" />
+                <input type="hidden" name="price_from" class="price-from" value="{{$cCurrency['price_from']}}" />
+                <input type="hidden" name="price_to" class="price-to" value="{{$cCurrency['price_to']}}" />
                 <div id="price-range"></div>
             </div>
             <div class="year-from-select fl">
@@ -214,7 +213,7 @@ $prices = config('autotrade.prices');
                     <a href="#" class="auto-item db fl{{$key%4 == 0 ? ' mln' : ''}}">
                         <span class="auto-img db" style="background-image: url('{{$auto['image']}}');">
                             <span class="favorite-icon db"></span>
-                            <span class="auto-price orange-bg tc db">{{Base::price($auto)}}</span>
+                            <span class="auto-price orange-bg tc db">{{Base::price($auto, $currencies, $defCurrency, $cCurrency)}}</span>
                         </span>
                         <span class="auto-title db">{{$auto['title']}}</span>
                         <span class="auto-info db">{{$auto['country']}}@if(!empty($auto['region'])), {{$auto['region']}}@endif</span>
@@ -258,7 +257,7 @@ $prices = config('autotrade.prices');
                     <a href="#" class="auto-item db fl{{$key%4 == 0 ? ' mln' : ''}}">
                         <span class="auto-img db" style="background-image: url('{{$auto['image']}}');">
                             <span class="favorite-icon db"></span>
-                            <span class="auto-price orange-bg tc db">{{Base::price($auto)}}</span>
+                            <span class="auto-price orange-bg tc db">{{Base::price($auto, $currencies, $defCurrency, $cCurrency)}}</span>
                         </span>
                         <span class="auto-title db">{{$auto['title']}}</span>
                         <span class="auto-info db">{{$auto['country']}}@if(!empty($auto['region'])), {{$auto['region']}}@endif</span>
@@ -392,9 +391,10 @@ $prices = config('autotrade.prices');
 
 </div>
 <script type="text/javascript">
-    $main.priceFrom = {{$prices['price_from']}};
-    $main.priceTo = {{$prices['price_to']}};
-    $main.priceMax = {{$prices['price_max']}};
+    $main.priceMax = {{$cCurrency['price_max']}};
+    $main.priceFrom = {{$cCurrency['price_from']}};
+    $main.priceTo = {{$cCurrency['price_to']}};
+    $main.priceStep = {{$cCurrency['price_step']}};
 </script>
 
 @stop

@@ -21,6 +21,10 @@ class CurrencyRequest extends Request
             'rate' => $rateRule.'numeric',
             'icon' => 'required|core_image',
             'sign' => 'required|max:30',
+            'price_max' => 'required|integer',
+            'price_from' => 'required|integer',
+            'price_to' => 'required|integer',
+            'price_step' => 'required|integer',
             'sort_order' => 'integer',
         ];
     }

@@ -152,4 +152,8 @@ return array (
   'currency.form.add.sub_title' => 'Add new currency',
   'currency.form.edit.sub_title' => 'Currency № :id',
   'base.label.sign' => 'Sign',
+  'base.label.price_range_from' => 'Price range from',
+  'base.label.price_range_to' => 'Price range to',
+  'base.label.price_range_step' => 'Price range step',
+  'base.label.price_range_max' => 'Price range max',
 );

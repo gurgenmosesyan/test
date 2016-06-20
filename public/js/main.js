@@ -165,6 +165,7 @@ $main.initPriceRange = function() {
         min: 0,
         max: $main.priceMax,
         values: [$main.priceFrom, $main.priceTo],
+        step: $main.priceStep,
         slide: function(event, ui) {
             priceRangeBox.find('.price-from').val(ui.values[0]);
             priceRangeBox.find('.price-to').val(ui.values[1]);

@@ -40,7 +40,7 @@ $mls = $body->ml->keyBy('lng_id');
         <div class="form-group">
             <label class="col-sm-3 control-label img-label">{{trans('admin.base.label.image')}}</label>
             <div class="col-sm-9">
-                <?php ImgUploader::uploader('mark', 'image', 'image', $body->image); ?>
+                <?php ImgUploader::uploader('body', 'image', 'image', $body->image); ?>
             </div>
         </div>
         <div class="form-group">

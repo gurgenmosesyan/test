@@ -52,6 +52,34 @@ if ($saveMode == 'add') {
             </div>
         </div>
         <div class="form-group">
+            <label class="col-sm-2 control-label data-req">{{trans('admin.base.label.price_range_max')}}</label>
+            <div class="col-sm-4">
+                <input type="text" name="price_max" class="form-control" value="{{$currency->price_max or ''}}">
+                <div id="form-error-price_max" class="form-error"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label data-req">{{trans('admin.base.label.price_range_from')}}</label>
+            <div class="col-sm-4">
+                <input type="text" name="price_from" class="form-control" value="{{$currency->price_from or ''}}">
+                <div id="form-error-price_from" class="form-error"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label data-req">{{trans('admin.base.label.price_range_to')}}</label>
+            <div class="col-sm-4">
+                <input type="text" name="price_to" class="form-control" value="{{$currency->price_to or ''}}">
+                <div id="form-error-price_to" class="form-error"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label data-req">{{trans('admin.base.label.price_range_step')}}</label>
+            <div class="col-sm-4">
+                <input type="text" name="price_step" class="form-control" value="{{$currency->price_step or ''}}">
+                <div id="form-error-price_step" class="form-error"></div>
+            </div>
+        </div>
+        <div class="form-group">
             <label class="col-sm-2 control-label">{{trans('admin.base.label.sort_order')}}</label>
             <div class="col-sm-4">
                 <input type="text" name="sort_order" class="form-control" value="{{$currency->sort_order or ''}}">

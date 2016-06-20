@@ -3,10 +3,12 @@ use App\Core\Language\Language;
 use App\Models\Currency\CurrencyManager;
 
 $languages = Language::all();
-$currencyManager = new CurrencyManager();
-$currencies = $currencyManager->all();
-$defCurrency = $currencyManager->defaultCurrency();
-$cCurrency = $currencyManager->currentCurrency();
+if (!isset($currencies)) {
+    $currencyManager = new CurrencyManager();
+    $currencies = $currencyManager->all();
+    $defCurrency = $currencyManager->defaultCurrency();
+    $cCurrency = $currencyManager->currentCurrency();
+}
 
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">

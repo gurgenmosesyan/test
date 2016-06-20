@@ -17,6 +17,10 @@ class Currency extends Model
         'default',
         'rate',
         'sign',
+        'price_max',
+        'price_from',
+        'price_to',
+        'price_step',
         'sort_order'
     ];
 
