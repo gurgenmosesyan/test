@@ -644,7 +644,7 @@ body textarea {
 #footer {
     color: #ffffff;
     font-size: 14px;
-    padding: 38px 35px 15px;
+    padding: 38px 0 15px;
     letter-spacing: 1px;
 }
 #footer a {

@@ -16,6 +16,7 @@ class Currency extends Model
         'code',
         'default',
         'rate',
+        'sign',
         'sort_order'
     ];
 

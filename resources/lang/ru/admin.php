@@ -151,4 +151,5 @@ return array (
   'base.label.rate' => 'Rate',
   'currency.form.add.sub_title' => 'Add new currency',
   'currency.form.edit.sub_title' => 'Currency № :id',
+  'base.label.sign' => 'Sign',
 );

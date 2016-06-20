@@ -45,6 +45,13 @@ if ($saveMode == 'add') {
             </div>
         </div>
         <div class="form-group">
+            <label class="col-sm-2 control-label data-req">{{trans('admin.base.label.sign')}}</label>
+            <div class="col-sm-4">
+                <input type="text" name="sign" class="form-control" value="{{$currency->sign or ''}}">
+                <div id="form-error-sign" class="form-error"></div>
+            </div>
+        </div>
+        <div class="form-group">
             <label class="col-sm-2 control-label">{{trans('admin.base.label.sort_order')}}</label>
             <div class="col-sm-4">
                 <input type="text" name="sort_order" class="form-control" value="{{$currency->sort_order or ''}}">

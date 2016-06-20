@@ -6,7 +6,7 @@ use App\Core\Model;
 
 class Body extends Model
 {
-    const IMAGES_PATH = 'images/mark';
+    const IMAGES_PATH = 'images/body';
 
     const SHOW_IN_SEARCH = '1';
     const NOT_SHOW_IN_SEARCH = '0';

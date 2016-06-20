@@ -12,8 +12,8 @@ class ApiController extends Controller
     {
         $markId = $request->input('mark_id');
 
-        $categories = Category::active()->where('mark_id', $markId)->get();
-        $models = Model::active()->where('mark_id', $markId)->get();
+        $categories = Category::active()->where('mark_id', $markId)->orderBy('name', 'asc')->get();
+        $models = Model::active()->where('mark_id', $markId)->orderBy('name', 'asc')->get();
 
         if (!$categories->isEmpty()) {
             $data = [];

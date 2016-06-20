@@ -20,6 +20,7 @@ class CurrencyRequest extends Request
             'default' => 'in:'.Currency::IS_DEFAULT.','.Currency::IS_NOT_DEFAULT,
             'rate' => $rateRule.'numeric',
             'icon' => 'required|core_image',
+            'sign' => 'required|max:30',
             'sort_order' => 'integer',
         ];
     }

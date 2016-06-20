@@ -79,13 +79,13 @@ $cCurrency = $currencyManager->currentCurrency();
                         </ul>
                     </div>
                     <div class="right-inner-box lng fl">
-                        <a id="lng-link" href="#" class="box-link db" style="background-image: url('/images/language/{{cLng('icon')}}');">
+                        <a id="lng-link" href="#" class="box-link tu db" style="background-image: url('/images/language/{{cLng('icon')}}');">
                             {{trans('www.lng.switcher.'.cLng('code'))}}
                         </a>
                         <ul id="lng-list" class="dpn">
                             @foreach($languages as $lng)
                                 @if($lng->id != cLng('id'))
-                                    <li><a href="{{url('/'.$lng->code.'/')}}" class="db">{{trans('www.lng.switcher.'.$lng->code)}}</a></li>
+                                    <li><a href="{{url('/'.$lng->code.'/')}}" class="db tu tc">{{trans('www.lng.switcher.'.$lng->code)}}</a></li>
                                 @endif
                             @endforeach
                         </ul>
