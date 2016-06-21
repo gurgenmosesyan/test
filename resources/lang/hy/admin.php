@@ -156,4 +156,9 @@ return array (
   'base.label.price_range_to' => 'Price range to',
   'base.label.price_range_step' => 'Price range step',
   'base.label.price_range_max' => 'Price range max',
+  'part.form.title' => 'Parts',
+  'part.form.add.sub_title' => 'Add new part',
+  'part.form.edit.sub_title' => 'Part № :id',
+  'base.label.currency' => 'Currency',
+  'base.label.service_price' => 'Service price',
 );

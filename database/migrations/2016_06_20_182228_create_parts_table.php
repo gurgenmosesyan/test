@@ -38,6 +38,7 @@ class CreatePartsTable extends Migration
             $table->integer('part10_price')->unsigned();
             $table->integer('part10_service_price')->unsigned();
             $table->timestamps();
+            $table->index(['mark_id', 'model_id']);
         });
     }
 

@@ -36,10 +36,10 @@ class Search extends DataTable
             });
 
         if (!empty($this->columns[1]['search']['value'])) {
-            $query->where('parts.mark_id', $this->columns[0]['search']['value']);
+            $query->where('parts.mark_id', $this->columns[1]['search']['value']);
         }
         if (!empty($this->columns[2]['search']['value'])) {
-            $query->where('parts.model_id', $this->columns[4]['search']['value']);
+            $query->where('parts.model_id', $this->columns[2]['search']['value']);
         }
         return $query;
     }

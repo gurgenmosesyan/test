@@ -22,4 +22,23 @@ class Base
         }
         return $price . $cCurrency->sign;
     }
+
+    public static function partPrice($data, $price, $currencies, $defCurrency, $cCurrency)
+    {
+        if ($data['currency_id'] == $cCurrency->id) {
+            $price = $price;
+        } else {
+            $autoCurrency = $currencies[$data['currency_id']];
+
+            if ($defCurrency->id == $autoCurrency->id) {
+                $price = round($price * $cCurrency->rate);
+            } else if ($defCurrency->id == $cCurrency->id) {
+                $price = round($price / $autoCurrency->rate);
+            } else {
+                $price = $price / $autoCurrency->rate;
+                $price = round($price * $cCurrency->rate);
+            }
+        }
+        return $price . $cCurrency->sign;
+    }
 }

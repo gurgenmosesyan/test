@@ -35,6 +35,7 @@ if (!isset($currencies)) {
 <script type="text/javascript">
     $main.baseUrl = '{{url('')}}';
     $main.baseUrlWithLng = '{{url_with_lng('', false)}}';
+    $main.cCurrency = <?php echo json_encode($cCurrency); ?>;
     $main.token = '{{csrf_token()}}';
     var $locSettings = {"trans": <?php echo json_encode($jsTrans->getTrans()); ?>};
 </script>

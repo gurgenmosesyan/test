@@ -116,6 +116,7 @@ $jsTrans->addTrans([
                 <li{{$pageMenu == 'auto' ? ' class=active' : ''}}><a href="{{route('admin_auto_table')}}"><i class="fa fa-car"></i> <span>{{trans('admin.auto.form.title')}}</span></a></li>
                 <li{{$pageMenu == 'config' ? ' class=active' : ''}}><a href="{{route('admin_config_edit')}}"><i class="fa fa-edit"></i> <span>{{trans('admin.config.form.title')}}</span></a></li>
                 <li{{$pageMenu == 'currency' ? ' class=active' : ''}}><a href="{{route('admin_currency_table')}}"><i class="fa fa-usd"></i> <span>{{trans('admin.currency.form.title')}}</span></a></li>
+                <li{{$pageMenu == 'part' ? ' class=active' : ''}}><a href="{{route('admin_part_table')}}"><i class="fa fa-cogs"></i> <span>{{trans('admin.part.form.title')}}</span></a></li>
                 <li class="treeview{{$pageMenu == 'admin' || $pageMenu == 'language' || $pageMenu == 'dictionary' ? ' active' : ''}}">
                     <a href="#">
                         <i class="fa fa-wrench"></i> <span>{{trans('admin.admin_menu.system')}}</span> <i class="fa fa-angle-left pull-right"></i>

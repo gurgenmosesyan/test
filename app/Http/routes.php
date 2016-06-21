@@ -6,6 +6,7 @@ Route::group(['middleware' => ['web', 'guest:user']], function() {
 
 Route::group(['middleware' => ['web']], function() {
     Route::post('/api/model', 'ApiController@model');
+    Route::post('/api/part', 'ApiController@part');
 });
 
 Route::group(['middleware' => ['web', 'front']], function() {

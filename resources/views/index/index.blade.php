@@ -283,7 +283,7 @@ $title = trans('www.homepage.title');
                     <div class="select-box">
                         <div class="select-arrow"></div>
                         <div class="select-title"></div>
-                        <select name="mark">
+                        <select name="mark" data-only_model="true">
                             <option value="">{{trans('www.calculator.mark.select.default')}}</option>
                             @foreach($marks as $mark)
                                 <option value="{{$mark->id}}">{{$mark->name}}</option>
@@ -301,31 +301,22 @@ $title = trans('www.homepage.title');
                     </div>
                 </div>
                 <div class="cb"></div>
-                <div class="parts-left fl">
-                    @for($i = 0; $i < 5; $i++)
+                <div class="parts-checkboxes">
+                    @for($i = 1; $i < 11; $i++)
                         <div class="part-checkbox">
-                            <label class="checkbox-label no-select">
-                                Wheels<br />5000AMD
-                                <input type="checkbox" value="1" />
+                            <label class="checkbox-label no-select disabled">
+                                {{trans('www.part.form.part'.$i)}}
+                                <input type="checkbox" value="1" disabled="disabled" />
                             </label>
                         </div>
                     @endfor
-                </div>
-                <div class="parts-right fl">
-                    @for($i = 0; $i < 5; $i++)
-                        <div class="part-checkbox">
-                            <label class="checkbox-label no-select">
-                                Some Car Part<br />5000AMD
-                                <input type="checkbox" value="1" />
-                            </label>
-                        </div>
-                    @endfor
-                </div>
-                <div class="cb"></div>
-                <div class="submit">
-                    <input type="submit" class="fb" value="{{trans('www.calculators.calculate')}}" />
                 </div>
             </form>
+            <div class="calc-price">
+                <p class="calc-result fl">{{trans('www.calculator.parts.text')}}</p>
+                <p class="parts-price fr">--</p>
+                <div class="cb"></div>
+            </div>
             <div class="calc-price">
                 <p class="calc-result fl">{{trans('www.calculator.service.text')}}</p>
                 <p class="service-price fr">--</p>

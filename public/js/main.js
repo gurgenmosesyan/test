@@ -135,6 +135,7 @@ $main.initMarkSelect = function() {
                 url: '/api/model',
                 data: {
                     mark_id: self.val(),
+                    only_model: self.data('only_model'),
                     _token: $main.token
                 },
                 dataType: 'json',
@@ -175,15 +176,84 @@ $main.initPriceRange = function() {
     });
 };
 
-$main.initCheckbox = function() {
-    $('.checkbox-label input').on('change', function() {
-        $('.checkbox-label input').each(function() {
+$main.initCheckbox = function(obj) {
+    obj = obj || $('.checkbox-label');
+    $('input', obj).on('change', function() {
+        $('input', obj).each(function() {
             if ($(this).prop('checked')) {
                 $(this).parent('.checkbox-label').addClass('active');
             } else {
                 $(this).parent('.checkbox-label').removeClass('active');
             }
         });
+    });
+};
+
+$main.initPartsCheckbox = function(html, partsBlock) {
+    var partsPriceObj = $('.parts-price', partsBlock),
+        servicePriceObj = $('.service-price', partsBlock),
+        totalPriceObj = $('.total-price', partsBlock),
+        partsPrice = partsPriceObj.text() == '--' ? 0 : parseInt(partsPriceObj.text()),
+        servicePrice = servicePriceObj.text() == '--' ? 0 : parseInt(servicePriceObj.text()),
+        totalPrice = totalPriceObj.text() == '--' ? 0 : parseInt(totalPriceObj.text());
+    $('input', html).on('change', function() {
+        var self = $(this);
+        if (self.prop('checked')) {
+            self.parent('.checkbox-label').addClass('active');
+            partsPrice += self.data('price');
+            servicePrice += self.data('service_price');
+            totalPrice = totalPrice + self.data('price') + self.data('service_price');
+        } else {
+            self.parent('.checkbox-label').removeClass('active');
+            partsPrice -= self.data('price');
+            servicePrice -= self.data('service_price');
+            totalPrice = totalPrice - self.data('price') - self.data('service_price');
+        }
+        partsPriceObj.text(partsPrice);
+        servicePriceObj.text(servicePrice);
+        totalPriceObj.text(totalPrice);
+    });
+};
+
+$main.resetParts = function(partsBlock) {
+    $('.price-info', partsBlock).remove();
+    $('input:checkbox', partsBlock).attr('disabled', 'disabled').prop('checked', false).change();
+    $('.checkbox-label', partsBlock).addClass('disabled');
+    $('.parts-price', partsBlock).text('--');
+    $('.service-price', partsBlock).text('--');
+    $('.total-price', partsBlock).text('--');
+};
+
+$main.initParts = function() {
+    var partsBlock = $('#parts-calculator'),
+        markSelect = $('.mark-select select', partsBlock),
+        modelSelect = $('.model-select select', partsBlock);
+    markSelect.change(function() {
+        $main.resetParts(partsBlock);
+    });
+    modelSelect.change(function() {
+        var self = $(this);
+        if (self.val()) {
+            $.ajax({
+                type: 'post',
+                url: '/api/part',
+                data: {
+                    mark_id: markSelect.val(),
+                    model_id: self.val(),
+                    _token: $main.token
+                },
+                dataType: 'json',
+                success: function(result) {
+                    if (result.status == 'OK') {
+                        result.data = $(result.data);
+                        $main.initPartsCheckbox(result.data, partsBlock);
+                        $('.parts-checkboxes', partsBlock).html(result.data);
+                    }
+                }
+            });
+        } else {
+            $main.resetParts(partsBlock);
+        }
     });
 };
 
@@ -205,4 +275,6 @@ $(document).ready(function() {
     $main.initCheckbox();
 
     $main.preloadImages();
+
+    $main.initParts();
 });

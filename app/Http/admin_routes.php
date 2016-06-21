@@ -161,4 +161,12 @@ Route::group($params, function () {
     Route::post('/currency/update/{id}', ['uses' => 'CurrencyController@update', 'as' => 'admin_currency_update']);
     Route::post('/currency/delete/{id}', ['uses' => 'CurrencyController@delete', 'as' => 'admin_currency_delete']);
 
+    Route::get('/part', ['uses' => 'PartController@table', 'as' => 'admin_part_table']);
+    Route::get('/part/create', ['uses' => 'PartController@create', 'as' => 'admin_part_create']);
+    Route::get('/part/edit/{id}', ['uses' => 'PartController@edit', 'as' => 'admin_part_edit']);
+    Route::post('/part', ['uses' => 'PartController@index', 'as' => 'admin_part_index']);
+    Route::post('/part/store', ['uses' => 'PartController@store', 'as' => 'admin_part_store']);
+    Route::post('/part/update/{id}', ['uses' => 'PartController@update', 'as' => 'admin_part_update']);
+    Route::post('/part/delete/{id}', ['uses' => 'PartController@delete', 'as' => 'admin_part_delete']);
+
 });
