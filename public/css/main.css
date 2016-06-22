@@ -589,6 +589,19 @@ body textarea {
 #parts-calculator .part-checkbox {
     margin-bottom: 10px;
 }
+#parts-calculator .parts-block {
+    position: relative;
+}
+#parts-calculator .parts-loader {
+    background: url('../images/loader.gif') no-repeat;
+    height: 55px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -27px;
+    margin-left: -27px;
+    width: 54px;
+}
 #calculators .submit {
     height: 40px;
     margin-bottom: 15px;

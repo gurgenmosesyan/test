@@ -278,29 +278,30 @@ $title = trans('www.homepage.title');
             <h2 class="fl fb">{{trans('www.parts_calculator.title')}}</h2>
             <div class="help fr"><a href="#" class="db"></a></div>
             <div class="cb"></div>
-            <form id="parts-form" action="" method="post">
-                <div class="mark-select fl">
-                    <div class="select-box">
-                        <div class="select-arrow"></div>
-                        <div class="select-title"></div>
-                        <select name="mark" data-only_model="true">
-                            <option value="">{{trans('www.calculator.mark.select.default')}}</option>
-                            @foreach($marks as $mark)
-                                <option value="{{$mark->id}}">{{$mark->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
+            <div class="mark-select fl">
+                <div class="select-box">
+                    <div class="select-arrow"></div>
+                    <div class="select-title"></div>
+                    <select name="mark" data-only_model="true">
+                        <option value="">{{trans('www.calculator.mark.select.default')}}</option>
+                        @foreach($marks as $mark)
+                            <option value="{{$mark->id}}">{{$mark->name}}</option>
+                        @endforeach
+                    </select>
                 </div>
-                <div class="model-select fl">
-                    <div class="select-box disabled">
-                        <div class="select-arrow"></div>
-                        <div class="select-title"></div>
-                        <select name="model" disabled="disabled">
-                            <option value="">{{trans('www.calculator.model.select.default')}}</option>
-                        </select>
-                    </div>
+            </div>
+            <div class="model-select fl">
+                <div class="select-box disabled">
+                    <div class="select-arrow"></div>
+                    <div class="select-title"></div>
+                    <select name="model" disabled="disabled">
+                        <option value="">{{trans('www.calculator.model.select.default')}}</option>
+                    </select>
                 </div>
-                <div class="cb"></div>
+            </div>
+            <div class="cb"></div>
+            <div class="parts-block">
+                <div class="parts-loader dpn"></div>
                 <div class="parts-checkboxes">
                     @for($i = 1; $i < 11; $i++)
                         <div class="part-checkbox">
@@ -311,7 +312,7 @@ $title = trans('www.homepage.title');
                         </div>
                     @endfor
                 </div>
-            </form>
+            </div>
             <div class="calc-price">
                 <p class="calc-result fl">{{trans('www.calculator.parts.text')}}</p>
                 <p class="parts-price fr">--</p>

@@ -233,7 +233,9 @@ $main.initParts = function() {
     });
     modelSelect.change(function() {
         var self = $(this);
+        $main.resetParts(partsBlock);
         if (self.val()) {
+            $('.parts-loader', partsBlock).removeClass('dpn');
             $.ajax({
                 type: 'post',
                 url: '/api/part',
@@ -249,10 +251,9 @@ $main.initParts = function() {
                         $main.initPartsCheckbox(result.data, partsBlock);
                         $('.parts-checkboxes', partsBlock).html(result.data);
                     }
+                    $('.parts-loader', partsBlock).addClass('dpn');
                 }
             });
-        } else {
-            $main.resetParts(partsBlock);
         }
     });
 };

@@ -25,9 +25,7 @@ class Base
 
     public static function partPrice($data, $price, $currencies, $defCurrency, $cCurrency)
     {
-        if ($data['currency_id'] == $cCurrency->id) {
-            $price = $price;
-        } else {
+        if ($data['currency_id'] != $cCurrency->id) {
             $autoCurrency = $currencies[$data['currency_id']];
 
             if ($defCurrency->id == $autoCurrency->id) {
