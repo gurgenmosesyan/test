@@ -268,9 +268,6 @@ $title = trans('www.homepage.title');
                 </div>
             </div>
         </div>
-        <div class="home-ads">
-            <img src="/images/temp/h-ads.jpg">
-        </div>
     </div>
 
     <div id="calculators" class="fl">
@@ -380,6 +377,10 @@ $title = trans('www.homepage.title');
         </div>
     </div>
     <div class="cb"></div>
+
+    <div class="home-ads">
+        <img src="/images/temp/h-ads.png?v=1">
+    </div>
 
 </div>
 <script type="text/javascript">
