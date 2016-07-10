@@ -58,8 +58,7 @@ $title = trans('www.homepage.title');
 
     <div id="quick-search" class="fl">
         <h2>
-            {{trans('www.quick_search.title')}} <span>{{trans('www.quick_search.or')}}</span>
-            <a href="#" class="orange">{{trans('www.quick_search.advanced_search')}}</a>
+            {{trans('www.quick_search.title')}}
         </h2>
         <form id="quick-search-form" action="" method="get">
             <div class="country-select">
@@ -152,9 +151,9 @@ $title = trans('www.homepage.title');
             </div>
             <div class="search-bodies">
                 @foreach($bodies as $key => $body)
-                    <div class="search-body search-body-{{$key}} fl">
-                        <label class="checkbox-label body-label" style="background-image: url('{{$body->getImage()}}');">
-                            <input type="radio" name="body" value="{{$body->id}}" />
+                    <div class="search-body no-select search-body-{{$key}} fl">
+                        <label class="body-checkbox db" style="background-image: url('{{$body->getImage()}}');">
+                            <input type="checkbox" name="body" value="{{$body->id}}" />
                         </label>
                     </div>
                 @endforeach
@@ -164,6 +163,9 @@ $title = trans('www.homepage.title');
                 <div class="dib fb">{{trans('www.search.btn')}}</div>
                 <input type="submit" />
             </div>
+            <p class="adv-search-link tc">
+                <a href="#" class="orange">{{trans('www.quick_search.advanced_search')}}</a>
+            </p>
 
         </form>
     </div>

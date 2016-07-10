@@ -258,6 +258,25 @@ $main.initParts = function() {
     });
 };
 
+$main.initQuickSearch = function() {
+    var bodies = $('#quick-search').find('.search-bodies input'),
+        isChecked;
+    bodies.change(function() {
+        isChecked = $(this).prop('checked') ? true : false;
+        bodies.each(function() {
+            $(this).prop('checked', false).parent('label').removeClass('active');
+        });
+        if (isChecked) {
+            $(this).prop('checked', true).parent('label').addClass('active');
+        } else {
+            $(this).prop('checked', false).parent('label').removeClass('active');
+        }
+    });
+    bodies.each(function() {
+        $(this).change();
+    });
+};
+
 $(document).ready(function() {
     $main.initHeaderBlocks();
 
@@ -274,6 +293,8 @@ $(document).ready(function() {
     $main.initPriceRange();
 
     $main.initCheckbox();
+
+    $main.initQuickSearch();
 
     $main.preloadImages();
 

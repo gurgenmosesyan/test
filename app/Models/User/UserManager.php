@@ -24,6 +24,8 @@ class UserManager
         $user->password = bcrypt($user->password);
         $user->hash = self::generateRandomUniqueHash();
         $user->status = User::STATUS_REGISTERED;
+        $user->show_status = User::STATUS_ACTIVE;
+        $user->save();
 
         DB::transaction(function() use($user) {
             $user->save();
@@ -78,6 +80,7 @@ class UserManager
     public function addFBUser($data)
     {
         $user = new User($data);
+        $user->social = User::SOCIAL_FB;
         $user->hash = self::generateRandomUniqueHash();
         $user->status = User::STATUS_CONFIRMED;
         $user->save();
@@ -112,6 +115,7 @@ class UserManager
     public function addGoogleUser($data)
     {
         $user = new User($data);
+        $user->social = User::SOCIAL_GP;
         $user->hash = self::generateRandomUniqueHash();
         $user->status = User::STATUS_CONFIRMED;
         $user->save();
@@ -141,12 +145,11 @@ class UserManager
         $user->password = bcrypt($data['password']);
         $user->hash = $this->generateRandomUniqueHash();
         $user->save();
-        return true;
     }
 
     public function resetAfterDay()
     {
-        $now = Carbon::now()->addDay()->format('Y-m-d H:i:s');
-        User::active()->where('status', User::STATUS_REGISTERED)->where('created_at', '<', $now)->update(['show_status' => User::STATUS_DELETED]);
+        $oneDay = date('Y-m-d H:i:s', time() - 86400);
+        User::active()->where('status', User::STATUS_REGISTERED)->where('created_at', '<', $oneDay)->update(['show_status' => User::STATUS_DELETED]);
     }
 }

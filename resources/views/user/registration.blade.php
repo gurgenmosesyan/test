@@ -25,6 +25,12 @@ $title = trans('www.reg.title');
                 <a href="#" id="google-login" class="db"></a>
             </div>
             <div class="cb"></div>
+            <div class="line-block">
+                <div class="line fl"></div>
+                <div class="or fl tc">{{trans('www.base.label.or')}}</div>
+                <div class="line fl"></div>
+                <div class="cb"></div>
+            </div>
             <form id="registration-form" action="{{url_with_lng('/api/registration', false)}}" method="post">
                 <div class="form-box">
                     <input type="text" name="email" placeholder="{{trans('www.base.label.email')}}" />

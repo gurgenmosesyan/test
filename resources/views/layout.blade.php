@@ -15,7 +15,8 @@ if (!isset($currencies)) {
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>{{$title.' - autotrade.am'}}</title>
-    <link rel="shortcut icon" href="{{url('/favicon.ico')}}" type="image/x-icon" />
+    <link rel="icon" href="{{url('/favicon.png')}}" />
+    <link rel="shortcut icon" href="{{url('/favicon.ico')}}" />
     <?php
     $head->appendMainStyle('/css/jquery-ui.css');
     $head->appendMainStyle('/css/owl.carousel.css');
@@ -23,6 +24,7 @@ if (!isset($currencies)) {
 
     $head->appendMainScript('/js/jquery-2.1.4.min.js');
     $head->appendMainScript('/js/jquery-ui.min.js');
+    $head->appendMainScript('/js/jquery.ui.touch-punch.min.js');
     $head->appendMainScript('/js/owl.carousel.min.js');
     $head->appendMainScript('/js/main.js');
 
@@ -105,8 +107,12 @@ if (!isset($currencies)) {
                     <div class="cb"></div>
                 </div>
                 <div class="right-box profile fl">
-                    <p class="sign-in fl"><a href="{{url_with_lng('/login')}}">{{trans('www.header.sign_in')}}</a></p>
-                    <p class="sign-up fl"><a href="{{url_with_lng('/registration')}}">{{trans('www.header.sign_up')}}</a></p>
+                    <div class="right-inner-box login fl">
+                        <a href="{{url_with_lng('/login')}}" class="box-link db">{{trans('www.header.sign_in')}}</a>
+                    </div>
+                    <div class="right-inner-box registration fl">
+                        <a href="{{url_with_lng('/registration')}}" class="box-link db">{{trans('www.header.sign_up')}}</a>
+                    </div>
                     <div class="cb"></div>
                 </div>
                 <div class="cb"></div>

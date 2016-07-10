@@ -26,17 +26,19 @@ class UserController extends Controller
     public function activation($lngCode, $hash)
     {
         $user = User::active()->where('hash', $hash)->where('status', User::STATUS_REGISTERED)->first();
+        $wrong = false;
 
         if ($user == null) {
-            $message = trans('www.user.activation.wrong_hash');
+            $wrong = true;
         } else {
             $user->status = User::STATUS_CONFIRMED;
             $manager = new UserManager();
             $user->hash = $manager->generateRandomUniqueHash();
             $user->save();
-            $message = trans('www.user.activation.success_message');
         }
-        return view('user.activation')->with(['message' => $message]);
+        return view('user.activation')->with([
+            'wrong' => $wrong
+        ]);
     }
 
     public function reset($lngCode, $hash)
@@ -54,6 +56,20 @@ class UserController extends Controller
             ];
         }
         return view('user.reset')->with(['data' => $data]);
+    }
+
+    public function profile()
+    {
+        return view('user.profile')->with([
+            'user' => Auth::guard('user')->user()
+        ]);
+    }
+
+    public function profileEdit()
+    {
+        return view('user.profile_edit')->with([
+            'user' => Auth::guard('user')->user()
+        ]);
     }
 
     public function logout()

@@ -1,7 +1,32 @@
+<?php
+
+$title = trans('www.user.activation.title');
+
+?>
 @extends('layout')
 
 @section('content')
 
-{{$message}}
+<div class="page">
+    <div id="top-banner" class="tc">
+        <a href="#">
+            <img src="/images/temp/top-banner.jpg" />
+        </a>
+    </div>
+
+    <div id="login-block">
+        <div id="login-inner">
+            <h1 class="tc">{{$title}}</h1>
+            <p class="activation-info tc">
+                @if($wrong)
+                    {{trans('www.user.activation.wrong_hash')}}
+                @else
+                    {{trans('www.user.activation.success_message')}}
+                    <a href="{{url_with_lng('/login')}}" class="orange">{{trans('www.login.title')}}</a>
+                @endif
+            </p>
+        </div>
+    </div>
+</div>
 
 @stop

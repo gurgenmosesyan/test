@@ -14,6 +14,8 @@ class User extends Model implements AuthenticatableContract
     const REMEMBER_ME = '1';
     const SOCIAL_FB = 'fb';
     const SOCIAL_GP = 'gp';
+    const GENDER_MALE = 'male';
+    const GENDER_FEMALE = 'female';
 
     use Authenticatable;
 

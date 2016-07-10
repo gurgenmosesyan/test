@@ -44,7 +44,7 @@ $user.FBLogin = function(accessToken) {
         success: function(result) {
             console.log(result);
             if (result.status == 'OK') {
-
+                document.location.reload();
             } else {
                 alert(result.errors);
             }
@@ -65,9 +65,7 @@ $user.FBConnect = function() {
                         accessToken = res.authResponse.accessToken;
                         $user.FBLogin(accessToken);
                     } else {
-                        //$userLogin.enable();
-                        //$userLogin.enableFacebookLogin();
-                        //$('.login-form .facebook-btn').css({'cursor':'default'});
+                        //
                     }
                 }, {scope: 'public_profile, email, user_location'});
             }
@@ -109,8 +107,9 @@ $user.init = function() {
         return false;
     });
     $('#reset-form').submit(function() {
-        $user.sendForm($(this), function() {
+        $user.sendForm($(this), function(path) {
             alert('Password successfully changed');
+            document.location.href = path;
         });
         return false;
     });

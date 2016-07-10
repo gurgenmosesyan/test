@@ -121,6 +121,7 @@ class UserApiController extends Controller
 
     public function reset(ResetRequest $request)
     {
-        return $this->api('OK', $this->manager->reset($request->all()));
+        $this->manager->reset($request->all());
+        return $this->api('OK', ['link' => route('user_login', cLng('code'))]);
     }
 }

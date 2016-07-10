@@ -154,10 +154,21 @@ body textarea {
 }
 #header .favorite .box-link {
     background-image: url('../images/favorite.png');
+    background-size: 24px;
     margin-right: 24px;
 }
 #header .history .box-link {
     background-image: url('../images/history.png');
+    background-size: 24px;
+}
+#header .login .box-link {
+    background-image: url('../images/login.png');
+    background-size: 24px;
+    margin-right: 24px;
+}
+#header .registration .box-link {
+    background-image: url('../images/register.png');
+    background-size: 24px;
 }
 #header .currency,
 #header .lng {
@@ -179,12 +190,6 @@ body textarea {
 }
 #header .right-inner-box ul a:hover {
     background-color: #f1f1f1;
-}
-#header .profile {
-    line-height: 54px;
-}
-#header .sign-in {
-    margin-right: 15px;
 }
 
 #top-banner {
@@ -293,18 +298,25 @@ body textarea {
     width: 315px;
 }
 #quick-search h2 {
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 20px;
 }
 #quick-search h2 span {
     font-size: 14px;
     margin: 0 5px;
 }
-#quick-search h2 a {
-    border-bottom: 2px solid #FFA000;
+#quick-search .adv-search-link {
+    margin-top: 20px;
 }
-#quick-search h2 a:hover {
+#quick-search .adv-search-link a {
+    border-bottom: 2px solid #FFA000;
+    font-size: 16px;
+}
+#quick-search .adv-search-link a:hover {
     border-bottom: none;
+}
+#quick-search .body-checkbox {
+    background-size: 84px;
 }
 
 .select-box {
@@ -455,6 +467,9 @@ body textarea {
 }
 #quick-search .search-body label.active {
     background-position: 0 -31px;
+}
+#quick-search .search-body input {
+    opacity: 0;
 }
 #quick-search .submit {
     background-color: #FFA000;
@@ -689,8 +704,8 @@ body textarea {
 }
 #login-block .line {
     background-color: #F5F5F5;
-    height: 3px;
-    margin-top: 10px;
+    height: 2px;
+    margin-top: 11px;
     width: 164px;
 }
 #login-block .or {
@@ -733,6 +748,141 @@ body textarea {
 }
 #login-block .link a:hover {
     text-decoration: none;
+}
+#login-block .activation-info a {
+    text-decoration: underline;
+}
+#login-block .activation-info a:hover {
+    text-decoration: none;
+}
+
+/* profile */
+#profile {
+    padding-top: 25px;
+    margin-bottom: 34px;
+}
+#profile .links {
+    margin-bottom: 17px;
+}
+#profile .links .link {
+    height: 62px;
+    width: 386px;
+    margin-left: 21px;
+}
+#profile .links .profile-link {
+    margin-left: 0;
+}
+#profile .links .item {
+    background-color: #ffffff;
+    height: 100%;
+    line-height: 62px;
+    letter-spacing: 1px;
+}
+#profile .links span.item {
+    background-color: #FFA000;
+    color: #ffffff;
+}
+#profile .links .text {
+    vertical-align: middle;
+}
+#profile .links .icon {
+    margin-right: 10px;
+    vertical-align: middle;
+}
+#profile .links .profile-link .icon {
+    background: url('../images/my-profile.png') no-repeat;
+    background-size: 22px;
+    height: 22px;
+    width: 22px;
+}
+#profile .links .cars-link .icon {
+    background: url('../images/my-cars.png') no-repeat;
+    background-size: 26px;
+    height: 23px;
+    width: 26px;
+}
+#profile .links .ads-link .icon {
+    background: url('../images/my-ads.png') no-repeat;
+    background-size: 32px;
+    height: 28px;
+    width: 32px;
+}
+#profile-box {
+    background-color: #ffffff;
+    padding: 33px 49px;
+}
+#profile-box .profile-left {
+    border-right: 3px solid #EEEEEE;
+    width: 665px;
+}
+#profile-box .profile-img-box {
+    width: 140px;
+    margin-right: 40px;
+}
+#profile-box .profile-img {
+    background: url('../images/profile-img.png') no-repeat;
+    background-size: 140px;
+    height: 140px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+#profile-box .edit-link a {
+    text-decoration: underline;
+}
+#profile-box .edit-link a:hover {
+    text-decoration: none;
+}
+#profile-box h2 {
+    font-size: 30px;
+    margin: 4px 0 30px;
+    letter-spacing: 2px;
+}
+#profile-box .profile-info p {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+#profile-box .profile-right {
+    padding: 5px 0 0 28px;
+}
+#profile-box .balance-icon {
+    background: url('../images/balance.png') no-repeat;
+    background-size: 41px;
+    height: 39px;
+    margin-right: 12px;
+    width: 41px;
+}
+#profile-box .balance p {
+    font-size: 18px;
+    margin-bottom: 4px;
+    letter-spacing: 1px;
+}
+#profile-box .recharge {
+    margin: 25px 0;
+}
+#profile-box .payments a {
+    margin-right: 10px;
+}
+#profile-box .payments img {
+    box-shadow: 0 0 8px #ccc;
+}
+
+#login-block.profile-edit {
+    margin-top: 25px;
+}
+#login-block .select-box {
+    height: 48px;
+}
+#login-block .select-title {
+    font-size: 18px;
+    line-height: 48px;
+}
+#login-block .day,
+#login-block .year {
+    width: 100px;
+}
+#login-block .month {
+    margin: 0 10px;
+    width: 135px;
 }
 
 /* footer */
@@ -836,4 +986,18 @@ body textarea {
 #footer .website-by div {
     text-align: left;
     line-height: 22px;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (-webkit-min-device-pixel-ratio: 1.5),
+only screen and (-moz-min-device-pixel-ratio: 2),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (-o-min-device-pixel-ratio: 2/1),
+only screen and (min--moz-device-pixel-ratio: 1.5),
+only screen and (min-device-pixel-ratio: 1.5),
+only screen and (min-device-pixel-ratio: 2)
+{
+    /*#quick-search .body-checkbox {
+        background-size: 84px;
+    }*/
 }
