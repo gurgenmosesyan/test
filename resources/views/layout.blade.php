@@ -2,6 +2,7 @@
 use App\Core\Language\Language;
 use App\Models\Currency\CurrencyManager;
 
+$user = Auth::guard('user')->user();
 $languages = Language::all();
 if (!isset($currencies)) {
     $currencyManager = new CurrencyManager();
@@ -107,13 +108,19 @@ if (!isset($currencies)) {
                     <div class="cb"></div>
                 </div>
                 <div class="right-box profile fl">
-                    <div class="right-inner-box login fl">
-                        <a href="{{url_with_lng('/login')}}" class="box-link db">{{trans('www.header.sign_in')}}</a>
-                    </div>
-                    <div class="right-inner-box registration fl">
-                        <a href="{{url_with_lng('/registration')}}" class="box-link db">{{trans('www.header.sign_up')}}</a>
-                    </div>
-                    <div class="cb"></div>
+                    @if(Auth::guard('user')->guest())
+                        <div class="right-inner-box login fl">
+                            <a href="{{url_with_lng('/login')}}" class="box-link db">{{trans('www.header.sign_in')}}</a>
+                        </div>
+                        <div class="right-inner-box registration fl">
+                            <a href="{{url_with_lng('/registration')}}" class="box-link db">{{trans('www.header.sign_up')}}</a>
+                        </div>
+                        <div class="cb"></div>
+                    @else
+                        <div class="right-inner-box username fl">
+                            <a href="{{url_with_lng('/profile')}}" class="box-link db">{{$user->first_name}}</a>
+                        </div>
+                    @endif
                 </div>
                 <div class="cb"></div>
             </div>

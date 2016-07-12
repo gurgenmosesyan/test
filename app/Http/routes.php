@@ -36,6 +36,7 @@ Route::group(['middleware' => ['web', 'front']], function() {
         Route::group(['middleware' => 'auth:user'], function() {
             Route::get('/profile', ['uses' => 'UserController@profile', 'as' => 'user_profile']);
             Route::get('/profile/edit', ['uses' => 'UserController@profileEdit']);
+            Route::post('/api/profile/edit', ['uses' => 'UserApiController@profileEdit']);
             Route::get('/logout', ['uses' => 'UserController@logout', 'as' => 'user_logout']);
         });
 

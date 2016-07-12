@@ -34,24 +34,23 @@ $title = trans('www.user.profile.title');
 
         <div id="profile-box">
             <div class="profile-left fl">
-                <div class="profile-img-box fl">
-                    <div class="profile-img"></div>
-                    <p class="edit-link tc">
-                        <a href="{{url_with_lng('/profile/edit', false)}}" class="orange">{{trans('www.profile.edit_profile')}}</a>
-                    </p>
-                </div>
                 <div class="profile-info fl">
                     <h2 class="fb">{{$user->first_name.' '.$user->last_name}}</h2>
                     <p>{{trans('www.profile.email').' '.$user->email}}</p>
                     <p>{{trans('www.profile.mobile').' '.$user->phone}}</p>
-                    @if(!empty($user->birthday))
-                        <p>{{trans('www.profile.birthday').' '.$user->birthday}}</p>
+                    @if(!empty($user->birthday) && $user->birthday != '0000-00-00')
+                        <p>{{trans('www.profile.birthday').' '.date('d.m.Y', strtotime($user->birthday))}}</p>
                     @endif
                     @if(!empty($user->gender))
-                        <p>{{trans('www.profile.gender.'.$user->gender)}}</p>
+                        <p>{{trans('www.profile.gender').' '.trans('www.profile.gender.'.$user->gender)}}</p>
                     @endif
+                    <p class="edit-link">
+                        <a href="{{url_with_lng('/profile/edit', false)}}" class="orange">{{trans('www.profile.edit_profile')}}</a>
+                    </p>
+                    <p class="edit-link">
+                        <a href="{{url_with_lng('/logout', false)}}" class="orange">{{trans('www.profile.logout')}}</a>
+                    </p>
                 </div>
-                <div class="cb"></div>
             </div>
             <div class="profile-right fl">
                 <div class="balance">

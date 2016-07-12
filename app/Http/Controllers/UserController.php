@@ -67,8 +67,18 @@ class UserController extends Controller
 
     public function profileEdit()
     {
+        $user = Auth::guard('user')->user();
+        $day = $month = $year = null;
+        if (!empty($user->birthday) && $user->birthday != '0000-00-00') {
+            $day = date('j', strtotime($user->birthday));
+            $month = date('n', strtotime($user->birthday));
+            $year = date('Y', strtotime($user->birthday));
+        }
         return view('user.profile_edit')->with([
-            'user' => Auth::guard('user')->user()
+            'user' => $user,
+            'day' => $day,
+            'month' => $month,
+            'year' => $year
         ]);
     }
 

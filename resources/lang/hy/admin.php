@@ -92,7 +92,7 @@ return array (
   'auto.form.title' => 'Մեքենաներ',
   'auto.form.add.sub_title' => 'Add new auto',
   'auto.form.edit.sub_title' => 'Auto № :id',
-  'base.label.year' => 'Year',
+  'base.label.year' => 'Տարեթիվ',
   'base.label.model' => 'Model',
   'base.label.body' => 'Թափք',
   'base.label.transmission' => 'Փոխանցումատուփ',
@@ -160,5 +160,5 @@ return array (
   'part.form.add.sub_title' => 'Add new part',
   'part.form.edit.sub_title' => 'Part № :id',
   'base.label.currency' => 'Currency',
-  'base.label.service_price' => 'Service price',
+  'base.label.service_price' => 'Փոխարինման արժեք',
 );

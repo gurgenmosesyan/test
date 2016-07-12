@@ -6,6 +6,7 @@ use App\Http\Requests\User\RegRequest;
 use App\Http\Requests\User\LoginRequest;
 use App\Http\Requests\User\ForgotRequest;
 use App\Http\Requests\User\ResetRequest;
+use App\Http\Requests\User\EditRequest;
 use Illuminate\Http\Request;
 use App\Models\User\User;
 use App\Models\User\UserManager;
@@ -123,5 +124,11 @@ class UserApiController extends Controller
     {
         $this->manager->reset($request->all());
         return $this->api('OK', ['link' => route('user_login', cLng('code'))]);
+    }
+
+    public function profileEdit(EditRequest $request)
+    {
+        $this->manager->editProfile($request->all());
+        return $this->api('OK', ['link' => route('user_profile', cLng('code'))]);
     }
 }

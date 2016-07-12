@@ -3,7 +3,7 @@
 namespace App\Models\User;
 
 use App\Email\EmailManager;
-use Carbon\Carbon;
+use Auth;
 use DB;
 
 class UserManager
@@ -21,6 +21,9 @@ class UserManager
     public function registration($data)
     {
         $user = new User($data);
+        $user->birthday = '0000-00-00';
+        $user->gender = '';
+        $user->balance = 0;
         $user->password = bcrypt($user->password);
         $user->hash = self::generateRandomUniqueHash();
         $user->status = User::STATUS_REGISTERED;
@@ -145,6 +148,17 @@ class UserManager
         $user->password = bcrypt($data['password']);
         $user->hash = $this->generateRandomUniqueHash();
         $user->save();
+    }
+
+    public function editProfile($data)
+    {
+        if (empty($data['password'])) {
+            unset($data['password']);
+        } else {
+            $data['password'] = bcrypt($data['password']);
+        }
+        $user = Auth::guard('user')->user();
+        $user->update($data);
     }
 
     public function resetAfterDay()

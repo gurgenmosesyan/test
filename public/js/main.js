@@ -40,7 +40,7 @@ $main.basePath = function(path, lngCode) {
 };
 
 $main.preloadImages = function() {
-    var images = ['/images/checkbox-active.png'],
+    var images = ['/images/checkbox-active.png', '/images/radio-active.png'],
         img;
     for (var i in images) {
         img = new Image();
@@ -186,7 +186,20 @@ $main.initCheckbox = function(obj) {
                 $(this).parent('.checkbox-label').removeClass('active');
             }
         });
-    });
+    }).change();
+};
+
+$main.initRadio = function(obj) {
+    obj = obj || $('.radio-label');
+    $('input', obj).on('change', function() {
+        $('input', obj).each(function() {
+            if ($(this).prop('checked')) {
+                $(this).parent('.radio-label').addClass('active');
+            } else {
+                $(this).parent('.radio-label').removeClass('active');
+            }
+        });
+    }).change();
 };
 
 $main.initPartsCheckbox = function(html, partsBlock) {
@@ -293,6 +306,8 @@ $(document).ready(function() {
     $main.initPriceRange();
 
     $main.initCheckbox();
+
+    $main.initRadio();
 
     $main.initQuickSearch();
 

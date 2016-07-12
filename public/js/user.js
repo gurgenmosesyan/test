@@ -23,7 +23,7 @@ $user.sendForm = function(form, callback) {
         success: function(result) {
             $user.resetErrors();
             if (result.status == 'OK') {
-                callback(result.data.link);
+                callback(result.data);
             } else {
                 $user.showErrors(result.errors);
             }
@@ -95,8 +95,8 @@ $user.init = function() {
         return false;
     });
     $('#login-form').submit(function() {
-        $user.sendForm($(this), function(path) {
-            document.location.href = path;
+        $user.sendForm($(this), function(data) {
+            document.location.href = data.link;
         });
         return false;
     });
@@ -107,9 +107,16 @@ $user.init = function() {
         return false;
     });
     $('#reset-form').submit(function() {
-        $user.sendForm($(this), function(path) {
+        $user.sendForm($(this), function(data) {
             alert('Password successfully changed');
-            document.location.href = path;
+            document.location.href = data.link;
+        });
+        return false;
+    });
+    $('#edit-form').submit(function() {
+        $user.sendForm($(this), function(data) {
+            alert('Changes successfully saved');
+            document.location.href = data.link;
         });
         return false;
     });

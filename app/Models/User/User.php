@@ -29,6 +29,8 @@ class User extends Model implements AuthenticatableContract
         'first_name',
         'last_name',
         'phone',
+        'birthday',
+        'gender',
         'social_id'
     ];
 

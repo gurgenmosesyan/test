@@ -170,6 +170,13 @@ body textarea {
     background-image: url('../images/register.png');
     background-size: 24px;
 }
+#header .username .box-link {
+    background-image: url('../images/profile-img.png');
+    background-position: left center;
+    background-size: 24px;
+    padding: 0 0 0 30px;
+    line-height: 50px;
+}
 #header .currency,
 #header .lng {
     position: relative;
@@ -435,6 +442,22 @@ body textarea {
 }
 .checkbox-label.active {
     background-image: url('../images/checkbox-active.png');
+}
+.radio-label {
+    background: url('../images/radio.png') no-repeat;
+    background-size: 24px;
+    display: block;
+    cursor: pointer;
+    font-size: 14px;
+    min-height: 24px;
+    line-height: 24px;
+    padding-left: 34px;
+}
+.radio-label input {
+    opacity: 0;
+}
+.radio-label.active {
+    background-image: url('../images/radio-active.png');
 }
 
 #quick-search .custom-cleared {
@@ -813,20 +836,13 @@ body textarea {
 }
 #profile-box .profile-left {
     border-right: 3px solid #EEEEEE;
-    width: 665px;
+    width: 600px;
 }
-#profile-box .profile-img-box {
-    width: 140px;
-    margin-right: 40px;
-}
-#profile-box .profile-img {
-    background: url('../images/profile-img.png') no-repeat;
-    background-size: 140px;
-    height: 140px;
-    margin-bottom: 15px;
-    width: 100%;
+#profile-box .edit-link {
+    margin-top: 35px;
 }
 #profile-box .edit-link a {
+    font-size: 16px;
     text-decoration: underline;
 }
 #profile-box .edit-link a:hover {
@@ -883,6 +899,12 @@ body textarea {
 #login-block .month {
     margin: 0 10px;
     width: 135px;
+}
+#login-block .radio-label {
+    font-size: 18px;
+}
+#login-block .male {
+    margin-right: 25px;
 }
 
 /* footer */

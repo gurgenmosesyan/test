@@ -104,4 +104,9 @@ return array (
   'base.label.year' => 'Year',
   'gender.male' => 'Male',
   'gender.female' => 'Female',
+  'profile.gender.male' => 'Male',
+  'profile.gender.female' => 'Female',
+  'field.required' => 'This field is required',
+  'profile.gender' => 'Gender:',
+  'profile.logout' => 'Logout',
 );
