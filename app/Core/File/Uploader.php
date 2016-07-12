@@ -179,13 +179,13 @@ class Uploader
         // @throws Media_ImgUploader_Exception_InvalidExtension, @throws Media_ImgUploader_Exception_InvalidImage
         $extension = $this->getFileExtension($uploadedFile, $module);
 
-        $userId = Auth::guard('admin')->user()->id;
+        //$userId = Auth::guard('admin')->user()->id;
         $id = DB::table('uploaded_files')->insertGetId([
             'file_data' => '',
             'created_at' => new Carbon(),
             'uploader_key' => $this->getUploaderKey(),
             'uploader_type' => $this->getUploaderType(),
-            'uploaded_by_id' => $userId,
+            'uploaded_by_id' => 0 //$userId,
         ]);
 
         $fileData = [
@@ -196,7 +196,7 @@ class Uploader
             'created_at' => new Carbon(),
             'uploader_key' => $this->getUploaderKey(),
             'uploader_type' => $this->getUploaderType(),
-            'uploaded_by_id' => $userId,
+            'uploaded_by_id' => 0 //$userId,
         ];
         $fileData['file_path'] = $uploadedFile->move($moveToTempDirectory, $id.'.'.$extension);
 

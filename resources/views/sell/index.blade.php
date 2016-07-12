@@ -1,6 +1,8 @@
 <?php
 use App\Models\Auto\Auto;
 
+$head->appendScript('/js/sell.js');
+
 $title = trans('www.sell_car.title');
 
 ?>
@@ -11,7 +13,7 @@ $title = trans('www.sell_car.title');
 <div class="page">
     <div id="sell">
 
-        <div class="sell-left fl">
+        <div class="col-2 sell-left fl">
 
             <label class="required fl">{{trans('www.sell_car.mark')}}</label>
             <div class="mark-select inp fl">
@@ -140,8 +142,21 @@ $title = trans('www.sell_car.title');
             <div class="inp fl"><input type="text" name="place" value="" /></div>
             <div class="cb"></div>
 
+            <label class="required fl">{{trans('www.sell_car.term')}}</label>
+            <div class="select-box inp fl">
+                <div class="select-arrow"></div>
+                <div class="select-title"></div>
+                <select name="country_id">
+                    <option value="">{{trans('www.base.label.select')}}</option>
+                    @for($i = 10; $i > 0; $i--)
+                        <option value="{{$i}}">{{trans('www.sell_car.term.week', ['week' => $i])}}</option>
+                    @endfor
+                </select>
+            </div>
+            <div class="cb"></div>
+
         </div>
-        <div class="sell-right fl">
+        <div class="col-2 sell-right fl">
 
             <label class="required fl">{{trans('www.sell_car.model')}}</label>
             <div class="model-select inp fl">
@@ -270,6 +285,16 @@ $title = trans('www.sell_car.title');
             </div>
             <div class="cb"></div>
 
+            <label class="fl">{{trans('www.sell_car.additional_phone')}}</label>
+            <div class="inp fl"><input type="text" name="additional_phone" value="" /></div>
+            <div class="cb"></div>
+
+        </div>
+        <div class="cb"></div>
+
+        <div class="separator"></div>
+
+        <div class="col-2 sell-left fl">
             <label class="required fl">{{trans('www.sell_car.price')}}</label>
             <div class="inp fl">
                 <div class="mileage-input fl"><input type="text" name="price" value="" /></div>
@@ -285,9 +310,93 @@ $title = trans('www.sell_car.title');
                 <div class="cb"></div>
             </div>
             <div class="cb"></div>
+        </div>
+        <div class="cb"></div>
+
+        <div class="col-3 sell-left fl">
+
+            <label class="checkbox-label no-select">
+                {{trans('www.sell_car.contract')}}
+                <input type="checkbox" name="contract" value="{{Auto::CONTRACT}}" />
+            </label>
+
+            <label class="checkbox-label no-select">
+                {{trans('www.sell_car.exchange')}}
+                <input type="checkbox" name="exchange" value="{{Auto::EXCHANGE}}" />
+            </label>
+
+            <label class="checkbox-label no-select">
+                {{trans('www.sell_car.damaged')}}
+                <input type="checkbox" name="damaged" value="{{Auto::DAMAGED}}" />
+            </label>
+
+        </div>
+        <div class="col-3 sell-middle fl">
+
+            <label class="checkbox-label no-select">
+                {{trans('www.sell_car.auction')}}
+                <input type="checkbox" name="auction" value="{{Auto::AUCTION}}" />
+            </label>
+
+            <label class="checkbox-label no-select">
+                {{trans('www.sell_car.partial_pay')}}
+                <input type="checkbox" name="partial_pay" value="{{Auto::PARTIAL_PAY}}" />
+            </label>
+
+        </div>
+        <div class="col-3 sell-right fl">
+
+            <label class="checkbox-label no-select">
+                {{trans('www.sell_car.bank')}}
+                <input type="checkbox" name="bank" value="{{Auto::BANK}}" />
+            </label>
+
+            <label class="checkbox-label no-select">
+                {{trans('www.sell_car.customs_cleared')}}
+                <input type="checkbox" name="custom_cleared" value="{{Auto::CUSTOM_CLEARED}}" />
+            </label>
 
         </div>
         <div class="cb"></div>
+
+        <div class="separator"></div>
+
+        <div class="col-1">
+            <label class="fl">{{trans('www.sell_car.description')}}</label>
+            <div class="inp fl"><textarea name="description"></textarea></div>
+            <div class="cb"></div>
+        </div>
+
+        <div class="separator"></div>
+
+        <?php
+        $optionsCol1 = $optionsCol2 = $optionsCol3 = '';
+        $i = 1;
+        foreach($options as $opt) {
+            $buffer = '<label class="checkbox-label no-select">'.$opt->name.'<input type="checkbox" name="options[]" value="'.$opt->id.'" /></label>';
+            if ($i == 1) {
+                $optionsCol1 .= $buffer;
+            } else if ($i == 2) {
+                $optionsCol2 .= $buffer;
+            } else {
+                $optionsCol3 .= $buffer;
+                $i = 0;
+            }
+            $i++;
+        }
+        ?>
+        <div class="col-3 sell-left fl">{!!$optionsCol1!!}</div>
+        <div class="col-3 sell-middle fl">{!!$optionsCol2!!}</div>
+        <div class="col-3 sell-right fl">{!!$optionsCol3!!}</div>
+        <div class="cb"></div>
+
+        <div class="separator"></div>
+
+        <div class="col-1">
+            <div><a href="#" id="upload-image" class="dib orange-bg">{{trans('www.sell_car.upload_image')}}</a></div>
+            <div id="sell-images"></div>
+            <div class="cb"></div>
+        </div>
 
     </div>
 </div>

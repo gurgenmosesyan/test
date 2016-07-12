@@ -9,6 +9,11 @@ Route::group(['middleware' => ['web']], function() {
     Route::post('/api/part', 'ApiController@part');
 });
 
+Route::group(['middleware' => ['web', 'auth:user']], function() {
+    Route::get('/api/image/show', 'ImageUploadController@show');
+    Route::post('/api/image/upload', 'ImageUploadController@upload');
+});
+
 Route::group(['middleware' => ['web', 'front']], function() {
 
     Route::get('/', 'IndexController@index');
