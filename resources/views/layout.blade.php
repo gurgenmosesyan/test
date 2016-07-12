@@ -71,7 +71,7 @@ if (!isset($currencies)) {
             </div>
             <div class="header-right fr">
                 <div class="sell-car fl">
-                    <a href="#" class="db fb">{{trans('www.header.sell_car.btn')}}</a>
+                    <a href="{{url_with_lng('/sell', false)}}" class="db fb">{{trans('www.header.sell_car.btn')}}</a>
                 </div>
                 <div class="right-box currency-lng fl">
                     <div class="right-inner-box currency fl">

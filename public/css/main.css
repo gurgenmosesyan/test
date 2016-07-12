@@ -907,6 +907,49 @@ body textarea {
     margin-right: 25px;
 }
 
+/* sell */
+#sell {
+    background-color: #ffffff;
+    margin: 25px 0;
+    padding: 40px 50px;
+}
+#sell .sell-left {
+    margin-right: 40px;
+    width: 530px;
+}
+#sell .sell-right {
+    width: 530px;
+}
+#sell label {
+    margin: 0 30px 10px 0;
+    line-height: 33px;
+    width: 250px;
+}
+#sell .required:after {
+    content: " *" !important;
+    color: #dd4b39 !important;
+    font-size: 1.5em;
+    vertical-align: middle;
+}
+#sell .inp {
+    margin-bottom: 10px;
+    width: 250px;
+}
+#sell .mileage-input {
+    margin-right: 10px;
+    width: 140px;
+}
+#sell .mileage-select {
+    width: 100px;
+}
+#sell .engine-volume1 {
+    margin-right: 10px;
+    width: 120px;
+}
+#sell .engine-volume2 {
+    width: 120px;
+}
+
 /* footer */
 #footer-block {
     background-color: #263238;

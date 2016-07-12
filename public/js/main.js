@@ -123,10 +123,18 @@ $main.initSelect = function() {
 };
 
 $main.initMarkSelect = function() {
-    $('.mark-select select').change(function() {
+    var quickSearch = $('#quick-search'),
+        calculators = $('#calculators'),
+        sell = $('#sell');
+    $main.markSelect(quickSearch.find('.mark-select select'), quickSearch.find('.model-select .select-box'));
+    $main.markSelect(calculators.find('.mark-select select'), calculators.find('.model-select .select-box'));
+    $main.markSelect(sell.find('.mark-select select'), sell.find('.model-select .select-box'));
+};
+
+$main.markSelect = function(markSelect, modelSelBox) {
+    var modelSelect = modelSelBox.find('select');
+    markSelect.change(function() {
         var self = $(this),
-            modelSelBox = self.parents('.mark-select').next('.model-select').find('.select-box'),
-            modelSelect = modelSelBox.find('select'),
             html = '';
         if (self.val()) {
             modelSelBox.addClass('loading');
@@ -155,6 +163,43 @@ $main.initMarkSelect = function() {
             modelSelBox.addClass('disabled');
             modelSelect.find('.opt').remove();
             modelSelect.append(html).attr('disabled', 'disabled').change();
+        }
+    });
+};
+
+$main.initCountrySelect = function() {
+    var sell = $('#sell'),
+        regionSelectBox = sell.find('.region-select'),
+        regionSelect = regionSelectBox.find('select');
+    sell.find('.country-select select').change(function() {
+        var self = $(this),
+            html = '';
+        if (self.val()) {
+            regionSelectBox.addClass('loading');
+            $.ajax({
+                type: 'post',
+                url: $main.basePath('/api/region'),
+                data: {
+                    country_id: self.val(),
+                    _token: $main.token
+                },
+                dataType: 'json',
+                success: function(result) {
+                    if (result.status == 'OK') {
+                        for (var i in result.data) {
+                            html += '<option class="opt" value="'+result.data[i].id+'">'+result.data[i].name+'</option>';
+                        }
+                        regionSelectBox.removeClass('disabled');
+                        regionSelect.find('.opt').remove();
+                        regionSelect.append(html).attr('disabled', false).change();
+                    }
+                    regionSelectBox.removeClass('loading');
+                }
+            });
+        } else {
+            regionSelectBox.addClass('disabled');
+            regionSelect.find('.opt').remove();
+            regionSelect.append(html).attr('disabled', 'disabled').change();
         }
     });
 };
@@ -314,4 +359,6 @@ $(document).ready(function() {
     $main.preloadImages();
 
     $main.initParts();
+
+    $main.initCountrySelect();
 });

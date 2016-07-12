@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\ModelCategory\Category;
 use App\Models\Model\Model;
 use App\Models\Part\Part;
+use App\Models\Region\Region;
 
 class ApiController extends Controller
 {
@@ -55,5 +56,12 @@ class ApiController extends Controller
         $part = Part::where('mark_id', $markId)->where('model_id', $modelId)->first();
         $part = view('blocks.part')->with(['part' => $part])->render();
         return $this->api('OK', $part);
+    }
+
+    public function region(Request $request)
+    {
+        $countryId = $request->input('country_id');
+        $regions = Region::joinMl()->active()->where('country_id', $countryId)->get();
+        return $this->api('OK', $regions);
     }
 }
