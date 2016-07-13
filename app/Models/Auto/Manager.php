@@ -6,6 +6,7 @@ use App\Core\Image\SaveImage;
 use Intervention\Image\ImageManagerStatic as ImageManager;
 use App\Models\Config\Config;
 use DB;
+use Auth;
 
 class Manager
 {
@@ -190,5 +191,24 @@ class Manager
     {
         Auto::active()->where('id', $id)->update(['show_status' => Auto::STATUS_DELETED]);
         return true;
+    }
+
+    /************************** User **************************/
+
+    public function add($data)
+    {
+        $data = $this->processSave($data);
+        $auto = new Auto($data);
+        $auto->auto_id = $this->generateUniqueAutoId();
+        $auto->user_id = Auth::guard('user')->user()->id;
+        $auto->term = date('Y-m-d', time()+(60*60*24*7*$data['term']));
+        $auto->status = Auto::STATUS_PENDING;
+        $auto->show_status = Auto::STATUS_ACTIVE;
+
+        DB::transaction(function() use($data, $auto) {
+            $auto->save();
+            $this->updateOptions($data['options'], $auto);
+            $this->storeImages($data['images'], $auto);
+        });
     }
 }

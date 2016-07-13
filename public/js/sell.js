@@ -85,6 +85,7 @@ $sell.addImage = function(imgPath, imgVal, id) {
                         '<a href="#" class="rotate-right dib"></a>'+
                         '<a href="#" class="delete-img dib"></a>'+
                     '</div>'+
+                    '<div id="form-error-images_'+$sell.imgIndex+'_image" class="form-error"></div>'+
                 '</div>';
     html = $(html);
     $sell.initImageTools(html);
@@ -140,11 +141,80 @@ $sell.initImageUpload = function() {
     $sell.generateImages();
 };
 
+$sell.resetForm = function(form) {
+    $('.has-error', form).removeClass('has-error');
+    $('.form-error', form).text('');
+};
+
+$sell.showErrors = function(form, errors) {
+    for (var i in errors) {
+        $('#form-error-'+i.replace(/\./g, '_'), form).text(errors[i][0]).closest('.form-box').addClass('has-error');
+    }
+    $('html, body').animate({
+        scrollTop: $('.has-error:first').offset().top-20
+    }, 500);
+};
+
+$sell.initPrice = function() {
+    var contract = $('#contract'),
+        auction = $('#auction'),
+        priceLabel = $('#price-label');
+    contract.on('change', function() {
+        if ($(this).prop('checked')) {
+            priceLabel.removeClass('required');
+            auction.prop('checked', false).trigger('change');
+            $('#auction-group').find('.icheckbox_minimal-blue').removeClass('checked');
+        } else if (!auction.prop('checked')) {
+            priceLabel.addClass('required');
+        }
+    }).trigger('change');
+    auction.on('change', function() {
+        if ($(this).prop('checked')) {
+            priceLabel.removeClass('required');
+            contract.prop('checked', false).trigger('change');
+            $('#contract-group').find('.icheckbox_minimal-blue').removeClass('checked');
+        } else if (!contract.prop('checked')) {
+            priceLabel.addClass('required');
+        }
+    }).trigger('change');
+};
+
+$sell.initForm = function() {
+    $('#sell-form').submit(function() {
+        var form = $(this);
+        if (form.hasClass('loading')) {
+            return false;
+        }
+        form.addClass('loading');
+        $.ajax({
+            type: 'post',
+            url: form.attr('action'),
+            data: form.serializeArray(),
+            dataType: 'json',
+            success: function(result) {
+                $sell.resetForm(form);
+                if (result.status == 'OK') {
+                    alert(result.data.text);
+                    document.location.href = result.data.link;
+                } else {
+                    $sell.showErrors(form, result.errors);
+                }
+                form.removeClass('loading');
+            }
+        });
+        return false;
+    });
+};
+
 $sell.init = function() {
 
     $sell.initCountrySelect();
 
     $sell.initImageUpload();
+
+    $sell.initPrice();
+
+    $sell.initForm();
 };
 
 $(document).ready(function() {

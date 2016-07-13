@@ -39,7 +39,7 @@ class AppServiceProvider extends ServiceProvider
             if (empty($value) || $value === 'same') {
                 return true;
             } else {
-                $tempFile = Uploader::getTempImage($value, false, true);
+                $tempFile = Uploader::getTempImage($value, false, false);
                 if (empty($tempFile)) {
                     return false;
                 }

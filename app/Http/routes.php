@@ -44,7 +44,7 @@ Route::group(['middleware' => ['web', 'front']], function() {
             Route::post('/api/profile/edit', 'UserApiController@profileEdit');
             Route::get('/logout', ['uses' => 'UserController@logout', 'as' => 'user_logout']);
             Route::get('/sell', 'SellController@index');
-            Route::post('/sell', 'SellApiController@index');
+            Route::post('/api/sell', 'SellApiController@add');
             Route::post('/api/region', 'ApiController@region');
         });
 

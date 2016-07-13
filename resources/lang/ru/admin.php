@@ -124,7 +124,7 @@ return array (
   'base.label.contract' => 'Contract',
   'base.label.exchange' => 'Exchange',
   'base.label.partial_pay' => 'Ежемесячная оплата',
-  'base.label.custom_cleared' => 'Custom cleared',
+  'base.label.custom_cleared' => 'Растаможенный',
   'base.label.damaged' => 'Поврежденный',
   'base.label.vin' => 'VIN',
   'base.label.description' => 'Description',
@@ -159,6 +159,6 @@ return array (
   'part.form.title' => 'Parts',
   'part.form.add.sub_title' => 'Add new part',
   'part.form.edit.sub_title' => 'Part № :id',
-  'base.label.currency' => 'Currency',
+  'base.label.currency' => 'Валюта',
   'base.label.service_price' => 'Цена замены',
 );

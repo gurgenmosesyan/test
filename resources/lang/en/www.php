@@ -147,4 +147,6 @@ return array (
   'sell_car.term.week' => ':week week',
   'sell_car.description' => 'Description',
   'sell_car.upload_image' => 'Upload image',
+  'sell_car.submit' => 'Submit',
+  'sell_car.add.success_text' => 'Your car successfully added. Wait for admin confirmation.',
 );

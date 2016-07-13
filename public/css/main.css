@@ -72,6 +72,18 @@ ul li.cb {
     -ms-user-select: none;
 }
 
+.btn {
+    background-color: #FFA000;
+    border-radius: 4px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 14px;
+    height: 33px;
+    line-height: 33px;
+    padding: 0 10px;
+    letter-spacing: 1px;
+}
+
 @font-face {
     font-family: 'helvetica-c';
     src: url('../fonts/Helvetica.woff') format('woff');
@@ -922,18 +934,28 @@ body textarea {
     padding: 40px 100px;
 }
 #sell .col-2 {
-    width: 480px;
+    width: 460px;
 }
-#sell .sell-left,
-#sell .sell-middle {
-    margin-right: 40px;
+#sell .col-2.sell-left {
+    margin-right: 80px;
 }
 #sell .col-3 {
-    width: 340px;
+    width: 320px;
 }
-#sell label {
-    margin: 0 20px 12px 0;
-    width: 210px;
+#sell .col-3.sell-left,
+#sell .col-3.sell-middle {
+    margin-right: 20px;
+}
+#sell .form-box {
+    margin-bottom: 10px;
+}
+#sell .col-1 label,
+#sell .col-2 label {
+    margin-right: 20px;
+    width: 190px;
+}
+#sell .col-3 label {
+    display: inline-block;
 }
 #sell label span {
     display: table-cell;
@@ -949,14 +971,14 @@ body textarea {
 #sell .col-2.sell-left label {
     text-align: right;
 }
-#sell .inp {
-    margin-bottom: 12px;
-}
 #sell .col-1 .inp {
-    width: 820px;
+    width: 790px;
 }
 #sell .col-2 .inp {
     width: 250px;
+}
+#sell .price {
+    margin-bottom: 20px;
 }
 #sell .mileage-input {
     margin-right: 10px;
@@ -980,22 +1002,25 @@ body textarea {
 #sell .checkbox-label {
     line-height: 24px;
 }
+#sell .form-error {
+    color: #ff0000;
+    font-size: 13px;
+    margin-top: 2px;
+}
+#sell .submit-box {
+    margin-top: 50px;
+}
 #sell #upload-image {
-    border-radius: 4px;
-    color: #ffffff;
-    height: 33px;
-    line-height: 33px;
-    padding: 0 10px;
-    letter-spacing: 1px;
+    background-color: #bfbaba;
 }
 #sell-images {
-    margin: 20px -5px 0;
+    margin: 20px -14px 0;
     overflow: hidden;
 }
 #sell-images .img-box {
     border: 1px solid #cccccc;
     border-radius: 3px;
-    margin: 0 5px 10px;
+    margin: 0 15px 15px;
     height: 165px;
     padding: 4px;
     position: relative;
