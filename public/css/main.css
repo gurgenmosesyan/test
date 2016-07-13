@@ -919,10 +919,10 @@ body textarea {
     background-color: #ffffff;
     font-size: 14px;
     margin: 25px 0;
-    padding: 40px 50px;
+    padding: 40px 100px;
 }
 #sell .col-2 {
-    width: 530px;
+    width: 480px;
 }
 #sell .sell-left,
 #sell .sell-middle {
@@ -932,15 +932,22 @@ body textarea {
     width: 340px;
 }
 #sell label {
-    margin: 0 30px 12px 0;
-    line-height: 33px;
-    width: 250px;
+    margin: 0 20px 12px 0;
+    width: 210px;
 }
-#sell .required:after {
+#sell label span {
+    display: table-cell;
+    height: 33px;
+    vertical-align: middle;
+}
+#sell .required span:after {
     content: " *" !important;
     color: #dd4b39 !important;
     font-size: 1.5em;
     vertical-align: middle;
+}
+#sell .col-2.sell-left label {
+    text-align: right;
 }
 #sell .inp {
     margin-bottom: 12px;

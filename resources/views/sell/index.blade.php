@@ -15,7 +15,7 @@ $title = trans('www.sell_car.title');
 
         <div class="col-2 sell-left fl">
 
-            <label class="required fl">{{trans('www.sell_car.mark')}}</label>
+            <label class="required fl"><span>{{trans('www.sell_car.mark')}}</span></label>
             <div class="mark-select inp fl">
                 <div class="select-box">
                     <div class="select-arrow"></div>
@@ -30,7 +30,7 @@ $title = trans('www.sell_car.title');
             </div>
             <div class="cb"></div>
 
-            <label class="required fl">{{trans('www.sell_car.body')}}</label>
+            <label class="required fl"><span>{{trans('www.sell_car.body')}}</span></label>
             <div class="select-box inp fl">
                 <div class="select-arrow"></div>
                 <div class="select-title"></div>
@@ -43,7 +43,7 @@ $title = trans('www.sell_car.title');
             </div>
             <div class="cb"></div>
 
-            <label class="required fl">{{trans('www.sell_car.year')}}</label>
+            <label class="required fl"><span>{{trans('www.sell_car.year')}}</span></label>
             <div class="select-box inp fl">
                 <div class="select-arrow"></div>
                 <div class="select-title"></div>
@@ -56,7 +56,7 @@ $title = trans('www.sell_car.title');
             </div>
             <div class="cb"></div>
 
-            <label class="required fl">{{trans('www.sell_car.transmission')}}</label>
+            <label class="required fl"><span>{{trans('www.sell_car.transmission')}}</span></label>
             <div class="select-box inp fl">
                 <div class="select-arrow"></div>
                 <div class="select-title"></div>
@@ -69,7 +69,7 @@ $title = trans('www.sell_car.title');
             </div>
             <div class="cb"></div>
 
-            <label class="required fl">{{trans('www.sell_car.color')}}</label>
+            <label class="required fl"><span>{{trans('www.sell_car.color')}}</span></label>
             <div class="select-box inp fl">
                 <div class="select-arrow"></div>
                 <div class="select-title"></div>
@@ -82,7 +82,7 @@ $title = trans('www.sell_car.title');
             </div>
             <div class="cb"></div>
 
-            <label class="required fl">{{trans('www.sell_car.engine')}}</label>
+            <label class="required fl"><span>{{trans('www.sell_car.engine')}}</span></label>
             <div class="select-box inp fl">
                 <div class="select-arrow"></div>
                 <div class="select-title"></div>
@@ -95,11 +95,11 @@ $title = trans('www.sell_car.title');
             </div>
             <div class="cb"></div>
 
-            <label class="fl">{{trans('www.sell_car.horsepower')}}</label>
+            <label class="fl"><span>{{trans('www.sell_car.horsepower')}}</span></label>
             <div class="inp fl"><input type="text" name="horsepower" value="" /></div>
             <div class="cb"></div>
 
-            <label class="fl">{{trans('www.sell_car.train')}}</label>
+            <label class="fl"><span>{{trans('www.sell_car.train')}}</span></label>
             <div class="select-box inp fl">
                 <div class="select-arrow"></div>
                 <div class="select-title"></div>
@@ -112,7 +112,7 @@ $title = trans('www.sell_car.title');
             </div>
             <div class="cb"></div>
 
-            <label class="fl">{{trans('www.sell_car.wheel')}}</label>
+            <label class="fl"><span>{{trans('www.sell_car.wheel')}}</span></label>
             <div class="select-box inp fl">
                 <div class="select-arrow"></div>
                 <div class="select-title"></div>
@@ -125,7 +125,7 @@ $title = trans('www.sell_car.title');
             </div>
             <div class="cb"></div>
 
-            <label class="required fl">{{trans('www.sell_car.country')}}</label>
+            <label class="required fl"><span>{{trans('www.sell_car.country')}}</span></label>
             <div class="select-box country-select inp fl">
                 <div class="select-arrow"></div>
                 <div class="select-title"></div>
@@ -138,11 +138,11 @@ $title = trans('www.sell_car.title');
             </div>
             <div class="cb"></div>
 
-            <label class="fl">{{trans('www.sell_car.place')}}</label>
+            <label class="fl"><span>{{trans('www.sell_car.place')}}</span></label>
             <div class="inp fl"><input type="text" name="place" value="" /></div>
             <div class="cb"></div>
 
-            <label class="required fl">{{trans('www.sell_car.term')}}</label>
+            <label class="required fl"><span>{{trans('www.sell_car.term')}}</span></label>
             <div class="select-box inp fl">
                 <div class="select-arrow"></div>
                 <div class="select-title"></div>
@@ -158,7 +158,7 @@ $title = trans('www.sell_car.title');
         </div>
         <div class="col-2 sell-right fl">
 
-            <label class="required fl">{{trans('www.sell_car.model')}}</label>
+            <label class="required fl"><span>{{trans('www.sell_car.model')}}</span></label>
             <div class="model-select inp fl">
                 <div class="select-box disabled">
                     <div class="select-arrow"></div>
@@ -170,11 +170,11 @@ $title = trans('www.sell_car.title');
             </div>
             <div class="cb"></div>
 
-            <label class="fl">{{trans('www.sell_car.tuning')}}</label>
+            <label class="fl"><span>{{trans('www.sell_car.tuning')}}</span></label>
             <div class="inp fl"><input type="text" name="tuning" value="" /></div>
             <div class="cb"></div>
 
-            <label class="required fl">{{trans('www.sell_car.mileage')}}</label>
+            <label class="required fl"><span>{{trans('www.sell_car.mileage')}}</span></label>
             <div class="mileage-box inp fl">
                 <div class="mileage-input fl"><input type="text" name="mileage" value="" /></div>
                 <div class="select-box mileage-select fl">
@@ -189,7 +189,7 @@ $title = trans('www.sell_car.title');
             </div>
             <div class="cb"></div>
 
-            <label class="required fl">{{trans('www.sell_car.rudder')}}</label>
+            <label class="required fl"><span>{{trans('www.sell_car.rudder')}}</span></label>
             <div class="select-box inp fl">
                 <div class="select-arrow"></div>
                 <div class="select-title"></div>
@@ -202,7 +202,7 @@ $title = trans('www.sell_car.title');
             </div>
             <div class="cb"></div>
 
-            <label class="fl">{{trans('www.sell_car.interior_color')}}</label>
+            <label class="fl"><span>{{trans('www.sell_car.interior_color')}}</span></label>
             <div class="select-box inp fl">
                 <div class="select-arrow"></div>
                 <div class="select-title"></div>
@@ -215,7 +215,7 @@ $title = trans('www.sell_car.title');
             </div>
             <div class="cb"></div>
 
-            <label class="fl">{{trans('www.sell_car.engine_volume')}}</label>
+            <label class="fl"><span>{{trans('www.sell_car.engine_volume')}}</span></label>
             <div class="inp fl">
                 <div class="engine-volume1 fl">
                     <div class="select-box">
@@ -245,7 +245,7 @@ $title = trans('www.sell_car.title');
             </div>
             <div class="cb"></div>
 
-            <label class="fl">{{trans('www.sell_car.cylinders_count')}}</label>
+            <label class="fl"><span>{{trans('www.sell_car.cylinders_count')}}</span></label>
             <div class="select-box inp fl">
                 <div class="select-arrow"></div>
                 <div class="select-title"></div>
@@ -258,7 +258,7 @@ $title = trans('www.sell_car.title');
             </div>
             <div class="cb"></div>
 
-            <label class="fl">{{trans('www.sell_car.doors_count')}}</label>
+            <label class="fl"><span>{{trans('www.sell_car.doors_count')}}</span></label>
             <div class="select-box inp fl">
                 <div class="select-arrow"></div>
                 <div class="select-title"></div>
@@ -271,11 +271,11 @@ $title = trans('www.sell_car.title');
             </div>
             <div class="cb"></div>
 
-            <label class="fl">{{trans('www.sell_car.vin')}}</label>
+            <label class="fl"><span>{{trans('www.sell_car.vin')}}</span></label>
             <div class="inp fl"><input type="text" name="vin" value="" /></div>
             <div class="cb"></div>
 
-            <label class="fl">{{trans('www.sell_car.region')}}</label>
+            <label class="fl"><span>{{trans('www.sell_car.region')}}</span></label>
             <div class="select-box disabled region-select inp fl">
                 <div class="select-arrow"></div>
                 <div class="select-title"></div>
@@ -285,7 +285,7 @@ $title = trans('www.sell_car.title');
             </div>
             <div class="cb"></div>
 
-            <label class="fl">{{trans('www.sell_car.additional_phone')}}</label>
+            <label class="fl"><span>{{trans('www.sell_car.additional_phone')}}</span></label>
             <div class="inp fl"><input type="text" name="additional_phone" value="" /></div>
             <div class="cb"></div>
 
@@ -295,7 +295,7 @@ $title = trans('www.sell_car.title');
         <div class="separator"></div>
 
         <div class="col-2 sell-left fl">
-            <label class="required fl">{{trans('www.sell_car.price')}}</label>
+            <label class="required fl"><span>{{trans('www.sell_car.price')}}</span></label>
             <div class="inp fl">
                 <div class="mileage-input fl"><input type="text" name="price" value="" /></div>
                 <div class="select-box mileage-select fl">
