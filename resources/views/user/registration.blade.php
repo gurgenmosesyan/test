@@ -26,10 +26,10 @@ $title = trans('www.reg.title');
             </div>
             <div class="cb"></div>
             <div class="line-block">
-                <div class="line fl"></div>
-                <div class="or fl tc">{{trans('www.base.label.or')}}</div>
-                <div class="line fl"></div>
-                <div class="cb"></div>
+                <div class="line"></div>
+                <div class="or tc">
+                    <div class="dib">{{trans('www.base.label.or')}}</div>
+                </div>
             </div>
             <form id="registration-form" action="{{url_with_lng('/api/registration', false)}}" method="post">
                 <div class="form-box">

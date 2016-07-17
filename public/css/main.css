@@ -184,10 +184,7 @@ body textarea {
 }
 #header .username .box-link {
     background-image: url('../images/profile-img.png');
-    background-position: left center;
     background-size: 24px;
-    padding: 0 0 0 30px;
-    line-height: 50px;
 }
 #header .currency,
 #header .lng {
@@ -743,17 +740,28 @@ body textarea {
     height: 23px;
     line-height: 21px;
     margin-bottom: 15px;
+    position: relative;
 }
 #login-block .line {
     background-color: #F5F5F5;
     height: 2px;
     margin-top: 11px;
-    width: 164px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
 #login-block .or {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+#login-block .or div {
+    background-color: #ffffff;
     color: #86888a;
     font-size: 15px;
-    width: 27px;
+    padding: 0 5px;
 }
 #login-block input[type="text"],
 #login-block input[type="password"] {
@@ -1038,13 +1046,9 @@ body textarea {
     max-width: 100%;
 }
 #sell-images .img-tools {
-    display: none;
     position: absolute;
     top: 4px;
     right: 2px;
-}
-#sell-images .img-box:hover .img-tools {
-    display: block;
 }
 #sell-images .img-tools a {
     border-radius: 2px;

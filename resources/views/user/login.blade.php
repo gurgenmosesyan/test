@@ -26,10 +26,10 @@ $title = trans('www.login.title');
             </div>
             <div class="cb"></div>
             <div class="line-block">
-                <div class="line fl"></div>
-                <div class="or fl tc">{{trans('www.base.label.or')}}</div>
-                <div class="line fl"></div>
-                <div class="cb"></div>
+                <div class="line"></div>
+                <div class="or tc">
+                    <div class="dib">{{trans('www.base.label.or')}}</div>
+                </div>
             </div>
             <form id="login-form" action="{{url_with_lng('/api/login', false)}}" method="post">
                 <div class="form-box">
