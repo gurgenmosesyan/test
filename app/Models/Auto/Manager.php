@@ -53,6 +53,13 @@ class Manager
 
     protected function processSave($data)
     {
+        if ($data['mileage_measurement'] == Auto::MILEAGE_MEASUREMENT_KM) {
+            $data['mileage_km'] = $data['mileage'];
+            $data['mileage_mile'] = round($data['mileage'] / 1.60934);
+        } else {
+            $data['mileage_mile'] = $data['mileage'];
+            $data['mileage_km'] = round($data['mileage'] * 1.60934);
+        }
         if (!isset($data['contract'])) {
             $data['contract'] = AUTO::NOT_CONTRACT;
         }

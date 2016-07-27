@@ -48,6 +48,8 @@ Route::group(['middleware' => ['web', 'front']], function() {
             Route::post('/api/region', 'ApiController@region');
         });
 
+        Route::get('/search', 'SearchController@index');
+
     });
 
 });

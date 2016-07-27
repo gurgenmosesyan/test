@@ -116,6 +116,12 @@ body textarea {
     padding: 0 15px;
     width: 1200px;
 }
+#page .underline {
+    text-decoration: underline;
+}
+#page .underline:hover {
+    text-decoration: none;
+}
 #header {
     background-color: #ffffff;
     box-shadow: 0 0 20px #dadada;
@@ -1085,6 +1091,48 @@ body textarea {
     -moz-transform: rotate(90deg);
     -o-transform: rotate(90deg);
     transform: rotate(90deg);
+}
+
+/* #search */
+#search {
+    background-color: #ffffff;
+    margin: 0 12px 40px 0;
+    padding: 24px;
+    width: 837px;
+}
+#search .col {
+    margin-right: 24px;
+    width: 263px;
+}
+#search .sub-col {
+    width: 126px;
+}
+#search .sub-col-1 {
+    margin-right: 11px;
+}
+#search .col > div {
+    margin-bottom: 11px;
+}
+#search div.cb {
+    margin: 0;
+}
+#search .col-3 {
+    margin-right: 0;
+}
+#search .mileage {
+    width: 85px;
+}
+#search .mileage-measurement {
+    width: 71px;
+}
+#search .show-all-p {
+    margin-top: 15px;
+}
+#search .show-all {
+    font-size: 14px;
+}
+#right-ads {
+    width: 303px;
 }
 
 /* footer */

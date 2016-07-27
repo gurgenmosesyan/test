@@ -164,7 +164,7 @@ $title = trans('www.homepage.title');
                 <input type="submit" />
             </div>
             <p class="adv-search-link tc">
-                <a href="#" class="orange">{{trans('www.quick_search.advanced_search')}}</a>
+                <a href="{{url_with_lng('/search', false)}}" class="orange">{{trans('www.quick_search.advanced_search')}}</a>
             </p>
 
         </form>

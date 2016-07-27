@@ -84,7 +84,7 @@ $jsTrans->addTrans(['admin.base.label.select']);
         <div class="form-group">
             <label class="col-sm-3 control-label data-req">{{trans('admin.base.label.mileage')}}</label>
             <div class="col-sm-3">
-                <input type="text" name="mileage" class="form-control" value="{{$auto->mileage or ''}}">
+                <input type="text" name="mileage" class="form-control" value="{{$auto->mileage_measurement == Auto::MILEAGE_MEASUREMENT_KM ? $auto->mileage_km : $auto->mileage_mile}}">
                 <div id="form-error-mileage" class="form-error"></div>
             </div>
             <div class="col-sm-3">

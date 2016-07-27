@@ -125,10 +125,12 @@ $main.initSelect = function() {
 $main.initMarkSelect = function() {
     var quickSearch = $('#quick-search'),
         calculators = $('#calculators'),
-        sell = $('#sell');
+        sell = $('#sell'),
+        search = $('#search');
     $main.markSelect(quickSearch.find('.mark-select select'), quickSearch.find('.model-select .select-box'));
     $main.markSelect(calculators.find('.mark-select select'), calculators.find('.model-select .select-box'));
     $main.markSelect(sell.find('.mark-select select'), sell.find('.model-select .select-box'));
+    $main.markSelect(search.find('.mark-select select'), search.find('.model-select.select-box'));
 };
 
 $main.markSelect = function(markSelect, modelSelBox) {
