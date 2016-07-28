@@ -50,6 +50,7 @@ html,body {
 .dpn { display: none; }
 .mln { margin-left: 0; }
 .tc { text-align: center; }
+.tr { text-align: right; }
 .tu { text-transform: uppercase; }
 
 .orange-bg {
@@ -1093,22 +1094,24 @@ body textarea {
     transform: rotate(90deg);
 }
 
-/* #search */
+#main-left {
+    margin: 0 12px 40px 0;
+    width: 885px;
+}
 #search {
     background-color: #ffffff;
-    margin: 0 12px 40px 0;
-    padding: 24px;
-    width: 837px;
+    margin-bottom: 10px;
+    padding: 21px;
 }
 #search .col {
-    margin-right: 24px;
-    width: 263px;
+    margin-right: 21px;
+    width: 267px;
 }
 #search .sub-col {
-    width: 126px;
+    width: 129px;
 }
 #search .sub-col-1 {
-    margin-right: 11px;
+    margin-right: 9px;
 }
 #search .col > div {
     margin-bottom: 11px;
@@ -1123,7 +1126,7 @@ body textarea {
     width: 85px;
 }
 #search .mileage-measurement {
-    width: 71px;
+    width: 77px;
 }
 #search .show-all-p {
     margin-top: 15px;
@@ -1131,6 +1134,36 @@ body textarea {
 #search .show-all {
     font-size: 14px;
 }
+#search .checkbox {
+    margin: 5px 15px 10px;
+}
+
+/*auto*/
+#autos {
+    background-color: #ffffff;
+}
+#autos .line {
+    background-color: #e2dada;
+    height: 1px;
+}
+.auto {
+    padding: 15px 21px;
+}
+.auto:hover {
+    background-color: #fafafa;
+}
+.auto .auto-img {
+    margin-right: 15px;
+}
+.auto .auto-info {
+    width: 623px;
+}
+.auto .title {
+    font-size: 17px;
+    margin-right: 25px;
+    width: 260px;
+}
+
 #right-ads {
     width: 303px;
 }

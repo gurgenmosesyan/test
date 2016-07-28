@@ -300,6 +300,27 @@ $main.initQuickSearch = function() {
     });
 };
 
+$main.initSearch = function() {
+    var search = $('#search'),
+        hiddenBox = search.find('.hidden'),
+        self;
+    search.find('.show-all').on('click', function() {
+        self = $(this);
+        if (hiddenBox.hasClass('dpn')) {
+            hiddenBox.stop().slideDown(500, function() {
+                self.text($trans.get('www.search.all_params.hide'));
+                $(this).removeClass('dpn')
+            });
+        } else {
+            hiddenBox.stop().slideUp(500, function() {
+                self.text($trans.get('www.search.all_params'));
+                $(this).addClass('dpn')
+            });
+        }
+        return false;
+    });
+};
+
 $(document).ready(function() {
     $main.initHeaderBlocks();
 
@@ -324,4 +345,6 @@ $(document).ready(function() {
     $main.preloadImages();
 
     $main.initParts();
+
+    $main.initSearch();
 });
