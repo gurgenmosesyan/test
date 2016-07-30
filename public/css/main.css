@@ -1158,10 +1158,31 @@ body textarea {
 .auto .auto-info {
     width: 623px;
 }
+.auto .title-box {
+    width: 260px;
+    margin-right: 25px;
+    line-height: 20px;
+    min-height: 118px;
+    padding-bottom: 30px;
+    position: relative;
+}
 .auto .title {
     font-size: 17px;
+    margin-bottom: 25px;
+}
+.auto .price {
+    font-size: 17px;
     margin-right: 25px;
-    width: 260px;
+    width: 150px;
+}
+.auto .details {
+    font-size: 15px;
+}
+.auto .country {
+    font-size: 13px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
 }
 
 #right-ads {

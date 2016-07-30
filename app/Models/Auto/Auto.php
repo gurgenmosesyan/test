@@ -3,6 +3,8 @@
 namespace App\Models\Auto;
 
 use App\Core\Model;
+use App\Models\Mark\Mark;
+use App\Models\Model\Model as AutoModel;
 
 class Auto extends Model
 {
@@ -69,6 +71,21 @@ class Auto extends Model
         'term',
         'status'
     ];
+
+    public function scopeApproved($query)
+    {
+        return $query->where('status', self::STATUS_APPROVED);
+    }
+
+    public function mark()
+    {
+        return $this->belongsTo(Mark::class, 'mark_id', 'id')->active();
+    }
+
+    public function model()
+    {
+        return $this->belongsTo(AutoModel::class, 'model_id', 'id')->active();
+    }
 
     public function options()
     {

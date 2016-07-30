@@ -307,12 +307,12 @@ $main.initSearch = function() {
     search.find('.show-all').on('click', function() {
         self = $(this);
         if (hiddenBox.hasClass('dpn')) {
-            hiddenBox.stop().slideDown(500, function() {
+            hiddenBox.stop().slideDown(400, function() {
                 self.text($trans.get('www.search.all_params.hide'));
                 $(this).removeClass('dpn')
             });
         } else {
-            hiddenBox.stop().slideUp(500, function() {
+            hiddenBox.stop().slideUp(400, function() {
                 self.text($trans.get('www.search.all_params'));
                 $(this).addClass('dpn')
             });
