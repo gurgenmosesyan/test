@@ -33,4 +33,9 @@ class Model extends EloquentModel
         $table = $this->getTable();
         return $query->orderBy($table.'.sort_order', 'asc')->orderBy($table.'.id', 'desc');
     }
+
+    public function scopeLatest($query)
+    {
+        return $query->orderBy($this->getTable().'.id', 'desc');
+    }
 }

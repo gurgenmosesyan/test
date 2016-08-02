@@ -1153,7 +1153,12 @@ body textarea {
     background-color: #fafafa;
 }
 .auto .auto-img {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 148px;
     margin-right: 15px;
+    width: 205px;
 }
 .auto .auto-info {
     width: 623px;
@@ -1183,6 +1188,39 @@ body textarea {
     position: absolute;
     left: 0;
     bottom: 0;
+}
+
+/* paging */
+#paging {
+    background-color: #ffffff;
+    border-top: 1px solid #e2dada;
+    padding: 20px;
+}
+#paging li a {
+    border: 1px solid #e2dada;
+    border-right: none;
+    font-size: 14px;
+    padding: 6px 11px;
+}
+#paging li.next a {
+    border-right: 1px solid #e2dada;
+    border-radius: 0 4px 4px 0;
+}
+#paging li.prev a {
+    border-radius: 4px 0 0 4px;
+}
+#paging a:hover {
+    background-color: #fdd085;
+}
+#paging a.active {
+    background-color: #FFA000;
+    color: #ffffff;
+    cursor: default;
+}
+#paging li.disabled a {
+    background-color: #ffffff;
+    cursor: default;
+    opacity: 0.4;
 }
 
 #right-ads {

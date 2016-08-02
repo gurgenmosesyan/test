@@ -3,8 +3,12 @@
 namespace App\Models\Auto;
 
 use App\Core\Model;
+use App\Models\Body\BodyMl;
+use App\Models\Color\ColorMl;
+use App\Models\Engine\EngineMl;
 use App\Models\Mark\Mark;
 use App\Models\Model\Model as AutoModel;
+use App\Models\Train\TrainMl;
 
 class Auto extends Model
 {
@@ -85,6 +89,26 @@ class Auto extends Model
     public function model()
     {
         return $this->belongsTo(AutoModel::class, 'model_id', 'id')->active();
+    }
+
+    public function engine_ml()
+    {
+        return $this->belongsTo(EngineMl::class, 'engine_id', 'id')->active()->current();
+    }
+
+    public function train_ml()
+    {
+        return $this->belongsTo(TrainMl::class, 'train_id', 'id')->active()->current();
+    }
+
+    public function body_ml()
+    {
+        return $this->belongsTo(BodyMl::class, 'body_id', 'id')->active()->current();
+    }
+
+    public function color_ml()
+    {
+        return $this->belongsTo(ColorMl::class, 'color_id', 'id')->active()->current();
     }
 
     public function options()

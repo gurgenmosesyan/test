@@ -103,7 +103,7 @@ class SearchController extends Controller
         $reqData['damaged'] = $request->input('damaged');
         $reqData['partial_pay'] = $request->input('partial_pay');
 
-        $query = Auto::active()->approved()->with('mark', 'model', 'images');
+        $query = Auto::active()->approved()->with('mark', 'model', 'engine_ml', 'train_ml', 'body_ml', 'color_ml', 'images')->latest();
         if (!empty($reqData['mark_id'])) {
             $query->where('mark_id', $reqData['mark_id']);
         }
@@ -208,6 +208,6 @@ class SearchController extends Controller
             $query->where('partial_pay', $reqData['partial_pay']);
             $showAll = true;
         }
-        return [$query->get(), $reqData, $showAll];
+        return [$query->paginate(25), $reqData, $showAll];
     }
 }

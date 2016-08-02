@@ -172,4 +172,5 @@ return array (
   'door_count.select.default' => 'Doors coun',
   'search.all_params.hide' => 'Hide',
   'search.search_btn' => 'Search',
+  'horsepower.short' => 'h.p.',
 );
