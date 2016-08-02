@@ -173,4 +173,5 @@ return array (
   'search.all_params.hide' => 'Hide',
   'search.search_btn' => 'Search',
   'horsepower.short' => 'h.p.',
+  'autos.empty_result' => 'There is no any autos in this moment',
 );

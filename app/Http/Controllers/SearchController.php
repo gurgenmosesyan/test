@@ -208,6 +208,7 @@ class SearchController extends Controller
             $query->where('partial_pay', $reqData['partial_pay']);
             $showAll = true;
         }
-        return [$query->paginate(25), $reqData, $showAll];
+        $autos = $query->paginate(25);
+        return [$autos, $reqData, $showAll];
     }
 }

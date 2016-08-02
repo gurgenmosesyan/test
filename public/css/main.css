@@ -1189,6 +1189,11 @@ body textarea {
     left: 0;
     bottom: 0;
 }
+#autos .empty {
+    color: #929292;
+    font-size: 15px;
+    padding: 25px;
+}
 
 /* paging */
 #paging {
@@ -1223,8 +1228,9 @@ body textarea {
     opacity: 0.4;
 }
 
-#right-ads {
+#main-right {
     width: 303px;
+    margin-bottom: 40px;
 }
 
 /* footer */
