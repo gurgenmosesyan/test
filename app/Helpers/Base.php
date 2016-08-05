@@ -4,7 +4,7 @@ namespace App\Helpers;
 
 class Base
 {
-    public static function price($data, $currencies, $defCurrency, $cCurrency)
+    public static function price($data, $currencies, $defCurrency, $cCurrency, $currencyParam = 'sign')
     {
         if ($data['currency_id'] == $cCurrency->id) {
             $price = $data['price'];
@@ -20,7 +20,7 @@ class Base
                 $price = round($price * $cCurrency->rate);
             }
         }
-        return $price . $cCurrency->sign;
+        return $price . $cCurrency->$currencyParam;
     }
 
     public static function partPrice($data, $price, $currencies, $defCurrency, $cCurrency)

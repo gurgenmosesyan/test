@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Model\Model;
 use App\Models\Model\Manager;
 use Illuminate\Http\Request;
 use App\Models\Body\Body;
@@ -44,7 +45,7 @@ class SearchController extends Controller
 
         list($autos, $reqData, $showAll) = $this->getAutos($request);
 
-        if (!empty($reqData['mark_id']) && !empty($reqData['model_id'])) {
+        if (!empty($reqData['mark_id'])) {
             $models = Manager::getModelsWithCat($reqData['mark_id']);
         }
 
@@ -108,7 +109,13 @@ class SearchController extends Controller
             $query->where('mark_id', $reqData['mark_id']);
         }
         if (!empty($reqData['model_id'])) {
-            $query->where('model_id', $reqData['model_id']);
+            if (strpos($reqData['model_id'], 'c_') === 0) {
+                $categoryId = str_replace('c_', '', $reqData['model_id']);
+                $modelIds = Model::active()->where('category_id', $categoryId)->lists('id')->toArray();
+                $query->whereIn('model_id', $modelIds);
+            } else {
+                $query->where('model_id', $reqData['model_id']);
+            }
         }
         if (!empty($reqData['country_id'])) {
             $query->where('country_id', $reqData['country_id']);

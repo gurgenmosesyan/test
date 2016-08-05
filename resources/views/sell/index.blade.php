@@ -289,7 +289,7 @@ $title = trans('www.sell_car.title');
                 <div class="form-box">
                     <label class="fl"><span>{{trans('www.sell_car.horsepower')}}</span></label>
                     <div class="inp fl">
-                        <input type="text" name="horsepower" value="" />
+                        <input type="text" name="horsepower" maxlength="4" value="" />
                         <div id="form-error-horsepower" class="form-error"></div>
                     </div>
                     <div class="cb"></div>

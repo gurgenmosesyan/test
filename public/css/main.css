@@ -1142,7 +1142,8 @@ body textarea {
 #autos {
     background-color: #ffffff;
 }
-#autos .line {
+#autos .line,
+#auto .line {
     background-color: #e2dada;
     height: 1px;
 }
@@ -1227,10 +1228,39 @@ body textarea {
     cursor: default;
     opacity: 0.4;
 }
-
 #main-right {
     width: 303px;
     margin-bottom: 40px;
+}
+
+#auto {
+    background-color: #ffffff;
+}
+#auto .top-box {
+    font-size: 18px;
+    padding: 20px;
+}
+#auto .main-box {
+    padding: 20px;
+}
+#auto .main-left {
+    margin-right: 20px;
+    width: 300px;
+}
+#auto .main-right {
+    width: 525px;
+}
+#auto .main-left .key {
+    color: #8a8a8a;
+    padding-right: 5px;
+    width: 120px;
+}
+#auto .main-left .value {
+    width: 175px;
+}
+#auto .main-left p {
+    font-size: 15px;
+    margin-bottom: 10px;
 }
 
 /* footer */

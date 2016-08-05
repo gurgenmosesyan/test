@@ -5,10 +5,16 @@ namespace App\Models\Auto;
 use App\Core\Model;
 use App\Models\Body\BodyMl;
 use App\Models\Color\ColorMl;
+use App\Models\Cylinder\Cylinder;
+use App\Models\Door\Door;
+use App\Models\InteriorColor\ColorMl as InteriorColorMl;
 use App\Models\Engine\EngineMl;
 use App\Models\Mark\Mark;
 use App\Models\Model\Model as AutoModel;
+use App\Models\Rudder\RudderMl;
 use App\Models\Train\TrainMl;
+use App\Models\Transmission\TransmissionMl;
+use App\Models\Wheel\Wheel;
 
 class Auto extends Model
 {
@@ -76,6 +82,12 @@ class Auto extends Model
         'status'
     ];
 
+    public function mileageInfo()
+    {
+        $mileage = $this->mileage_measurment == self::MILEAGE_MEASUREMENT_KM ? $this->mileage_km : $this->mileage_mile;
+        return $mileage.' '.trans('www.mileage.measurement.'.$this->mileage_measurement);
+    }
+
     public function scopeApproved($query)
     {
         return $query->where('status', self::STATUS_APPROVED);
@@ -96,6 +108,16 @@ class Auto extends Model
         return $this->belongsTo(EngineMl::class, 'engine_id', 'id')->active()->current();
     }
 
+    public function transmission_ml()
+    {
+        return $this->belongsTo(TransmissionMl::class, 'transmission_id', 'id')->active()->current();
+    }
+
+    public function rudder_ml()
+    {
+        return $this->belongsTo(RudderMl::class, 'rudder_id', 'id')->active()->current();
+    }
+
     public function train_ml()
     {
         return $this->belongsTo(TrainMl::class, 'train_id', 'id')->active()->current();
@@ -109,6 +131,26 @@ class Auto extends Model
     public function color_ml()
     {
         return $this->belongsTo(ColorMl::class, 'color_id', 'id')->active()->current();
+    }
+
+    public function interior_color_ml()
+    {
+        return $this->belongsTo(InteriorColorMl::class, 'color_id', 'id')->active()->current();
+    }
+
+    public function cylinder()
+    {
+        return $this->belongsTo(Cylinder::class, 'cylinder_id', 'id')->active();
+    }
+
+    public function door()
+    {
+        return $this->belongsTo(Door::class, 'door_id', 'id')->active();
+    }
+
+    public function wheel()
+    {
+        return $this->belongsTo(Wheel::class, 'wheel_id', 'id')->active();
     }
 
     public function options()

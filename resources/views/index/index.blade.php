@@ -60,12 +60,12 @@ $title = trans('www.homepage.title');
         <h2>
             {{trans('www.quick_search.title')}}
         </h2>
-        <form id="quick-search-form" action="" method="get">
+        <form id="quick-search-form" action="{{url_with_lng('/search', false)}}" method="get">
             <div class="country-select">
                 <div class="select-box">
                     <div class="select-arrow"></div>
                     <div class="select-title"></div>
-                    <select name="country">
+                    <select name="country_id">
                         <option value="">{{trans('www.country.select.default')}}</option>
                         @foreach($countries as $country)
                             <option value="{{$country->id}}">{{$country->name}}</option>
@@ -77,7 +77,7 @@ $title = trans('www.homepage.title');
                 <div class="select-box">
                     <div class="select-arrow"></div>
                     <div class="select-title"></div>
-                    <select name="mark">
+                    <select name="mark_id">
                         <option value="">{{trans('www.mark.select.default')}}</option>
                         @foreach($marks as $mark)
                             <option value="{{$mark->id}}">{{$mark->name}}</option>
@@ -89,7 +89,7 @@ $title = trans('www.homepage.title');
                 <div class="select-box disabled">
                     <div class="select-arrow"></div>
                     <div class="select-title"></div>
-                    <select name="model" disabled="disabled">
+                    <select name="model_id" disabled="disabled">
                         <option value="">{{trans('www.model.select.default')}}</option>
                     </select>
                 </div>
@@ -153,7 +153,7 @@ $title = trans('www.homepage.title');
                 @foreach($bodies as $key => $body)
                     <div class="search-body no-select search-body-{{$key}} fl">
                         <label class="body-checkbox db" style="background-image: url('{{$body->getImage()}}');">
-                            <input type="checkbox" name="body" value="{{$body->id}}" />
+                            <input type="checkbox" name="body_id" value="{{$body->id}}" />
                         </label>
                     </div>
                 @endforeach

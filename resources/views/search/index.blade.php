@@ -317,7 +317,7 @@ $jsTrans->addTrans([
                                         {{$auto->volume_1.'.'.$auto->volume_2}}
                                     @endif
                                     @if(!empty($auto->horsepower))
-                                        {{'('.$auto->horsepower.trans('www.horsepower.short').')'}}
+                                        {{'('.$auto->horsepower.' '.trans('www.horsepower.short').')'}}
                                     @endif
                                     {{$auto->engine_ml->name.','}}
                                     @if(!empty($auto->train_ml))
