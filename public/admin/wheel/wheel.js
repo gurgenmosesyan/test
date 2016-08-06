@@ -4,7 +4,7 @@ $wheel.listPath = '/management/cms/wheel';
 $wheel.initSearchPage = function() {
     $wheel.listColumns = [
         {data: 'id'},
-        {data: 'name'}
+        {data: 'count'}
     ];
     $wheel.initSearch();
 };

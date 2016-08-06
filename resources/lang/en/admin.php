@@ -161,4 +161,5 @@ return array (
   'part.form.edit.sub_title' => 'Part № :id',
   'base.label.currency' => 'Currency',
   'base.label.service_price' => 'Replacement cost',
+  'base.label.count' => 'Count',
 );

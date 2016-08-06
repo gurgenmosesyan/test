@@ -29,7 +29,7 @@ class Search extends DataTable
     {
         $query = Door::active();
         if ($this->search != null) {
-            $query->where('name', 'LIKE', '%'.$this->search.'%');
+            $query->where('count', 'LIKE', '%'.$this->search.'%');
         }
         return $query;
     }
@@ -41,7 +41,7 @@ class Search extends DataTable
                 $orderCol = 'id';
                 break;
             case 'name':
-                $orderCol = 'name';
+                $orderCol = 'count';
                 break;
             default:
                 $orderCol = 'id';

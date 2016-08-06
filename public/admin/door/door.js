@@ -4,7 +4,7 @@ $door.listPath = '/management/cms/door';
 $door.initSearchPage = function() {
     $door.listColumns = [
         {data: 'id'},
-        {data: 'name'}
+        {data: 'count'}
     ];
     $door.initSearch();
 };

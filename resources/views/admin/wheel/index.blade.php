@@ -13,7 +13,7 @@ $pageMenu = 'wheel';
         <thead>
         <tr>
             <th>{{trans('admin.base.label.id')}}</th>
-            <th>{{trans('admin.base.label.name')}}</th>
+            <th>{{trans('admin.base.label.count')}}</th>
             <th class="th-actions"></th>
         </tr>
         </thead>

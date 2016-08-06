@@ -9,7 +9,7 @@ class WheelRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|integer',
+            'count' => 'required|integer',
         ];
     }
 }

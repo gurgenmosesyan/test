@@ -161,4 +161,5 @@ return array (
   'part.form.edit.sub_title' => 'Part № :id',
   'base.label.currency' => 'Արժույթ',
   'base.label.service_price' => 'Փոխարինման արժեք',
+  'base.label.count' => 'Քանակ',
 );

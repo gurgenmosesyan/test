@@ -9,7 +9,7 @@ class Wheel extends Model
     protected $table = 'wheels';
 
     protected $fillable = [
-        'name',
+        'count',
         'show_status'
     ];
 }

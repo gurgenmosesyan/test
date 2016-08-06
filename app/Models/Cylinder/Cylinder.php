@@ -9,7 +9,7 @@ class Cylinder extends Model
     protected $table = 'cylinders';
 
     protected $fillable = [
-        'name',
+        'count',
         'show_status'
     ];
 }

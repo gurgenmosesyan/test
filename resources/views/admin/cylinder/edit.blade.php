@@ -17,10 +17,10 @@ if ($saveMode == 'add') {
 <form id="edit-form" class="form-horizontal" method="post" action="{{$url}}">
     <div class="box-body">
         <div class="form-group">
-            <label class="col-sm-3 control-label data-req">{{trans('admin.base.label.name')}}</label>
+            <label class="col-sm-3 control-label data-req">{{trans('admin.base.label.count')}}</label>
             <div class="col-sm-9">
-                <input type="text" name="name" class="form-control" value="{{$cylinder->name or ''}}">
-                <div id="form-error-name" class="form-error"></div>
+                <input type="text" name="count" class="form-control" value="{{$cylinder->count or ''}}">
+                <div id="form-error-count" class="form-error"></div>
             </div>
         </div>
         {{csrf_field()}}

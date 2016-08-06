@@ -9,7 +9,7 @@ class Door extends Model
     protected $table = 'doors';
 
     protected $fillable = [
-        'name',
+        'count',
         'show_status'
     ];
 }
