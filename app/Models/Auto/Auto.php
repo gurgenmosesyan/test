@@ -5,6 +5,7 @@ namespace App\Models\Auto;
 use App\Core\Model;
 use App\Models\Body\BodyMl;
 use App\Models\Color\ColorMl;
+use App\Models\Country\CountryMl;
 use App\Models\InteriorColor\ColorMl as InteriorColorMl;
 use App\Models\Engine\EngineMl;
 use App\Models\Mark\Mark;
@@ -87,7 +88,7 @@ class Auto extends Model
 
     public function mileageInfo()
     {
-        $mileage = $this->mileage_measurment == self::MILEAGE_MEASUREMENT_KM ? $this->mileage_km : $this->mileage_mile;
+        $mileage = $this->mileage_measurement == self::MILEAGE_MEASUREMENT_KM ? $this->mileage_km : $this->mileage_mile;
         return $mileage.' '.trans('www.mileage.measurement.'.$this->mileage_measurement);
     }
 
@@ -109,6 +110,11 @@ class Auto extends Model
     public function model()
     {
         return $this->belongsTo(AutoModel::class, 'model_id', 'id')->active();
+    }
+
+    public function country_ml()
+    {
+        return $this->belongsTo(CountryMl::class, 'country_id', 'id')->active()->current();
     }
 
     public function engine_ml()

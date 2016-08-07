@@ -326,14 +326,11 @@ $jsTrans->addTrans([
                                     {{$auto->body_ml->name.','}}
                                     {{$auto->color_ml->name}}
                                 </span>
-                                <span class="country db">Armenia</span>
+                                <span class="country db">{{$auto->country_ml->name}}</span>
                             </span>
                             <span class="price title db fb fl">{{Base::price($auto, $currencies, $defCurrency, $cCurrency)}}</span>
                             <span class="year db fl">{{$auto->year}}</span>
-                            <span class="mileage db fr">
-                                {{$auto->mileage_measurement == Auto::MILEAGE_MEASUREMENT_KM ? $auto->mileage_km : $auto->mileage_mile}}
-                                {{trans('www.mileage.measurement.'.$auto->mileage_measurement)}}
-                            </span>
+                            <span class="mileage db fr">{{$auto->mileageInfo()}}</span>
                             <span class="db cb"></span>
                         </span>
                         <span class="db cb"></span>

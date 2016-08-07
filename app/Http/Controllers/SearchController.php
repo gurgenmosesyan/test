@@ -83,7 +83,7 @@ class SearchController extends Controller
             $showAll = true;
         }
 
-        $query = Auto::active()->approved()->term()->with('mark', 'model', 'engine_ml', 'train_ml', 'body_ml', 'color_ml')->latest();
+        $query = Auto::active()->approved()->term()->with('mark', 'model', 'engine_ml', 'train_ml', 'body_ml', 'color_ml', 'country_ml')->latest();
 
         $this->setWhere($query, 'mark_id', $reqData['mark_id']);
         if (!empty($reqData['model_id'])) {
