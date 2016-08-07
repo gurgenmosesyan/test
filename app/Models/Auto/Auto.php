@@ -5,8 +5,6 @@ namespace App\Models\Auto;
 use App\Core\Model;
 use App\Models\Body\BodyMl;
 use App\Models\Color\ColorMl;
-use App\Models\Cylinder\Cylinder;
-use App\Models\Door\Door;
 use App\Models\InteriorColor\ColorMl as InteriorColorMl;
 use App\Models\Engine\EngineMl;
 use App\Models\Mark\Mark;
@@ -14,10 +12,10 @@ use App\Models\Model\Model as AutoModel;
 use App\Models\Rudder\RudderMl;
 use App\Models\Train\TrainMl;
 use App\Models\Transmission\TransmissionMl;
-use App\Models\Wheel\Wheel;
 
 class Auto extends Model
 {
+    const IMAGES_PATH = 'images/auto';
     const MILEAGE_MEASUREMENT_KM = 'km';
     const MILEAGE_MEASUREMENT_MILE = 'mile';
     const CONTRACT = '1';
@@ -42,6 +40,7 @@ class Auto extends Model
 
     protected $fillable = [
         'user_id',
+        'image',
         'mark_id',
         'model_category_id',
         'model_id',
@@ -62,8 +61,7 @@ class Auto extends Model
         'mileage_km',
         'mileage_mile',
         'mileage_measurement',
-        'volume_1',
-        'volume_2',
+        'volume',
         'horsepower',
         'place',
         'currency_id',
@@ -82,6 +80,11 @@ class Auto extends Model
         'status'
     ];
 
+    public function getImage()
+    {
+        return empty($this->image) ? url('/images/auto_empty.jpg') : url('/'.self::IMAGES_PATH.'/'.$this->image);
+    }
+
     public function mileageInfo()
     {
         $mileage = $this->mileage_measurment == self::MILEAGE_MEASUREMENT_KM ? $this->mileage_km : $this->mileage_mile;
@@ -91,6 +94,11 @@ class Auto extends Model
     public function scopeApproved($query)
     {
         return $query->where('status', self::STATUS_APPROVED);
+    }
+
+    public function scopeTerm($query)
+    {
+        return $query->where('term', '>=', date('Y-m-d'));
     }
 
     public function mark()
@@ -136,21 +144,6 @@ class Auto extends Model
     public function interior_color_ml()
     {
         return $this->belongsTo(InteriorColorMl::class, 'color_id', 'id')->active()->current();
-    }
-
-    public function cylinder()
-    {
-        return $this->belongsTo(Cylinder::class, 'cylinder_id', 'id')->active();
-    }
-
-    public function door()
-    {
-        return $this->belongsTo(Door::class, 'door_id', 'id')->active();
-    }
-
-    public function wheel()
-    {
-        return $this->belongsTo(Wheel::class, 'wheel_id', 'id')->active();
     }
 
     public function options()

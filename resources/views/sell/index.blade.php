@@ -317,14 +317,14 @@ $title = trans('www.sell_car.title');
                         <div class="select-box">
                             <div class="select-arrow"></div>
                             <div class="select-title"></div>
-                            <select name="cylinder_id">
+                            <select name="cylinders">
                                 <option value="">{{trans('www.base.label.select')}}</option>
                                 @foreach($cylinders as $cylinder)
-                                    <option value="{{$cylinder->id}}">{{$cylinder->name}}</option>
+                                    <option value="{{$cylinder->count}}">{{$cylinder->count}}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div id="form-error-cylinder_id" class="form-error"></div>
+                        <div id="form-error-cylinders" class="form-error"></div>
                     </div>
                     <div class="cb"></div>
                 </div>
@@ -334,14 +334,14 @@ $title = trans('www.sell_car.title');
                         <div class="select-box">
                             <div class="select-arrow"></div>
                             <div class="select-title"></div>
-                            <select name="door_id">
+                            <select name="doors">
                                 <option value="">{{trans('www.base.label.select')}}</option>
                                 @foreach($doors as $door)
-                                    <option value="{{$door->id}}">{{$door->name}}</option>
+                                    <option value="{{$door->count}}">{{$door->count}}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div id="form-error-door_id" class="form-error"></div>
+                        <div id="form-error-doors" class="form-error"></div>
                     </div>
                     <div class="cb"></div>
                 </div>
@@ -359,14 +359,14 @@ $title = trans('www.sell_car.title');
                         <div class="select-box">
                             <div class="select-arrow"></div>
                             <div class="select-title"></div>
-                            <select name="wheel_id">
+                            <select name="wheels">
                                 <option value="">{{trans('www.base.label.select')}}</option>
                                 @foreach($wheels as $wheel)
-                                    <option value="{{$wheel->id}}">{{$wheel->name}}</option>
+                                    <option value="{{$wheel->count}}">{{$wheel->count}}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div id="form-error-wheel_id" class="form-error"></div>
+                        <div id="form-error-wheels" class="form-error"></div>
                     </div>
                     <div class="cb"></div>
                 </div>

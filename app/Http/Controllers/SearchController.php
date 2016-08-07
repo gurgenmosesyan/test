@@ -43,7 +43,7 @@ class SearchController extends Controller
         $defCurrency = $currencyManager->defaultCurrency();
         $cCurrency = $currencyManager->currentCurrency();
 
-        list($autos, $reqData, $showAll) = $this->getAutos($request);
+        list($autos, $reqData, $showAll) = $this->getAutos($request, $currencies, $defCurrency, $cCurrency);
 
         if (!empty($reqData['mark_id'])) {
             $models = Manager::getModelsWithCat($reqData['mark_id']);
@@ -72,10 +72,73 @@ class SearchController extends Controller
         ]);
     }
 
-    protected function getAutos(Request $request)
+    protected function getAutos(Request $request, $currencies, $defCurrency, $cCurrency)
+    {
+        $reqData = $this->getReqData($request);
+        $showAll = false;
+        if (!empty($reqData['body_id']) || !empty($reqData['train_id']) || !empty($reqData['horsepower_from']) ||
+            !empty($reqData['horsepower_to']) || !empty($reqData['color_id']) || !empty($reqData['interior_color_id']) ||
+            !empty($reqData['cylinders']) || !empty($reqData['doors']) || !empty($reqData['wheels']) ||
+            !empty($reqData['custom_cleared']) || !empty($reqData['damaged']) || !empty($reqData['partial_pay'])) {
+            $showAll = true;
+        }
+
+        $query = Auto::active()->approved()->term()->with('mark', 'model', 'engine_ml', 'train_ml', 'body_ml', 'color_ml')->latest();
+
+        $this->setWhere($query, 'mark_id', $reqData['mark_id']);
+        if (!empty($reqData['model_id'])) {
+            if (strpos($reqData['model_id'], 'c_') === 0) {
+                $categoryId = str_replace('c_', '', $reqData['model_id']);
+                $modelIds = Model::active()->where('category_id', $categoryId)->lists('id')->toArray();
+                $query->whereIn('model_id', $modelIds);
+            } else {
+                $query->where('model_id', $reqData['model_id']);
+            }
+        }
+        $this->setWhere($query, 'country_id', $reqData['country_id']);
+        $this->setWhere($query, 'transmission_id', $reqData['transmission_id']);
+        $this->setWhere($query, 'rudder_id', $reqData['rudder_id']);
+        $this->setWhere($query, 'engine_id', $reqData['engine_id']);
+        $this->setWhere($query, 'volume', $reqData['volume_from'], '>=');
+        $this->setWhere($query, 'volume', $reqData['volume_to'], '<=');
+        $this->setWhere($query, 'year', $reqData['year_from'], '>=');
+        $this->setWhere($query, 'year', $reqData['year_to'], '<=');
+        $this->setWhere($query, 'train_id', $reqData['train_id']);
+        $this->setWhere($query, 'horsepower', $reqData['horsepower_from'], '>=');
+        $this->setWhere($query, 'horsepower', $reqData['horsepower_to'], '<=');
+        $this->setWhere($query, 'color_id', $reqData['color_id']);
+        $this->setWhere($query, 'interior_color_id', $reqData['interior_color_id']);
+        $this->setWhere($query, 'cylinders', $reqData['cylinders']);
+        $this->setWhere($query, 'doors', $reqData['doors']);
+        $this->setWhere($query, 'wheels', $reqData['wheels']);
+        $this->setWhere($query, 'custom_cleared', $reqData['custom_cleared']);
+        $this->setWhere($query, 'damaged', $reqData['damaged']);
+        $this->setWhere($query, 'partial_pay', $reqData['partial_pay']);
+
+        if (!empty($reqData['mileage_from'])) {
+            if ($reqData['mileage_measurement'] == Auto::MILEAGE_MEASUREMENT_KM) {
+                $query->where('mileage_km', '>=', $reqData['mileage_from']);
+            }  else if ($reqData['mileage_measurement'] == Auto::MILEAGE_MEASUREMENT_MILE) {
+                $query->where('mileage_mile', '>=', $reqData['mileage_from']);
+            }
+        }
+        if (!empty($reqData['mileage_to'])) {
+            if ($reqData['mileage_measurement'] == Auto::MILEAGE_MEASUREMENT_KM) {
+                $query->where('mileage_km', '<=', $reqData['mileage_to']);
+            }  else if ($reqData['mileage_measurement'] == Auto::MILEAGE_MEASUREMENT_MILE) {
+                $query->where('mileage_mile', '<=', $reqData['mileage_to']);
+            }
+        }
+        $this->setPriceWhere($query, $reqData['price_from'], '>=', $currencies, $defCurrency, $cCurrency);
+        $this->setPriceWhere($query, $reqData['price_to'], '<=', $currencies, $defCurrency, $cCurrency);
+
+        $autos = $query->paginate(25);
+        return [$autos, $reqData, $showAll];
+    }
+
+    protected function getReqData(Request $request)
     {
         $reqData = [];
-        $showAll = false;
         $reqData['mark_id'] = $request->input('mark_id');
         $reqData['model_id'] = $request->input('model_id');
         $reqData['country_id'] = $request->input('country_id');
@@ -97,125 +160,50 @@ class SearchController extends Controller
         $reqData['horsepower_to'] = $request->input('horsepower_to');
         $reqData['color_id'] = $request->input('color_id');
         $reqData['interior_color_id'] = $request->input('interior_color_id');
-        $reqData['cylinder_id'] = $request->input('cylinder_id');
-        $reqData['door_id'] = $request->input('door_id');
-        $reqData['wheel_id'] = $request->input('wheel_id');
+        $reqData['cylinders'] = $request->input('cylinders');
+        $reqData['doors'] = $request->input('doors');
+        $reqData['wheels'] = $request->input('wheels');
         $reqData['custom_cleared'] = $request->input('custom_cleared');
         $reqData['damaged'] = $request->input('damaged');
         $reqData['partial_pay'] = $request->input('partial_pay');
-
-        $query = Auto::active()->approved()->with('mark', 'model', 'engine_ml', 'train_ml', 'body_ml', 'color_ml', 'images')->latest();
-        if (!empty($reqData['mark_id'])) {
-            $query->where('mark_id', $reqData['mark_id']);
-        }
-        if (!empty($reqData['model_id'])) {
-            if (strpos($reqData['model_id'], 'c_') === 0) {
-                $categoryId = str_replace('c_', '', $reqData['model_id']);
-                $modelIds = Model::active()->where('category_id', $categoryId)->lists('id')->toArray();
-                $query->whereIn('model_id', $modelIds);
-            } else {
-                $query->where('model_id', $reqData['model_id']);
-            }
-        }
-        if (!empty($reqData['country_id'])) {
-            $query->where('country_id', $reqData['country_id']);
-        }
-        if (!empty($reqData['transmission_id'])) {
-            $query->where('transmission_id', $reqData['transmission_id']);
-        }
-        if (!empty($reqData['rudder_id'])) {
-            $query->where('rudder_id', $reqData['rudder_id']);
-        }
-        if (!empty($reqData['engine_id'])) {
-            $query->where('engine_id', $reqData['engine_id']);
-        }
-        if (!empty($reqData['volume_from'])) {
-            $volumeParts = explode('.', $reqData['volume_from']);
-            if (isset($volumeParts[0]) && isset($volumeParts[1])) {
-                $query->where('volume_1', '>=', $volumeParts[0])->where('volume_2', '>=', $volumeParts[1]);
-            }
-        }
-        if (!empty($reqData['volume_to'])) {
-            $volumeParts = explode('.', $reqData['volume_to']);
-            if (isset($volumeParts[0]) && isset($volumeParts[1])) {
-                $query->where('volume_1', '<=', $volumeParts[0])->where('volume_2', '<=', $volumeParts[1]);
-            }
-        }
-        if (!empty($reqData['year_from'])) {
-            $query->where('year', '>=', $reqData['year_from']);
-        }
-        if (!empty($reqData['year_to'])) {
-            $query->where('year', '>=', $reqData['year_to']);
-        }
-        if (!empty($reqData['mileage_from'])) {
-            if ($reqData['mileage_measurement'] == Auto::MILEAGE_MEASUREMENT_KM) {
-                $query->where('mileage_km', '>=', $reqData['mileage_from']);
-            }  else if ($reqData['mileage_measurement'] == Auto::MILEAGE_MEASUREMENT_MILE) {
-                $query->where('mileage_mile', '>=', $reqData['mileage_from']);
-            }
-        }
-        if (!empty($reqData['mileage_to'])) {
-            if ($reqData['mileage_measurement'] == Auto::MILEAGE_MEASUREMENT_KM) {
-                $query->where('mileage_km', '<=', $reqData['mileage_to']);
-            }  else if ($reqData['mileage_measurement'] == Auto::MILEAGE_MEASUREMENT_MILE) {
-                $query->where('mileage_mile', '<=', $reqData['mileage_to']);
-            }
-        }
-        if (!empty($reqData['price_from'])) {
-            $query->where('price', '>=', $reqData['price_from']);
-        }
-        if (!empty($reqData['price_to'])) {
-            $query->where('price', '<=', $reqData['price_to']);
-        }
-        if (!empty($reqData['body_id'])) {
-            $query->where('body_id', $reqData['body_id']);
-            $showAll = true;
-        }
-        if (!empty($reqData['train_id'])) {
-            $query->where('train_id', $reqData['train_id']);
-            $showAll = true;
-        }
-        if (!empty($reqData['horsepower_from'])) {
-            $query->where('horsepower', '>=', $reqData['horsepower_from']);
-            $showAll = true;
-        }
-        if (!empty($reqData['horsepower_to'])) {
-            $query->where('horsepower', '<=', $reqData['horsepower_to']);
-            $showAll = true;
-        }
-        if (!empty($reqData['color_id'])) {
-            $query->where('color_id', $reqData['color_id']);
-            $showAll = true;
-        }
-        if (!empty($reqData['interior_color_id'])) {
-            $query->where('interior_color_id', $reqData['interior_color_id']);
-            $showAll = true;
-        }
-        if (!empty($reqData['cylinder_id'])) {
-            $query->where('cylinder_id', $reqData['cylinder_id']);
-            $showAll = true;
-        }
-        if (!empty($reqData['door_id'])) {
-            $query->where('door_id', $reqData['door_id']);
-            $showAll = true;
-        }
-        if (!empty($reqData['wheel_id'])) {
-            $query->where('wheel_id', $reqData['wheel_id']);
-            $showAll = true;
-        }
-        if (!empty($reqData['custom_cleared'])) {
-            $query->where('custom_cleared', $reqData['custom_cleared']);
-            $showAll = true;
-        }
-        if (!empty($reqData['damaged'])) {
-            $query->where('damaged', $reqData['damaged']);
-            $showAll = true;
-        }
-        if (!empty($reqData['partial_pay'])) {
-            $query->where('partial_pay', $reqData['partial_pay']);
-            $showAll = true;
-        }
-        $autos = $query->paginate(25);
-        return [$autos, $reqData, $showAll];
+        return $reqData;
     }
+
+    protected function setWhere($query, $key, $value, $equation = '=')
+    {
+        if (!empty($value)) {
+            $query->where($key, $equation, $value);
+        }
+    }
+
+    protected function setPriceWhere($query, $value, $equation, $currencies, $defCurrency, $cCurrency)
+    {
+        if (!empty($value)) {
+            $prices = [];
+            foreach ($currencies as $currency) {
+                if ($currency->id == $cCurrency->id) {
+                    $price = $value;
+                } else if ($currency->id == $defCurrency->id) {
+                    $price = round($value / $cCurrency->rate);
+                } else if ($defCurrency->id == $cCurrency->id) {
+                    $price = round($value * $currency->rate);
+                } else {
+                    $price = $value / $cCurrency->rate;
+                    $price = round($price * $currency->rate);
+                }
+                $prices[] = [
+                    'currency_id' => $currency->id,
+                    'price' => intval($price)
+                ];
+            }
+            $query->where(function($query) use($prices, $equation) {
+                foreach ($prices as $price) {
+                    $query->orWhere(function($query) use($price, $equation) {
+                        $query->where('currency_id', $price['currency_id'])->where('price', $equation, $price['price']);
+                    });
+                }
+            });
+        }
+    }
+
 }

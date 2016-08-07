@@ -2,6 +2,9 @@
 use App\Models\Auto\Auto;
 use App\Helpers\Base;
 
+$head->appendStyle('/css/jquery.fancybox.css');
+$head->appendScript('/js/jquery.fancybox.pack.js');
+
 $price = Base::price($auto, $currencies, $defCurrency, $cCurrency, 'code');
 $title = $auto->mark->name.' '.$auto->model->name.' '.$auto->year.', '.strtoupper($price);
 
@@ -69,23 +72,34 @@ $title = $auto->mark->name.' '.$auto->model->name.' '.$auto->year.', '.strtouppe
                             <p class="fl value">{{$auto->tuning}}</p>
                             <div class="cb"></div>
                         @endif
-                        @if(!empty($auto->cylinder_id))
+                        @if(!empty($auto->cylinders))
                             <p class="fl key">{{trans('www.auto.cylinders')}}</p>
-                            <p class="fl value">{{$auto->cylinder->name}}</p>
+                            <p class="fl value">{{$auto->cylinders}}</p>
                             <div class="cb"></div>
                         @endif
-                        @if(!empty($auto->door_id))
+                        @if(!empty($auto->doors))
                             <p class="fl key">{{trans('www.auto.doors')}}</p>
-                            <p class="fl value">{{$auto->door->name}}</p>
+                            <p class="fl value">{{$auto->doors}}</p>
                             <div class="cb"></div>
                         @endif
-                        @if(!empty($auto->cylinder_id))
+                        @if(!empty($auto->wheels))
                             <p class="fl key">{{trans('www.auto.wheels')}}</p>
-                            <p class="fl value">{{$auto->wheel->name}}</p>
+                            <p class="fl value">{{$auto->wheels}}</p>
                             <div class="cb"></div>
                         @endif
                     </div>
                     <div class="main-right fl">
+
+                        <div class="images-box">
+                            <div class="main-img" style="background-image: url('{{$auto->getImage()}}');"></div>
+                            @if(!empty($auto->images))
+                                <div class="images">
+                                @foreach($auto->images as $key => $image)
+                                    <a href="{{$image->getImage()}}" class="db fl img-thumb{{$key%4 == 0 ? ' mln' : ''}}{{$key == 0 ? ' active' : ''}}" rel="images" style="background-image: url('{{$image->getImage()}}');"></a>
+                                @endforeach
+                                </div>
+                            @endif
+                        </div>
 
                     </div>
                     <div class="cb"></div>

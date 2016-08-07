@@ -25,7 +25,7 @@ if (!isset($currencies)) {
 
     $head->appendMainScript('/js/jquery-2.1.4.min.js');
     $head->appendMainScript('/js/jquery-ui.min.js');
-    $head->appendMainScript('/js/jquery.ui.touch-punch.min.js');
+    //$head->appendMainScript('/js/jquery.ui.touch-punch.min.js');
     $head->appendMainScript('/js/owl.carousel.min.js');
     $head->appendMainScript('/js/main.js');
 

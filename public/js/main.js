@@ -321,6 +321,17 @@ $main.initSearch = function() {
     });
 };
 
+$main.initAutoImages = function() {
+    var auto = $('#auto');
+    auto.find('.img-thumb').on('mouseover', function() {
+        auto.find('.main-img').attr('style', 'background-image: url(\''+$(this).attr('href')+'\');');
+        auto.find('.img-thumb.active').removeClass('active');
+        $(this).addClass('active');
+        return false;
+    });
+    auto.find('.img-thumb').fancybox();
+};
+
 $(document).ready(function() {
     $main.initHeaderBlocks();
 
@@ -347,4 +358,6 @@ $(document).ready(function() {
     $main.initParts();
 
     $main.initSearch();
+
+    $main.initAutoImages();
 });

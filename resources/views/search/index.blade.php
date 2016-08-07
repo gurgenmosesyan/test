@@ -31,7 +31,7 @@ $jsTrans->addTrans([
                 <select name="mark_id">
                     <option value="">{{trans('www.mark.select.default')}}</option>
                     @foreach($marks as $value)
-                        <option value="{{$value->id}}"{{$value->id == $reqData['mark_id'] ? 'selected="selected"' : ''}}>{{$value->name}}</option>
+                        <option value="{{$value->id}}"{{$value->id == $reqData['mark_id'] ? ' selected="selected"' : ''}}>{{$value->name}}</option>
                     @endforeach
                 </select>
             </div>
@@ -41,7 +41,7 @@ $jsTrans->addTrans([
                 <select name="transmission_id">
                     <option value="">{{trans('www.transmission.select.default')}}</option>
                     @foreach($transmissions as $value)
-                        <option value="{{$value->id}}"{{$value->id == $reqData['transmission_id'] ? 'selected="selected"' : ''}}>{{$value->name}}</option>
+                        <option value="{{$value->id}}"{{$value->id == $reqData['transmission_id'] ? ' selected="selected"' : ''}}>{{$value->name}}</option>
                     @endforeach
                 </select>
             </div>
@@ -52,7 +52,7 @@ $jsTrans->addTrans([
                     <select name="year_from">
                         <option value="">{{trans('www.year_from')}}</option>
                         @for($i = date('Y'); $i > 1909; $i--)
-                            <option value="{{$i}}"{{$value->id == $reqData['year_from'] ? 'selected="selected"' : ''}}>{{$i}}</option>
+                            <option value="{{$i}}"{{$i == $reqData['year_from'] ? ' selected="selected"' : ''}}>{{$i}}</option>
                         @endfor
                     </select>
                 </div>
@@ -64,7 +64,7 @@ $jsTrans->addTrans([
                     <select name="year_to">
                         <option value="">{{trans('www.year_to')}}</option>
                         @for($i = date('Y'); $i > 1909; $i--)
-                            <option value="{{$i}}"{{$value->id == $reqData['year_to'] ? 'selected="selected"' : ''}}>{{$i}}</option>
+                            <option value="{{$i}}"{{$i == $reqData['year_to'] ? ' selected="selected"' : ''}}>{{$i}}</option>
                         @endfor
                     </select>
                 </div>
@@ -91,7 +91,7 @@ $jsTrans->addTrans([
                     <select name="rudder_id">
                         <option value="">{{trans('www.rudder.select.default')}}</option>
                         @foreach($rudders as $value)
-                            <option value="{{$value->id}}"{{$value->id == $reqData['rudder_id'] ? 'selected="selected"' : ''}}>{{$value->name}}</option>
+                            <option value="{{$value->id}}"{{$value->id == $reqData['rudder_id'] ? ' selected="selected"' : ''}}>{{$value->name}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -103,7 +103,7 @@ $jsTrans->addTrans([
                     <select name="engine_id">
                         <option value="">{{trans('www.engine.select.default')}}</option>
                         @foreach($engines as $value)
-                            <option value="{{$value->id}}"{{$value->id == $reqData['engine_id'] ? 'selected="selected"' : ''}}>{{$value->name}}</option>
+                            <option value="{{$value->id}}"{{$value->id == $reqData['engine_id'] ? ' selected="selected"' : ''}}>{{$value->name}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -120,8 +120,8 @@ $jsTrans->addTrans([
                     <div class="select-arrow"></div>
                     <div class="select-title"></div>
                     <select name="mileage_measurement">
-                        <option value="{{Auto::MILEAGE_MEASUREMENT_KM}}"{{Auto::MILEAGE_MEASUREMENT_KM == $reqData['mileage_measurement'] ? 'selected="selected"' : ''}}>{{trans('www.mileage.measurement.km')}}</option>
-                        <option value="{{Auto::MILEAGE_MEASUREMENT_MILE}}"{{Auto::MILEAGE_MEASUREMENT_MILE == $reqData['mileage_measurement'] ? 'selected="selected"' : ''}}>{{trans('www.mileage.measurement.mile')}}</option>
+                        <option value="{{Auto::MILEAGE_MEASUREMENT_KM}}"{{Auto::MILEAGE_MEASUREMENT_KM == $reqData['mileage_measurement'] ? ' selected="selected"' : ''}}>{{trans('www.mileage.measurement.km')}}</option>
+                        <option value="{{Auto::MILEAGE_MEASUREMENT_MILE}}"{{Auto::MILEAGE_MEASUREMENT_MILE == $reqData['mileage_measurement'] ? ' selected="selected"' : ''}}>{{trans('www.mileage.measurement.mile')}}</option>
                     </select>
                 </div>
             </div>
@@ -134,7 +134,7 @@ $jsTrans->addTrans([
                 <select name="country_id">
                     <option value="">{{trans('www.country.select.default')}}</option>
                     @foreach($countries as $value)
-                        <option value="{{$value->id}}"{{$value->id == $reqData['country_id'] ? 'selected="selected"' : ''}}>{{$value->name}}</option>
+                        <option value="{{$value->id}}"{{$value->id == $reqData['country_id'] ? ' selected="selected"' : ''}}>{{$value->name}}</option>
                     @endforeach
                 </select>
             </div>
@@ -145,7 +145,7 @@ $jsTrans->addTrans([
                     <select name="volume_from">
                         <option value="">{{trans('www.volume.from')}}</option>
                         @foreach(config('auto.engine_volumes') as $value)
-                            <option value="{{$value}}"{{$value == $reqData['volume_from'] ? 'selected="selected"' : ''}}>{{$value}}</option>
+                            <option value="{{$value}}"{{$value == $reqData['volume_from'] ? ' selected="selected"' : ''}}>{{$value}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -157,7 +157,7 @@ $jsTrans->addTrans([
                     <select name="volume_to">
                         <option value="">{{trans('www.volume.to')}}</option>
                         @foreach(config('auto.engine_volumes') as $value)
-                            <option value="{{$value}}"{{$value == $reqData['volume_to'] ? 'selected="selected"' : ''}}>{{$value}}</option>
+                            <option value="{{$value}}"{{$value == $reqData['volume_to'] ? ' selected="selected"' : ''}}>{{$value}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -182,7 +182,7 @@ $jsTrans->addTrans([
                         <select name="body_id">
                             <option value="">{{trans('www.body.select.default')}}</option>
                             @foreach($bodies as $value)
-                                <option value="{{$value->id}}"{{$value->id == $reqData['body_id'] ? 'selected="selected"' : ''}}>{{$value->name}}</option>
+                                <option value="{{$value->id}}"{{$value->id == $reqData['body_id'] ? ' selected="selected"' : ''}}>{{$value->name}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -194,7 +194,7 @@ $jsTrans->addTrans([
                         <select name="train_id">
                             <option value="">{{trans('www.train.select.default')}}</option>
                             @foreach($trains as $value)
-                                <option value="{{$value->id}}"{{$value->id == $reqData['train_id'] ? 'selected="selected"' : ''}}>{{$value->name}}</option>
+                                <option value="{{$value->id}}"{{$value->id == $reqData['train_id'] ? ' selected="selected"' : ''}}>{{$value->name}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -203,10 +203,10 @@ $jsTrans->addTrans([
                 <div class="select-box">
                     <div class="select-arrow"></div>
                     <div class="select-title"></div>
-                    <select name="cylinder_id">
+                    <select name="cylinders">
                         <option value="">{{trans('www.cylinder_count.select.default')}}</option>
                         @foreach($cylindersCount as $value)
-                            <option value="{{$value->id}}"{{$value->id == $reqData['cylinder_id'] ? 'selected="selected"' : ''}}>{{$value->name}}</option>
+                            <option value="{{$value->count}}"{{$value->count == $reqData['cylinders'] ? ' selected="selected"' : ''}}>{{$value->count}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -222,10 +222,10 @@ $jsTrans->addTrans([
                 <div class="select-box">
                     <div class="select-arrow"></div>
                     <div class="select-title"></div>
-                    <select name="door_id">
+                    <select name="doors">
                         <option value="">{{trans('www.door_count.select.default')}}</option>
                         @foreach($doorsCount as $value)
-                            <option value="{{$value->id}}"{{$value->id == $reqData['door_id'] ? 'selected="selected"' : ''}}>{{$value->name}}</option>
+                            <option value="{{$value->count}}"{{$value->count == $reqData['doors'] ? ' selected="selected"' : ''}}>{{$value->count}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -238,7 +238,7 @@ $jsTrans->addTrans([
                         <select name="color_id">
                             <option value="">{{trans('www.color.select.default')}}</option>
                             @foreach($colors as $value)
-                                <option value="{{$value->id}}"{{$value->id == $reqData['color_id'] ? 'selected="selected"' : ''}}>{{$value->name}}</option>
+                                <option value="{{$value->id}}"{{$value->id == $reqData['color_id'] ? ' selected="selected"' : ''}}>{{$value->name}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -250,7 +250,7 @@ $jsTrans->addTrans([
                         <select name="interior_color_id">
                             <option value="">{{trans('www.interior_color.select.default')}}</option>
                             @foreach($interiorColors as $value)
-                                <option value="{{$value->id}}"{{$value->id == $reqData['interior_color_id'] ? 'selected="selected"' : ''}}>{{$value->name}}</option>
+                                <option value="{{$value->id}}"{{$value->id == $reqData['interior_color_id'] ? ' selected="selected"' : ''}}>{{$value->name}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -259,10 +259,10 @@ $jsTrans->addTrans([
                 <div class="select-box">
                     <div class="select-arrow"></div>
                     <div class="select-title"></div>
-                    <select name="wheel_id">
+                    <select name="wheels">
                         <option value="">{{trans('www.wheel.select.default')}}</option>
                         @foreach($wheels as $value)
-                            <option value="{{$value->id}}"{{$value->id == $reqData['wheel_id'] ? 'selected="selected"' : ''}}>{{$value->name}}</option>
+                            <option value="{{$value->count}}"{{$value->count == $reqData['wheels'] ? ' selected="selected"' : ''}}>{{$value->count}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -308,7 +308,7 @@ $jsTrans->addTrans([
                 @foreach($autos as $key => $auto)
                     @if($key != 0)<div class="line"></div>@endif
                     <a href="{{url_with_lng('/auto/'.$auto->auto_id, false)}}" class="auto db">
-                        <span class="auto-img db fl" style="background-image: url('{{$auto->images[0]->getImage()}}');"></span>
+                        <span class="auto-img db fl" style="background-image: url('{{$auto->getImage()}}');"></span>
                         <span class="auto-info db fl">
                             <span class="title-box db fl">
                                 <span class="title db fb">{{$auto->mark->name.' '.$auto->model->name}}</span>

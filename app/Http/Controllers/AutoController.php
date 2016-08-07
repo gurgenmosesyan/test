@@ -9,7 +9,7 @@ class AutoController extends Controller
 {
     public function index($lngCode, $autoId)
     {
-        $auto = Auto::active()->approved()->where('auto_id', $autoId)->firstOrFail();
+        $auto = Auto::active()->approved()->term()->where('auto_id', $autoId)->firstOrFail();
 
         $currencyManager = new CurrencyManager();
         $currencies = $currencyManager->all();

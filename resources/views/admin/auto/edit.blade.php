@@ -6,6 +6,7 @@ $head->appendScript('/admin/auto/auto.js');
 
 $pageTitle = trans('admin.auto.form.title');
 $pageMenu = 'auto';
+$volume1 = $volume2 = null;
 if ($saveMode == 'add') {
     $pageSubTitle = trans('admin.auto.form.add.sub_title');
     $url = route('admin_auto_store');
@@ -16,6 +17,12 @@ if ($saveMode == 'add') {
     $url = route('admin_auto_update', $auto->id);
     $autoOptions = $auto->options->keyBy('option_id');
     $autoImages = $auto->images;
+    if (!empty($auto->volume)) {
+        $volumes = explode('.', $auto->volume);
+        $volume1 = $volumes[0];
+        $volume2 = $volumes[1];
+    }
+
 }
 $jsTrans->addTrans(['admin.base.label.select']);
 ?>
@@ -161,7 +168,7 @@ $jsTrans->addTrans(['admin.base.label.select']);
                 <select name="volume_1" class="form-control">
                     <option value="">{{trans('admin.base.label.select')}}</option>
                     @for($i = 0; $i < 16; $i++)
-                        <option value="{{$i}}"{{($auto->volume_1 != 0 || $auto->volume_2 != 0) && $i == $auto->volume_1 ? ' selected="selected"' : ''}}>{{$i}}</option>
+                        <option value="{{$i}}"{{($volume1 != 0 || $volume2 != 0) && $i == $volume1 ? ' selected="selected"' : ''}}>{{$i}}</option>
                     @endfor
                 </select>
                 <div id="form-error-volume_1" class="form-error"></div>
@@ -170,7 +177,7 @@ $jsTrans->addTrans(['admin.base.label.select']);
                 <select name="volume_2" class="form-control">
                     <option value="">{{trans('admin.base.label.select')}}</option>
                     @for($i = 0; $i < 10; $i++)
-                        <option value="{{$i}}"{{($auto->volume_1 != 0 || $auto->volume_2 != 0) && $i == $auto->volume_2 ? ' selected="selected"' : ''}}>{{$i}}</option>
+                        <option value="{{$i}}"{{($volume2 != 0 || $volume2 != 0) && $i == $volume2 ? ' selected="selected"' : ''}}>{{$i}}</option>
                     @endfor
                 </select>
                 <div id="form-error-volume_2" class="form-error"></div>
@@ -186,13 +193,13 @@ $jsTrans->addTrans(['admin.base.label.select']);
         <div class="form-group">
             <label class="col-sm-3 control-label">{{trans('admin.base.label.cylinders_count')}}</label>
             <div class="col-sm-9">
-                <select name="cylinder_id" class="form-control">
+                <select name="cylinders" class="form-control">
                     <option value="">{{trans('admin.base.label.select')}}</option>
                     @foreach($cylinders as $value)
-                        <option value="{{$value->id}}"{{$value->id == $auto->cylinder_id ? ' selected="selected"' : ''}}>{{$value->name}}</option>
+                        <option value="{{$value->count}}"{{$value->count == $auto->cylinders ? ' selected="selected"' : ''}}>{{$value->count}}</option>
                     @endforeach
                 </select>
-                <div id="form-error-cylinder_id" class="form-error"></div>
+                <div id="form-error-cylinders" class="form-error"></div>
             </div>
         </div>
         <div class="form-group">
@@ -210,25 +217,25 @@ $jsTrans->addTrans(['admin.base.label.select']);
         <div class="form-group">
             <label class="col-sm-3 control-label">{{trans('admin.base.label.doors_count')}}</label>
             <div class="col-sm-9">
-                <select name="door_id" class="form-control">
+                <select name="doors" class="form-control">
                     <option value="">{{trans('admin.base.label.select')}}</option>
                     @foreach($doors as $value)
-                        <option value="{{$value->id}}"{{$value->id == $auto->door_id ? ' selected="selected"' : ''}}>{{$value->name}}</option>
+                        <option value="{{$value->count}}"{{$value->count == $auto->doors ? ' selected="selected"' : ''}}>{{$value->count}}</option>
                     @endforeach
                 </select>
-                <div id="form-error-door_id" class="form-error"></div>
+                <div id="form-error-doors" class="form-error"></div>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label">{{trans('admin.base.label.wheel')}}</label>
             <div class="col-sm-9">
-                <select name="wheel_id" class="form-control">
+                <select name="wheels" class="form-control">
                     <option value="">{{trans('admin.base.label.select')}}</option>
                     @foreach($wheels as $value)
-                        <option value="{{$value->id}}"{{$value->id == $auto->wheel_id ? ' selected="selected"' : ''}}>{{$value->name}}</option>
+                        <option value="{{$value->count}}"{{$value->count == $auto->wheels ? ' selected="selected"' : ''}}>{{$value->count}}</option>
                     @endforeach
                 </select>
-                <div id="form-error-wheel_id" class="form-error"></div>
+                <div id="form-error-wheels" class="form-error"></div>
             </div>
         </div>
         <div class="form-group">

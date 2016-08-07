@@ -60,6 +60,9 @@ class Manager
             $data['mileage_mile'] = $data['mileage'];
             $data['mileage_km'] = round($data['mileage'] * 1.60934);
         }
+        if (!empty($data['volume_1'])) {
+            $data['volume'] = floatval($data['volume_1'].'.'.$data['volume_2']);
+        }
         if (!isset($data['contract'])) {
             $data['contract'] = AUTO::NOT_CONTRACT;
         }
@@ -104,7 +107,7 @@ class Manager
         }
     }
 
-    protected function storeImages($data, Auto $auto)
+    protected function storeImages($data, Auto $auto, $setMain = true)
     {
         $watermark = Config::where('key', Config::KEY_WATERMARK)->first();
         $images = [];
@@ -149,6 +152,10 @@ class Manager
         }
         if (!empty($images)) {
             $auto->images()->saveMany($images);
+            if ($setMain) {
+                $auto->image = $images[0]->image;
+                $auto->save();
+            }
         }
     }
 
@@ -156,9 +163,12 @@ class Manager
     {
         AutoImage::where('auto_id', $auto->id)->update(['show_status' => Auto::STATUS_DELETED]);
         $newImages = [];
+        $setMain = false;
+        $i = 0;
         foreach ($data as $value) {
             if (empty($value['id'])) {
                 $newImages[] = $value;
+                $setMain = $i == 0 ? true : false;
             } else {
                 $autoImage = AutoImage::findOrFail($value['id']);
                 if (!empty($value['rotate'])) {
@@ -179,10 +189,15 @@ class Manager
                 }
                 $autoImage->show_status = Auto::STATUS_ACTIVE;
                 $autoImage->save();
+                if ($i == 0) {
+                    $auto->image = $autoImage->image;
+                    $auto->save();
+                }
             }
+            $i++;
         }
         if (!empty($newImages)) {
-            $this->storeImages($newImages, $auto);
+            $this->storeImages($newImages, $auto, $setMain);
         }
         $deletedImages = AutoImage::where('auto_id', $auto->id)->where('show_status', Auto::STATUS_DELETED)->get();
         foreach ($deletedImages as $deletedImage) {
