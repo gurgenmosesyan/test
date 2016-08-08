@@ -15,6 +15,13 @@ return [
             //'max_width' => 200,
             //'min_height' => 500,
             //'max_height' => 200,
+        ],
+        'auto_empty' => [
+            'extensions' => [
+                'jpg', 'jpeg', 'png'
+            ],
+            'width' => 527,
+            'height' => 380,
         ]
     ]
 ];

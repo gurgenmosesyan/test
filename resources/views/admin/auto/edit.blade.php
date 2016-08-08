@@ -252,7 +252,12 @@ $jsTrans->addTrans(['admin.base.label.select']);
         <div class="form-group">
             <label class="col-sm-3 control-label">{{trans('admin.base.label.region')}}</label>
             <div class="col-sm-9">
-                <select id="region-select" name="region_id" class="form-control"></select>
+                <select id="region-select" name="region_id" class="form-control">
+                    <option value="">{{trans('admin.base.label.select')}}</option>
+                    @foreach($regions as $value)
+                        <option value="{{$value->id}}"{{$value->id == $auto->region_id ? ' selected="selected"' : ''}}>{{$value->name}}</option>
+                    @endforeach
+                </select>
                 <div id="form-error-region_id" class="form-error"></div>
             </div>
         </div>

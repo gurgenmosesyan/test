@@ -15,6 +15,7 @@ use Facebook\Exceptions\FacebookResponseException;
 use Facebook\Exceptions\FacebookSDKException;
 use Google_Client;
 use Google_Service_Plus;
+use Session;
 
 class UserApiController extends Controller
 {
@@ -112,7 +113,9 @@ class UserApiController extends Controller
 
     public function registration(RegRequest $request)
     {
-        return $this->api('OK', $this->manager->registration($request->all()));
+        $this->manager->registration($request->all());
+        Session::put(['success_reg' => true]);
+        return $this->api('OK', ['redirect' => route('success_reg', cLng('code'))]);
     }
 
     public function forgot(ForgotRequest $request)

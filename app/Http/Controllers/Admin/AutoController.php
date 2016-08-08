@@ -16,6 +16,7 @@ use App\Models\Engine\Engine;
 use App\Models\InteriorColor\Color as InteriorColor;
 use App\Models\Mark\Mark;
 use App\Models\Model\Model;
+use App\Models\Region\Region;
 use App\Models\Rudder\Rudder;
 use App\Models\Train\Train;
 use App\Models\Transmission\Transmission;
@@ -59,6 +60,10 @@ class AutoController extends BaseController
         $doors = Door::active()->get();
         $wheels = Wheel::active()->get();
         $countries = Country::active()->with('current')->get();
+        $regions = [];
+        if (!$countries->isEmpty()) {
+            $regions = Region::joinMl()->active()->where('country_id', $countries[0]->id)->get();
+        }
         $options = Option::active()->with('current')->get();
         $currencies = Currency::active()->ordered()->get();
         return view('admin.auto.edit')->with([
@@ -76,6 +81,7 @@ class AutoController extends BaseController
             'doors' => $doors,
             'wheels' => $wheels,
             'countries' => $countries,
+            'regions' => $regions,
             'options' => $options,
             'currencies' => $currencies,
             'saveMode' => 'add'
@@ -103,6 +109,7 @@ class AutoController extends BaseController
         $doors = Door::active()->get();
         $wheels = Wheel::active()->get();
         $countries = Country::active()->with('current')->get();
+        $regions = Region::joinMl()->where('country_id', $auto->country_id)->get();
         $options = Option::active()->with('current')->get();
         $currencies = Currency::active()->ordered()->get();
         return view('admin.auto.edit')->with([
@@ -120,6 +127,7 @@ class AutoController extends BaseController
             'doors' => $doors,
             'wheels' => $wheels,
             'countries' => $countries,
+            'regions' => $regions,
             'options' => $options,
             'currencies' => $currencies,
             'saveMode' => 'edit'
@@ -145,5 +153,53 @@ class AutoController extends BaseController
         }
         Auto::active()->where('id', $id)->update(['status' => $status]);
         return $this->api('OK');
+    }
+
+    public function get(Request $request)
+    {
+        $title = $request->input('title');
+        $parts = explode(' ', $title);
+        foreach ($parts as $key => $part) {
+            if (empty($part)) {
+                unset($parts[$key]);
+            }
+        }
+        $parts = array_values($parts);
+
+        $autos = Auto::select('autos.id', 'autos.year', 'marks.name as mark_name', 'models.name as model_name')
+        ->join('marks', function($query) {
+            $query->on('marks.id', '=', 'autos.mark_id')->where('marks.show_status', '=', Mark::STATUS_ACTIVE);
+        })
+        ->join('models', function($query) {
+            $query->on('models.id', '=', 'autos.model_id')->where('models.show_status', '=', Model::STATUS_ACTIVE);
+        })
+        ->active()
+        ->where(function($query) use($parts) {
+            if (count($parts) == 1) {
+                $query->where('marks.name', 'LIKE', '%'.$parts[0].'%')
+                    ->orWhere('models.name', 'LIKE', '%'.$parts[0].'%');
+            } else if (count($parts) == 2) {
+                $query->where(function($query) use($parts) {
+                    $query->where('marks.name', 'LIKE', '%'.$parts[0].'%')
+                          ->where('models.name', 'LIKE', '%'.$parts[1].'%');
+                })->orWhere(function($query) use($parts) {
+                    $query->where('marks.name', 'LIKE', '%'.$parts[1].'%')
+                          ->where('models.name', 'LIKE', '%'.$parts[0].'%');
+                });
+            } else if (count($parts) == 3) {
+                $query->where(function($query) use($parts) {
+                    $query->where('marks.name', 'LIKE', '%'.$parts[0].'%')
+                          ->where('models.name', 'LIKE', '%'.$parts[1].'%')
+                          ->where('autos.year', 'LIKE', '%'.$parts[2].'%');
+                })->orWhere(function($query) use($parts) {
+                    $query->where('marks.name', 'LIKE', '%'.$parts[1].'%')
+                          ->where('models.name', 'LIKE', '%'.$parts[0].'%')
+                          ->where('autos.year', 'LIKE', '%'.$parts[2].'%');
+                });
+            }
+        })
+        ->get();
+
+        return $this->api('OK', $autos);
     }
 }

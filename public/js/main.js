@@ -39,13 +39,17 @@ $main.basePath = function(path, lngCode) {
     return baseUrl + path;
 };
 
-$main.preloadImages = function() {
-    var images = ['/images/checkbox-active.png', '/images/radio-active.png'],
-        img;
+$main.preloadImages = function(images) {
+    var img;
     for (var i in images) {
         img = new Image();
         img.src = images[i];
     }
+};
+
+$main.initPreloadImages = function() {
+    var images = ['/images/checkbox-active.png', '/images/radio-active.png'];
+    $main.preloadImages(images);
 };
 
 $main.initHeaderBlocks = function() {
@@ -353,11 +357,9 @@ $(document).ready(function() {
 
     $main.initQuickSearch();
 
-    $main.preloadImages();
+    $main.initPreloadImages();
 
     $main.initParts();
 
     $main.initSearch();
-
-    $main.initAutoImages();
 });

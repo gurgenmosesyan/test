@@ -7,6 +7,7 @@ use App\Core\Model;
 class Config extends Model
 {
     const KEY_WATERMARK = 'watermark';
+    const KEY_AUTO_EMPTY = 'auto_empty';
     const IMAGES_PATH = 'images/config';
 
     protected $table = 'config';

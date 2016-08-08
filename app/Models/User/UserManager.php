@@ -43,7 +43,6 @@ class UserManager
                 'body' => $body
             ]);
         });
-        return true;
     }
 
     public function getFBUser($userNode)

@@ -89,8 +89,8 @@ $user.googleCallback = function() {
 
 $user.init = function() {
     $('#registration-form').submit(function() {
-        $user.sendForm($(this), function() {
-            alert('You have successfully registered');
+        $user.sendForm($(this), function(data) {
+            document.location.href = data.redirect;
         });
         return false;
     });

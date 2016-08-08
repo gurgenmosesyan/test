@@ -29,15 +29,17 @@ $jsTrans->addTrans([
     $head->appendMainStyle('/assets/dist/css/main.css');
     $head->appendMainStyle('/assets/dist/css/skins/skin-blue.min.css');
     $head->appendMainStyle('/assets/plugins/iCheck/minimal/blue.css');
+    $head->appendMainStyle('/assets/plugins/jQueryUI/jquery-ui.min.css');
 
     $head->appendMainScript('/assets/plugins/jQuery/jQuery-2.1.4.min.js');
-    $head->appendMainScript('https://code.jquery.com/ui/1.11.4/jquery-ui.min.js');
+    $head->appendMainScript('/assets/plugins/jQueryUI/jquery-ui.min.js');
     $head->appendMainScript('/assets/bootstrap/js/bootstrap.min.js');
     $head->appendMainScript('/assets/plugins/datatables/jquery.dataTables.min.js');
     $head->appendMainScript('/assets/plugins/datatables/dataTables.bootstrap.min.js');
     $head->appendMainScript('/assets/plugins/iCheck/icheck.min.js');
     $head->appendMainScript('/assets/plugins/datepicker/bootstrap-datepicker.js');
     $head->appendMainScript('/assets/dist/js/app.js');
+    $head->appendMainScript('/core/js/searchSelectBox.js');
     $head->appendMainScript('/core/js/main.js');
 
     //$head->appendMainScript('/assets/plugins/timepicker/bootstrap-timepicker.min.js');
@@ -114,6 +116,8 @@ $jsTrans->addTrans([
                 <li{{$pageMenu == 'country' ? ' class=active' : ''}}><a href="{{route('admin_country_table')}}"><i class="fa fa-globe"></i> <span>{{trans('admin.country.form.title')}}</span></a></li>
                 <li{{$pageMenu == 'region' ? ' class=active' : ''}}><a href="{{route('admin_region_table')}}"><i class="fa fa-globe"></i> <span>{{trans('admin.region.form.title')}}</span></a></li>
                 <li{{$pageMenu == 'auto' ? ' class=active' : ''}}><a href="{{route('admin_auto_table')}}"><i class="fa fa-car"></i> <span>{{trans('admin.auto.form.title')}}</span></a></li>
+                <li{{$pageMenu == 'top_car' ? ' class=active' : ''}}><a href="{{route('admin_top_car_table')}}"><i class="fa fa-star"></i> <span>{{trans('admin.top_car.form.title')}}</span></a></li>
+                <li{{$pageMenu == 'urgent_car' ? ' class=active' : ''}}><a href="{{route('admin_urgent_car_table')}}"><i class="fa fa-exclamation-circle"></i> <span>{{trans('admin.urgent_car.form.title')}}</span></a></li>
                 <li{{$pageMenu == 'config' ? ' class=active' : ''}}><a href="{{route('admin_config_edit')}}"><i class="fa fa-edit"></i> <span>{{trans('admin.config.form.title')}}</span></a></li>
                 <li{{$pageMenu == 'currency' ? ' class=active' : ''}}><a href="{{route('admin_currency_table')}}"><i class="fa fa-usd"></i> <span>{{trans('admin.currency.form.title')}}</span></a></li>
                 <li{{$pageMenu == 'part' ? ' class=active' : ''}}><a href="{{route('admin_part_table')}}"><i class="fa fa-cogs"></i> <span>{{trans('admin.part.form.title')}}</span></a></li>

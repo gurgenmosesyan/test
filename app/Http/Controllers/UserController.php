@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User\User;
 use App\Models\User\UserManager;
+use Session;
 use Auth;
 
 class UserController extends Controller
@@ -16,6 +17,14 @@ class UserController extends Controller
     public function registration()
     {
         return view('user.registration');
+    }
+
+    public function registrationSuccess()
+    {
+        if (!Session::get('success_reg')) {
+            abort(404);
+        }
+        return view('user.registration_success');
     }
 
     public function forgot()

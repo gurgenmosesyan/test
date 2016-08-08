@@ -20,13 +20,17 @@ class ConfigController extends BaseController
     {
         $configs = Config::all();
         $watermark = null;
+        $autoEmpty = null;
         foreach ($configs as $config) {
-            if ($config->key == 'watermark') {
+            if ($config->key == Config::KEY_WATERMARK) {
                 $watermark = $config->value;
+            } else if ($config->key == Config::KEY_AUTO_EMPTY) {
+                $autoEmpty = $config->value;
             }
         }
         return view('admin.config.edit')->with([
             'watermark' => $watermark,
+            'autoEmpty' => $autoEmpty
         ]);
     }
 

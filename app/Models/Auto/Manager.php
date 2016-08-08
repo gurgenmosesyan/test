@@ -67,7 +67,7 @@ class Manager
             $data['contract'] = AUTO::NOT_CONTRACT;
         }
         if (!isset($data['auction'])) {
-            $data['contract'] = AUTO::NOT_AUCTION;
+            $data['auction'] = AUTO::NOT_AUCTION;
         }
         if (!isset($data['bank'])) {
             $data['bank'] = AUTO::NOT_BANK;

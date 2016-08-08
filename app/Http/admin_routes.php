@@ -149,9 +149,10 @@ Route::group($params, function () {
     Route::post('/auto/update/{id}', ['uses' => 'AutoController@update', 'as' => 'admin_auto_update']);
     Route::post('/auto/delete/{id}', ['uses' => 'AutoController@delete', 'as' => 'admin_auto_delete']);
     Route::post('/auto/changeStatus', ['uses' => 'AutoController@changeStatus', 'as' => 'admin_auto_change_status']);
+    Route::post('/auto/get', ['uses' => 'AutoController@get', 'as' => 'admin_auto_get']);
 
     Route::get('/config/edit', ['uses' => 'ConfigController@edit', 'as' => 'admin_config_edit']);
-    Route::post('/auto/update', ['uses' => 'ConfigController@update', 'as' => 'admin_config_update']);
+    Route::post('/config/update', ['uses' => 'ConfigController@update', 'as' => 'admin_config_update']);
 
     Route::get('/currency', ['uses' => 'CurrencyController@table', 'as' => 'admin_currency_table']);
     Route::get('/currency/create', ['uses' => 'CurrencyController@create', 'as' => 'admin_currency_create']);
@@ -168,5 +169,21 @@ Route::group($params, function () {
     Route::post('/part/store', ['uses' => 'PartController@store', 'as' => 'admin_part_store']);
     Route::post('/part/update/{id}', ['uses' => 'PartController@update', 'as' => 'admin_part_update']);
     Route::post('/part/delete/{id}', ['uses' => 'PartController@delete', 'as' => 'admin_part_delete']);
+
+    Route::get('/topCar', ['uses' => 'TopCarController@table', 'as' => 'admin_top_car_table']);
+    Route::get('/topCar/create', ['uses' => 'TopCarController@create', 'as' => 'admin_top_car_create']);
+    Route::get('/topCar/edit/{id}', ['uses' => 'TopCarController@edit', 'as' => 'admin_top_car_edit']);
+    Route::post('/topCar', ['uses' => 'TopCarController@index', 'as' => 'admin_top_car_index']);
+    Route::post('/topCar/store', ['uses' => 'TopCarController@store', 'as' => 'admin_top_car_store']);
+    Route::post('/topCar/update/{id}', ['uses' => 'TopCarController@update', 'as' => 'admin_top_car_update']);
+    Route::post('/topCar/delete/{id}', ['uses' => 'TopCarController@delete', 'as' => 'admin_top_car_delete']);
+
+    Route::get('/urgentCar', ['uses' => 'UrgentCarController@table', 'as' => 'admin_urgent_car_table']);
+    Route::get('/urgentCar/create', ['uses' => 'UrgentCarController@create', 'as' => 'admin_urgent_car_create']);
+    Route::get('/urgentCar/edit/{id}', ['uses' => 'UrgentCarController@edit', 'as' => 'admin_urgent_car_edit']);
+    Route::post('/urgentCar', ['uses' => 'UrgentCarController@index', 'as' => 'admin_urgent_car_index']);
+    Route::post('/urgentCar/store', ['uses' => 'UrgentCarController@store', 'as' => 'admin_urgent_car_store']);
+    Route::post('/urgentCar/update/{id}', ['uses' => 'UrgentCarController@update', 'as' => 'admin_urgent_car_update']);
+    Route::post('/urgentCar/delete/{id}', ['uses' => 'UrgentCarController@delete', 'as' => 'admin_urgent_car_delete']);
 
 });

@@ -4779,3 +4779,23 @@ table.text-center th {
 .img-uploader-image {
     max-width: 100%;
 }
+.ui-search-select-box{
+    position: relative;
+}
+
+.ui-search-select-box .ui-search-select{
+    padding-right: 23px;
+}
+
+.ui-search-select-box .icon-remove {
+    cursor: pointer;
+    position: absolute;
+    right: 8px;
+    top: 10px;
+}
+.ui-menu .ui-menu-item {
+    padding: 4px 8px;
+}
+.loading {
+    background: url('../img/loader.gif') no-repeat 98% center !important;
+}

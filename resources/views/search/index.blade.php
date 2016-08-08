@@ -1,6 +1,7 @@
 <?php
 use App\Models\Auto\Auto;
 use App\Helpers\Base;
+use App\Models\Config\Manager;
 
 $title = trans('www.search.title');
 
@@ -8,6 +9,8 @@ $jsTrans->addTrans([
     'www.search.all_params',
     'www.search.all_params.hide',
 ]);
+
+$autoEmpty = Manager::getAutoEmpty();
 ?>
 @extends('layout')
 
@@ -308,7 +311,8 @@ $jsTrans->addTrans([
                 @foreach($autos as $key => $auto)
                     @if($key != 0)<div class="line"></div>@endif
                     <a href="{{url_with_lng('/auto/'.$auto->auto_id, false)}}" class="auto db">
-                        <span class="auto-img db fl" style="background-image: url('{{$auto->getImage()}}');"></span>
+                        {{--<span class="auto-img db fl" style="background-image: url('{{$auto->getImage()}}');"></span>--}}
+                        <span class="auto-img db fl"><img src="{{$auto->getThumb($autoEmpty)}}" width="205" /></span>
                         <span class="auto-info db fl">
                             <span class="title-box db fl">
                                 <span class="title db fb">{{$auto->mark->name.' '.$auto->model->name}}</span>

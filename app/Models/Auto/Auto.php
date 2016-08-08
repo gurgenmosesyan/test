@@ -10,9 +10,12 @@ use App\Models\InteriorColor\ColorMl as InteriorColorMl;
 use App\Models\Engine\EngineMl;
 use App\Models\Mark\Mark;
 use App\Models\Model\Model as AutoModel;
+use App\Models\Region\RegionMl;
 use App\Models\Rudder\RudderMl;
 use App\Models\Train\TrainMl;
 use App\Models\Transmission\TransmissionMl;
+use App\Image\Image;
+use App\Models\User\User;
 
 class Auto extends Model
 {
@@ -81,15 +84,55 @@ class Auto extends Model
         'status'
     ];
 
-    public function getImage()
+    public function getThumb($autoEmpty)
     {
-        return empty($this->image) ? url('/images/auto_empty.jpg') : url('/'.self::IMAGES_PATH.'/'.$this->image);
+        return empty($this->image) ? url(Image::show($autoEmpty->value, 'config.auto_empty_thumb')) : url(Image::show($this->image, 'auto.thumb'));
+    }
+
+    public function getImage($autoEmpty)
+    {
+        return empty($this->image) ? url('/images/config/'.$autoEmpty->value) : url('/'.self::IMAGES_PATH.'/'.$this->image);
     }
 
     public function mileageInfo()
     {
         $mileage = $this->mileage_measurement == self::MILEAGE_MEASUREMENT_KM ? $this->mileage_km : $this->mileage_mile;
         return $mileage.' '.trans('www.mileage.measurement.'.$this->mileage_measurement);
+    }
+
+    public function isContract()
+    {
+        return $this->contract == self::CONTRACT;
+    }
+
+    public function isAuction()
+    {
+        return $this->auction == self::AUCTION;
+    }
+
+    public function isBank()
+    {
+        return $this->bank == self::BANK;
+    }
+
+    public function isExchange()
+    {
+        return $this->exchange == self::EXCHANGE;
+    }
+
+    public function isPartialPay()
+    {
+        return $this->partial_pay == self::PARTIAL_PAY;
+    }
+
+    public function isCustomCleared()
+    {
+        return $this->custom_cleared == self::CUSTOM_CLEARED;
+    }
+
+    public function isDamaged()
+    {
+        return $this->damaged == self::DAMAGED;
     }
 
     public function scopeApproved($query)
@@ -100,6 +143,11 @@ class Auto extends Model
     public function scopeTerm($query)
     {
         return $query->where('term', '>=', date('Y-m-d'));
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id')->active();
     }
 
     public function mark()
@@ -115,6 +163,11 @@ class Auto extends Model
     public function country_ml()
     {
         return $this->belongsTo(CountryMl::class, 'country_id', 'id')->active()->current();
+    }
+
+    public function region_ml()
+    {
+        return $this->belongsTo(RegionMl::class, 'region_id', 'id')->active()->current();
     }
 
     public function engine_ml()

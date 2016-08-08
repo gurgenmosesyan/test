@@ -3,6 +3,7 @@
 namespace App\Models\Auto;
 
 use App\Core\Model;
+use App\Image\Image;
 
 class AutoImage extends Model
 {
@@ -15,6 +16,11 @@ class AutoImage extends Model
     protected $fillable = [
         'show_status'
     ];
+
+    public function getThumb()
+    {
+        return url(Image::show($this->image, 'auto.thumb'));
+    }
 
     public function getImage()
     {

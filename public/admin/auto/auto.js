@@ -204,7 +204,7 @@ $auto.initRegion = function() {
         if ($(this).val()) {
             $auto.getRegions($(this).val());
         }
-    }).change();
+    });
 };
 
 $auto.initUploaderForm = function() {

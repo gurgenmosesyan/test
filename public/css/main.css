@@ -52,6 +52,14 @@ html,body {
 .tc { text-align: center; }
 .tr { text-align: right; }
 .tu { text-transform: uppercase; }
+.fbn { font-weight: normal; }
+.fs14 { font-size: 14px; }
+.fs15 { font-size: 15px; }
+.fs16 { font-size: 16px; }
+.mt10 { margin-top: 10px; }
+.mt20 { margin-top: 20px; }
+.mt25 { margin-top: 25px; }
+.mb25 { margin-bottom: 25px; }
 
 .orange-bg {
     background-color: #FFA000;
@@ -812,6 +820,11 @@ body textarea {
 #login-block .activation-info a:hover {
     text-decoration: none;
 }
+#reg-success {
+    background-color: #ffffff;
+    padding: 70px;
+    margin-bottom: 30px;
+}
 
 /* profile */
 #profile {
@@ -1262,6 +1275,9 @@ body textarea {
     font-size: 15px;
     margin-bottom: 10px;
 }
+#auto .images-box {
+    margin-bottom: 30px;
+}
 #auto .main-img-box {
     background: url('../images/loader.gif') no-repeat center center;
 }
@@ -1269,7 +1285,7 @@ body textarea {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    height: 350px;
+    height: 380px;
 }
 #auto .images .img-thumb {
     background-repeat: no-repeat;
@@ -1284,6 +1300,33 @@ body textarea {
 }
 #auto .images .img-thumb.active {
     opacity: 0.5;
+}
+#auto .desc {
+    margin-bottom: 30px;
+}
+#auto .option {
+    background: url('../images/checkbox.png') no-repeat 97% center;
+    background-size: 20px;
+    box-sizing: border-box;
+    padding: 0 30px 0 7px;
+    width: 50%;
+}
+#auto .option.active {
+    background-image: url('../images/checkbox-active.png');
+}
+#auto .option.bg {
+    background-color: #eeeded;
+}
+#auto .opt-item {
+    display: table-cell;
+    height: 36px;
+    /*line-height: 24px;*/
+    /*padding-right: 30px;*/
+    vertical-align: middle;
+    width: 100%;
+}
+#auto .opt-item img {
+    margin-left: 5px;
 }
 
 /* footer */

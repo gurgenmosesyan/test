@@ -27,6 +27,7 @@ Route::group(['middleware' => ['web', 'front']], function() {
         Route::group(['middleware' => 'guest:user'], function() {
             Route::get('/login', ['uses' => 'UserController@login', 'as' => 'user_login']);
             Route::get('/registration', 'UserController@registration');
+            Route::get('/registration/success', ['uses' => 'UserController@registrationSuccess', 'as' => 'success_reg']);
             Route::get('/activation/{hash}', 'UserController@activation');
             Route::get('/forgot', 'UserController@forgot');
             Route::get('/reset/{hash}', 'UserController@reset');
