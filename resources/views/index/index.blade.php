@@ -1,8 +1,11 @@
 <?php
 use App\Models\Auto\Auto;
 use App\Helpers\Base;
+use App\Models\Config\Manager;
 
 $title = trans('www.homepage.title');
+
+$autoEmpty = Manager::getAutoEmpty();
 ?>
 @extends('layout')
 
@@ -18,42 +21,31 @@ $title = trans('www.homepage.title');
     <div id="top-cars" class="fl">
         <h2 class="orange fb"><span class="dib">{{trans('www.top_cars.title')}}</span></h2>
         <div class="help"><a href="#" class="db"></a></div>
-        <div class="car-block owl-carousel">
-            <?php
-            $topAutos = [];
-            for ($i = 0; $i < 18; $i++) {
-                $topAutos[] = [
-                    'image' => '/images/temp/auto.jpg',
-                    'price' => '2000000',
-                    'currency_id' => '2',
-                    'title' => 'Mercedes-Benz E63 AMG',
-                    'country' => 'Armenia',
-                    'region' => 'Yerevan',
-                    'mileage' => '32000',
-                    'mileage_measurement' => 'km',
-                    'year' => 2015
-                ];
-            }
-            ?>
-            <div class="box-part">
-                @foreach($topAutos as $key => $auto)
-                    @if(($key == 6 || $key == 12) && isset($topAutos[$key+1]))
-                        <div class="cb"></div>
-                        </div><div class="box-part">
-                    @endif
-                    <a href="#" class="auto-item db fl{{$key%3 == 0 ? ' mln' : ''}}">
-                        <span class="auto-img db" style="background-image: url('{{$auto['image']}}');">
-                            <span class="favorite-icon db"></span>
-                            <span class="auto-price orange-bg tc db">{{Base::price($auto, $currencies, $defCurrency, $cCurrency)}}</span>
-                        </span>
-                        <span class="auto-title db">{{$auto['title']}}</span>
-                        <span class="auto-info db">{{$auto['country']}}@if(!empty($auto['region'])), {{$auto['region']}}@endif</span>
-                        <span class="auto-info db">{{number_format($auto['mileage'], 0, ',', '.')}} * {{$auto['year']}}</span>
-                    </a>
-                @endforeach
-                <div class="cb"></div>
+        @if($topCars->isEmpty())
+            <div class="no-cars tc">{{trans('www.no_cars')}}</div>
+        @else
+            <div class="car-block owl-carousel">
+                <div class="box-part">
+                    @foreach($topCars->shuffle()->slice(0, 18) as $key => $value)
+                        <?php $auto = $value->auto; ?>
+                        @if(($key == 6 || $key == 12) && isset($topCars[$key+1]))
+                            <div class="cb"></div>
+                            </div><div class="box-part">
+                        @endif
+                        <a href="{{url_with_lng('/auto/'.$auto->auto_id, false)}}" class="auto-item db fl{{$key%3 == 0 ? ' mln' : ''}}">
+                            <span class="auto-img db" style="background-image: url('{{$auto->getThumb($autoEmpty)}}');">
+                                <span class="favorite-icon db"></span>
+                                <span class="auto-price orange-bg tc db">{{Base::price($auto, $currencies, $defCurrency, $cCurrency)}}</span>
+                            </span>
+                            <span class="auto-title db">{{$auto->mark->name.' '.$auto->model->name}}</span>
+                            <span class="auto-info db">{{$auto->country_ml->name}}@if(!empty($auto->region_ml)), {{$auto->region_ml->name}}@endif</span>
+                            <span class="auto-info db">{{$auto->mileageInfo()}} * {{$auto->year}}</span>
+                        </a>
+                    @endforeach
+                    <div class="cb"></div>
+                </div>
             </div>
-        </div>
+        @endif
     </div>
 
     <div id="quick-search" class="fl">
@@ -189,42 +181,31 @@ $title = trans('www.homepage.title');
         <div id="urgent-cars" class="small-box">
             <h2 class="orange fb"><span class="dib">{{trans('www.urgent_cars.title')}}</span></h2>
             <div class="help"><a href="#" class="db"></a></div>
-            <div class="car-block owl-carousel">
-                <?php
-                $urgentAutos = [];
-                for ($i = 0; $i < 32; $i++) {
-                    $urgentAutos[] = [
-                            'image' => '/images/temp/auto2.jpg',
-                            'price' => '5000',
-                            'currency_id' => '1',
-                            'title' => 'Mercedes-Benz E63 AMG',
-                            'country' => 'Russia',
-                            'region' => 'St. Peterburg',
-                            'mileage' => '32000',
-                            'mileage_measurement' => 'km',
-                            'year' => 2015
-                    ];
-                }
-                ?>
-                <div class="box-part">
-                    @foreach($urgentAutos as $key => $auto)
-                        @if(($key == 16) && isset($urgentAutos[$key+1]))
-                            <div class="cb"></div>
-                </div><div class="box-part">
-                    @endif
-                    <a href="#" class="auto-item db fl{{$key%4 == 0 ? ' mln' : ''}}">
-                        <span class="auto-img db" style="background-image: url('{{$auto['image']}}');">
-                            <span class="favorite-icon db"></span>
-                            <span class="auto-price orange-bg tc db">{{Base::price($auto, $currencies, $defCurrency, $cCurrency)}}</span>
-                        </span>
-                        <span class="auto-title db">{{$auto['title']}}</span>
-                        <span class="auto-info db">{{$auto['country']}}@if(!empty($auto['region'])), {{$auto['region']}}@endif</span>
-                        <span class="auto-info db">{{number_format($auto['mileage'], 0, ',', '.')}} * {{$auto['year']}}</span>
-                    </a>
-                    @endforeach
-                    <div class="cb"></div>
+            @if($urgentCars->isEmpty())
+                <div class="no-cars tc">{{trans('www.no_cars')}}</div>
+            @else
+                <div class="car-block owl-carousel">
+                    <div class="box-part">
+                        @foreach($urgentCars->shuffle()->slice(0, 32) as $key => $value)
+                            <?php $auto = $value->auto; ?>
+                            @if(($key == 16) && isset($urgentCars[$key+1]))
+                                <div class="cb"></div>
+                                </div><div class="box-part">
+                            @endif
+                            <a href="{{url_with_lng('/auto/'.$auto->auto_id, false)}}" class="auto-item db fl{{$key%4 == 0 ? ' mln' : ''}}">
+                                <span class="auto-img db" style="background-image: url('{{$auto->getThumb($autoEmpty)}}');">
+                                    <span class="favorite-icon db"></span>
+                                    <span class="auto-price orange-bg tc db">{{Base::price($auto, $currencies, $defCurrency, $cCurrency)}}</span>
+                                </span>
+                                <span class="auto-title db">{{$auto->mark->name.' '.$auto->model->name}}</span>
+                                <span class="auto-info db">{{$auto->country_ml->name}}@if(!empty($auto->region_ml)), {{$auto->region_ml->name}}@endif</span>
+                                <span class="auto-info db">{{$auto->mileageInfo()}} * {{$auto->year}}</span>
+                            </a>
+                        @endforeach
+                        <div class="cb"></div>
+                    </div>
                 </div>
-            </div>
+            @endif
         </div>
         <div class="banner tc">
             <a href="#">
@@ -233,42 +214,30 @@ $title = trans('www.homepage.title');
         </div>
         <div id="recently-cars" class="small-box">
             <h2 class="orange fb"><span class="dib">{{trans('www.recently_cars.title')}}</span></h2>
-            <div class="car-block owl-carousel">
-                <?php
-                $recentlyCars = [];
-                for ($i = 0; $i < 12; $i++) {
-                    $recentlyCars[] = [
-                            'image' => '/images/temp/auto2.jpg',
-                            'price' => '250000',
-                            'currency_id' => '3',
-                            'title' => 'Mercedes-Benz E63 AMG',
-                            'country' => 'Russia',
-                            'region' => 'St. Peterburg',
-                            'mileage' => '32000',
-                            'mileage_measurement' => 'km',
-                            'year' => 2015
-                    ];
-                }
-                ?>
-                <div class="box-part">
-                    @foreach($recentlyCars as $key => $auto)
-                        @if(($key == 4 || $key == 8) && isset($recentlyCars[$key+1]))
-                            <div class="cb"></div>
-                </div><div class="box-part">
-                    @endif
-                    <a href="#" class="auto-item db fl{{$key%4 == 0 ? ' mln' : ''}}">
-                        <span class="auto-img db" style="background-image: url('{{$auto['image']}}');">
-                            <span class="favorite-icon db"></span>
-                            <span class="auto-price orange-bg tc db">{{Base::price($auto, $currencies, $defCurrency, $cCurrency)}}</span>
-                        </span>
-                        <span class="auto-title db">{{$auto['title']}}</span>
-                        <span class="auto-info db">{{$auto['country']}}@if(!empty($auto['region'])), {{$auto['region']}}@endif</span>
-                        <span class="auto-info db">{{number_format($auto['mileage'], 0, ',', '.')}} * {{$auto['year']}}</span>
-                    </a>
-                    @endforeach
-                    <div class="cb"></div>
+            @if($recentCars->isEmpty())
+                <div class="no-cars tc">{{trans('www.no_cars')}}</div>
+            @else
+                <div class="car-block owl-carousel">
+                    <div class="box-part">
+                        @foreach($recentCars as $key => $auto)
+                            @if(($key == 4 || $key == 8) && isset($recentCars[$key+1]))
+                                <div class="cb"></div>
+                                </div><div class="box-part">
+                            @endif
+                            <a href="{{url_with_lng('/auto/'.$auto->auto_id, false)}}" class="auto-item db fl{{$key%4 == 0 ? ' mln' : ''}}">
+                                <span class="auto-img db" style="background-image: url('{{$auto->getThumb($autoEmpty)}}');">
+                                    <span class="favorite-icon db"></span>
+                                    <span class="auto-price orange-bg tc db">{{Base::price($auto, $currencies, $defCurrency, $cCurrency)}}</span>
+                                </span>
+                                <span class="auto-title db">{{$auto->mark->name.' '.$auto->model->name}}</span>
+                                <span class="auto-info db">{{$auto->country_ml->name}}@if(!empty($auto->region_ml)), {{$auto->region_ml->name}}@endif</span>
+                                <span class="auto-info db">{{$auto->mileageInfo()}} * {{$auto->year}}</span>
+                            </a>
+                        @endforeach
+                        <div class="cb"></div>
+                    </div>
                 </div>
-            </div>
+            @endif
         </div>
     </div>
 

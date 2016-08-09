@@ -200,7 +200,6 @@ $autoOptions = $auto->options->keyBy('option_id');
 </div>
 <script type="text/javascript">
     $main.initAutoImages();
-    $main.imagess = <?php echo json_encode($images); ?>;
-    //$main.preloadImages(<?php //echo json_encode($images); ?>);
+    $main.preloadImages(<?php echo json_encode($images); ?>);
 </script>
 @stop

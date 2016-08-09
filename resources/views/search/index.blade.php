@@ -311,7 +311,6 @@ $autoEmpty = Manager::getAutoEmpty();
                 @foreach($autos as $key => $auto)
                     @if($key != 0)<div class="line"></div>@endif
                     <a href="{{url_with_lng('/auto/'.$auto->auto_id, false)}}" class="auto db">
-                        {{--<span class="auto-img db fl" style="background-image: url('{{$auto->getImage()}}');"></span>--}}
                         <span class="auto-img db fl"><img src="{{$auto->getThumb($autoEmpty)}}" width="205" /></span>
                         <span class="auto-info db fl">
                             <span class="title-box db fl">
@@ -332,7 +331,15 @@ $autoEmpty = Manager::getAutoEmpty();
                                 </span>
                                 <span class="country db">{{$auto->country_ml->name}}</span>
                             </span>
-                            <span class="price title db fb fl">{{Base::price($auto, $currencies, $defCurrency, $cCurrency)}}</span>
+                            <span class="price title db fb fl">
+                                @if($auto->isContract())
+                                    {{trans('www.auto.price.contract')}}
+                                @elseif($auto->isAuction())
+                                    {{trans('www.auto.price.auction')}}
+                                @else
+                                    {{Base::price($auto, $currencies, $defCurrency, $cCurrency)}}
+                                @endif
+                            </span>
                             <span class="year db fl">{{$auto->year}}</span>
                             <span class="mileage db fr">{{$auto->mileageInfo()}}</span>
                             <span class="db cb"></span>

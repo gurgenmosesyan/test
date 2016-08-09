@@ -198,4 +198,6 @@ return array (
   'auto.phone' => 'Հեռախոս',
   'reg_success.title' => 'You have successfully registered',
   'reg_success.text' => 'You have succesfully registered, please verify your email.',
+  'auto.customs_cleared.no' => 'Մաքսազերծված չէ',
+  'no_cars' => 'No cars',
 );

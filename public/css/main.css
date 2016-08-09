@@ -230,9 +230,16 @@ body textarea {
 #top-cars {
     background-color: #ffffff;
     margin-right: 12px;
+    min-height: 540px;
     padding: 26px 20px 2px 21px;
     position: relative;
     width: 777px;
+}
+.no-cars {
+    color: #a7a7a7;
+    position: absolute;
+    top: 48%;
+    width: 100%;
 }
 .help {
     background: url('../images/help.png') no-repeat;
@@ -241,6 +248,9 @@ body textarea {
 }
 .help a {
     height: 100%;
+}
+#urgent-cars {
+    min-height: 846px;
 }
 #top-cars .help,
 #urgent-cars .help {
@@ -572,6 +582,9 @@ body textarea {
 #urgent-cars h2 {
     background-image: url('../images/urgent.png');
     margin-left: 16px;
+}
+#recently-cars {
+    min-height: 240px;
 }
 #recently-cars h2 {
     background: none;

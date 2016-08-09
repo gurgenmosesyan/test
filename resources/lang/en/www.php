@@ -198,4 +198,6 @@ return array (
   'auto.phone' => 'Phone',
   'reg_success.title' => 'You have successfully registered',
   'reg_success.text' => 'You have succesfully registered, please verify your email.',
+  'auto.customs_cleared.no' => 'Customs not cleared',
+  'no_cars' => 'No cars',
 );

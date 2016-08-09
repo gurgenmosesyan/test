@@ -16,6 +16,11 @@ class UrgentCar extends Model
         'show_status'
     ];
 
+    public function scopeInDate($query)
+    {
+        $query->where('deadline', '>=', date('Y-m-d'));
+    }
+
     public function auto()
     {
         return $this->belongsTo(Auto::class, 'auto_id', 'id')->active();
