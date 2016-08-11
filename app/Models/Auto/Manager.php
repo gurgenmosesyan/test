@@ -134,7 +134,7 @@ class Manager
                 $image->rotate($value['rotate']);
             }
             if ($watermark != null) {
-                $image->insert(public_path(Config::IMAGES_PATH.'/'.$watermark->value), 'bottom-right', 10, 10);
+                $image->insert(public_path(Config::IMAGES_PATH.'/'.$watermark->value), 'bottom-right', 15, 10);
             }
             $image->save($filePath);
 
