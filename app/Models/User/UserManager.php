@@ -138,7 +138,6 @@ class UserManager
             'subject' => trans('www.user.email.forgot.subject'),
             'body' => $body
         ]);
-        return true;
     }
 
     public function reset($data)

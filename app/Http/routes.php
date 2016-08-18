@@ -30,6 +30,8 @@ Route::group(['middleware' => ['web', 'front']], function() {
             Route::get('/registration/success', ['uses' => 'UserController@registrationSuccess', 'as' => 'success_reg']);
             Route::get('/activation/{hash}', 'UserController@activation');
             Route::get('/forgot', 'UserController@forgot');
+            Route::get('/forgot/success', ['uses' => 'UserController@forgotSuccess', 'as' => 'forgot_success']);
+            Route::get('/reset/success', ['uses' => 'UserController@resetSuccess', 'as' => 'reset_success']);
             Route::get('/reset/{hash}', 'UserController@reset');
             Route::post('/api/login', 'UserApiController@login');
             Route::post('/api/registration', 'UserApiController@registration');
@@ -42,9 +44,13 @@ Route::group(['middleware' => ['web', 'front']], function() {
         Route::group(['middleware' => 'auth:user'], function() {
             Route::get('/profile', ['uses' => 'UserController@profile', 'as' => 'user_profile']);
             Route::get('/profile/edit', 'UserController@profileEdit');
+            Route::get('/profile/changed', ['uses' => 'UserController@profileChanged', 'as' => 'profile_changed']);
             Route::post('/api/profile/edit', 'UserApiController@profileEdit');
+            Route::get('/profile/autos', 'UserController@autos');
+            Route::get('/profile/autos/{id}', 'UserController@autosEdit');
             Route::get('/logout', ['uses' => 'UserController@logout', 'as' => 'user_logout']);
-            Route::get('/sell', 'SellController@index');
+            Route::get('/sell', ['uses' => 'SellController@index', 'as' => 'sell']);
+            Route::get('/sell/success', ['uses' => 'SellController@success', 'as' => 'sell_success']);
             Route::post('/api/sell', 'SellApiController@add');
             Route::post('/api/region', 'ApiController@region');
         });

@@ -333,7 +333,7 @@ $main.initAutoImages = function() {
         $(this).addClass('active');
         return false;
     });
-    auto.find('.img-thumb').fancybox();
+    auto.find('.fancybox').fancybox();
 };
 
 $(document).ready(function() {

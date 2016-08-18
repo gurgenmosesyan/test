@@ -17,10 +17,10 @@ class SellApiController extends Controller
     public function add(SellRequest $request)
     {
         $this->manager->add($request->all());
+        $request->session()->flash('add_car', true);
 
         return $this->api('OK', [
-            'text' => trans('www.sell_car.add.success_text'),
-            'link' => route('user_profile', cLng('code'))
+            'link' => route('sell_success', cLng('code'))
         ]);
     }
 }

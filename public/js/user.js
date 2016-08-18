@@ -90,7 +90,7 @@ $user.googleCallback = function() {
 $user.init = function() {
     $('#registration-form').submit(function() {
         $user.sendForm($(this), function(data) {
-            document.location.href = data.redirect;
+            document.location.href = data.link;
         });
         return false;
     });
@@ -101,21 +101,19 @@ $user.init = function() {
         return false;
     });
     $('#forgot-form').submit(function() {
-        $user.sendForm($(this), function() {
-            alert('Check your email');
+        $user.sendForm($(this), function(data) {
+            document.location.href = data.link;
         });
         return false;
     });
     $('#reset-form').submit(function() {
         $user.sendForm($(this), function(data) {
-            alert('Password successfully changed');
             document.location.href = data.link;
         });
         return false;
     });
     $('#edit-form').submit(function() {
         $user.sendForm($(this), function(data) {
-            alert('Changes successfully saved');
             document.location.href = data.link;
         });
         return false;

@@ -151,12 +151,13 @@ $autoOptions = $auto->options->keyBy('option_id');
                 <div class="main-right fl">
 
                     <div class="images-box">
-                        <div class="main-img" style="background-image: url('{{$auto->getImage($autoEmpty)}}');"></div>
+                        <a class="main-img db fancybox" href="{{$auto->getImage($autoEmpty)}}" rel="images-big" style="background-image: url('{{$auto->getImage($autoEmpty)}}');"></a>
                         @if(!empty($auto->images))
                             <div class="images">
                                 <?php $images = []; ?>
                                 @foreach($auto->images as $key => $image)
-                                    <a href="{{$image->getImage()}}" class="db fl img-thumb{{$key%4 == 0 ? ' mln' : ''}}{{$key == 0 ? ' active' : ''}}" rel="images" style="background-image: url('{{$image->getThumb()}}');"></a>
+                                    <a href="{{$image->getImage()}}" class="fancybox dn"{{$key != 0 ? 'rel=images-big' : ''}}></a>
+                                    <a href="{{$image->getImage()}}" class="db fl img-thumb fancybox{{$key%4 == 0 ? ' mln' : ''}}{{$key == 0 ? ' active' : ''}}" rel="images" style="background-image: url('{{$image->getThumb()}}');"></a>
                                     <?php $images[] = $image->getImage(); ?>
                                 @endforeach
                                 <div class="cb"></div>

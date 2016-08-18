@@ -17,6 +17,7 @@ use App\Models\Transmission\Transmission;
 use App\Models\Color\Color;
 use App\Models\InteriorColor\Color as InteriorColor;
 use App\Models\Wheel\Wheel;
+use Session;
 
 class SellController extends Controller
 {
@@ -56,5 +57,14 @@ class SellController extends Controller
             'options' => $options,
             'currenciesData' => $currenciesData
         ]);
+    }
+
+    public function success()
+    {
+        if (!Session::get('add_car')) {
+            return redirect()->route('sell', cLng('code'));
+        }
+
+        return view('sell.success');
     }
 }

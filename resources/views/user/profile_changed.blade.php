@@ -1,6 +1,6 @@
 <?php
 
-$title = trans('www.reg_success.title');
+$title = trans('www.profile_changed.text');
 
 ?>
 @extends('layout')
@@ -15,11 +15,11 @@ $title = trans('www.reg_success.title');
     </div>
 
     <div id="reg-success" class="tc">
-        {{trans('www.reg_success.text')}}
+        {{trans('www.profile_changed.text')}}
         <br />
         <br />
         <br />
-        <a href="{{route('homepage', cLng('code'))}}" class="orange underline">{{trans('www.base.label.homepage')}}</a>
+        <a href="{{route('user_profile', cLng('code'))}}" class="orange underline">{{trans('www.base.label.back')}}</a>
     </div>
 
 </div>

@@ -12,13 +12,13 @@ $title = trans('www.user.profile.title');
     <div id="profile">
         <div class="links tc">
             <div class="link profile-link fl">
-                <span class="item db fb">
+                <span class="item db fb active">
                     <span class="icon dib"></span>
                     <span class="text dib">{{trans('www.profile.link.my_profile')}}</span>
                 </span>
             </div>
             <div class="link cars-link fl">
-                <a href="#" class="item db fb">
+                <a href="{{url_with_lng('/profile/autos', false)}}" class="item db fb">
                     <span class="icon dib"></span>
                     <span class="text dib">{{trans('www.profile.link.my_cars')}}</span>
                 </a>

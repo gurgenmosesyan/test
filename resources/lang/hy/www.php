@@ -200,4 +200,11 @@ return array (
   'reg_success.text' => 'You have succesfully registered, please verify your email.',
   'auto.customs_cleared.no' => 'Մաքսազերծված չէ',
   'no_cars' => 'No cars',
+  'base.label.back' => 'Վերադառնալ',
+  'base.label.homepage' => 'Գլխավոր',
+  'profile_changed.text' => 'Changes successfully changed',
+  'forgot_success.text' => 'Check your email',
+  'reset_success.text' => 'Password successfully changed',
+  'base.label.login' => 'Login',
+  'user.profile.autos' => 'My autos',
 );

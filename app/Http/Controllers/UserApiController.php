@@ -114,24 +114,28 @@ class UserApiController extends Controller
     public function registration(RegRequest $request)
     {
         $this->manager->registration($request->all());
-        Session::put(['success_reg' => true]);
-        return $this->api('OK', ['redirect' => route('success_reg', cLng('code'))]);
+        $request->session()->flash('success_reg', true);
+        return $this->api('OK', ['link' => route('success_reg', cLng('code'))]);
     }
 
     public function forgot(ForgotRequest $request)
     {
-        return $this->api('OK', $this->manager->forgot($request->all()));
+        $this->manager->forgot($request->all());
+        $request->session()->flash('forgot_success', true);
+        return $this->api('OK', ['link' => route('forgot_success', cLng('code'))]);
     }
 
     public function reset(ResetRequest $request)
     {
         $this->manager->reset($request->all());
-        return $this->api('OK', ['link' => route('user_login', cLng('code'))]);
+        $request->session()->flash('reset_success', true);
+        return $this->api('OK', ['link' => route('reset_success', cLng('code'))]);
     }
 
     public function profileEdit(EditRequest $request)
     {
         $this->manager->editProfile($request->all());
-        return $this->api('OK', ['link' => route('user_profile', cLng('code'))]);
+        $request->session()->flash('profile_changed', true);
+        return $this->api('OK', ['link' => route('profile_changed', cLng('code'))]);
     }
 }

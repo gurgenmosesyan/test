@@ -48,14 +48,16 @@ $sell.initUploaderForm = function() {
                     '<iframe src="#" id="iframe-uploader" name="iframe-uploader" style="display: none;"></iframe>'+
                 '</div>';
     html = $(html);
+    var loader = $('#sell').find('.upload-load');
     $('input[type="file"]', html).change(function() {
+        loader.removeClass('dpn');
         $('form', html).submit();
     });
     $('form', html).submit(function() {
         $('iframe', html).load(function() {
-            var result = $.parseJSON($(this.contentDocument).find('body').html());
-            var errorObj = $('#form-error-images');
-            var groupObj = $('#image-group');
+            var result = $.parseJSON($(this.contentDocument).find('body').html()),
+                errorObj = $('#form-error-images'),
+                groupObj = $('#image-group');
             errorObj.text('');
             groupObj.removeClass('has-error');
 
@@ -65,6 +67,7 @@ $sell.initUploaderForm = function() {
                 errorObj.text(result.data.error);
                 groupObj.addClass('has-error');
             }
+            loader.addClass('dpn');
         });
     });
     $('body').append(html);
@@ -194,7 +197,6 @@ $sell.initForm = function() {
             success: function(result) {
                 $sell.resetForm(form);
                 if (result.status == 'OK') {
-                    alert(result.data.text);
                     document.location.href = result.data.link;
                 } else {
                     $sell.showErrors(form, result.errors);

@@ -177,7 +177,7 @@ $jsTrans->addTrans(['admin.base.label.select']);
                 <select name="volume_2" class="form-control">
                     <option value="">{{trans('admin.base.label.select')}}</option>
                     @for($i = 0; $i < 10; $i++)
-                        <option value="{{$i}}"{{($volume2 != 0 || $volume2 != 0) && $i == $volume2 ? ' selected="selected"' : ''}}>{{$i}}</option>
+                        <option value="{{$i}}"{{($volume1 != 0 || $volume2 != 0) && $i == $volume2 ? ' selected="selected"' : ''}}>{{$i}}</option>
                     @endfor
                 </select>
                 <div id="form-error-volume_2" class="form-error"></div>

@@ -861,7 +861,7 @@ body textarea {
     line-height: 62px;
     letter-spacing: 1px;
 }
-#profile .links span.item {
+#profile .links .active {
     background-color: #FFA000;
     color: #ffffff;
 }
@@ -1118,6 +1118,12 @@ body textarea {
     -moz-transform: rotate(90deg);
     -o-transform: rotate(90deg);
     transform: rotate(90deg);
+}
+#sell .upload-load {
+    background: url('../images/select-loader.gif') no-repeat center center;
+    height: 33px;
+    vertical-align: top;
+    width: 33px;
 }
 
 #main-left {

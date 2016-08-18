@@ -94,10 +94,13 @@ class Auto extends Model
         return empty($this->image) ? url('/images/config/'.$autoEmpty->value) : url('/'.self::IMAGES_PATH.'/'.$this->image);
     }
 
-    public function mileageInfo()
+    public function mileageInfo($measurement = true)
     {
         $mileage = $this->mileage_measurement == self::MILEAGE_MEASUREMENT_KM ? $this->mileage_km : $this->mileage_mile;
-        return $mileage.' '.trans('www.mileage.measurement.'.$this->mileage_measurement);
+        if ($measurement) {
+            $mileage .= ' '.trans('www.mileage.measurement.'.$this->mileage_measurement);
+        }
+        return $mileage;
     }
 
     public function isContract()

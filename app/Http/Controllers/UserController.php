@@ -2,8 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Auto\Auto;
 use App\Models\User\User;
 use App\Models\User\UserManager;
+use App\Models\Currency\CurrencyManager;
+use App\Models\Body\Body;
+use App\Models\Country\Country;
+use App\Models\Currency\Currency;
+use App\Models\Cylinder\Cylinder;
+use App\Models\Door\Door;
+use App\Models\Engine\Engine;
+use App\Models\Mark\Mark;
+use App\Models\Option\Option;
+use App\Models\Rudder\Rudder;
+use App\Models\Train\Train;
+use App\Models\Transmission\Transmission;
+use App\Models\Color\Color;
+use App\Models\InteriorColor\Color as InteriorColor;
+use App\Models\Wheel\Wheel;
 use Session;
 use Auth;
 
@@ -22,7 +38,7 @@ class UserController extends Controller
     public function registrationSuccess()
     {
         if (!Session::get('success_reg')) {
-            abort(404);
+            return redirect()->route('homepage', cLng('code'));
         }
         return view('user.registration_success');
     }
@@ -30,6 +46,14 @@ class UserController extends Controller
     public function forgot()
     {
         return view('user.forgot');
+    }
+
+    public function forgotSuccess()
+    {
+        if (!Session::get('forgot_success')) {
+            return redirect()->route('homepage', cLng('code'));
+        }
+        return view('user.forgot_success');
     }
 
     public function activation($lngCode, $hash)
@@ -67,6 +91,14 @@ class UserController extends Controller
         return view('user.reset')->with(['data' => $data]);
     }
 
+    public function resetSuccess()
+    {
+        if (!Session::get('reset_success')) {
+            return redirect()->route('user_login', cLng('code'));
+        }
+        return view('user.reset_success');
+    }
+
     public function profile()
     {
         return view('user.profile')->with([
@@ -88,6 +120,73 @@ class UserController extends Controller
             'day' => $day,
             'month' => $month,
             'year' => $year
+        ]);
+    }
+
+    public function profileChanged()
+    {
+        if (!Session::get('profile_changed')) {
+            return redirect()->route('user_profile', cLng('code'));
+        }
+        return view('user.profile_changed');
+    }
+
+    public function autos()
+    {
+        $count = config('auto.paging.count');
+        $user = Auth::guard('user')->user();
+        $autos = Auto::active()->where('user_id', $user->id)->with('mark', 'model', 'engine_ml', 'train_ml', 'body_ml', 'color_ml', 'country_ml')->latest()->paginate($count);
+
+        $currencyManager = new CurrencyManager();
+        $currencies = $currencyManager->all();
+        $defCurrency = $currencyManager->defaultCurrency();
+        $cCurrency = $currencyManager->currentCurrency();
+
+        return view('user.autos')->with([
+            'autos' => $autos,
+            'currencies' => $currencies,
+            'defCurrency' => $defCurrency,
+            'cCurrency' => $cCurrency
+        ]);
+    }
+
+    public function autosEdit($lngCode, $id)
+    {
+        $user = Auth::guard('user')->user();
+        $auto = Auto::active()->where('id', $id)->where('user_id', $user->id)->firstOrFail();
+
+        $marks = Mark::active()->get();
+        $bodies = Body::joinMl()->active()->get();
+        $transmissions = Transmission::joinMl()->active()->get();
+        $rudders = Rudder::joinMl()->active()->get();
+        $colors = Color::joinMl()->active()->get();
+        $interiorColors = InteriorColor::joinMl()->active()->get();
+        $engines = Engine::joinMl()->active()->get();
+        $cylinders = Cylinder::active()->get();
+        $trains = Train::joinMl()->active()->get();
+        $doors = Door::active()->get();
+        $wheels = Wheel::active()->get();
+        $countries = Country::joinMl()->active()->get();
+        $options = Option::joinMl()->active()->get();
+        $currenciesData = Currency::active()->ordered()->get();
+
+        return view('user.auto_edit')->with([
+            'auto' => $auto,
+            'marks' => $marks,
+            'models' => [],
+            'bodies' => $bodies,
+            'transmissions' => $transmissions,
+            'rudders' => $rudders,
+            'colors' => $colors,
+            'interiorColors' => $interiorColors,
+            'engines' => $engines,
+            'cylinders' => $cylinders,
+            'trains' => $trains,
+            'doors' => $doors,
+            'wheels' => $wheels,
+            'countries' => $countries,
+            'options' => $options,
+            'currenciesData' => $currenciesData
         ]);
     }
 

@@ -4,11 +4,43 @@ use App\Models\Auto\Auto;
 $head->appendScript('/js/sell.js');
 
 $title = trans('www.sell_car.title');
+
+$volume1 = $volume2 = null;
+if (!empty($auto->volume)) {
+    $volumes = explode('.', $auto->volume);
+    $volume1 = $volumes[0];
+    $volume2 = $volumes[1];
+}
 ?>
 @extends('layout')
 
 @section('content')
 <div class="page">
+
+    <div id="profile">
+        <div class="links tc">
+            <div class="link profile-link fl">
+                <a href="{{url_with_lng('/profile', false)}}" class="item db fb">
+                    <span class="icon dib"></span>
+                    <span class="text dib">{{trans('www.profile.link.my_profile')}}</span>
+                </a>
+            </div>
+            <div class="link cars-link fl">
+                <a href="{{url_with_lng('/profile/autos', false)}}" class="item db fb active">
+                    <span class="icon dib"></span>
+                    <span class="text dib">{{trans('www.profile.link.my_cars')}}</span>
+                </a>
+            </div>
+            <div class="link ads-link fl">
+                <a href="#" class="item db fb">
+                    <span class="icon dib"></span>
+                    <span class="text dib">{{trans('www.profile.link.my_ads')}}</span>
+                </a>
+            </div>
+            <div class="cb"></div>
+        </div>
+    </div>
+
     <div id="sell">
         <form id="sell-form" action="{{url_with_lng('/api/sell', false)}}" method="post">
             <div class="col-2 sell-left fl">
@@ -21,8 +53,8 @@ $title = trans('www.sell_car.title');
                             <div class="select-title"></div>
                             <select name="mark_id" data-only_model="true">
                                 <option value="">{{trans('www.base.label.select')}}</option>
-                                @foreach($marks as $mark)
-                                    <option value="{{$mark->id}}">{{$mark->name}}</option>
+                                @foreach($marks as $value)
+                                    <option value="{{$value->id}}"{{$value->id == $auto->mark_id ? ' selected="selected"' : ''}}>{{$value->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -53,7 +85,7 @@ $title = trans('www.sell_car.title');
                             <select name="year">
                                 <option value="">{{trans('www.base.label.select')}}</option>
                                 @for($i = date('Y')+2; $i > 1909; $i--)
-                                    <option value="{{$i}}">{{$i}}</option>
+                                    <option value="{{$i}}"{{$i == $auto->year ? ' selected="selected"' : ''}}>{{$i}}</option>
                                 @endfor
                             </select>
                         </div>
@@ -69,8 +101,8 @@ $title = trans('www.sell_car.title');
                             <div class="select-title"></div>
                             <select name="transmission_id">
                                 <option value="">{{trans('www.base.label.select')}}</option>
-                                @foreach($transmissions as $transmission)
-                                    <option value="{{$transmission->id}}">{{$transmission->name}}</option>
+                                @foreach($transmissions as $value)
+                                    <option value="{{$value->id}}"{{$value->id == $auto->transmission_id ? ' selected="selected"' : ''}}>{{$value->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -86,8 +118,8 @@ $title = trans('www.sell_car.title');
                             <div class="select-title"></div>
                             <select name="color_id">
                                 <option value="">{{trans('www.base.label.select')}}</option>
-                                @foreach($colors as $color)
-                                    <option value="{{$color->id}}">{{$color->name}}</option>
+                                @foreach($colors as $value)
+                                    <option value="{{$value->id}}"{{$value->id == $auto->color_id ? ' selected="selected"' : ''}}>{{$value->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -103,8 +135,8 @@ $title = trans('www.sell_car.title');
                             <div class="select-title"></div>
                             <select name="interior_color_id">
                                 <option value="">{{trans('www.base.label.select')}}</option>
-                                @foreach($interiorColors as $color)
-                                    <option value="{{$color->id}}">{{$color->name}}</option>
+                                @foreach($interiorColors as $value)
+                                    <option value="{{$value->id}}"{{$value->id == $auto->interior_color_id ? ' selected="selected"' : ''}}>{{$value->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -120,8 +152,8 @@ $title = trans('www.sell_car.title');
                             <div class="select-title"></div>
                             <select name="engine_id">
                                 <option value="">{{trans('www.base.label.select')}}</option>
-                                @foreach($engines as $engine)
-                                    <option value="{{$engine->id}}">{{$engine->name}}</option>
+                                @foreach($engines as $value)
+                                    <option value="{{$value->id}}"{{$value->id == $auto->engine_id ? ' selected="selected"' : ''}}>{{$value->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -139,7 +171,7 @@ $title = trans('www.sell_car.title');
                                 <select name="volume_1">
                                     <option value="">{{trans('www.base.label.select')}}</option>
                                     @for($i = 0; $i < 16; $i++)
-                                        <option value="{{$i}}">{{$i}}</option>
+                                        <option value="{{$i}}"{{($volume1 != 0 || $volume2 != 0) && $i == $volume1 ? ' selected="selected"' : ''}}>{{$i}}</option>
                                     @endfor
                                 </select>
                             </div>
@@ -152,7 +184,7 @@ $title = trans('www.sell_car.title');
                                 <select name="volume_2">
                                     <option value="">{{trans('www.base.label.select')}}</option>
                                     @for($i = 0; $i < 10; $i++)
-                                        <option value="{{$i}}">{{$i}}</option>
+                                        <option value="{{$i}}"{{($volume1 != 0 || $volume2 != 0) && $i == $volume2 ? ' selected="selected"' : ''}}>{{$i}}</option>
                                     @endfor
                                 </select>
                             </div>
@@ -170,8 +202,8 @@ $title = trans('www.sell_car.title');
                             <div class="select-title"></div>
                             <select name="country_id">
                                 <option value="">{{trans('www.base.label.select')}}</option>
-                                @foreach($countries as $country)
-                                    <option value="{{$country->id}}">{{$country->name}}</option>
+                                @foreach($countries as $value)
+                                    <option value="{{$value->id}}"{{$value->id == $auto->country_id ? ' selected="selected"' : ''}}>{{$value->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -196,7 +228,7 @@ $title = trans('www.sell_car.title');
                 <div class="form-box">
                     <label class="fl"><span>{{trans('www.sell_car.place')}}</span></label>
                     <div class="inp fl">
-                        <input type="text" name="place" value="" />
+                        <input type="text" name="place" value="{{$auto->place or ''}}" />
                         <div id="form-error-place" class="form-error"></div>
                     </div>
                     <div class="cb"></div>
@@ -230,8 +262,8 @@ $title = trans('www.sell_car.title');
                             <div class="select-title"></div>
                             <select name="body_id">
                                 <option value="">{{trans('www.base.label.select')}}</option>
-                                @foreach($bodies as $body)
-                                    <option value="{{$body->id}}">{{$body->name}}</option>
+                                @foreach($bodies as $value)
+                                    <option value="{{$value->id}}"{{$value->id == $auto->body_id ? ' selected="selected"' : ''}}>{{$value->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -242,7 +274,7 @@ $title = trans('www.sell_car.title');
                 <div class="form-box">
                     <label class="fl"><span>{{trans('www.sell_car.tuning')}}</span></label>
                     <div class="inp fl">
-                        <input type="text" name="tuning" value="" />
+                        <input type="text" name="tuning" value="{{$auto->tuning or ''}}" />
                         <div id="form-error-tuning" class="form-error"></div>
                     </div>
                     <div class="cb"></div>
@@ -251,7 +283,7 @@ $title = trans('www.sell_car.title');
                     <label class="required fl"><span>{{trans('www.sell_car.mileage')}}</span></label>
                     <div class="mileage-box inp fl">
                         <div class="mileage-input fl">
-                            <input type="text" name="mileage" value="" />
+                            <input type="text" name="mileage" value="{{$auto->mileageInfo(false)}}" />
                             <div id="form-error-mileage" class="form-error"></div>
                         </div>
                         <div class="mileage-select fl">
@@ -259,8 +291,8 @@ $title = trans('www.sell_car.title');
                                 <div class="select-arrow"></div>
                                 <div class="select-title"></div>
                                 <select name="mileage_measurement">
-                                    <option value="{{Auto::MILEAGE_MEASUREMENT_KM}}">{{trans('www.sell_car.mileage.measurement.'.Auto::MILEAGE_MEASUREMENT_KM)}}</option>
-                                    <option value="{{Auto::MILEAGE_MEASUREMENT_MILE}}">{{trans('www.sell_car.mileage.measurement.'.Auto::MILEAGE_MEASUREMENT_MILE)}}</option>
+                                    <option value="{{Auto::MILEAGE_MEASUREMENT_KM}}"{{$auto->mileage_measurement == Auto::MILEAGE_MEASUREMENT_KM ? ' selected="selected"' : ''}}>{{trans('www.sell_car.mileage.measurement.'.Auto::MILEAGE_MEASUREMENT_KM)}}</option>
+                                    <option value="{{Auto::MILEAGE_MEASUREMENT_MILE}}"{{$auto->mileage_measurement == Auto::MILEAGE_MEASUREMENT_MILE ? ' selected="selected"' : ''}}>{{trans('www.sell_car.mileage.measurement.'.Auto::MILEAGE_MEASUREMENT_MILE)}}</option>
                                 </select>
                             </div>
                             <div id="form-error-mileage_measurement" class="form-error"></div>
@@ -277,8 +309,8 @@ $title = trans('www.sell_car.title');
                             <div class="select-title"></div>
                             <select name="rudder_id">
                                 <option value="">{{trans('www.base.label.select')}}</option>
-                                @foreach($rudders as $rudder)
-                                    <option value="{{$rudder->id}}">{{$rudder->name}}</option>
+                                @foreach($rudders as $value)
+                                    <option value="{{$value->id}}"{{$value->id == $auto->rudder_id ? ' selected="selected"' : ''}}>{{$value->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -289,7 +321,7 @@ $title = trans('www.sell_car.title');
                 <div class="form-box">
                     <label class="fl"><span>{{trans('www.sell_car.horsepower')}}</span></label>
                     <div class="inp fl">
-                        <input type="text" name="horsepower" maxlength="4" value="" />
+                        <input type="text" name="horsepower" maxlength="4" value="{{$auto->horsepower or ''}}" />
                         <div id="form-error-horsepower" class="form-error"></div>
                     </div>
                     <div class="cb"></div>
@@ -302,8 +334,8 @@ $title = trans('www.sell_car.title');
                             <div class="select-title"></div>
                             <select name="train_id">
                                 <option value="">{{trans('www.base.label.select')}}</option>
-                                @foreach($trains as $train)
-                                    <option value="{{$train->id}}">{{$train->name}}</option>
+                                @foreach($trains as $value)
+                                    <option value="{{$value->id}}"{{$value->id == $auto->train_id ? ' selected="selected"' : ''}}>{{$value->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -319,8 +351,8 @@ $title = trans('www.sell_car.title');
                             <div class="select-title"></div>
                             <select name="cylinders">
                                 <option value="">{{trans('www.base.label.select')}}</option>
-                                @foreach($cylinders as $cylinder)
-                                    <option value="{{$cylinder->count}}">{{$cylinder->count}}</option>
+                                @foreach($cylinders as $value)
+                                    <option value="{{$value->count}}"{{$value->count == $auto->cylinders ? ' selected="selected"' : ''}}>{{$value->count}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -336,8 +368,8 @@ $title = trans('www.sell_car.title');
                             <div class="select-title"></div>
                             <select name="doors">
                                 <option value="">{{trans('www.base.label.select')}}</option>
-                                @foreach($doors as $door)
-                                    <option value="{{$door->count}}">{{$door->count}}</option>
+                                @foreach($doors as $value)
+                                    <option value="{{$value->count}}"{{$value->count == $auto->doors ? ' selected="selected"' : ''}}>{{$value->count}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -348,7 +380,7 @@ $title = trans('www.sell_car.title');
                 <div class="form-box">
                     <label class="fl"><span>{{trans('www.sell_car.vin')}}</span></label>
                     <div class="inp fl">
-                        <input type="text" name="vin" value="" />
+                        <input type="text" name="vin" value="{{$auto->vin or ''}}" />
                         <div id="form-error-vin" class="form-error"></div>
                     </div>
                     <div class="cb"></div>
@@ -361,8 +393,8 @@ $title = trans('www.sell_car.title');
                             <div class="select-title"></div>
                             <select name="wheels">
                                 <option value="">{{trans('www.base.label.select')}}</option>
-                                @foreach($wheels as $wheel)
-                                    <option value="{{$wheel->count}}">{{$wheel->count}}</option>
+                                @foreach($wheels as $value)
+                                    <option value="{{$value->count}}"{{$value->count == $auto->wheels ? ' selected="selected"' : ''}}>{{$value->count}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -373,7 +405,7 @@ $title = trans('www.sell_car.title');
                 <div class="form-box">
                     <label class="fl"><span>{{trans('www.sell_car.additional_phone')}}</span></label>
                     <div class="inp fl">
-                        <input type="text" name="additional_phone" value="" />
+                        <input type="text" name="additional_phone" value="{{$auto->additional_phone or ''}}" />
                         <div id="form-error-additional_phone" class="form-error"></div>
                     </div>
                     <div class="cb"></div>
@@ -389,7 +421,7 @@ $title = trans('www.sell_car.title');
                     <label id="price-label" class="required fl"><span>{{trans('www.sell_car.price')}}</span></label>
                     <div class="inp fl price">
                         <div class="mileage-input fl">
-                            <input type="text" name="price" value="" />
+                            <input type="text" name="price" value="{{$auto->price or ''}}" />
                             <div id="form-error-price" class="form-error"></div>
                         </div>
                         <div class="mileage-select fl">
@@ -397,8 +429,8 @@ $title = trans('www.sell_car.title');
                                 <div class="select-arrow"></div>
                                 <div class="select-title"></div>
                                 <select name="currency_id">
-                                    @foreach($currenciesData as $currency)
-                                        <option value="{{$currency->id}}">{{$currency->code}}</option>
+                                    @foreach($currenciesData as $value)
+                                        <option value="{{$value->id}}"{{$value->id == $auto->currency_id ? ' selected="selected"' : ''}}>{{$value->code}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -415,20 +447,20 @@ $title = trans('www.sell_car.title');
                 <div class="form-box">
                     <label class="checkbox-label no-select">
                         {{trans('www.sell_car.contract')}}
-                        <input type="checkbox" id="contract" name="contract" value="{{Auto::CONTRACT}}" />
+                        <input type="checkbox" id="contract" name="contract" value="{{Auto::CONTRACT}}"{{$auto->isContract() ? ' checked="checked"' : ''}} />
                     </label>
                     <div id="form-error-contract" class="form-error"></div>
                 </div>
                 <div class="form-box">
                     <label class="checkbox-label no-select">
                         {{trans('www.sell_car.exchange')}}
-                        <input type="checkbox" name="exchange" value="{{Auto::EXCHANGE}}" />
                     </label>
+                    <input type="checkbox" name="exchange" value="{{Auto::EXCHANGE}}"{{$auto->isExchange() ? ' checked="checked"' : ''}} />
                 </div>
                 <div class="form-box">
                     <label class="checkbox-label no-select">
                         {{trans('www.sell_car.damaged')}}
-                        <input type="checkbox" name="damaged" value="{{Auto::DAMAGED}}" />
+                        <input type="checkbox" name="damaged" value="{{Auto::DAMAGED}}"{{$auto->isDamaged() ? ' checked="checked"' : ''}} />
                     </label>
                     <div id="form-error-damaged" class="form-error"></div>
                 </div>
@@ -437,14 +469,14 @@ $title = trans('www.sell_car.title');
                 <div class="form-box">
                     <label class="checkbox-label no-select">
                         {{trans('www.sell_car.auction')}}
-                        <input type="checkbox" id="auction" name="auction" value="{{Auto::AUCTION}}" />
+                        <input type="checkbox" id="auction" name="auction" value="{{Auto::AUCTION}}"{{$auto->isAuction() ? ' checked="checked"' : ''}} />
                     </label>
                     <div id="form-error-auction" class="form-error"></div>
                 </div>
                 <div class="form-box">
                     <label class="checkbox-label no-select">
                         {{trans('www.sell_car.partial_pay')}}
-                        <input type="checkbox" name="partial_pay" value="{{Auto::PARTIAL_PAY}}" />
+                        <input type="checkbox" name="partial_pay" value="{{Auto::PARTIAL_PAY}}"{{$auto->isPartialPay() ? ' checked="checked"' : ''}} />
                     </label>
                     <div id="form-error-partial_pay" class="form-error"></div>
                 </div>
@@ -453,14 +485,14 @@ $title = trans('www.sell_car.title');
                 <div class="form-box">
                     <label class="checkbox-label no-select">
                         {{trans('www.sell_car.bank')}}
-                        <input type="checkbox" name="bank" value="{{Auto::BANK}}" />
+                        <input type="checkbox" name="bank" value="{{Auto::BANK}}"{{$auto->isBank() ? ' checked="checked"' : ''}} />
                     </label>
                     <div id="form-error-bank" class="form-error"></div>
                 </div>
                 <div class="form-box">
                     <label class="checkbox-label no-select">
                         {{trans('www.sell_car.customs_cleared')}}
-                        <input type="checkbox" name="custom_cleared" value="{{Auto::CUSTOM_CLEARED}}" />
+                        <input type="checkbox" name="custom_cleared" value="{{Auto::CUSTOM_CLEARED}}"{{$auto->isCustomCleared() ? ' checked="checked"' : ''}} />
                     </label>
                     <div id="form-error-custom_cleared" class="form-error"></div>
                 </div>
@@ -473,7 +505,7 @@ $title = trans('www.sell_car.title');
                 <div class="form-box">
                     <label class="fl">{{trans('www.sell_car.description')}}</label>
                     <div class="inp fl">
-                        <textarea name="description"></textarea>
+                        <textarea name="description">{{$auto->description or ''}}</textarea>
                         <div id="form-error-description" class="form-error"></div>
                     </div>
                     <div class="cb"></div>

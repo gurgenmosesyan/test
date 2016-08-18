@@ -132,7 +132,8 @@ class SearchController extends Controller
         $this->setPriceWhere($query, $reqData['price_from'], '>=', $currencies, $defCurrency, $cCurrency);
         $this->setPriceWhere($query, $reqData['price_to'], '<=', $currencies, $defCurrency, $cCurrency);
 
-        $autos = $query->paginate(25);
+        $count = config('auto.paging.count');
+        $autos = $query->paginate($count);
         return [$autos, $reqData, $showAll];
     }
 
