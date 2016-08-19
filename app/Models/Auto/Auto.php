@@ -215,6 +215,6 @@ class Auto extends Model
 
     public function images()
     {
-        return $this->hasMany(AutoImage::class, 'auto_id', 'id');
+        return $this->hasMany(AutoImage::class, 'auto_id', 'id')->active();
     }
 }

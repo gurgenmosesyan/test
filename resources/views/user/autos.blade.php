@@ -35,14 +35,15 @@ $autoEmpty = Manager::getAutoEmpty();
             <div class="cb"></div>
         </div>
 
-        <div id="autos">
-            @if($autos->isEmpty())
-                <p class="empty tc">{{trans('www.autos.empty_result')}}</p>
-            @else
-                @foreach($autos as $key => $auto)
-                    @if($key != 0)<div class="line"></div>@endif
-                    <a href="{{url_with_lng('/profile/autos/'.$auto->id, false)}}" class="auto db">
-                        <span class="auto-img db fl"><img src="{{$auto->getThumb($autoEmpty)}}" width="205" /></span>
+        <div id="main-left" class="fl">
+            <div id="autos">
+                @if($autos->isEmpty())
+                    <p class="empty tc">{{trans('www.autos.empty_result')}}</p>
+                @else
+                    @foreach($autos as $key => $auto)
+                        @if($key != 0)<div class="line"></div>@endif
+                        <a href="{{url_with_lng('/profile/autos/'.$auto->id, false)}}" class="auto db">
+                            <span class="auto-img db fl"><img src="{{$auto->getThumb($autoEmpty)}}" width="205" /></span>
                         <span class="auto-info db fl">
                             <span class="title-box db fl">
                                 <span class="title db fb">{{$auto->mark->name.' '.$auto->model->name}}</span>
@@ -75,12 +76,17 @@ $autoEmpty = Manager::getAutoEmpty();
                             <span class="mileage db fr">{{$auto->mileageInfo()}}</span>
                             <span class="db cb"></span>
                         </span>
-                        <span class="db cb"></span>
-                    </a>
-                @endforeach
-                @include('pagination.default', ['model' => $autos])
-            @endif
+                            <span class="db cb"></span>
+                        </a>
+                    @endforeach
+                    @include('pagination.default', ['model' => $autos])
+                @endif
+            </div>
         </div>
+        <div id="main-right" class="fl">
+            <img src="/images/temp/r-ad-1.jpg">
+        </div>
+        <div class="cb"></div>
 
     </div>
 </div>

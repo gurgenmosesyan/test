@@ -46,8 +46,10 @@ Route::group(['middleware' => ['web', 'front']], function() {
             Route::get('/profile/edit', 'UserController@profileEdit');
             Route::get('/profile/changed', ['uses' => 'UserController@profileChanged', 'as' => 'profile_changed']);
             Route::post('/api/profile/edit', 'UserApiController@profileEdit');
-            Route::get('/profile/autos', 'UserController@autos');
-            Route::get('/profile/autos/{id}', 'UserController@autosEdit');
+            Route::get('/profile/autos', ['uses' => 'UserController@autos', 'as' => 'profile_autos']);
+            Route::get('/profile/autos/{id}', ['uses' => 'UserController@autoEdit', 'as' => 'auto_edit']);
+            Route::post('/profile/auto/{id}', ['uses' => 'UserApiController@autoUpdate', 'as' => 'auto_update']);
+            Route::get('/profile/auto/success', ['uses' => 'UserController@autoUpdated', 'as' => 'auto_updated']);
             Route::get('/logout', ['uses' => 'UserController@logout', 'as' => 'user_logout']);
             Route::get('/sell', ['uses' => 'SellController@index', 'as' => 'sell']);
             Route::get('/sell/success', ['uses' => 'SellController@success', 'as' => 'sell_success']);

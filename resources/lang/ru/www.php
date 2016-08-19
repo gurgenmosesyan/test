@@ -207,4 +207,6 @@ return array (
   'reset_success.text' => 'Password successfully changed',
   'base.label.login' => 'Login',
   'user.profile.autos' => 'My autos',
+  'auto_updated.text' => 'Auto successfully updated.',
+  'base.label.back_to_list' => 'Back to list',
 );

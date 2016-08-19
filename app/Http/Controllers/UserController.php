@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SellRequest;
 use App\Models\Auto\Auto;
+use App\Models\Region\Region;
 use App\Models\User\User;
 use App\Models\User\UserManager;
 use App\Models\Currency\CurrencyManager;
@@ -13,6 +15,7 @@ use App\Models\Cylinder\Cylinder;
 use App\Models\Door\Door;
 use App\Models\Engine\Engine;
 use App\Models\Mark\Mark;
+use App\Models\Model\Model;
 use App\Models\Option\Option;
 use App\Models\Rudder\Rudder;
 use App\Models\Train\Train;
@@ -150,12 +153,13 @@ class UserController extends Controller
         ]);
     }
 
-    public function autosEdit($lngCode, $id)
+    public function autoEdit($lngCode, $id)
     {
         $user = Auth::guard('user')->user();
         $auto = Auto::active()->where('id', $id)->where('user_id', $user->id)->firstOrFail();
 
         $marks = Mark::active()->get();
+        $models = Model::active()->where('mark_id', $auto->mark_id)->get();
         $bodies = Body::joinMl()->active()->get();
         $transmissions = Transmission::joinMl()->active()->get();
         $rudders = Rudder::joinMl()->active()->get();
@@ -167,13 +171,17 @@ class UserController extends Controller
         $doors = Door::active()->get();
         $wheels = Wheel::active()->get();
         $countries = Country::joinMl()->active()->get();
+        $regions = collect();
+        if (!empty($auto->region_id)) {
+            $regions = Region::joinMl()->active()->get();
+        }
         $options = Option::joinMl()->active()->get();
         $currenciesData = Currency::active()->ordered()->get();
 
         return view('user.auto_edit')->with([
             'auto' => $auto,
             'marks' => $marks,
-            'models' => [],
+            'models' => $models,
             'bodies' => $bodies,
             'transmissions' => $transmissions,
             'rudders' => $rudders,
@@ -185,9 +193,18 @@ class UserController extends Controller
             'doors' => $doors,
             'wheels' => $wheels,
             'countries' => $countries,
+            'regions' => $regions,
             'options' => $options,
             'currenciesData' => $currenciesData
         ]);
+    }
+
+    public function autoUpdated()
+    {
+        if (!Session::get('auto_updated')) {
+            return redirect()->route('profile_autos', cLng('code'));
+        }
+        return view('user.auto_updated');
     }
 
     public function logout()

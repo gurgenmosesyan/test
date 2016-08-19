@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SellRequest;
 use App\Http\Requests\User\RegRequest;
 use App\Http\Requests\User\LoginRequest;
 use App\Http\Requests\User\ForgotRequest;
@@ -10,6 +11,7 @@ use App\Http\Requests\User\EditRequest;
 use Illuminate\Http\Request;
 use App\Models\User\User;
 use App\Models\User\UserManager;
+use App\Models\Auto\Manager;
 use Facebook\Facebook;
 use Facebook\Exceptions\FacebookResponseException;
 use Facebook\Exceptions\FacebookSDKException;
@@ -137,5 +139,13 @@ class UserApiController extends Controller
         $this->manager->editProfile($request->all());
         $request->session()->flash('profile_changed', true);
         return $this->api('OK', ['link' => route('profile_changed', cLng('code'))]);
+    }
+
+    public function autoUpdate(SellRequest $request, $lngCode, $id)
+    {
+        $autoManager = new Manager();
+        $autoManager->updateAuto($request->all(), $id);
+        $request->session()->flash('auto_updated', true);
+        return $this->api('OK', ['link' => route('auto_updated', cLng('code'))]);
     }
 }

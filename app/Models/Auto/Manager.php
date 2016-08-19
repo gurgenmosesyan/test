@@ -233,4 +233,19 @@ class Manager
             $this->storeImages($data['images'], $auto);
         });
     }
+
+    public function updateAuto($data, $id)
+    {
+        $user = Auth::guard('user')->user();
+        $auto = Auto::active()->where('user_id', $user->id)->where('id', $id)->firstOrFail();
+        $data['user_id'] = $user->id;
+        $data['term'] = empty($data['term']) ? $auto->term : date('Y-m-d', time()+(60*60*24*7*$data['term']));
+        $data = $this->processSave($data);
+        DB::transaction(function() use($data, $auto) {
+            $auto->update($data);
+            $this->updateOptions($data['options'], $auto, true);
+            $this->updateImages($data['images'], $auto);
+        });
+        return true;
+    }
 }

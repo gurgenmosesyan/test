@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Models\Auto\Auto;
+use Route;
 
 class SellRequest extends Request
 {
@@ -16,6 +17,12 @@ class SellRequest extends Request
             $priceRule = '';
         } else {
             $priceRule = 'required|';
+        }
+
+        $routeName = Route::getCurrentRoute()->getName();
+        $termReqStr = 'required|';
+        if ($routeName == 'auto_update') {
+            $termReqStr = '';
         }
 
         return [
@@ -53,7 +60,7 @@ class SellRequest extends Request
             'vin' => 'max:255',
             'description' => 'max:50000',
             'additional_phone' => 'max:255',
-            'term' => 'required|integer|between:1,10',
+            'term' => $termReqStr.'integer|between:1,10',
             'options' => 'array',
             'options.*' => 'integer|exists:options,id,show_status,1',
             'images' => 'array|max:10',

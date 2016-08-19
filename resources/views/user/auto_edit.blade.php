@@ -11,10 +11,14 @@ if (!empty($auto->volume)) {
     $volume1 = $volumes[0];
     $volume2 = $volumes[1];
 }
+$autoOptions = $auto->options->keyBy('option_id');
 ?>
 @extends('layout')
 
 @section('content')
+<script type="text/javascript">
+    $sell.images = <?php echo json_encode($auto->images); ?>;
+</script>
 <div class="page">
 
     <div id="profile">
@@ -42,7 +46,7 @@ if (!empty($auto->volume)) {
     </div>
 
     <div id="sell">
-        <form id="sell-form" action="{{url_with_lng('/api/sell', false)}}" method="post">
+        <form id="sell-form" action="{{url_with_lng('/profile/auto/'.$auto->id, false)}}" method="post">
             <div class="col-2 sell-left fl">
 
                 <div class="form-box">
@@ -65,11 +69,14 @@ if (!empty($auto->volume)) {
                 <div class="form-box">
                     <label class="required fl"><span>{{trans('www.sell_car.model')}}</span></label>
                     <div class="model-select inp fl">
-                        <div class="select-box disabled">
+                        <div class="select-box">
                             <div class="select-arrow"></div>
                             <div class="select-title"></div>
-                            <select name="model_id" disabled="disabled">
+                            <select name="model_id">
                                 <option value="">{{trans('www.base.label.select')}}</option>
+                                @foreach($models as $value)
+                                    <option class="opt" value="{{$value->id}}"{{$value->id == $auto->model_id ? ' selected="selected"' : ''}}>{{$value->name}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div id="form-error-model_id" class="form-error"></div>
@@ -214,11 +221,14 @@ if (!empty($auto->volume)) {
                 <div class="form-box">
                     <label class="fl"><span>{{trans('www.sell_car.region')}}</span></label>
                     <div class="inp fl">
-                        <div class="select-box disabled region-select">
+                        <div class="select-box region-select{{$regions->isEmpty() ? ' disabled' : ''}}">
                             <div class="select-arrow"></div>
                             <div class="select-title"></div>
-                            <select name="region_id" disabled="disabled">
+                            <select name="region_id"{{$regions->isEmpty() ? ' disabled="disabled"' : ''}}>
                                 <option value="">{{trans('www.base.label.select')}}</option>
+                                @foreach($regions as $value)
+                                    <option class="opt" value="{{$value->id}}"{{$value->id == $auto->region_id ? ' selected="selected"' : ''}}>{{$value->name}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div id="form-error-region_id" class="form-error"></div>
@@ -247,6 +257,7 @@ if (!empty($auto->volume)) {
                             </select>
                         </div>
                         <div id="form-error-term" class="form-error"></div>
+                        <div class="mt5">{{date('d.m.Y', strtotime($auto->term))}}</div>
                     </div>
                     <div class="cb"></div>
                 </div>
@@ -521,7 +532,7 @@ if (!empty($auto->volume)) {
             foreach($options as $key => $opt) {
                 $buffer =  '<div class="form-box">';
                 $buffer .=     '<label class="checkbox-label no-select">'.$opt->name;
-                $buffer .=         '<input type="checkbox" name="options[]" value="'.$opt->id.'" />';
+                $buffer .=         '<input type="checkbox" name="options[]" value="'.$opt->id.'"'.(isset($autoOptions[$opt->id]) ? ' checked="checked"' : '').' />';
                 $buffer .=     '</label>';
                 $buffer .=     '<div id="form-error-options_'.$key.'" class="form-error"></div>';
                 $buffer .= '</div>';

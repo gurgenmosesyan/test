@@ -357,7 +357,7 @@ $jsTrans->addTrans(['admin.base.label.select']);
             <label class="col-sm-3 control-label{{$saveMode == 'add' ? ' data-req' : ''}}">{{trans('admin.base.label.term')}}</label>
             @if($saveMode == 'edit')
                 <div class="col-sm-2" style="padding-top: 7px;">
-                    <label>{{date('d-m-Y', strtotime($auto->term))}}</label>
+                    <label>{{date('d.m.Y', strtotime($auto->term))}}</label>
                 </div>
             @endif
             <div class="col-sm-3">
