@@ -3,7 +3,7 @@
 return array (
   'admin_menu.system' => 'Система',
   'base.field.duplicate' => 'Поле существует',
-  'base.field.required' => 'Поле существует',
+  'base.field.required' => 'Это поле обязательно к заполнению',
   'base.field.min_length' => 'Минимум :min символ',
   'profile.title' => 'Профиль',
   'logout.title' => 'Выйти',

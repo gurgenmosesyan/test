@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\SellRequest;
 use App\Models\Auto\Auto;
 use App\Models\Region\Region;
 use App\Models\User\User;
