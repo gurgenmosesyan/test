@@ -222,10 +222,10 @@ $autoOptions = $auto->options->keyBy('option_id');
                 <div class="form-box">
                     <label class="fl"><span>{{trans('www.sell_car.region')}}</span></label>
                     <div class="inp fl">
-                        <div class="select-box region-select{{$regions->isEmpty() ? ' disabled' : ''}}">
+                        <div class="select-box region-select">
                             <div class="select-arrow"></div>
                             <div class="select-title"></div>
-                            <select name="region_id"{{$regions->isEmpty() ? ' disabled="disabled"' : ''}}>
+                            <select name="region_id">
                                 <option value="">{{trans('www.base.label.select')}}</option>
                                 @foreach($regions as $value)
                                     <option class="opt" value="{{$value->id}}"{{$value->id == $auto->region_id ? ' selected="selected"' : ''}}>{{$value->name}}</option>

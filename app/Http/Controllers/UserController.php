@@ -170,10 +170,7 @@ class UserController extends Controller
         $doors = Door::active()->get();
         $wheels = Wheel::active()->get();
         $countries = Country::joinMl()->active()->get();
-        $regions = collect();
-        if (!empty($auto->region_id)) {
-            $regions = Region::joinMl()->active()->get();
-        }
+        $regions = Region::joinMl()->active()->get();
         $options = Option::joinMl()->active()->get();
         $currenciesData = Currency::active()->ordered()->get();
 
