@@ -209,4 +209,7 @@ return array (
   'user.profile.autos' => 'My autos',
   'auto_updated.text' => 'Auto successfully updated.',
   'base.label.back_to_list' => 'Back to list',
+  'auto.status.approved' => 'Approved',
+  'auto.status.pending' => 'Pending',
+  'auto.status.blocked' => 'Blocked',
 );

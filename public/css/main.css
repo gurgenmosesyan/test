@@ -975,6 +975,14 @@ body textarea {
     margin: 25px 0;
     padding: 40px 100px;
 }
+#sell .status {
+    color: #ff0000;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+#sell .status.approved {
+    color: #5ed236;
+}
 #sell .col-2 {
     width: 460px;
 }
@@ -1209,6 +1217,9 @@ body textarea {
     font-size: 17px;
     margin-bottom: 25px;
 }
+.auto .auto-info {
+    position: relative;
+}
 .auto .price {
     font-size: 17px;
     margin-right: 25px;
@@ -1222,6 +1233,15 @@ body textarea {
     position: absolute;
     left: 0;
     bottom: 0;
+}
+.auto .status {
+    bottom: 0;
+    color: #ff0000;
+    position: absolute;
+    right: 0;
+}
+.auto .status.approved {
+    color: #5ed236;
 }
 #autos .empty {
     color: #929292;

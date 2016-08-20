@@ -46,6 +46,7 @@ $autoOptions = $auto->options->keyBy('option_id');
     </div>
 
     <div id="sell">
+        <p class="status fb{{$auto->isApproved() ? ' approved' : ''}}">{{trans('www.auto.status.'.$auto->status)}}</p>
         <form id="sell-form" action="{{url_with_lng('/profile/auto/'.$auto->id, false)}}" method="post">
             <div class="col-2 sell-left fl">
 

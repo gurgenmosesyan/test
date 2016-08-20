@@ -103,6 +103,11 @@ class Auto extends Model
         return $mileage;
     }
 
+    public function isApproved()
+    {
+        return $this->status == self::STATUS_APPROVED;
+    }
+
     public function isContract()
     {
         return $this->contract == self::CONTRACT;
