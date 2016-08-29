@@ -164,30 +164,17 @@ $autoOptions = $auto->options->keyBy('option_id');
                             </div>
                         @endif
                     </div>
-
-                    <div class="options">
-                        <?php $i = 1; ?>
-                        @foreach($options as $option)
-                            <?php
-                            $class = '';
-                            if ($i == 0 || $i == 1) {
-                                $class = ' bg';
-                            } else if ($i == 3) {
-                                $i = -1;
-                            }
-                            $i++;
-                            ?>
-                            <div class="option fl{{$class}}{{isset($autoOptions[$option->id]) ? ' active' : ''}}">
-                                <div class="opt-item fs15">
-                                    {{$option->name}}
-                                </div>
-                            </div>
-                        @endforeach
-                        <div class="cb"></div>
-                    </div>
-
                 </div>
                 <div class="cb"></div>
+
+                <div class="options mt5">
+                    @foreach($options as $key => $option)
+                        <div class="option fl{{$key%2 == 0 ? ' bg' : ''}}{{isset($autoOptions[$option->id]) ? ' active' : ''}}">
+                            <div class="opt-item fs15">{{$option->name}}</div>
+                        </div>
+                    @endforeach
+                    <div class="cb"></div>
+                </div>
             </div>
         </div>
 

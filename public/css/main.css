@@ -155,10 +155,10 @@ body textarea {
     height: 53px;
     padding: 0 27px;
 }
-#header .sell-car {
+.sell-car {
     margin: 10px 13px 0 0;
 }
-#header .sell-car a {
+.sell-car a {
     background: #00C853 url('../images/sell-car.png') no-repeat 10px center;
     border-radius: 3px;
     color: #ffffff;
@@ -168,7 +168,7 @@ body textarea {
     padding: 0 11px 0 32px;
     letter-spacing: 1px ;
 }
-#header .sell-car a:hover {
+.sell-car a:hover {
     background-color: #00d959;
 }
 #header .box-link {
@@ -874,22 +874,25 @@ body textarea {
     vertical-align: middle;
 }
 #profile .links .profile-link .icon {
-    background: url('../images/my-profile.png') no-repeat;
+    background: url('../images/my-profile.png') no-repeat 0 -22px;
     background-size: 22px;
     height: 22px;
     width: 22px;
 }
 #profile .links .cars-link .icon {
-    background: url('../images/my-cars.png') no-repeat;
+    background: url('../images/my-cars.png') no-repeat 0 -23px;
     background-size: 26px;
     height: 23px;
     width: 26px;
 }
 #profile .links .ads-link .icon {
-    background: url('../images/my-ads.png') no-repeat;
-    background-size: 32px;
-    height: 28px;
-    width: 32px;
+    background: url('../images/my-ads.png') no-repeat 0 -27px;
+    background-size: 30px;
+    height: 27px;
+    width: 30px;
+}
+#profile .links .active .icon {
+    background-position: 0 0;
 }
 #profile-box {
     background-color: #ffffff;
@@ -1248,6 +1251,9 @@ body textarea {
     font-size: 15px;
     padding: 25px;
 }
+#autos .empty p {
+    margin-bottom: 30px;
+}
 
 /* paging */
 #paging {
@@ -1349,7 +1355,7 @@ body textarea {
     background-size: 20px;
     box-sizing: border-box;
     padding: 0 30px 0 7px;
-    width: 50%;
+    width: 281px;
 }
 #auto .option.active {
     background-image: url('../images/checkbox-active.png');

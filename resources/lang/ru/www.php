@@ -212,4 +212,6 @@ return array (
   'auto.status.approved' => 'Approved',
   'auto.status.pending' => 'Pending',
   'auto.status.blocked' => 'Blocked',
+  'btn.add_car' => 'Довавить машину',
+  'homepage.title' => 'National autoportal of Armenia',
 );

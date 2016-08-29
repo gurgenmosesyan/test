@@ -38,7 +38,12 @@ $autoEmpty = Manager::getAutoEmpty();
         <div id="main-left" class="fl">
             <div id="autos">
                 @if($autos->isEmpty())
-                    <p class="empty tc">{{trans('www.autos.empty_result')}}</p>
+                    <div class="empty tc">
+                        <p>{{trans('www.autos.empty_result')}}</p>
+                        <div class="sell-car tc">
+                            <a href="{{url_with_lng('/sell', false)}}" class="dib fb">{{trans('www.btn.add_car')}}</a>
+                        </div>
+                    </div>
                 @else
                     @foreach($autos as $key => $auto)
                         @if($key != 0)<div class="line"></div>@endif
