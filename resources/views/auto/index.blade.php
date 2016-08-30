@@ -123,7 +123,7 @@ $autoOptions = $auto->options->keyBy('option_id');
                     @endif
                     @if(!empty($auto->wheels))
                         <p class="fl key">{{trans('www.auto.wheels')}}</p>
-                        <p class="fl value">{{$auto->wheels}}</p>
+                        <p class="fl value">{{$auto->wheels}}"</p>
                         <div class="cb"></div>
                     @endif
                     <p class="mt10">

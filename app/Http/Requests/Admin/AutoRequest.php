@@ -20,6 +20,7 @@ class AutoRequest extends Request
         }
 
         return [
+            'user_id' => 'required|integer|exists:users,id,show_status,1',
             'mark_id' => 'required|integer|exists:marks,id,show_status,1',
             'model_id' => 'required|integer|exists:models,id,mark_id,'.$markId.',show_status,1',
             'body_id' => 'required|integer|exists:bodies,id,show_status,1',
@@ -38,8 +39,7 @@ class AutoRequest extends Request
             'year' => 'required|integer',
             'mileage' => 'required|integer',
             'mileage_measurement' => 'required|in:'.Auto::MILEAGE_MEASUREMENT_KM.','.Auto::MILEAGE_MEASUREMENT_MILE,
-            'volume_1' => 'required_with:volume_2|integer|max:15',
-            'volume_2' => 'required_with:volume_1|integer|max:9',
+            'volume' => 'numeric|max:10',
             'horsepower' => 'integer|max:9999',
             'place' => 'max:255',
             'currency_id' => 'required|integer|exists:currencies,id,show_status,1',

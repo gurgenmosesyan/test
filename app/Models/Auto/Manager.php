@@ -15,7 +15,6 @@ class Manager
         $data = $this->processSave($data);
         $auto = new Auto($data);
 	    $auto->auto_id = $this->generateUniqueAutoId();
-        $auto->user_id = 1; // FIXME
         $auto->term = date('Y-m-d', time()+(60*60*24*7*$data['term']));
         $auto->show_status = Auto::STATUS_ACTIVE;
         DB::transaction(function() use($data, $auto) {
@@ -29,7 +28,6 @@ class Manager
     public function update($id, $data)
     {
         $auto = Auto::active()->findOrFail($id);
-        $data['user_id'] = 1; // FIXME
         //$data['show_status'] = Auto::STATUS_ACTIVE;
         $data['term'] = empty($data['term']) ? $auto->term : date('Y-m-d', time()+(60*60*24*7*$data['term']));
         $data = $this->processSave($data);
@@ -59,9 +57,6 @@ class Manager
         } else {
             $data['mileage_mile'] = $data['mileage'];
             $data['mileage_km'] = round($data['mileage'] * 1.60934);
-        }
-        if (!empty($data['volume_1'])) {
-            $data['volume'] = floatval($data['volume_1'].'.'.$data['volume_2']);
         }
         if (!isset($data['contract'])) {
             $data['contract'] = AUTO::NOT_CONTRACT;

@@ -24,6 +24,7 @@ use App\Models\Wheel\Wheel;
 use App\Models\Option\Option;
 use App\Models\Currency\Currency;
 use Illuminate\Http\Request;
+use App\Models\User\User;
 
 class AutoController extends BaseController
 {
@@ -66,6 +67,8 @@ class AutoController extends BaseController
         }
         $options = Option::active()->with('current')->get();
         $currencies = Currency::active()->ordered()->get();
+        $users = User::active()->get();
+
         return view('admin.auto.edit')->with([
             'auto' => $auto,
             'marks' => $marks,
@@ -84,6 +87,7 @@ class AutoController extends BaseController
             'regions' => $regions,
             'options' => $options,
             'currencies' => $currencies,
+            'users' => $users,
             'saveMode' => 'add'
         ]);
     }
@@ -112,6 +116,8 @@ class AutoController extends BaseController
         $regions = Region::joinMl()->where('country_id', $auto->country_id)->get();
         $options = Option::active()->with('current')->get();
         $currencies = Currency::active()->ordered()->get();
+        $users = User::active()->get();
+
         return view('admin.auto.edit')->with([
             'auto' => $auto,
             'marks' => $marks,
@@ -130,6 +136,7 @@ class AutoController extends BaseController
             'regions' => $regions,
             'options' => $options,
             'currencies' => $currencies,
+            'users' => $users,
             'saveMode' => 'edit'
         ]);
     }

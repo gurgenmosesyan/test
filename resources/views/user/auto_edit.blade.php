@@ -5,12 +5,6 @@ $head->appendScript('/js/sell.js');
 
 $title = trans('www.sell_car.title');
 
-$volume1 = $volume2 = null;
-if (!empty($auto->volume)) {
-    $volumes = explode('.', $auto->volume);
-    $volume1 = $volumes[0];
-    $volume2 = $volumes[1];
-}
 $autoOptions = $auto->options->keyBy('option_id');
 ?>
 @extends('layout')
@@ -172,33 +166,20 @@ $autoOptions = $auto->options->keyBy('option_id');
                 <div class="form-box">
                     <label class="fl"><span>{{trans('www.sell_car.engine_volume')}}</span></label>
                     <div class="inp fl">
-                        <div class="engine-volume1 fl">
-                            <div class="select-box">
-                                <div class="select-arrow"></div>
-                                <div class="select-title"></div>
-                                <select name="volume_1">
-                                    <option value="">{{trans('www.base.label.select')}}</option>
-                                    @for($i = 0; $i < 16; $i++)
-                                        <option value="{{$i}}"{{($volume1 != 0 || $volume2 != 0) && $i == $volume1 ? ' selected="selected"' : ''}}>{{$i}}</option>
-                                    @endfor
-                                </select>
-                            </div>
-                            <div id="form-error-volume_1" class="form-error"></div>
+                        <div class="select-box">
+                            <div class="select-arrow"></div>
+                            <div class="select-title"></div>
+                            <select name="volume">
+                                <option value="">{{trans('www.base.label.select')}}</option>
+                                <?php $i = 0.1; ?>
+                                @while($i < 10.1)
+                                    <?php $i = number_format($i, 1, '.', '.'); ?>
+                                    <option value="{{$i}}"{{$i == $auto->volume ? ' selected="selected"' : ''}}>{{$i}}</option>
+                                    <?php $i += 0.1; ?>
+                                @endwhile
+                            </select>
                         </div>
-                        <div class="engine-volume2 fl">
-                            <div class="select-box">
-                                <div class="select-arrow"></div>
-                                <div class="select-title"></div>
-                                <select name="volume_2">
-                                    <option value="">{{trans('www.base.label.select')}}</option>
-                                    @for($i = 0; $i < 10; $i++)
-                                        <option value="{{$i}}"{{($volume1 != 0 || $volume2 != 0) && $i == $volume2 ? ' selected="selected"' : ''}}>{{$i}}</option>
-                                    @endfor
-                                </select>
-                            </div>
-                            <div id="form-error-volume_2" class="form-error"></div>
-                        </div>
-                        <div class="cb"></div>
+                        <div id="form-error-volume" class="form-error"></div>
                     </div>
                     <div class="cb"></div>
                 </div>

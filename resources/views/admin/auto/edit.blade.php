@@ -6,7 +6,6 @@ $head->appendScript('/admin/auto/auto.js');
 
 $pageTitle = trans('admin.auto.form.title');
 $pageMenu = 'auto';
-$volume1 = $volume2 = null;
 if ($saveMode == 'add') {
     $pageSubTitle = trans('admin.auto.form.add.sub_title');
     $url = route('admin_auto_store');
@@ -17,12 +16,6 @@ if ($saveMode == 'add') {
     $url = route('admin_auto_update', $auto->id);
     $autoOptions = $auto->options->keyBy('option_id');
     $autoImages = $auto->images;
-    if (!empty($auto->volume)) {
-        $volumes = explode('.', $auto->volume);
-        $volume1 = $volumes[0];
-        $volume2 = $volumes[1];
-    }
-
 }
 $jsTrans->addTrans(['admin.base.label.select']);
 ?>
@@ -55,6 +48,18 @@ $jsTrans->addTrans(['admin.base.label.select']);
                     @endforeach
                 </select>
                 <div id="form-error-model_id" class="form-error"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label data-req">{{trans('admin.base.label.user')}}</label>
+            <div class="col-sm-9">
+                <select name="user_id" class="form-control">
+                    <option value="">{{trans('admin.base.label.select')}}</option>
+                    @foreach($users as $value)
+                        <option value="{{$value->id}}"{{$value->id == $auto->user_id ? ' selected="selected"' : ''}}>{{$value->first_name.' '.$value->last_name.' ('.$value->email.')'}}</option>
+                    @endforeach
+                </select>
+                <div id="form-error-user_id" class="form-error"></div>
             </div>
         </div>
         <div class="form-group">
@@ -165,22 +170,16 @@ $jsTrans->addTrans(['admin.base.label.select']);
         <div class="form-group">
             <label class="col-sm-3 control-label">{{trans('admin.base.label.engine_volume')}}</label>
             <div class="col-sm-3">
-                <select name="volume_1" class="form-control">
+                <select name="volume" class="form-control">
                     <option value="">{{trans('admin.base.label.select')}}</option>
-                    @for($i = 0; $i < 16; $i++)
-                        <option value="{{$i}}"{{($volume1 != 0 || $volume2 != 0) && $i == $volume1 ? ' selected="selected"' : ''}}>{{$i}}</option>
-                    @endfor
+                    <?php $i = 0.1; ?>
+                    @while($i < 10.1)
+                        <?php $i = number_format($i, 1, '.', '.'); ?>
+                        <option value="{{$i}}"{{$i == $auto->volume ? ' selected="selected"' : ''}}>{{$i}}</option>
+                        <?php $i += 0.1; ?>
+                    @endwhile
                 </select>
-                <div id="form-error-volume_1" class="form-error"></div>
-            </div>
-            <div class="col-sm-3">
-                <select name="volume_2" class="form-control">
-                    <option value="">{{trans('admin.base.label.select')}}</option>
-                    @for($i = 0; $i < 10; $i++)
-                        <option value="{{$i}}"{{($volume1 != 0 || $volume2 != 0) && $i == $volume2 ? ' selected="selected"' : ''}}>{{$i}}</option>
-                    @endfor
-                </select>
-                <div id="form-error-volume_2" class="form-error"></div>
+                <div id="form-error-volume" class="form-error"></div>
             </div>
         </div>
         <div class="form-group">
