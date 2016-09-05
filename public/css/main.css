@@ -977,6 +977,7 @@ body textarea {
     font-size: 14px;
     margin: 25px 0;
     padding: 40px 100px;
+    min-height: 200px;
 }
 #sell .status {
     color: #ff0000;
@@ -988,6 +989,18 @@ body textarea {
 }
 #sell .col-2 {
     width: 460px;
+}
+#sell .sell-page {
+    display: none;
+    margin: 0 auto;
+    width: 460px;
+}
+#sell #back-box {
+    display: none;
+}
+#sell #page1,
+#sell #page-submit {
+    display: block;
 }
 #sell .col-2.sell-left {
     margin-right: 80px;
@@ -1003,7 +1016,8 @@ body textarea {
     margin-bottom: 10px;
 }
 #sell .col-1 label,
-#sell .col-2 label {
+#sell .col-2 label,
+#sell .sell-page label {
     margin-right: 20px;
     width: 190px;
 }
@@ -1027,11 +1041,18 @@ body textarea {
 #sell .col-1 .inp {
     width: 790px;
 }
-#sell .col-2 .inp {
+#sell .col-2 .inp,
+#sell .sell-page .inp {
     width: 250px;
+}
+#sell .sell-page .col-2 {
+    width: 230px;
 }
 #sell .price {
     margin-bottom: 20px;
+}
+#sell .sell-page .price {
+    margin-bottom: 0;
 }
 #sell .mileage-input {
     margin-right: 10px;
@@ -1063,12 +1084,21 @@ body textarea {
 #sell .submit-box {
     margin-top: 50px;
 }
+#sell .sell-page .submit-box {
+    margin-top: 25px;
+}
+#sell .sell-page .description{
+    margin-top: 5px;
+}
 #sell #upload-image {
     background-color: #bfbaba;
 }
 #sell-images {
     margin: 20px -14px 0;
     overflow: hidden;
+}
+.sell-page #sell-images {
+    margin: 15px -4px;
 }
 #sell-images .img-box {
     border: 1px solid #cccccc;
@@ -1079,11 +1109,20 @@ body textarea {
     position: relative;
     width: 165px;
 }
+.sell-page #sell-images .img-box {
+    height: 140px;
+    margin: 0 3px 6px;
+    width: 140px;
+}
 #sell-images .img-item {
     display: table-cell;
     height: 165px;
     vertical-align: middle;
     width: 165px;
+}
+.sell-page #sell-images .img-item {
+    height: 140px;
+    width: 140px;
 }
 #sell-images img {
     border-radius: 1px;

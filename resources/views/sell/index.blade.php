@@ -4,6 +4,11 @@ use App\Models\Auto\Auto;
 $head->appendScript('/js/sell.js');
 
 $title = trans('www.sell_car.title');
+
+$jsTrans->addTrans([
+    'www.sell_car.submit',
+    'www.sell_car.next'
+]);
 ?>
 @extends('layout')
 
@@ -11,8 +16,8 @@ $title = trans('www.sell_car.title');
 <div class="page">
     <div id="sell">
         <form id="sell-form" action="{{url_with_lng('/api/sell', false)}}" method="post">
-            <div class="col-2 sell-left fl">
 
+            <div id="page1" class="sell-page opened">
                 <div class="form-box">
                     <label class="required fl"><span>{{trans('www.sell_car.mark')}}</span></label>
                     <div class="mark-select inp fl">
@@ -61,6 +66,8 @@ $title = trans('www.sell_car.title');
                     </div>
                     <div class="cb"></div>
                 </div>
+            </div>
+            <div id="page2" class="sell-page">
                 <div class="form-box">
                     <label class="required fl"><span>{{trans('www.sell_car.transmission')}}</span></label>
                     <div class="inp fl">
@@ -75,6 +82,48 @@ $title = trans('www.sell_car.title');
                             </select>
                         </div>
                         <div id="form-error-transmission_id" class="form-error"></div>
+                    </div>
+                    <div class="cb"></div>
+                </div>
+                <div class="form-box">
+                    <label class="required fl"><span>{{trans('www.sell_car.rudder')}}</span></label>
+                    <div class="inp fl">
+                        <div class="select-box">
+                            <div class="select-arrow"></div>
+                            <div class="select-title"></div>
+                            <select name="rudder_id">
+                                <option value="">{{trans('www.base.label.select')}}</option>
+                                @foreach($rudders as $rudder)
+                                    <option value="{{$rudder->id}}">{{$rudder->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div id="form-error-rudder_id" class="form-error"></div>
+                    </div>
+                    <div class="cb"></div>
+                </div>
+                <div class="form-box">
+                    <label class="required fl"><span>{{trans('www.sell_car.body')}}</span></label>
+                    <div class="inp fl">
+                        <div class="select-box">
+                            <div class="select-arrow"></div>
+                            <div class="select-title"></div>
+                            <select name="body_id">
+                                <option value="">{{trans('www.base.label.select')}}</option>
+                                @foreach($bodies as $body)
+                                    <option value="{{$body->id}}">{{$body->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div id="form-error-body_id" class="form-error"></div>
+                    </div>
+                    <div class="cb"></div>
+                </div>
+                <div class="form-box">
+                    <label class="fl"><span>{{trans('www.sell_car.tuning')}}</span></label>
+                    <div class="inp fl">
+                        <input type="text" name="tuning" value="" />
+                        <div id="form-error-tuning" class="form-error"></div>
                     </div>
                     <div class="cb"></div>
                 </div>
@@ -112,6 +161,8 @@ $title = trans('www.sell_car.title');
                     </div>
                     <div class="cb"></div>
                 </div>
+            </div>
+            <div id="page3" class="sell-page">
                 <div class="form-box">
                     <label class="required fl"><span>{{trans('www.sell_car.engine')}}</span></label>
                     <div class="inp fl">
@@ -146,130 +197,6 @@ $title = trans('www.sell_car.title');
                             </select>
                         </div>
                         <div id="form-error-volume" class="form-error"></div>
-                    </div>
-                    <div class="cb"></div>
-                </div>
-                <div class="form-box">
-                    <label class="required fl"><span>{{trans('www.sell_car.country')}}</span></label>
-                    <div class="inp fl">
-                        <div class="select-box country-select">
-                            <div class="select-arrow"></div>
-                            <div class="select-title"></div>
-                            <select name="country_id">
-                                <option value="">{{trans('www.base.label.select')}}</option>
-                                @foreach($countries as $country)
-                                    <option value="{{$country->id}}">{{$country->name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div id="form-error-country_id" class="form-error"></div>
-                    </div>
-                    <div class="cb"></div>
-                </div>
-                <div class="form-box">
-                    <label class="fl"><span>{{trans('www.sell_car.region')}}</span></label>
-                    <div class="inp fl">
-                        <div class="select-box disabled region-select">
-                            <div class="select-arrow"></div>
-                            <div class="select-title"></div>
-                            <select name="region_id" disabled="disabled">
-                                <option value="">{{trans('www.base.label.select')}}</option>
-                            </select>
-                        </div>
-                        <div id="form-error-region_id" class="form-error"></div>
-                    </div>
-                    <div class="cb"></div>
-                </div>
-                <div class="form-box">
-                    <label class="fl"><span>{{trans('www.sell_car.place')}}</span></label>
-                    <div class="inp fl">
-                        <input type="text" name="place" value="" />
-                        <div id="form-error-place" class="form-error"></div>
-                    </div>
-                    <div class="cb"></div>
-                </div>
-                <div class="form-box">
-                    <label class="required fl"><span>{{trans('www.sell_car.term')}}</span></label>
-                    <div class="inp fl">
-                        <div class="select-box">
-                            <div class="select-arrow"></div>
-                            <div class="select-title"></div>
-                            <select name="term">
-                                <option value="">{{trans('www.base.label.select')}}</option>
-                                @for($i = 10; $i > 0; $i--)
-                                    <option value="{{$i}}">{{trans('www.sell_car.term.week', ['week' => $i])}}</option>
-                                @endfor
-                            </select>
-                        </div>
-                        <div id="form-error-term" class="form-error"></div>
-                    </div>
-                    <div class="cb"></div>
-                </div>
-
-            </div>
-            <div class="col-2 sell-right fl">
-
-                <div class="form-box">
-                    <label class="required fl"><span>{{trans('www.sell_car.body')}}</span></label>
-                    <div class="inp fl">
-                        <div class="select-box">
-                            <div class="select-arrow"></div>
-                            <div class="select-title"></div>
-                            <select name="body_id">
-                                <option value="">{{trans('www.base.label.select')}}</option>
-                                @foreach($bodies as $body)
-                                    <option value="{{$body->id}}">{{$body->name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div id="form-error-body_id" class="form-error"></div>
-                    </div>
-                    <div class="cb"></div>
-                </div>
-                <div class="form-box">
-                    <label class="fl"><span>{{trans('www.sell_car.tuning')}}</span></label>
-                    <div class="inp fl">
-                        <input type="text" name="tuning" value="" />
-                        <div id="form-error-tuning" class="form-error"></div>
-                    </div>
-                    <div class="cb"></div>
-                </div>
-                <div class="form-box">
-                    <label class="required fl"><span>{{trans('www.sell_car.mileage')}}</span></label>
-                    <div class="mileage-box inp fl">
-                        <div class="mileage-input fl">
-                            <input type="text" name="mileage" value="" />
-                            <div id="form-error-mileage" class="form-error"></div>
-                        </div>
-                        <div class="mileage-select fl">
-                            <div class="select-box">
-                                <div class="select-arrow"></div>
-                                <div class="select-title"></div>
-                                <select name="mileage_measurement">
-                                    <option value="{{Auto::MILEAGE_MEASUREMENT_KM}}">{{trans('www.sell_car.mileage.measurement.'.Auto::MILEAGE_MEASUREMENT_KM)}}</option>
-                                    <option value="{{Auto::MILEAGE_MEASUREMENT_MILE}}">{{trans('www.sell_car.mileage.measurement.'.Auto::MILEAGE_MEASUREMENT_MILE)}}</option>
-                                </select>
-                            </div>
-                            <div id="form-error-mileage_measurement" class="form-error"></div>
-                        </div>
-                        <div class="cb"></div>
-                    </div>
-                    <div class="cb"></div>
-                </div>
-                <div class="form-box">
-                    <label class="required fl"><span>{{trans('www.sell_car.rudder')}}</span></label>
-                    <div class="inp fl">
-                        <div class="select-box">
-                            <div class="select-arrow"></div>
-                            <div class="select-title"></div>
-                            <select name="rudder_id">
-                                <option value="">{{trans('www.base.label.select')}}</option>
-                                @foreach($rudders as $rudder)
-                                    <option value="{{$rudder->id}}">{{$rudder->name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div id="form-error-rudder_id" class="form-error"></div>
                     </div>
                     <div class="cb"></div>
                 </div>
@@ -316,23 +243,6 @@ $title = trans('www.sell_car.title');
                     <div class="cb"></div>
                 </div>
                 <div class="form-box">
-                    <label class="fl"><span>{{trans('www.sell_car.doors_count')}}</span></label>
-                    <div class="inp fl">
-                        <div class="select-box">
-                            <div class="select-arrow"></div>
-                            <div class="select-title"></div>
-                            <select name="doors">
-                                <option value="">{{trans('www.base.label.select')}}</option>
-                                @foreach($doors as $door)
-                                    <option value="{{$door->count}}">{{$door->count}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div id="form-error-doors" class="form-error"></div>
-                    </div>
-                    <div class="cb"></div>
-                </div>
-                <div class="form-box">
                     <label class="fl"><span>{{trans('www.sell_car.vin')}}</span></label>
                     <div class="inp fl">
                         <input type="text" name="vin" value="" />
@@ -341,37 +251,87 @@ $title = trans('www.sell_car.title');
                     <div class="cb"></div>
                 </div>
                 <div class="form-box">
-                    <label class="fl"><span>{{trans('www.sell_car.wheel')}}</span></label>
+                    <label class="required fl"><span>{{trans('www.sell_car.mileage')}}</span></label>
+                    <div class="mileage-box inp fl">
+                        <div class="mileage-input fl">
+                            <input type="text" name="mileage" value="" />
+                            <div id="form-error-mileage" class="form-error"></div>
+                        </div>
+                        <div class="mileage-select fl">
+                            <div class="select-box">
+                                <div class="select-arrow"></div>
+                                <div class="select-title"></div>
+                                <select name="mileage_measurement">
+                                    <option value="{{Auto::MILEAGE_MEASUREMENT_KM}}">{{trans('www.sell_car.mileage.measurement.'.Auto::MILEAGE_MEASUREMENT_KM)}}</option>
+                                    <option value="{{Auto::MILEAGE_MEASUREMENT_MILE}}">{{trans('www.sell_car.mileage.measurement.'.Auto::MILEAGE_MEASUREMENT_MILE)}}</option>
+                                </select>
+                            </div>
+                            <div id="form-error-mileage_measurement" class="form-error"></div>
+                        </div>
+                        <div class="cb"></div>
+                    </div>
+                    <div class="cb"></div>
+                </div>
+            </div>
+            <div id="page4" class="sell-page">
+                <div class="form-box">
+                    <label class="required fl"><span>{{trans('www.sell_car.country')}}</span></label>
                     <div class="inp fl">
-                        <div class="select-box">
+                        <div class="select-box country-select">
                             <div class="select-arrow"></div>
                             <div class="select-title"></div>
-                            <select name="wheels">
+                            <select name="country_id">
                                 <option value="">{{trans('www.base.label.select')}}</option>
-                                @foreach($wheels as $wheel)
-                                    <option value="{{$wheel->count}}">{{$wheel->count}}</option>
+                                @foreach($countries as $country)
+                                    <option value="{{$country->id}}">{{$country->name}}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div id="form-error-wheels" class="form-error"></div>
+                        <div id="form-error-country_id" class="form-error"></div>
                     </div>
                     <div class="cb"></div>
                 </div>
                 <div class="form-box">
-                    <label class="fl"><span>{{trans('www.sell_car.additional_phone')}}</span></label>
+                    <label class="fl"><span>{{trans('www.sell_car.region')}}</span></label>
                     <div class="inp fl">
-                        <input type="text" name="additional_phone" value="" />
-                        <div id="form-error-additional_phone" class="form-error"></div>
+                        <div class="select-box disabled region-select">
+                            <div class="select-arrow"></div>
+                            <div class="select-title"></div>
+                            <select name="region_id" disabled="disabled">
+                                <option value="">{{trans('www.base.label.select')}}</option>
+                            </select>
+                        </div>
+                        <div id="form-error-region_id" class="form-error"></div>
                     </div>
                     <div class="cb"></div>
                 </div>
-
+                <div class="form-box">
+                    <label class="fl"><span>{{trans('www.sell_car.place')}}</span></label>
+                    <div class="inp fl">
+                        <input type="text" name="place" value="" />
+                        <div id="form-error-place" class="form-error"></div>
+                    </div>
+                    <div class="cb"></div>
+                </div>
             </div>
-            <div class="cb"></div>
-
-            <div class="separator"></div>
-
-            <div class="col-2 sell-left fl">
+            <div id="page5" class="sell-page">
+                <div class="form-box">
+                    <label class="required fl"><span>{{trans('www.sell_car.term')}}</span></label>
+                    <div class="inp fl">
+                        <div class="select-box">
+                            <div class="select-arrow"></div>
+                            <div class="select-title"></div>
+                            <select name="term">
+                                <option value="">{{trans('www.base.label.select')}}</option>
+                                @for($i = 10; $i > 0; $i--)
+                                    <option value="{{$i}}">{{trans('www.sell_car.term.week', ['week' => $i])}}</option>
+                                @endfor
+                            </select>
+                        </div>
+                        <div id="form-error-term" class="form-error"></div>
+                    </div>
+                    <div class="cb"></div>
+                </div>
                 <div class="form-box">
                     <label id="price-label" class="required fl"><span>{{trans('www.sell_car.price')}}</span></label>
                     <div class="inp fl price">
@@ -395,111 +355,95 @@ $title = trans('www.sell_car.title');
                     </div>
                     <div class="cb"></div>
                 </div>
-            </div>
-            <div class="cb"></div>
-
-            <div class="col-3 sell-left fl">
                 <div class="form-box">
-                    <label class="checkbox-label no-select">
-                        {{trans('www.sell_car.contract')}}
-                        <input type="checkbox" id="contract" name="contract" value="{{Auto::CONTRACT}}" />
-                    </label>
-                    <div id="form-error-contract" class="form-error"></div>
-                </div>
-                <div class="form-box">
-                    <label class="checkbox-label no-select">
-                        {{trans('www.sell_car.exchange')}}
-                        <input type="checkbox" name="exchange" value="{{Auto::EXCHANGE}}" />
-                    </label>
-                </div>
-                <div class="form-box">
-                    <label class="checkbox-label no-select">
-                        {{trans('www.sell_car.damaged')}}
-                        <input type="checkbox" name="damaged" value="{{Auto::DAMAGED}}" />
-                    </label>
-                    <div id="form-error-damaged" class="form-error"></div>
-                </div>
-            </div>
-            <div class="col-3 sell-middle fl">
-                <div class="form-box">
-                    <label class="checkbox-label no-select">
-                        {{trans('www.sell_car.auction')}}
-                        <input type="checkbox" id="auction" name="auction" value="{{Auto::AUCTION}}" />
-                    </label>
-                    <div id="form-error-auction" class="form-error"></div>
-                </div>
-                <div class="form-box">
-                    <label class="checkbox-label no-select">
-                        {{trans('www.sell_car.partial_pay')}}
-                        <input type="checkbox" name="partial_pay" value="{{Auto::PARTIAL_PAY}}" />
-                    </label>
-                    <div id="form-error-partial_pay" class="form-error"></div>
-                </div>
-            </div>
-            <div class="col-3 sell-right fl">
-                <div class="form-box">
-                    <label class="checkbox-label no-select">
-                        {{trans('www.sell_car.bank')}}
-                        <input type="checkbox" name="bank" value="{{Auto::BANK}}" />
-                    </label>
-                    <div id="form-error-bank" class="form-error"></div>
-                </div>
-                <div class="form-box">
-                    <label class="checkbox-label no-select">
-                        {{trans('www.sell_car.customs_cleared')}}
-                        <input type="checkbox" name="custom_cleared" value="{{Auto::CUSTOM_CLEARED}}" />
-                    </label>
-                    <div id="form-error-custom_cleared" class="form-error"></div>
-                </div>
-            </div>
-            <div class="cb"></div>
-
-            <div class="separator"></div>
-
-            <div class="col-1">
-                <div class="form-box">
-                    <label class="fl">{{trans('www.sell_car.description')}}</label>
+                    <label class="fl"><span>{{trans('www.sell_car.additional_phone')}}</span></label>
                     <div class="inp fl">
-                        <textarea name="description"></textarea>
-                        <div id="form-error-description" class="form-error"></div>
+                        <input type="text" name="additional_phone" value="" />
+                        <div id="form-error-additional_phone" class="form-error"></div>
                     </div>
                     <div class="cb"></div>
                 </div>
+                <div class="col-2 fl">
+                    <div class="form-box">
+                        <label class="checkbox-label no-select">
+                            {{trans('www.sell_car.contract')}}
+                            <input type="checkbox" id="contract" name="contract" value="{{Auto::CONTRACT}}" />
+                        </label>
+                        <div id="form-error-contract" class="form-error"></div>
+                    </div>
+                    <div class="form-box">
+                        <label class="checkbox-label no-select">
+                            {{trans('www.sell_car.damaged')}}
+                            <input type="checkbox" name="damaged" value="{{Auto::DAMAGED}}" />
+                        </label>
+                        <div id="form-error-damaged" class="form-error"></div>
+                    </div>
+                    <div class="form-box">
+                        <label class="checkbox-label no-select">
+                            {{trans('www.sell_car.partial_pay')}}
+                            <input type="checkbox" name="partial_pay" value="{{Auto::PARTIAL_PAY}}" />
+                        </label>
+                        <div id="form-error-partial_pay" class="form-error"></div>
+                    </div>
+                    <div class="form-box">
+                        <label class="checkbox-label no-select">
+                            {{trans('www.sell_car.customs_cleared')}}
+                            <input type="checkbox" name="custom_cleared" value="{{Auto::CUSTOM_CLEARED}}" />
+                        </label>
+                        <div id="form-error-custom_cleared" class="form-error"></div>
+                    </div>
+                </div>
+                <div class="col-2 fl">
+                    <div class="form-box">
+                        <label class="checkbox-label no-select">
+                            {{trans('www.sell_car.exchange')}}
+                            <input type="checkbox" name="exchange" value="{{Auto::EXCHANGE}}" />
+                        </label>
+                    </div>
+                    <div class="form-box">
+                        <label class="checkbox-label no-select">
+                            {{trans('www.sell_car.auction')}}
+                            <input type="checkbox" id="auction" name="auction" value="{{Auto::AUCTION}}" />
+                        </label>
+                        <div id="form-error-auction" class="form-error"></div>
+                    </div>
+                    <div class="form-box">
+                        <label class="checkbox-label no-select">
+                            {{trans('www.sell_car.bank')}}
+                            <input type="checkbox" name="bank" value="{{Auto::BANK}}" />
+                        </label>
+                        <div id="form-error-bank" class="form-error"></div>
+                    </div>
+                </div>
+                <div class="cb"></div>
             </div>
-
-            <div class="separator"></div>
-
-            <?php
-            if (!$options->isEmpty()) {
-            $optionsCol1 = $optionsCol2 = $optionsCol3 = '';
-            $i = 1;
-            foreach($options as $key => $opt) {
-                $buffer =  '<div class="form-box">';
-                $buffer .=     '<label class="checkbox-label no-select">'.$opt->name;
-                $buffer .=         '<input type="checkbox" name="options[]" value="'.$opt->id.'" />';
-                $buffer .=     '</label>';
-                $buffer .=     '<div id="form-error-options_'.$key.'" class="form-error"></div>';
-                $buffer .= '</div>';
-                if ($i == 1) {
-                    $optionsCol1 .= $buffer;
-                } else if ($i == 2) {
-                    $optionsCol2 .= $buffer;
-                } else {
-                    $optionsCol3 .= $buffer;
-                    $i = 0;
+            <div id="page6" class="sell-page">
+                <?php
+                if (!$options->isEmpty()) {
+                $optionsCol1 = $optionsCol2 = '';
+                $i = 1;
+                foreach($options as $key => $opt) {
+                    $buffer =  '<div class="form-box">';
+                    $buffer .=     '<label class="checkbox-label no-select">'.$opt->name;
+                    $buffer .=         '<input type="checkbox" name="options[]" value="'.$opt->id.'" />';
+                    $buffer .=     '</label>';
+                    $buffer .=     '<div id="form-error-options_'.$key.'" class="form-error"></div>';
+                    $buffer .= '</div>';
+                    if ($i == 1) {
+                        $optionsCol1 .= $buffer;
+                    } else {
+                        $optionsCol2 .= $buffer;
+                        $i = 0;
+                    }
+                    $i++;
                 }
-                $i++;
-            }
-            ?>
-            <div class="col-3 sell-left fl">{!!$optionsCol1!!}</div>
-            <div class="col-3 sell-middle fl">{!!$optionsCol2!!}</div>
-            <div class="col-3 sell-right fl">{!!$optionsCol3!!}</div>
-            <div class="cb"></div>
-
-            <div class="separator"></div>
-            <?php } ?>
-
-            <div class="col-1">
+                ?>
+                <div class="col-2 fl">{!!$optionsCol1!!}</div>
+                <div class="col-2 fl">{!!$optionsCol2!!}</div>
+                <div class="cb"></div>
+                <?php } ?>
+            </div>
+            <div id="page7" class="sell-page">
                 <div>
                     <a href="#" id="upload-image" class="btn dib">{{trans('www.sell_car.upload_image')}}</a>
                     <div class="dib dpn upload-load"></div>
@@ -507,15 +451,35 @@ $title = trans('www.sell_car.title');
                 </div>
                 <div id="sell-images"></div>
                 <div class="cb"></div>
-            </div>
 
-            {{csrf_field()}}
-            <div class="submit-box">
-                <input type="submit" class="btn" value="{{trans('www.sell_car.submit')}}" />
+                <div class="form-box">
+                    <label>{{trans('www.sell_car.description')}}</label>
+                    <br />
+                    <div class="description">
+                        <textarea name="description"></textarea>
+                        <div id="form-error-description" class="form-error"></div>
+                    </div>
+                    <div class="cb"></div>
+                </div>
             </div>
-
+            <div id="page-submit" class="sell-page tc">
+                {{csrf_field()}}
+                <div class="submit-box">
+                    <input type="hidden" id="action" name="action" value="next" />
+                    <div id="back-box" class="fl">
+                        <a href="#" id="back" class="btn dib">{{trans('www.sell_car.back')}}</a>
+                    </div>
+                    <div class="fr">
+                        <input type="submit" id="submit" class="btn" value="{{trans('www.sell_car.next')}}" />
+                    </div>
+                    <div class="cb"></div>
+                </div>
+            </div>
         </form>
     </div>
 </div>
+<script type="text/javascript">
+    $sell.initPages();
+</script>
 
 @stop

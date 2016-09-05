@@ -153,9 +153,11 @@ $sell.showErrors = function(form, errors) {
     for (var i in errors) {
         $('#form-error-'+i.replace(/\./g, '_'), form).text(errors[i][0]).closest('.form-box').addClass('has-error');
     }
-    $('html, body').animate({
-        scrollTop: $('.has-error:first').offset().top-20
-    }, 500);
+    if (!$sell.pages) {
+        $('html, body').animate({
+            scrollTop: $('.has-error:first').offset().top-20
+        }, 500);
+    }
 };
 
 $sell.initPrice = function() {
@@ -182,6 +184,105 @@ $sell.initPrice = function() {
     }).trigger('change');
 };
 
+$sell.initPages = function() {
+    $sell.pages = true;
+    $sell.page1 = $('#page1');
+    $sell.page2 = $('#page2');
+    $sell.page3 = $('#page3');
+    $sell.page4 = $('#page4');
+    $sell.page5 = $('#page5');
+    $sell.page6 = $('#page6');
+    $sell.page7 = $('#page7');
+    $sell.backBox = $('#back-box');
+    $sell.submit = $('#submit');
+    $sell.action = $('#action');
+    $('#back').on('click', function() {
+        if ($sell.page2.hasClass('opened')) {
+            $sell.page2.removeClass('opened').stop().fadeOut(400, function() {
+                $sell.page1.addClass('opened').stop().fadeIn(400);
+                $sell.backBox.stop().fadeOut(400);
+            });
+        } else if ($sell.page3.hasClass('opened')) {
+            $sell.page3.removeClass('opened').stop().fadeOut(400, function() {
+                $sell.page2.addClass('opened').stop().fadeIn(400);
+            });
+        } else if ($sell.page4.hasClass('opened')) {
+            $sell.page4.removeClass('opened').stop().fadeOut(400, function() {
+                $sell.page3.addClass('opened').stop().fadeIn(400);
+            });
+        } else if ($sell.page5.hasClass('opened')) {
+            $sell.page5.removeClass('opened').stop().fadeOut(400, function() {
+                $sell.page4.addClass('opened').stop().fadeIn(400);
+            });
+        } else if ($sell.page6.hasClass('opened')) {
+            $sell.page6.removeClass('opened').stop().fadeOut(400, function() {
+                $sell.page5.addClass('opened').stop().fadeIn(400);
+            });
+        } else if ($sell.page7.hasClass('opened')) {
+            $sell.submit.val($trans.get('www.sell_car.next'));
+            $sell.action.val('next');
+            $sell.page7.removeClass('opened').stop().fadeOut(400, function () {
+                $sell.page6.addClass('opened').stop().fadeIn(400);
+            });
+        }
+        return false;
+    });
+};
+
+$sell.checkPages = function(form, result) {
+    var errors = result.errors;
+    if ($sell.page1.hasClass('opened')) {
+        if (!errors || (!errors.mark_id && !errors.model_id && !errors.year)) {
+            $sell.resetForm(form);
+            $sell.page1.removeClass('opened').stop().fadeOut(400, function() {
+                $sell.page2.addClass('opened').stop().fadeIn(400);
+                $sell.backBox.stop().fadeIn(400);
+            });
+        }
+    } else if ($sell.page2.hasClass('opened')) {
+        if (!errors || (!errors.transmission_id && !errors.rudder_id && !errors.body_id && !errors.tuning && !errors.color_id && !errors.interior_color_id)) {
+            $sell.resetForm(form);
+            $sell.page2.removeClass('opened').stop().fadeOut(400, function() {
+                $sell.page3.addClass('opened').stop().fadeIn(400);
+            });
+        }
+    } else if ($sell.page3.hasClass('opened')) {
+        if (!errors || (!errors.engine_id && !errors.volume && !errors.horsepower && !errors.train_id && !errors.cylinders && !errors.vin && !errors.mileage && !errors.mileage_measurement)) {
+            $sell.resetForm(form);
+            $sell.page3.removeClass('opened').stop().fadeOut(400, function() {
+                $sell.page4.addClass('opened').stop().fadeIn(400);
+            });
+        }
+    } else if ($sell.page4.hasClass('opened')) {
+        if (!errors.country_id && !errors.region_id && !errors.place) {
+            $sell.resetForm(form);
+            $sell.page4.removeClass('opened').stop().fadeOut(400, function() {
+                $sell.page5.addClass('opened').stop().fadeIn(400);
+            });
+        }
+    } else if ($sell.page5.hasClass('opened')) {
+        if (!errors || (!errors.term && !errors.price && !errors.currency_id && !errors.additional_phone && !errors.contract && !errors.exchange && !errors.damaged && !errors.auction && !errors.partial_pay && !errors.bank && !errors.custom_cleared)) {
+            $sell.resetForm(form);
+            $sell.page5.removeClass('opened').stop().fadeOut(400, function() {
+                $sell.page6.addClass('opened').stop().fadeIn(400);
+            });
+        }
+    } else if ($sell.page6.hasClass('opened')) {
+        if (!errors) {
+            $sell.resetForm(form);
+            $sell.submit.val($trans.get('www.sell_car.submit'));
+            $sell.action.val('submit');
+            $sell.page6.removeClass('opened').stop().fadeOut(400, function() {
+                $sell.page7.addClass('opened').stop().fadeIn(400);
+            });
+        }
+    }  else if ($sell.page7.hasClass('opened')) {
+        if (result.status == 'OK') {
+            document.location.href = result.data.link;
+        }
+    }
+};
+
 $sell.initForm = function() {
     $('#sell-form').submit(function() {
         var form = $(this);
@@ -196,10 +297,13 @@ $sell.initForm = function() {
             dataType: 'json',
             success: function(result) {
                 $sell.resetForm(form);
-                if (result.status == 'OK') {
-                    document.location.href = result.data.link;
-                } else {
+                if (result.status != 'OK') {
                     $sell.showErrors(form, result.errors);
+                }
+                if ($sell.pages) {
+                    $sell.checkPages(form, result);
+                } else if (result.status == 'OK') {
+                    document.location.href = result.data.link;
                 }
                 form.removeClass('loading');
             }

@@ -16,7 +16,13 @@ class SellApiController extends Controller
 
     public function add(SellRequest $request)
     {
-        $this->manager->add($request->all());
+        $data = $request->all();
+        if ($data['action'] == 'next') {
+            return $this->api('OK');
+        }
+
+        $this->manager->add($data);
+
         $request->session()->flash('add_car', true);
 
         return $this->api('OK', [

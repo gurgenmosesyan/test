@@ -25,7 +25,7 @@ class SellRequest extends Request
             $termReqStr = '';
         }
 
-        return [
+        $rules = [
             'mark_id' => 'required|integer|exists:marks,id,show_status,1',
             'model_id' => 'required|integer|exists:models,id,mark_id,'.$markId.',show_status,1',
             'body_id' => 'required|integer|exists:bodies,id,show_status,1',
@@ -67,5 +67,11 @@ class SellRequest extends Request
             'images.*.image' => 'required|core_image',
             'images.*.rotate' => 'numeric'
         ];
+
+        if ($routeName != 'auto_update') {
+            $rules['action'] = 'required|in:next,submit';
+        }
+
+        return $rules;
     }
 }

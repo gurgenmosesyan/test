@@ -214,4 +214,6 @@ return array (
   'auto.status.blocked' => 'Blocked',
   'btn.add_car' => 'Ավելացնել մեքենա',
   'homepage.title' => 'National autoportal of Armenia',
+  'sell_car.back' => 'Հետ',
+  'sell_car.next' => 'Առաջ',
 );
