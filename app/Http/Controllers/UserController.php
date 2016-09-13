@@ -133,6 +133,14 @@ class UserController extends Controller
         return view('user.profile_changed');
     }
 
+    public function autoDeleted()
+    {
+        if (!Session::get('auto_deleted')) {
+            return redirect()->route('profile_autos', cLng('code'));
+        }
+        return view('user.auto_deleted');
+    }
+
     public function autos()
     {
         $count = config('auto.paging.count');

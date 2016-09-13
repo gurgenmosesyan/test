@@ -163,23 +163,33 @@ $sell.showErrors = function(form, errors) {
 $sell.initPrice = function() {
     var contract = $('#contract'),
         auction = $('#auction'),
-        priceLabel = $('#price-label');
+        priceBox = $('#price-box');
     contract.on('change', function() {
         if ($(this).prop('checked')) {
-            priceLabel.removeClass('required');
+            priceBox.find('input, select').attr('disabled', 'disabled');
+            priceBox.find('input').val('');
+            priceBox.find('.select-box').addClass('disabled');
+            priceBox.find('label').removeClass('required');
             auction.prop('checked', false).trigger('change');
             $('#auction-group').find('.icheckbox_minimal-blue').removeClass('checked');
         } else if (!auction.prop('checked')) {
-            priceLabel.addClass('required');
+            priceBox.find('input, select').attr('disabled', false);
+            priceBox.find('.select-box').removeClass('disabled');
+            priceBox.find('label').addClass('required');
         }
     }).trigger('change');
     auction.on('change', function() {
         if ($(this).prop('checked')) {
-            priceLabel.removeClass('required');
+            priceBox.find('input, select').attr('disabled', 'disabled');
+            priceBox.find('input').val('');
+            priceBox.find('.select-box').addClass('disabled');
+            priceBox.find('label').removeClass('required');
             contract.prop('checked', false).trigger('change');
             $('#contract-group').find('.icheckbox_minimal-blue').removeClass('checked');
         } else if (!contract.prop('checked')) {
-            priceLabel.addClass('required');
+            priceBox.find('input, select').attr('disabled', false);
+            priceBox.find('.select-box').removeClass('disabled');
+            priceBox.find('label').addClass('required');
         }
     }).trigger('change');
 };

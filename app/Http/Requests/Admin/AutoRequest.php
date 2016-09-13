@@ -14,9 +14,9 @@ class AutoRequest extends Request
         $contract = $this->get('contract');
         $auction = $this->get('auction');
         if ($contract == Auto::CONTRACT || $auction == Auto::AUCTION) {
-            $priceRule = '';
+            $priceRule = $currencyRule = '';
         } else {
-            $priceRule = 'required|';
+            $priceRule = $currencyRule = 'required|';
         }
 
         return [
@@ -42,7 +42,7 @@ class AutoRequest extends Request
             'volume' => 'numeric|max:10',
             'horsepower' => 'integer|max:9999',
             'place' => 'max:255',
-            'currency_id' => 'required|integer|exists:currencies,id,show_status,1',
+            'currency_id' => $currencyRule.'integer|exists:currencies,id,show_status,1',
             'price' => $priceRule.'integer',
             'contract' => 'in:'.Auto::CONTRACT.','.Auto::NOT_CONTRACT,
             'auction' => 'in:'.Auto::AUCTION.','.Auto::NOT_AUCTION,

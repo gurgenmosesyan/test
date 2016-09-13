@@ -8,6 +8,7 @@ use App\Http\Requests\User\LoginRequest;
 use App\Http\Requests\User\ForgotRequest;
 use App\Http\Requests\User\ResetRequest;
 use App\Http\Requests\User\EditRequest;
+use App\Models\Auto\Auto;
 use Illuminate\Http\Request;
 use App\Models\User\User;
 use App\Models\User\UserManager;
@@ -18,6 +19,7 @@ use Facebook\Exceptions\FacebookSDKException;
 use Google_Client;
 use Google_Service_Plus;
 use Session;
+use Auth;
 
 class UserApiController extends Controller
 {
@@ -147,5 +149,19 @@ class UserApiController extends Controller
         $autoManager->updateAuto($request->all(), $id);
         $request->session()->flash('auto_updated', true);
         return $this->api('OK', ['link' => route('auto_updated', cLng('code'))]);
+    }
+
+    public function deleteAuto(Request $request)
+    {
+        $user = Auth::guard('user')->user();
+        $id = $request->input('id');
+        $auto = Auto::active()->where('id', $id)->firstOrFail();
+        if ($auto->user_id != $user->id) {
+            return $this->api('INVALID_DATA');
+        }
+        $auto->show_status = Auto::STATUS_DELETED;
+        $auto->save();
+        $request->session()->flash('auto_deleted', true);
+        return $this->api('OK', ['link' => route('auto_deleted', cLng('code'))]);
     }
 }

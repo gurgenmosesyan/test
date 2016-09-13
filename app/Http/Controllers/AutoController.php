@@ -5,12 +5,24 @@ namespace App\Http\Controllers;
 use App\Models\Auto\Auto;
 use App\Models\Option\Option;
 use App\Models\Currency\CurrencyManager;
+use Auth;
 
 class AutoController extends Controller
 {
     public function index($lngCode, $autoId)
     {
-        $auto = Auto::active()->approved()->term()->where('auto_id', $autoId)->firstOrFail();
+        $query = Auto::active()->where('auto_id', $autoId);
+        if (Auth::guard('user')->check()) {
+            $user = Auth::guard('user')->user();
+            $query->where(function($query) use($user) {
+                $query->where('user_id', $user->id)->orWhere(function($query) {
+                    $query->notBlocked()->term();
+                });
+            });
+        } else {
+            $query->notBlocked()->term();
+        }
+        $auto = $query->firstOrFail();
 
         $options = Option::joinMl()->active()->get();
 

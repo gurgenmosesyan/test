@@ -61,6 +61,9 @@ html,body {
 .mt20 { margin-top: 20px; }
 .mt25 { margin-top: 25px; }
 .mb25 { margin-bottom: 25px; }
+.ml10 { margin-left: 10px; }
+.ml15 { margin-left: 15px; }
+.ml20 { margin-left: 20px; }
 
 .orange-bg {
     background-color: #FFA000;
@@ -68,6 +71,7 @@ html,body {
 .orange {
     color: #FFA000;
 }
+.red { color: #ff0000; }
 ul li.cb {
     height: 0 !important;
     margin: 0 !important;
@@ -92,6 +96,9 @@ ul li.cb {
     line-height: 33px;
     padding: 0 10px;
     letter-spacing: 1px;
+}
+.btn.btn-red {
+    background-color: #ff0000;
 }
 
 @font-face {
@@ -720,6 +727,9 @@ body textarea {
     padding-top: 8px;
     resize: none;
 }
+#page input[disabled="disabled"] {
+    opacity: 0.5;
+}
 #tax-calculator .price-box {
     margin-bottom: 15px;
 }
@@ -994,6 +1004,9 @@ body textarea {
     display: none;
     margin: 0 auto;
     width: 460px;
+}
+#sell #page6 {
+    width: 690px;
 }
 #sell #back-box {
     display: none;

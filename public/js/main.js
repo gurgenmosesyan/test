@@ -336,6 +336,37 @@ $main.initAutoImages = function() {
     auto.find('.fancybox').fancybox();
 };
 
+$main.initAutoDelete = function() {
+    $('#auto-delete').on('click', function() {
+        if (!confirm($trans.get('www.auto.delete.confirm.text'))) {
+            return false;
+        }
+        var self = $(this);
+        if (self.hasClass('deleting')) {
+            return false;
+        }
+        self.addClass('deleting');
+        $.ajax({
+            type: 'post',
+            url: $main.basePath('/auto/delete'),
+            data: {
+                id: self.data('id'),
+                _token: $main.token
+            },
+            dataType: 'json',
+            success: function(result) {
+                if (result.status == 'OK') {
+                    document.location.href = result.data.link;
+                } else {
+                    alert('Error!');
+                }
+                self.removeClass('deleting');
+            }
+        });
+        return false;
+    });
+};
+
 $(document).ready(function() {
     $main.initHeaderBlocks();
 

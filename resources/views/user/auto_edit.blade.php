@@ -40,7 +40,9 @@ $autoOptions = $auto->options->keyBy('option_id');
     </div>
 
     <div id="sell">
-        <p class="status fb{{$auto->isApproved() ? ' approved' : ''}}">{{trans('www.auto.status.'.$auto->status)}}</p>
+        @if($auto->isBlocked())
+            <p class="status fb">{{trans('www.auto.status.blocked')}}</p>
+        @endif
         <form id="sell-form" action="{{url_with_lng('/profile/auto/'.$auto->id, false)}}" method="post">
             <div class="col-2 sell-left fl">
 
@@ -410,8 +412,8 @@ $autoOptions = $auto->options->keyBy('option_id');
             <div class="separator"></div>
 
             <div class="col-2 sell-left fl">
-                <div class="form-box">
-                    <label id="price-label" class="required fl"><span>{{trans('www.sell_car.price')}}</span></label>
+                <div id="price-box" class="form-box">
+                    <label class="required fl"><span>{{trans('www.sell_car.price')}}</span></label>
                     <div class="inp fl price">
                         <div class="mileage-input fl">
                             <input type="text" name="price" value="{{$auto->price or ''}}" />

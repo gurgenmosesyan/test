@@ -55,6 +55,8 @@ Route::group(['middleware' => ['web', 'front']], function() {
             Route::get('/sell/success', ['uses' => 'SellController@success', 'as' => 'sell_success']);
             Route::post('/api/sell', 'SellApiController@add');
             Route::post('/api/region', 'ApiController@region');
+            Route::post('/auto/delete', 'UserApiController@deleteAuto');
+            Route::get('/auto/deleted', ['uses' => 'UserController@autoDeleted', 'as' => 'auto_deleted']);
         });
 
         Route::get('/search', 'SearchController@index');

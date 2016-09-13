@@ -59,25 +59,29 @@ class Manager
             $data['mileage_km'] = round($data['mileage'] * 1.60934);
         }
         if (!isset($data['contract'])) {
-            $data['contract'] = AUTO::NOT_CONTRACT;
+            $data['contract'] = Auto::NOT_CONTRACT;
+        } else if ($data['contract'] == Auto::CONTRACT) {
+            $data['price'] = 0;
         }
         if (!isset($data['auction'])) {
-            $data['auction'] = AUTO::NOT_AUCTION;
+            $data['auction'] = Auto::NOT_AUCTION;
+        } else if ($data['auction'] == Auto::AUCTION) {
+            $data['price'] = 0;
         }
         if (!isset($data['bank'])) {
-            $data['bank'] = AUTO::NOT_BANK;
+            $data['bank'] = Auto::NOT_BANK;
         }
         if (!isset($data['exchange'])) {
-            $data['exchange'] = AUTO::NOT_EXCHANGE;
+            $data['exchange'] = Auto::NOT_EXCHANGE;
         }
         if (!isset($data['partial_pay'])) {
-            $data['partial_pay'] = AUTO::NOT_PARTIAL_PAY;
+            $data['partial_pay'] = Auto::NOT_PARTIAL_PAY;
         }
         if (!isset($data['custom_cleared'])) {
-            $data['custom_cleared'] = AUTO::NOT_CUSTOM_CLEARED;
+            $data['custom_cleared'] = Auto::NOT_CUSTOM_CLEARED;
         }
         if (!isset($data['damaged'])) {
-            $data['damaged'] = AUTO::NOT_DAMAGED;
+            $data['damaged'] = Auto::NOT_DAMAGED;
         }
         if (!isset($data['options'])) {
             $data['options'] = [];
@@ -132,17 +136,6 @@ class Manager
                 $image->insert(public_path(Config::IMAGES_PATH.'/'.$watermark->value), 'bottom-right', 15, 10);
             }
             $image->save($filePath);
-
-            /*$image = new Image($filePath);
-            if (!empty($value['rotate'])) {
-                $image->rotate($value['rotate']);
-            }
-            $watermark = imagecreatefrompng(public_path('images/watermark.png'));
-            imagealphablending($watermark, false);
-            imagesavealpha($watermark, true);
-            $image->watermarkImage($watermark, 10);
-            $image->save($filePath);*/
-
             $i++;
         }
         if (!empty($images)) {
@@ -174,13 +167,6 @@ class Manager
                     $image->save($newFilePath.'/'.$subDir.'/'.$fileName);
                     $autoImage->setFile($subDir.'/'.$fileName, 'image');
                     unlink($filePath);
-
-                    /*$image = new Image($filePath);
-                    $image->rotate($value['rotate']);
-                    list($newFilePath, $subDir, $fileName) = SaveImage::createPathInfo($autoImage, pathinfo($filePath, PATHINFO_EXTENSION));
-                    $image->save($newFilePath.'/'.$subDir.'/'.$fileName);
-                    $autoImage->setFile($subDir.'/'.$fileName, 'image');
-                    unlink($filePath);*/
                 }
                 $autoImage->show_status = Auto::STATUS_ACTIVE;
                 $autoImage->save();

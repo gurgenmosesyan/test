@@ -12,6 +12,8 @@ $title = $auto->mark->name.' '.$auto->model->name.' '.$auto->year.', '.strtouppe
 $autoEmpty = Manager::getAutoEmpty();
 
 $autoOptions = $auto->options->keyBy('option_id');
+
+$jsTrans->addTrans(['www.auto.delete.confirm.text']);
 ?>
 @extends('layout')
 
@@ -55,18 +57,35 @@ $autoOptions = $auto->options->keyBy('option_id');
                     ?>
                 </p>
                 <div class="cb"></div>
-                <p class="fs14 fbn mt25">
-                    <?php
-                    $countryInfo = $auto->country_ml->name.', ';
-                    if (!empty($auto->region_id)) {
-                        $countryInfo .= $auto->region_ml->name.', ';
-                    }
-                    if (!empty($auto->place)) {
-                        $countryInfo .= $auto->place;
-                    }
-                    echo rtrim($countryInfo, ', ');
-                    ?>
-                </p>
+                <div class="mt25">
+                    <p class="fs14 fbn fl">
+                        <?php
+                        $countryInfo = $auto->country_ml->name.', ';
+                        if (!empty($auto->region_id)) {
+                            $countryInfo .= $auto->region_ml->name.', ';
+                        }
+                        if (!empty($auto->place)) {
+                            $countryInfo .= $auto->place;
+                        }
+                        echo rtrim($countryInfo, ', ');
+                        ?>
+                    </p>
+                    <div class="fr">
+                        <?php
+                        if (Auth::guard('user')->check()) {
+                            $user = Auth::guard('user')->user();
+                            if ($user->id == $auto->user_id) {
+                                if ($auto->isBlocked()) {
+                                    echo '<p class="dib auto-status red fs16">'.trans('www.auto.status.blocked').'</p>';
+                                }
+                                echo '<a href="'.route('auto_edit', [cLng('code'), $auto->id]).'" class="btn dib ml20">'.trans('www.base.label.edit').'</a>';
+                                echo '<a href="#" id="auto-delete" class="dib btn btn-red ml10" data-id="'.$auto->id.'">'.trans('www.base.label.delete').'</a>';
+                            }
+                        }
+                        ?>
+                    </div>
+                    <div class="cb"></div>
+                </div>
             </div>
             <div class="line"></div>
             <div class="main-box">
@@ -136,8 +155,10 @@ $autoOptions = $auto->options->keyBy('option_id');
                     @if($auto->isDamaged())
                         <p>{{trans('www.auto.damaged')}}</p>
                     @endif
-                    <p class="fl key mt20">{{trans('www.auto.phone')}}</p>
-                    <p class="fl value mt20">{{$auto->user->phone}}</p>
+                    @if($auto->user)
+                        <p class="fl key mt20">{{trans('www.auto.phone')}}</p>
+                        <p class="fl value mt20">{{$auto->user->phone}}</p>
+                    @endif
                     <div class="cb"></div>
                     @if(!empty($auto->additional_phone))
                         <p class="fl key">{{trans('www.auto.additional_phone')}}</p>
@@ -189,5 +210,6 @@ $autoOptions = $auto->options->keyBy('option_id');
 <script type="text/javascript">
     $main.initAutoImages();
     $main.preloadImages(<?php echo json_encode($images); ?>);
+    $main.initAutoDelete();
 </script>
 @stop

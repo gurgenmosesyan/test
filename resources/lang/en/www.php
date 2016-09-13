@@ -216,4 +216,11 @@ return array (
   'homepage.title' => 'National autoportal of Armenia',
   'sell_car.back' => 'Back',
   'sell_car.next' => 'Next',
+  'user.profile.title' => 'Profile',
+  'base.label.edit' => 'Edit',
+  'base.label.delete' => 'Delete',
+  'search.title' => 'Search',
+  'auto.delete.confirm.text' => 'Are you sure you want to delete auto ?',
+  'auto_deleted.title' => 'Delete auto',
+  'auto_deleted.text' => 'Auto successfully deleted.',
 );

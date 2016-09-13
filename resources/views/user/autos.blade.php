@@ -47,7 +47,7 @@ $autoEmpty = Manager::getAutoEmpty();
                 @else
                     @foreach($autos as $key => $auto)
                         @if($key != 0)<div class="line"></div>@endif
-                        <a href="{{url_with_lng('/profile/autos/'.$auto->id, false)}}" class="auto db">
+                        <a href="{{url_with_lng('/auto/'.$auto->auto_id, false)}}" class="auto db">
                             <span class="auto-img db fl"><img src="{{$auto->getThumb($autoEmpty)}}" width="205" /></span>
                             <span class="auto-info db fl">
                                 <span class="title-box db fl">
@@ -80,7 +80,9 @@ $autoEmpty = Manager::getAutoEmpty();
                                 <span class="year db fl">{{$auto->year}}</span>
                                 <span class="mileage db fr">{{$auto->mileageInfo()}}</span>
                                 <span class="db cb"></span>
-                                <span class="db status fb{{$auto->isApproved() ? ' approved' : ''}}">{{trans('www.auto.status.'.$auto->status)}}</span>
+                                @if($auto->isBlocked())
+                                    <span class="db status fb">{{trans('www.auto.status.blocked')}}</span>
+                                @endif
                             </span>
                             <span class="db cb"></span>
                         </a>

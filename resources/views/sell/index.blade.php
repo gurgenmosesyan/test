@@ -332,8 +332,8 @@ $jsTrans->addTrans([
                     </div>
                     <div class="cb"></div>
                 </div>
-                <div class="form-box">
-                    <label id="price-label" class="required fl"><span>{{trans('www.sell_car.price')}}</span></label>
+                <div id="price-box" class="form-box">
+                    <label class="required fl"><span>{{trans('www.sell_car.price')}}</span></label>
                     <div class="inp fl price">
                         <div class="mileage-input fl">
                             <input type="text" name="price" value="" />
@@ -396,16 +396,16 @@ $jsTrans->addTrans([
                 <div class="col-2 fl">
                     <div class="form-box">
                         <label class="checkbox-label no-select">
-                            {{trans('www.sell_car.exchange')}}
-                            <input type="checkbox" name="exchange" value="{{Auto::EXCHANGE}}" />
-                        </label>
-                    </div>
-                    <div class="form-box">
-                        <label class="checkbox-label no-select">
                             {{trans('www.sell_car.auction')}}
                             <input type="checkbox" id="auction" name="auction" value="{{Auto::AUCTION}}" />
                         </label>
                         <div id="form-error-auction" class="form-error"></div>
+                    </div>
+                    <div class="form-box">
+                        <label class="checkbox-label no-select">
+                            {{trans('www.sell_car.exchange')}}
+                            <input type="checkbox" name="exchange" value="{{Auto::EXCHANGE}}" />
+                        </label>
                     </div>
                     <div class="form-box">
                         <label class="checkbox-label no-select">
@@ -420,7 +420,7 @@ $jsTrans->addTrans([
             <div id="page6" class="sell-page">
                 <?php
                 if (!$options->isEmpty()) {
-                $optionsCol1 = $optionsCol2 = '';
+                $optionsCol1 = $optionsCol2 = $optionsCol3 = '';
                 $i = 1;
                 foreach($options as $key => $opt) {
                     $buffer =  '<div class="form-box">';
@@ -431,8 +431,10 @@ $jsTrans->addTrans([
                     $buffer .= '</div>';
                     if ($i == 1) {
                         $optionsCol1 .= $buffer;
-                    } else {
+                    } else if ($i == 2) {
                         $optionsCol2 .= $buffer;
+                    } else {
+                        $optionsCol3 .= $buffer;
                         $i = 0;
                     }
                     $i++;
@@ -440,6 +442,7 @@ $jsTrans->addTrans([
                 ?>
                 <div class="col-2 fl">{!!$optionsCol1!!}</div>
                 <div class="col-2 fl">{!!$optionsCol2!!}</div>
+                <div class="col-2 fl">{!!$optionsCol3!!}</div>
                 <div class="cb"></div>
                 <?php } ?>
             </div>

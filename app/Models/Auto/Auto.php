@@ -108,6 +108,11 @@ class Auto extends Model
         return $this->status == self::STATUS_APPROVED;
     }
 
+    public function isBlocked()
+    {
+        return $this->status == self::STATUS_BLOCKED;
+    }
+
     public function isContract()
     {
         return $this->contract == self::CONTRACT;
@@ -146,6 +151,11 @@ class Auto extends Model
     public function scopeApproved($query)
     {
         return $query->where('status', self::STATUS_APPROVED);
+    }
+
+    public function scopeNotBlocked($query)
+    {
+        return $query->where('status', '!=', self::STATUS_BLOCKED);
     }
 
     public function scopeTerm($query)
