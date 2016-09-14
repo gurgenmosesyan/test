@@ -100,10 +100,10 @@ if (!isset($currencies)) {
                 </div>
                 <div class="right-box fav-history fl">
                     <div class="right-inner-box favorite fl">
-                        <a href="#" class="box-link db">{{trans('www.header.favorites')}}</a>
+                        <a href="{{url_with_lng('/favorite', false)}}" class="box-link db">{{trans('www.header.favorites')}}</a>
                     </div>
                     <div class="right-inner-box history fl">
-                        <a href="#" class="box-link db">{{trans('www.header.history')}}</a>
+                        <a href="{{url_with_lng('/history', false)}}" class="box-link db">{{trans('www.header.history')}}</a>
                     </div>
                     <div class="cb"></div>
                 </div>

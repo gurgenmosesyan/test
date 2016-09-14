@@ -223,4 +223,6 @@ return array (
   'auto.delete.confirm.text' => 'Are you sure you want to delete auto ?',
   'auto_deleted.title' => 'Delete auto',
   'auto_deleted.text' => 'Auto successfully deleted.',
+  'history.title' => 'Պատմություն',
+  'favorites.title' => 'Ընտրվածներ',
 );

@@ -31,6 +31,8 @@ class AutoController extends Controller
         $defCurrency = $currencyManager->defaultCurrency();
         $cCurrency = $currencyManager->currentCurrency();
 
+        $this->setAutoHistory($auto->id);
+
         return view('auto.index')->with([
             'auto' => $auto,
             'options' => $options,
@@ -38,5 +40,17 @@ class AutoController extends Controller
             'defCurrency' => $defCurrency,
             'cCurrency' => $cCurrency,
         ]);
+    }
+
+    protected function setAutoHistory($id)
+    {
+        if (isset($_COOKIE['history'])) {
+            $data = json_decode($_COOKIE['history'], true);
+            $data = [$id => $id] + $data;
+        } else {
+            $data = [$id => $id];
+        }
+        $data = json_encode(array_slice($data, 0, 50, true));
+        setcookie('history', $data, time()+60*60*24*30, '/');
     }
 }
