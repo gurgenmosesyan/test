@@ -6,7 +6,14 @@ use App\Models\Config\Manager;
 $head->appendStyle('/css/jquery.fancybox.css');
 $head->appendScript('/js/jquery.fancybox.pack.js');
 
-$price = Base::price($auto, $currencies, $defCurrency, $cCurrency, 'code');
+if ($auto->isContract()) {
+    $price = trans('www.auto.price.contract');
+} else if ($auto->isAuction()) {
+    $price = trans('www.auto.price.auction');
+} else {
+    $price = Base::price($auto, $currencies, $defCurrency, $cCurrency, 'code');
+}
+
 $title = $auto->mark->name.' '.$auto->model->name.' '.$auto->year.', '.strtoupper($price);
 
 $autoEmpty = Manager::getAutoEmpty();
