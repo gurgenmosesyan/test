@@ -58,7 +58,7 @@ Route::group(['middleware' => ['web', 'front']], function() {
             Route::post('/auto/delete', 'UserApiController@deleteAuto');
             Route::get('/auto/deleted', ['uses' => 'UserController@autoDeleted', 'as' => 'auto_deleted']);
             Route::get('/favorite', 'FavoriteController@index');
-            Route::post('/api/favorite', 'FavoriteController@api');
+            Route::post('/api/favorite', 'FavoriteController@favorite');
         });
 
         Route::get('/search', 'SearchController@index');

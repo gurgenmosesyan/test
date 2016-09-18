@@ -34,8 +34,16 @@ $autoEmpty = Manager::getAutoEmpty();
                         @endif
                         <a href="{{url_with_lng('/auto/'.$auto->auto_id, false)}}" class="auto-item db fl{{$key%3 == 0 ? ' mln' : ''}}">
                             <span class="auto-img db" style="background-image: url('{{$auto->getThumb($autoEmpty)}}');">
-                                <span class="favorite-icon db"></span>
-                                <span class="auto-price orange-bg tc db">{{Base::price($auto, $currencies, $defCurrency, $cCurrency)}}</span>
+                                <span class="favorite-icon fav-{{$auto->id}} db{{isset($favorites[$auto->id]) ? ' active' : ''}}" data-id="{{$auto->id}}"></span>
+                                <span class="auto-price orange-bg tc db">
+                                    @if($auto->isContract())
+                                        {{trans('www.auto.price.contract')}}
+                                    @elseif($auto->isAuction())
+                                        {{trans('www.auto.price.auction')}}
+                                    @else
+                                        {{Base::price($auto, $currencies, $defCurrency, $cCurrency)}}
+                                    @endif
+                                </span>
                             </span>
                             <span class="auto-title db">{{$auto->mark->name.' '.$auto->model->name}}</span>
                             <span class="auto-info db">{{$auto->country_ml->name}}@if(!empty($auto->region_ml)), {{$auto->region_ml->name}}@endif</span>
@@ -194,8 +202,16 @@ $autoEmpty = Manager::getAutoEmpty();
                             @endif
                             <a href="{{url_with_lng('/auto/'.$auto->auto_id, false)}}" class="auto-item db fl{{$key%4 == 0 ? ' mln' : ''}}">
                                 <span class="auto-img db" style="background-image: url('{{$auto->getThumb($autoEmpty)}}');">
-                                    <span class="favorite-icon db"></span>
-                                    <span class="auto-price orange-bg tc db">{{Base::price($auto, $currencies, $defCurrency, $cCurrency)}}</span>
+                                    <span class="favorite-icon fav-{{$auto->id}} db{{isset($favorites[$auto->id]) ? ' active' : ''}}" data-id="{{$auto->id}}"></span>
+                                    <span class="auto-price orange-bg tc db">
+                                        @if($auto->isContract())
+                                            {{trans('www.auto.price.contract')}}
+                                        @elseif($auto->isAuction())
+                                            {{trans('www.auto.price.auction')}}
+                                        @else
+                                            {{Base::price($auto, $currencies, $defCurrency, $cCurrency)}}
+                                        @endif
+                                    </span>
                                 </span>
                                 <span class="auto-title db">{{$auto->mark->name.' '.$auto->model->name}}</span>
                                 <span class="auto-info db">{{$auto->country_ml->name}}@if(!empty($auto->region_ml)), {{$auto->region_ml->name}}@endif</span>
@@ -226,8 +242,16 @@ $autoEmpty = Manager::getAutoEmpty();
                             @endif
                             <a href="{{url_with_lng('/auto/'.$auto->auto_id, false)}}" class="auto-item db fl{{$key%4 == 0 ? ' mln' : ''}}">
                                 <span class="auto-img db" style="background-image: url('{{$auto->getThumb($autoEmpty)}}');">
-                                    <span class="favorite-icon db"></span>
-                                    <span class="auto-price orange-bg tc db">{{Base::price($auto, $currencies, $defCurrency, $cCurrency)}}</span>
+                                    <span class="favorite-icon fav-{{$auto->id}} db{{isset($favorites[$auto->id]) ? ' active' : ''}}" data-id="{{$auto->id}}"></span>
+                                    <span class="auto-price orange-bg tc db">
+                                        @if($auto->isContract())
+                                            {{trans('www.auto.price.contract')}}
+                                        @elseif($auto->isAuction())
+                                            {{trans('www.auto.price.auction')}}
+                                        @else
+                                            {{Base::price($auto, $currencies, $defCurrency, $cCurrency)}}
+                                        @endif
+                                    </span>
                                 </span>
                                 <span class="auto-title db">{{$auto->mark->name.' '.$auto->model->name}}</span>
                                 <span class="auto-info db">{{$auto->country_ml->name}}@if(!empty($auto->region_ml)), {{$auto->region_ml->name}}@endif</span>

@@ -367,6 +367,43 @@ $main.initAutoDelete = function() {
     });
 };
 
+$main.initFavorite = function() {
+    $('.favorite-icon').on('click', function() {
+        var self = $(this);
+        if (self.hasClass('sending')) {
+            return false;
+        }
+        self.addClass('sending');
+        var action = self.hasClass('active') ? 'delete' : 'add';
+        $.ajax({
+            type: 'post',
+            url: $main.basePath('/api/favorite'),
+            data: {
+                auto_id: self.data('id'),
+                action: action,
+                _token: $main.token
+            },
+            dataType: 'json',
+            success: function(result) {
+                if (result.status == 'OK') {
+                    self.removeClass('sending');
+                    if (action == 'add') {
+                        $('.fav-'+self.data('id')).addClass('active');
+                    } else {
+                        $('.fav-'+self.data('id')).removeClass('active');
+                    }
+                }
+            },
+            error: function(xhr) {
+                if (xhr.status === 401) {
+                    document.location.href = xhr.responseJSON.path;
+                }
+            }
+        });
+        return false;
+    });
+};
+
 $(document).ready(function() {
     $main.initHeaderBlocks();
 
@@ -393,4 +430,6 @@ $(document).ready(function() {
     $main.initParts();
 
     $main.initSearch();
+
+    $main.initFavorite();
 });

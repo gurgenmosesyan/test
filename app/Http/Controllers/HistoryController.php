@@ -33,11 +33,19 @@ class HistoryController extends Controller
                 }
 
                 $currencyManager = new CurrencyManager();
+
+                $favorites = [];
+                if (Auth::guard('user')->check()) {
+                    $user = Auth::guard('user')->user();
+                    $favorites = $user->favorites->keyBy('auto_id');
+                }
+
                 $data = [
                     'autos' => $result,
                     'currencies' => $currencyManager->all(),
                     'defCurrency' => $currencyManager->defaultCurrency(),
-                    'cCurrency' => $currencyManager->currentCurrency()
+                    'cCurrency' => $currencyManager->currentCurrency(),
+                    'favorites' => $favorites
                 ];
             } else {
                 $data = ['autos' => collect()];

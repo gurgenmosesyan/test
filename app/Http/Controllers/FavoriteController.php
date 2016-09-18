@@ -37,16 +37,23 @@ class FavoriteController extends Controller
         ]);
     }
 
-    public function api(Request $request)
+    public function favorite(Request $request)
     {
         $user = Auth::guard('user')->user();
-        $autoId = $request->input('id');
+        $autoId = $request->input('auto_id');
         $action = $request->input('action');
         if ($action != 'add' && $action != 'delete') {
             return $this->api('INVALID_DATA');
         }
         $auto = Auto::active()->notBlocked()->term()->where('id', $autoId)->firstOrFail();
-        DB::table('user_favorites')->insert(['user_id' => $user->id, 'auto_id' => $auto->id]);
+        if ($action == 'add') {
+            $userFav = DB::table('user_favorites')->where('user_id', $user->id)->where('auto_id', $autoId)->first();
+            if ($userFav == null) {
+                DB::table('user_favorites')->insert(['user_id' => $user->id, 'auto_id' => $auto->id]);
+            }
+        } else {
+            DB::table('user_favorites')->where('user_id', $user->id)->where('auto_id', $autoId)->delete();
+        }
         return $this->api('OK');
     }
 }

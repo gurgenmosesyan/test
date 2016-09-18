@@ -179,6 +179,7 @@ $jsTrans->addTrans(['www.auto.delete.confirm.text']);
                 <div class="main-right fl">
 
                     <div class="images-box">
+                        <span class="favorite-icon fav-{{$auto->id}} db{{$isFavorite ? ' active' : ''}}" data-id="{{$auto->id}}"></span>
                         <a class="main-img db fancybox" href="{{$auto->getImage($autoEmpty)}}" rel="images-big" style="background-image: url('{{$auto->getImage($autoEmpty)}}');"></a>
                         @if(!empty($auto->images))
                             <div class="images">

@@ -311,7 +311,10 @@ $autoEmpty = Manager::getAutoEmpty();
                 @foreach($autos as $key => $auto)
                     @if($key != 0)<div class="line"></div>@endif
                     <a href="{{url_with_lng('/auto/'.$auto->auto_id, false)}}" class="auto db">
-                        <span class="auto-img db fl"><img src="{{$auto->getThumb($autoEmpty)}}" width="205" /></span>
+                        <span class="auto-img db fl">
+                            <img src="{{$auto->getThumb($autoEmpty)}}" width="205" />
+                            <span class="favorite-icon fav-{{$auto->id}} db{{isset($favorites[$auto->id]) ? ' active' : ''}}" data-id="{{$auto->id}}"></span>
+                        </span>
                         <span class="auto-info db fl">
                             <span class="title-box db fl">
                                 <span class="title db fb">{{$auto->mark->name.' '.$auto->model->name}}</span>
@@ -347,6 +350,89 @@ $autoEmpty = Manager::getAutoEmpty();
                         <span class="db cb"></span>
                     </a>
                 @endforeach
+                <?php
+                if (!empty($reqData['mark_id'])) {
+                    $autos->appends('mark_id', $reqData['mark_id']);
+                }
+                if (!empty($reqData['model_id'])) {
+                    $autos->appends('model_id', $reqData['model_id']);
+                }
+                if (!empty($reqData['country_id'])) {
+                    $autos->appends('country_id', $reqData['country_id']);
+                }
+                if (!empty($reqData['transmission_id'])) {
+                    $autos->appends('transmission_id', $reqData['transmission_id']);
+                }
+                if (!empty($reqData['rudder_id'])) {
+                    $autos->appends('rudder_id', $reqData['rudder_id']);
+                }
+                if (!empty($reqData['engine_id'])) {
+                    $autos->appends('engine_id', $reqData['engine_id']);
+                }
+                if (!empty($reqData['volume_from'])) {
+                    $autos->appends('volume_from', $reqData['volume_from']);
+                }
+                if (!empty($reqData['volume_to'])) {
+                    $autos->appends('volume_to', $reqData['volume_to']);
+                }
+                if (!empty($reqData['year_from'])) {
+                    $autos->appends('year_from', $reqData['year_from']);
+                }
+                if (!empty($reqData['year_to'])) {
+                    $autos->appends('year_to', $reqData['year_to']);
+                }
+                if (!empty($reqData['body_id'])) {
+                    $autos->appends('body_id', $reqData['body_id']);
+                }
+                if (!empty($reqData['train_id'])) {
+                    $autos->appends('train_id', $reqData['train_id']);
+                }
+                if (!empty($reqData['horsepower_from'])) {
+                    $autos->appends('horsepower_from', $reqData['horsepower_from']);
+                }
+                if (!empty($reqData['horsepower_to'])) {
+                    $autos->appends('horsepower_to', $reqData['horsepower_to']);
+                }
+                if (!empty($reqData['color_id'])) {
+                    $autos->appends('color_id', $reqData['color_id']);
+                }
+                if (!empty($reqData['interior_color_id'])) {
+                    $autos->appends('color_id', $reqData['interior_color_id']);
+                }
+                if (!empty($reqData['cylinders'])) {
+                    $autos->appends('cylinders', $reqData['cylinders']);
+                }
+                if (!empty($reqData['doors'])) {
+                    $autos->appends('doors', $reqData['doors']);
+                }
+                if (!empty($reqData['wheels'])) {
+                    $autos->appends('wheels', $reqData['wheels']);
+                }
+                if (!empty($reqData['custom_cleared'])) {
+                    $autos->appends('custom_cleared', $reqData['custom_cleared']);
+                }
+                if (!empty($reqData['damaged'])) {
+                    $autos->appends('damaged', $reqData['damaged']);
+                }
+                if (!empty($reqData['partial_pay'])) {
+                    $autos->appends('partial_pay', $reqData['partial_pay']);
+                }
+                if (!empty($reqData['mileage_from'])) {
+                    $autos->appends('mileage_from', $reqData['mileage_from']);
+                }
+                if (!empty($reqData['mileage_to'])) {
+                    $autos->appends('mileage_to', $reqData['mileage_to']);
+                }
+                if (!empty($reqData['mileage_measurement'])) {
+                    $autos->appends('mileage_measurement', $reqData['mileage_measurement']);
+                }
+                if (!empty($reqData['price_from'])) {
+                    $autos->appends('price_from', $reqData['price_from']);
+                }
+                if (!empty($reqData['price_to'])) {
+                    $autos->appends('price_to', $reqData['price_to']);
+                }
+                ?>
                 @include('pagination.default', ['model' => $autos])
             @endif
         </div>

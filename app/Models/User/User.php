@@ -41,4 +41,9 @@ class User extends Model implements AuthenticatableContract
         'created_at',
         'updated_at'
     ];
+
+    public function favorites()
+    {
+        return $this->hasMany(UserFavorite::class, 'user_id', 'id');
+    }
 }

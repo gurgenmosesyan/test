@@ -19,6 +19,7 @@ use App\Models\Transmission\Transmission;
 use App\Models\Wheel\Wheel;
 use App\Models\Currency\CurrencyManager;
 use App\Models\Auto\Auto;
+use Auth;
 
 class SearchController extends Controller
 {
@@ -49,6 +50,12 @@ class SearchController extends Controller
             $models = Manager::getModelsWithCat($reqData['mark_id']);
         }
 
+        $favorites = [];
+        if (Auth::guard('user')->check()) {
+            $user = Auth::guard('user')->user();
+            $favorites = $user->favorites->keyBy('auto_id');
+        }
+
         return view('search.index')->with([
             'marks' => $marks,
             'countries' => $countries,
@@ -68,7 +75,8 @@ class SearchController extends Controller
             'autos' => $autos,
             'reqData' => $reqData,
             'showAll' => $showAll,
-            'models' => $models
+            'models' => $models,
+            'favorites' => $favorites
         ]);
     }
 
@@ -103,6 +111,7 @@ class SearchController extends Controller
         $this->setWhere($query, 'volume', $reqData['volume_to'], '<=');
         $this->setWhere($query, 'year', $reqData['year_from'], '>=');
         $this->setWhere($query, 'year', $reqData['year_to'], '<=');
+        $this->setWhere($query, 'body_id', $reqData['body_id']);
         $this->setWhere($query, 'train_id', $reqData['train_id']);
         $this->setWhere($query, 'horsepower', $reqData['horsepower_from'], '>=');
         $this->setWhere($query, 'horsepower', $reqData['horsepower_to'], '<=');

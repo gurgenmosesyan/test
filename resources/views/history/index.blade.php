@@ -27,7 +27,10 @@ $autoEmpty = Manager::getAutoEmpty();
                 @foreach($autos as $key => $auto)
                     @if($key != 0)<div class="line"></div>@endif
                     <a href="{{url_with_lng('/auto/'.$auto->auto_id, false)}}" class="auto db">
-                        <span class="auto-img db fl"><img src="{{$auto->getThumb($autoEmpty)}}" width="205" /></span>
+                        <span class="auto-img db fl">
+                            <img src="{{$auto->getThumb($autoEmpty)}}" width="205" />
+                            <span class="favorite-icon fav-{{$auto->id}} db{{isset($favorites[$auto->id]) ? ' active' : ''}}" data-id="{{$auto->id}}"></span>
+                        </span>
                         <span class="auto-info db fl">
                             <span class="title-box db fl">
                                 <span class="title db fb">{{$auto->mark->name.' '.$auto->model->name}}</span>

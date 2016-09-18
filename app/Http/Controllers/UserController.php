@@ -151,12 +151,14 @@ class UserController extends Controller
         $currencies = $currencyManager->all();
         $defCurrency = $currencyManager->defaultCurrency();
         $cCurrency = $currencyManager->currentCurrency();
+        $favorites = $user->favorites->keyBy('auto_id');
 
         return view('user.autos')->with([
             'autos' => $autos,
             'currencies' => $currencies,
             'defCurrency' => $defCurrency,
-            'cCurrency' => $cCurrency
+            'cCurrency' => $cCurrency,
+            'favorites' => $favorites
         ]);
     }
 

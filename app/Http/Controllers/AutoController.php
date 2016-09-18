@@ -24,6 +24,12 @@ class AutoController extends Controller
         }
         $auto = $query->firstOrFail();
 
+        $isFavorite = false;
+        if (isset($user)) {
+            $favorite = $user->favorites()->where('auto_id', $auto->id)->first();
+            $isFavorite = $favorite == null ? false : true;
+        }
+
         $options = Option::joinMl()->active()->get();
 
         $currencyManager = new CurrencyManager();
@@ -39,6 +45,7 @@ class AutoController extends Controller
             'currencies' => $currencies,
             'defCurrency' => $defCurrency,
             'cCurrency' => $cCurrency,
+            'isFavorite' => $isFavorite
         ]);
     }
 

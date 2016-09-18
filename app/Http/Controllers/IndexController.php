@@ -8,16 +8,18 @@ use App\Models\Country\CountryMl;
 use App\Models\Mark\Mark;
 use App\Models\Body\Body;
 use App\Models\Currency\CurrencyManager;
+use Auth;
+use DB;
 
 class IndexController extends Controller
 {
     public function index()
     {
         $topCars = TopCar::active()->inDate()->with(['auto' => function($query) {
-            $query->approved()->term()->with('mark', 'model', 'country_ml', 'region_ml');
+            $query->term()->with('mark', 'model', 'country_ml', 'region_ml');
         }])->get();
         $urgentCars = TopCar::active()->inDate()->with(['auto' => function($query) {
-            $query->approved()->term()->with('mark', 'model', 'country_ml', 'region_ml');
+            $query->term()->with('mark', 'model', 'country_ml', 'region_ml');
         }])->get();
         foreach ($topCars as $key => $car) {
             if (!$car->auto) {
@@ -29,7 +31,7 @@ class IndexController extends Controller
                 unset($urgentCars[$key]);
             }
         }
-        $recentCars = Auto::active()->approved()->term()->with('mark', 'model', 'country_ml', 'region_ml')->take(12)->latest()->get();
+        $recentCars = Auto::active()->term()->with('mark', 'model', 'country_ml', 'region_ml')->take(12)->latest()->get();
 
         $countries = CountryMl::active()->current()->get();
         $marks = Mark::active()->orderBy('name', 'asc')->get();
@@ -40,6 +42,12 @@ class IndexController extends Controller
         $defCurrency = $currencyManager->defaultCurrency();
         $cCurrency = $currencyManager->currentCurrency();
 
+        $favorites = [];
+        if (Auth::guard('user')->check()) {
+            $user = Auth::guard('user')->user();
+            $favorites = $user->favorites->keyBy('auto_id');
+        }
+
         return view('index.index')->with([
             'topCars' => $topCars,
             'urgentCars' => $urgentCars,
@@ -49,7 +57,8 @@ class IndexController extends Controller
             'bodies' => $bodies,
             'currencies' => $currencies,
             'defCurrency' => $defCurrency,
-            'cCurrency' => $cCurrency
+            'cCurrency' => $cCurrency,
+            'favorites' => $favorites
         ]);
     }
 }
