@@ -64,10 +64,12 @@ $permissions = array_merge($permissions, $corePermissions);
             <label class="col-sm-3 control-label">{{trans('admin.base.label.permissions')}}</label>
             <div class="col-sm-9 row">
                 @foreach($permissions as $permission)
-                    <label class="col-md-4 col-sm-6">
-                        <input type="checkbox" class="minimal-checkbox" name="permissions[{{$permission}}]" value="1"{{isset($adminPermissions[$permission]) ? ' checked="checked"' : ''}}>
-                        &nbsp;{{trans('admin.'.$permission.'.form.title')}}
-                    </label>
+                    <div class="col-md-4 col-sm-6">
+                        <label>
+                            <input type="checkbox" class="minimal-checkbox" name="permissions[{{$permission}}]" value="1"{{isset($adminPermissions[$permission]) ? ' checked="checked"' : ''}}>
+                            &nbsp;{{trans('admin.'.$permission.'.form.title')}}
+                        </label>
+                    </div>
                 @endforeach
                 <div id="form-error-permissions" class="form-error"></div>
             </div>
