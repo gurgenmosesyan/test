@@ -1,0 +1,28 @@
+<?php
+
+return [
+    'mark',
+    'model_category',
+    'model',
+    'body',
+    'transmission',
+    'rudder',
+    'color',
+    'interior_color',
+    'engine',
+    'cylinder',
+    'train',
+    'door',
+    'wheel',
+    'option',
+    'country',
+    'region',
+    'auto',
+    'top_car',
+    'urgent_car',
+    'config',
+    'currency',
+    'part',
+    'ad',
+    'tax',
+];

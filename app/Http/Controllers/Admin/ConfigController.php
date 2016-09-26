@@ -6,6 +6,7 @@ use App\Http\Controllers\Core\BaseController;
 use App\Models\Config\Config;
 use App\Models\Config\Manager;
 use App\Http\Requests\Admin\ConfigRequest;
+use App\Core\Language\Language;
 
 class ConfigController extends BaseController
 {
@@ -19,18 +20,23 @@ class ConfigController extends BaseController
     public function edit()
     {
         $configs = Config::all();
+        $logo = null;
         $watermark = null;
         $autoEmpty = null;
         foreach ($configs as $config) {
-            if ($config->key == Config::KEY_WATERMARK) {
-                $watermark = $config->value;
+            if ($config->key == Config::KEY_LOGO) {
+                $logo = $config;
             } else if ($config->key == Config::KEY_AUTO_EMPTY) {
                 $autoEmpty = $config->value;
+            } else if ($config->key == Config::KEY_WATERMARK) {
+                $watermark = $config->value;
             }
         }
         return view('admin.config.edit')->with([
+            'logo' => $logo,
             'watermark' => $watermark,
-            'autoEmpty' => $autoEmpty
+            'autoEmpty' => $autoEmpty,
+            'languages' => Language::all()
         ]);
     }
 

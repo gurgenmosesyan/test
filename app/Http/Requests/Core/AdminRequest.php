@@ -22,7 +22,9 @@ class AdminRequest extends Request
             'email' => 'required|email|unique:adm_users,email'.$adminId,
             'password' => $passRequired.'|min:6|max:255|regex:/[a-z]{1,}[0-9]{1,}/i',
             're_password' => $rePassRequired.'|same:password',
-            'lng_id' => 'required|integer|exists:languages,id'
+            'lng_id' => 'required|integer|exists:languages,id',
+            'homepage' => 'required|max:255',
+            'permissions' => 'array'
         ];
     }
 }

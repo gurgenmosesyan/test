@@ -12,11 +12,7 @@ $autoEmpty = Manager::getAutoEmpty();
 
 <div class="page">
 
-    <div id="top-banner" class="tc">
-        <a href="#">
-            <img src="/images/temp/top-banner.jpg" />
-        </a>
-    </div>
+    @include('blocks.top_banner')
 
     <div id="main-left" class="fl">
 
@@ -70,9 +66,8 @@ $autoEmpty = Manager::getAutoEmpty();
         </div>
     </div>
 
-    <div id="main-right" class="fl">
-        <img src="/images/temp/r-ad-1.jpg">
-    </div>
+    @include('blocks.right_banner')
+
     <div class="cb"></div>
 
 </div>

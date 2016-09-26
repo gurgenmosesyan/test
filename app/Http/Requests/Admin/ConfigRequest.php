@@ -11,6 +11,8 @@ class ConfigRequest extends Request
         return [
             'watermark' => 'required|core_image',
             'auto_empty' => 'required|core_image',
+            'logo' => 'ml',
+            'logo.*.image' => 'required|core_image',
         ];
     }
 }

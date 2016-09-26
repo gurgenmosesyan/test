@@ -1,7 +1,6 @@
 <?php
 
 return array (
-  'admin_menu.system' => 'Համակարգ',
   'base.field.duplicate' => 'Դաշտը գոյություն ունի',
   'base.field.required' => 'Դաշտը պարտադիր է',
   'base.field.min_length' => 'Նվազագույնը :min նիշ',
@@ -88,7 +87,6 @@ return array (
   'option.form.title' => 'Մեքենայի ընտրանքներ',
   'option.form.add.sub_title' => 'Add new option',
   'option.form.edit.sub_title' => 'Option № :id',
-  'admin_menu.detail' => 'Մեքնայի տվյալներ',
   'auto.form.title' => 'Մեքենաներ',
   'auto.form.add.sub_title' => 'Add new auto',
   'auto.form.edit.sub_title' => 'Auto № :id',
@@ -172,4 +170,20 @@ return array (
   'urgent_car.form.title' => 'Urgent cars',
   'urgent_car.form.add.sub_title' => 'Add new urgent car',
   'urgent_car.form.edit.sub_title' => 'Urgent car № :id',
+  'base.label.logo' => 'Logo',
+  'ad.form.title' => 'Ads',
+  'ad.form.add.sub_title' => 'Ad new ad',
+  'ad.form.edit.sub_title' => 'Ad № :id',
+  'ad.key.top' => 'Top',
+  'ad.key.thin' => 'Thin',
+  'ad.key.right' => 'Right',
+  'ad.key.bottom' => 'Bottom',
+  'base.label.link' => 'Link',
+  'tax.form.title' => 'Tax',
+  'tax.form.add.sub_title' => 'Add',
+  'tax.form.edit.sub_title' => 'Edit',
+  'base.label.permissions' => 'Permissions',
+  'system.form.title' => 'Համակարգ',
+  'detail.form.title' => 'Մեքնայի տվյալներ',
+  'base.label.homepage' => 'Homepage',
 );

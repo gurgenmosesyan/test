@@ -149,7 +149,7 @@ body textarea {
     padding-left: 25px;
 }
 #logo {
-    background: url('../images/logo.png') no-repeat;
+    background-repeat: no-repeat;
     height: 53px;
     width: 229px;
 }
@@ -644,8 +644,14 @@ body textarea {
 .small-box .auto-item .auto-info {
     font-size: 11px;
 }
-.home-ads {
+#bottom-govs {
     padding: 28px 0 32px 0;
+}
+#bottom-govs .bottom-gov {
+    margin-right: 12px;
+}
+#bottom-govs .bottom-gov-3 {
+    margin-right: 0;
 }
 
 #calculators {

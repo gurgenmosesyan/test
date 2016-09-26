@@ -1,22 +1,22 @@
 <?php
 use App\Models\Auto\Auto;
 use App\Helpers\Base;
-use App\Models\Config\Manager;
+use App\Models\Config\Manager as ConfManager;
+use App\Models\Ad\Manager as AdManager;
 
 $title = trans('www.homepage.title');
 
-$autoEmpty = Manager::getAutoEmpty();
+$autoEmpty = ConfManager::getAutoEmpty();
+$thinBanners = AdManager::get('thin');
+$bottomBanners = AdManager::get('bottom');
 ?>
 @extends('layout')
 
 @section('content')
 
 <div class="page">
-    <div id="top-banner" class="tc">
-        <a href="#">
-            <img src="/images/temp/top-banner.jpg" />
-        </a>
-    </div>
+
+    @include('blocks.top_banner')
 
     <div id="top-cars" class="fl">
         <h2 class="orange fb"><span class="dib">{{trans('www.top_cars.title')}}</span></h2>
@@ -172,16 +172,15 @@ $autoEmpty = Manager::getAutoEmpty();
     <div class="cb"></div>
 
     <div id="mid-banners">
-        <div class="mid-banner fl tc">
-            <a href="#">
-                <img src="/images/temp/banner2.jpg" />
-            </a>
-        </div>
-        <div class="mid-banner fl tc">
-            <a href="#">
-                <img src="/images/temp/banner3.jpg" />
-            </a>
-        </div>
+        @foreach($thinBanners->slice(0, 2) as $value)
+            <div class="mid-banner fl tc">
+                @if(empty($value->link))
+                    <img src="{{$value->getImage()}}" />
+                @else
+                    <a href="{{$value->link}}" target="_blank"><img src="{{$value->getImage()}}" /></a>
+                @endif
+            </div>
+        @endforeach
         <div class="cb"></div>
     </div>
 
@@ -224,9 +223,13 @@ $autoEmpty = Manager::getAutoEmpty();
             @endif
         </div>
         <div class="banner tc">
-            <a href="#">
-                <img src="/images/temp/urgent-banner.jpg" />
-            </a>
+            @if(isset($thinBanners[2]))
+                @if(empty($thinBanners[2]->link))
+                    <img src="{{$thinBanners[2]->getImage()}}" />
+                @else
+                    <a href="{{$thinBanners[2]->link}}" target="_blank"><img src="{{$thinBanners[2]->getImage()}}" /></a>
+                @endif
+            @endif
         </div>
         <div id="recently-cars" class="small-box">
             <h2 class="orange fb"><span class="dib">{{trans('www.recently_cars.title')}}</span></h2>
@@ -367,14 +370,22 @@ $autoEmpty = Manager::getAutoEmpty();
             </div>
         </div>
 
-        <div class="home-right-ad">
-            <img src="/images/temp/r-ad-1.jpg">
-        </div>
+        @include('blocks.right_banner')
+
     </div>
     <div class="cb"></div>
 
-    <div class="home-ads">
-        <img src="/images/temp/h-ads.png?v=1">
+    <div id="bottom-govs">
+        @foreach($bottomBanners->slice(0, 4) as $key => $value)
+            <div class="bottom-gov fl bottom-gov-{{$key}}">
+                @if(empty($value->link))
+                    <img src="{{$value->getImage()}}" />
+                @else
+                    <a href="{{$value->link}}" target="_blank"><img src="{{$value->getImage()}}" /></a>
+                @endif
+            </div>
+        @endforeach
+        <div class="cb"></div>
     </div>
 
 </div>

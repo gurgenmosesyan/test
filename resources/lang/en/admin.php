@@ -1,7 +1,6 @@
 <?php
 
 return array (
-  'admin_menu.system' => 'System',
   'base.field.duplicate' => 'Field already exists',
   'base.field.required' => 'This field is required',
   'base.field.min_length' => 'Min :min characters',
@@ -88,7 +87,6 @@ return array (
   'option.form.title' => 'Options',
   'option.form.add.sub_title' => 'Add new option',
   'option.form.edit.sub_title' => 'Option № :id',
-  'admin_menu.detail' => 'Auto details',
   'auto.form.title' => 'Autos',
   'auto.form.add.sub_title' => 'Add new auto',
   'auto.form.edit.sub_title' => 'Auto № :id',
@@ -172,4 +170,20 @@ return array (
   'urgent_car.form.title' => 'Urgent cars',
   'urgent_car.form.add.sub_title' => 'Add new urgent car',
   'urgent_car.form.edit.sub_title' => 'Urgent car № :id',
+  'base.label.logo' => 'Logo',
+  'ad.form.title' => 'Ads',
+  'ad.form.add.sub_title' => 'Ad new ad',
+  'ad.form.edit.sub_title' => 'Ad № :id',
+  'ad.key.top' => 'Top',
+  'ad.key.thin' => 'Thin',
+  'ad.key.right' => 'Right',
+  'ad.key.bottom' => 'Bottom',
+  'base.label.link' => 'Link',
+  'tax.form.title' => 'Tax',
+  'tax.form.add.sub_title' => 'Add',
+  'tax.form.edit.sub_title' => 'Edit',
+  'base.label.permissions' => 'Permissions',
+  'system.form.title' => 'System',
+  'detail.form.title' => 'Auto details',
+  'base.label.homepage' => 'Homepage',
 );

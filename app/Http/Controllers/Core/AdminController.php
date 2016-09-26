@@ -6,7 +6,9 @@ use App\Core\Admin\Admin;
 use App\Core\Admin\Manager;
 use App\Core\Admin\Search;
 use App\Http\Requests\Core\AdminRequest;
+use App\Http\Requests\Core\ProfileRequest;
 use App\Core\Language\Language;
+use Auth;
 
 class AdminController extends BaseController
 {
@@ -58,6 +60,24 @@ class AdminController extends BaseController
     public function update(AdminRequest $request, $id)
     {
         return $this->api('OK', $this->manager->update($id, $request->all()));
+    }
+
+    public function profile()
+    {
+        $admin = Auth::guard('admin')->user();
+        $languages = Language::all();
+        return view('core.admin.profile')->with([
+            'admin' => $admin,
+            'languages' => $languages,
+        ]);
+    }
+
+    public function profileUpdate(ProfileRequest $request)
+    {
+        $admin = Auth::guard('admin')->user();
+        $data = $request->all();
+        $data['permissions'] = $admin->permissions;
+        return $this->api('OK', $this->manager->update($admin->id, $data));
     }
 
     public function delete($id)

@@ -7,10 +7,12 @@ class ImgUploader
 	protected static $includedHeadData = false;
 	protected static $includedCropper = false;
 
-	public static function uploader($module, $imageKey, $name, $value)
+	public static function uploader($module, $imageKey, $name, $value, $errorKey = null)
 	{
 		$config = config($module.'.images');
 		$imageConf = $config[$imageKey];
+
+        $errorKey = $errorKey == null ? $imageKey : $errorKey;
 
 		self::includeHeadData();
 		if (isset($imageConf['cropper']) && $imageConf['cropper'] === true) {
@@ -29,7 +31,7 @@ class ImgUploader
 		}
 		$helpText = self::getHelpTexts($module, $imageKey);
 		?>
-		<div id="<?php echo 'img-'.$imageKey; ?>" data-module="<?php echo $module.'.images.'.$imageKey; ?>" data-image_key="<?php echo $imageKey; ?>" class="img-uploader-box">
+		<div data-module="<?php echo $module.'.images.'.$imageKey; ?>" data-image_key="<?php echo $imageKey; ?>" class="img-uploader-box">
 			<div class="img-thumbnail image-container">
 				<img src="<?php echo $src; ?>" class="img-uploader-image img-agent-photo" />
 			</div>
@@ -47,7 +49,7 @@ class ImgUploader
 				<?php }	if (!empty($helpText)) { ?><div class="img-uploader-help"><?php echo $helpText;?></div><?php } ?>
 			</div>
 			<input type="hidden" name="<?php echo $name;?>" value="<?php echo $imgValue; ?>" class="img-uploader-id" />
-			<div class="form-error form-error-text" id="form-error-<?php echo $imageKey; ?>"></div>
+			<div class="form-error form-error-text" id="form-error-<?php echo $errorKey; ?>"></div>
 			<?php
 			if ($cropper && isset($imageConf['cropper_options']) && !empty($imageConf['cropper_options'])) {
 				$options = $imageConf['cropper_options'];
@@ -87,7 +89,7 @@ class ImgUploader
 		}
 		$text = empty($width) && empty($height) ? '' : trans('core.img.uploader.help', ['width' => $width, 'height' => $height]).' ';
 		$text = empty($options['extensions']) ? $text : $text.trans('core.img.uploader.help.extensions', ['extensions' => implode(', ', $options['extensions'])]);
-		return $text;
+        return $text;
 	}
 
 	public static function includeHeadData()

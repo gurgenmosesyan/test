@@ -1,6 +1,9 @@
 <?php
 use App\Core\Language\Language;
 use App\Models\Currency\CurrencyManager;
+use App\Models\Config\Manager;
+
+$logo = Manager::getLogo();
 
 $user = Auth::guard('user')->user();
 $languages = Language::all();
@@ -65,7 +68,7 @@ if (!isset($currencies)) {
     <div id="header">
         <div class="page">
             <div class="header-left fl">
-                <div id="logo">
+                <div id="logo" style="background-image: url('{{$logo}}');">
                     <a href="{{url_with_lng('')}}" class="db"></a>
                 </div>
             </div>

@@ -17,7 +17,9 @@ class AccountController extends BaseController
         $data = $request->all();
         $auth = auth()->guard('admin');
         if ($auth->attempt(['email' => $data['email'], 'password' => $data['password']])) {
-            return $this->api('OK', ['path' => route('core_admin_table')]);
+            $admin = Auth::guard('admin')->user();
+            $url = url('management/cms/'.ltrim($admin->homepage, '/'));
+            return $this->api('OK', ['path' => $url]);
         }
         return $this->api('INVALID_DATA', null, ['email' => [trans('admin.login.invalid_credentials')]]);
     }

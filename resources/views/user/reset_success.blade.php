@@ -7,21 +7,18 @@ $title = trans('www.reset_success.text');
 
 @section('content')
 
-    <div class="page">
-        <div id="top-banner" class="tc">
-            <a href="#">
-                <img src="/images/temp/top-banner.jpg" />
-            </a>
-        </div>
+<div class="page">
 
-        <div id="reg-success" class="tc">
-            {{trans('www.reset_success.text')}}
-            <br />
-            <br />
-            <br />
-            <a href="{{route('user_login', cLng('code'))}}" class="orange underline">{{trans('www.base.label.login')}}</a>
-        </div>
+    @include('blocks.top_banner')
 
+    <div id="reg-success" class="tc">
+        {{trans('www.reset_success.text')}}
+        <br />
+        <br />
+        <br />
+        <a href="{{route('user_login', cLng('code'))}}" class="orange underline">{{trans('www.base.label.login')}}</a>
     </div>
+
+</div>
 
 @stop

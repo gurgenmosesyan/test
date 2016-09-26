@@ -15,6 +15,7 @@ $main.initSearch = function() {
     };
     listColumns.push(actions);
     $main.table = $('#data-table').DataTable({
+        "pageLength": 25,
         "autoWidth": false,
         "processing": true,
         "oLanguage": {

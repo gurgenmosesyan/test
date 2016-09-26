@@ -8,11 +8,8 @@ $title = trans('www.user.activation.title');
 @section('content')
 
 <div class="page">
-    <div id="top-banner" class="tc">
-        <a href="#">
-            <img src="/images/temp/top-banner.jpg" />
-        </a>
-    </div>
+
+    @include('blocks.top_banner')
 
     <div id="login-block">
         <div id="login-inner">

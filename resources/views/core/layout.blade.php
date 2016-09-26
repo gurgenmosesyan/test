@@ -76,7 +76,7 @@ $jsTrans->addTrans([
                         <ul class="dropdown-menu">
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="{{route('core_admin_edit', $admin->id)}}" class="btn btn-default btn-flat">{{trans('admin.profile.title')}}</a>
+                                    <a href="{{route('core_admin_profile')}}" class="btn btn-default btn-flat">{{trans('admin.profile.title')}}</a>
                                 </div>
                                 <div class="pull-right">
                                     <a href="{{route('core_admin_logout')}}" class="btn btn-default btn-flat">{{trans('admin.logout.title')}}</a>
@@ -91,57 +91,17 @@ $jsTrans->addTrans([
 
     <aside class="main-sidebar">
         <section class="sidebar">
-            <ul class="sidebar-menu">
-                <li class="treeview{{$pageMenu == 'mark' || $pageMenu == 'model_category' || $pageMenu == 'model' || $pageMenu == 'body' || $pageMenu == 'rudder' || $pageMenu == 'color' || $pageMenu == 'interior_color' || $pageMenu == 'transmission' || $pageMenu == 'engine' || $pageMenu == 'cylinder' || $pageMenu == 'train' || $pageMenu == 'door' || $pageMenu == 'wheel' ? ' active' : ''}}">
-                    <a href="#">
-                        <i class="fa fa-cog"></i> <span>{{trans('admin.admin_menu.detail')}}</span> <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li{{$pageMenu == 'mark' ? ' class=active' : ''}}><a href="{{route('admin_mark_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.mark.form.title')}}</a></li>
-                        <li{{$pageMenu == 'model_category' ? ' class=active' : ''}}><a href="{{route('admin_model_category_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.model_category.form.title')}}</a></li>
-                        <li{{$pageMenu == 'model' ? ' class=active' : ''}}><a href="{{route('admin_model_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.model.form.title')}}</a></li>
-                        <li{{$pageMenu == 'body' ? ' class=active' : ''}}><a href="{{route('admin_body_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.body.form.title')}}</a></li>
-                        <li{{$pageMenu == 'transmission' ? ' class=active' : ''}}><a href="{{route('admin_transmission_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.transmission.form.title')}}</a></li>
-                        <li{{$pageMenu == 'rudder' ? ' class=active' : ''}}><a href="{{route('admin_rudder_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.rudder.form.title')}}</a></li>
-                        <li{{$pageMenu == 'color' ? ' class=active' : ''}}><a href="{{route('admin_color_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.color.form.title')}}</a></li>
-                        <li{{$pageMenu == 'interior_color' ? ' class=active' : ''}}><a href="{{route('admin_interior_color_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.interior_color.form.title')}}</a></li>
-                        <li{{$pageMenu == 'engine' ? ' class=active' : ''}}><a href="{{route('admin_engine_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.engine.form.title')}}</a></li>
-                        <li{{$pageMenu == 'cylinder' ? ' class=active' : ''}}><a href="{{route('admin_cylinder_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.cylinder.form.title')}}</a></li>
-                        <li{{$pageMenu == 'train' ? ' class=active' : ''}}><a href="{{route('admin_train_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.train.form.title')}}</a></li>
-                        <li{{$pageMenu == 'door' ? ' class=active' : ''}}><a href="{{route('admin_door_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.door.form.title')}}</a></li>
-                        <li{{$pageMenu == 'wheel' ? ' class=active' : ''}}><a href="{{route('admin_wheel_table')}}"><i class="fa fa-circle-o"></i> {{trans('admin.wheel.form.title')}}</a></li>
-                    </ul>
-                </li>
-                <li{{$pageMenu == 'option' ? ' class=active' : ''}}><a href="{{route('admin_option_table')}}"><i class="fa fa-bars"></i> <span>{{trans('admin.option.form.title')}}</span></a></li>
-                <li{{$pageMenu == 'country' ? ' class=active' : ''}}><a href="{{route('admin_country_table')}}"><i class="fa fa-globe"></i> <span>{{trans('admin.country.form.title')}}</span></a></li>
-                <li{{$pageMenu == 'region' ? ' class=active' : ''}}><a href="{{route('admin_region_table')}}"><i class="fa fa-globe"></i> <span>{{trans('admin.region.form.title')}}</span></a></li>
-                <li{{$pageMenu == 'auto' ? ' class=active' : ''}}><a href="{{route('admin_auto_table')}}"><i class="fa fa-car"></i> <span>{{trans('admin.auto.form.title')}}</span></a></li>
-                <li{{$pageMenu == 'top_car' ? ' class=active' : ''}}><a href="{{route('admin_top_car_table')}}"><i class="fa fa-star"></i> <span>{{trans('admin.top_car.form.title')}}</span></a></li>
-                <li{{$pageMenu == 'urgent_car' ? ' class=active' : ''}}><a href="{{route('admin_urgent_car_table')}}"><i class="fa fa-exclamation-circle"></i> <span>{{trans('admin.urgent_car.form.title')}}</span></a></li>
-                <li{{$pageMenu == 'config' ? ' class=active' : ''}}><a href="{{route('admin_config_edit')}}"><i class="fa fa-edit"></i> <span>{{trans('admin.config.form.title')}}</span></a></li>
-                <li{{$pageMenu == 'currency' ? ' class=active' : ''}}><a href="{{route('admin_currency_table')}}"><i class="fa fa-usd"></i> <span>{{trans('admin.currency.form.title')}}</span></a></li>
-                <li{{$pageMenu == 'part' ? ' class=active' : ''}}><a href="{{route('admin_part_table')}}"><i class="fa fa-cogs"></i> <span>{{trans('admin.part.form.title')}}</span></a></li>
-                <li class="treeview{{$pageMenu == 'admin' || $pageMenu == 'language' || $pageMenu == 'dictionary' ? ' active' : ''}}">
-                    <a href="#">
-                        <i class="fa fa-wrench"></i> <span>{{trans('admin.admin_menu.system')}}</span> <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li{{$pageMenu == 'admin' ? ' class=active' : ''}}><a href="{{route('core_admin_table')}}"><i class="fa fa-user"></i> {{trans('admin.admin.form.title')}}</a></li>
-                        <li{{$pageMenu == 'language' ? ' class=active' : ''}}><a href="{{route('core_language_table')}}"><i class="fa fa-flag"></i> {{trans('admin.language.form.title')}}</a></li>
-                        <li{{$pageMenu == 'dictionary' ? ' class=active' : ''}}><a href="{{route('core_dictionary_table')}}"><i class="fa fa-book"></i> {{trans('admin.dictionary.form.title')}}</a></li>
-                    </ul>
-                </li>
-            </ul>
+            @include('core.menu')
         </section>
     </aside>
 
     <div class="content-wrapper">
         <section class="content-header">
             <h1>{{$pageTitle}}</h1>
-            {{--<ol class="breadcrumb">
+            <?php /*<ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
                 <li class="active">Dashboard</li>
-            </ol>--}}
+            </ol>*/ ?>
         </section>
 
         <section class="content">

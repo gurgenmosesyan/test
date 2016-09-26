@@ -5,6 +5,13 @@ use App\Models\Config\Config;
 return [
     'images' => [
         'path' => '/'.Config::IMAGES_PATH,
+        'logo' => [
+            'extensions' => [
+                'jpg', 'jpeg', 'png'
+            ],
+            'width' => 229,
+            'height' => 53,
+        ],
         'watermark' => [
             'extensions' => [
                 'jpg', 'jpeg', 'png'
