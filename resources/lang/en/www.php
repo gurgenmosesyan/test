@@ -225,4 +225,12 @@ return array (
   'auto_deleted.text' => 'Auto successfully deleted.',
   'history.title' => 'History',
   'favorites.title' => 'Favorites',
+  'tooltip.url.text' => 'More',
+  'parts_calculator.tooltip.text' => 'Parts calculator tooltip text',
+  'tax_calculator.tooltip.text' => 'Tax calculator tooltip text Tax calculator tooltip text',
+  'top_cars.tooltip.text' => 'Top cars tooltip text',
+  'urgent_cars.tooltip.text' => 'Urgent cars tooltip text',
+  'base.label.ok' => 'OK',
+  'base.label.cancel' => 'Cancel',
+  'base.label.attention' => 'Attention',
 );

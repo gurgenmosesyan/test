@@ -64,6 +64,7 @@ html,body {
 .ml10 { margin-left: 10px; }
 .ml15 { margin-left: 15px; }
 .ml20 { margin-left: 20px; }
+.lh20 { line-height: 20px; }
 
 .orange-bg {
     background-color: #FFA000;
@@ -126,6 +127,11 @@ body select,
 body input,
 body textarea {
     color: #263238;
+}
+
+.lock {
+    overflow: hidden !important;
+    padding-right: 15px;
 }
 
 #page .page {
@@ -251,11 +257,22 @@ body textarea {
 }
 .help {
     background: url('../images/help.png') no-repeat;
+    cursor: pointer;
     height: 22px;
     width: 21px;
 }
-.help a {
-    height: 100%;
+.tooltip-box {
+    max-width: 180px !important;
+}
+.tooltip-box .t-txt {
+    font-size: 14px;
+    line-height: 18px;
+}
+.tooltip-box .btn {
+    color: #ffffff;
+    height: 30px;
+    margin-top: 10px;
+    line-height: 30px;
 }
 #urgent-cars {
     min-height: 846px;
@@ -1541,6 +1558,59 @@ body textarea {
 #footer .website-by div {
     text-align: left;
     line-height: 22px;
+}
+
+#popup.popup {
+    background-image: url('../images/overlay.png');
+    bottom: 0;
+    display: none;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 990;
+    overflow-y: scroll;
+}
+#popup .popup-wrapper {
+    background-color: #ffffff;
+    border: 1px solid #FFA000;
+    min-height: 140px;
+    top: 50%;
+    left: 50%;
+    margin: -96px 0 0 -267px;
+    padding: 25px;
+    position: absolute;
+    text-align: center;
+    width: 482px;
+    z-index: 99999;
+}
+#popup .close {
+    background-color: #d21e1e;
+    border-radius: 1px;
+    color: #ffffff;
+    cursor: pointer;
+    display: block;
+    font-size: 12px;
+    height: 27px;
+    line-height: 28px;
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    width: 27px;
+}
+#popup .popup-title {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+#popup .popup-text {
+    margin-bottom: 30px;
+}
+#popup .btn {
+    margin: 0 20px;
+    min-width: 80px;
+}
+#popup .btn.cancel {
+    background-color: #b7b5b5;
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2),

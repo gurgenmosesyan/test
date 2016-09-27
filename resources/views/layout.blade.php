@@ -22,19 +22,19 @@ if (!isset($currencies)) {
     <link rel="icon" href="{{url('/favicon.png')}}" />
     <link rel="shortcut icon" href="{{url('/favicon.ico')}}" />
     <?php
-    $head->appendMainStyle('/css/jquery-ui.css');
-    $head->appendMainStyle('/css/owl.carousel.css');
     $head->appendMainStyle('/css/main.css');
 
     $head->appendMainScript('/js/jquery-2.1.4.min.js');
-    $head->appendMainScript('/js/jquery-ui.min.js');
-    //$head->appendMainScript('/js/jquery.ui.touch-punch.min.js');
-    $head->appendMainScript('/js/owl.carousel.min.js');
     $head->appendMainScript('/js/main.js');
 
     $head->renderStyles();
     $head->renderScripts();
 
+    $jsTrans->addTrans([
+        'www.base.label.ok',
+        'www.base.label.cancel',
+        'www.base.label.attention'
+    ]);
     ?>
 </head>
 <body>
@@ -197,6 +197,7 @@ if (!isset($currencies)) {
     </div>
 
 </div>
+<div id="popup"></div>
 
 </body>
 </html>

@@ -48,7 +48,7 @@ $main.preloadImages = function(images) {
 };
 
 $main.initPreloadImages = function() {
-    var images = ['/images/checkbox-active.png', '/images/radio-active.png'];
+    var images = ['/images/checkbox-active.png', '/images/radio-active.png', '/images/overlay.png'];
     $main.preloadImages(images);
 };
 
@@ -338,30 +338,35 @@ $main.initAutoImages = function() {
 
 $main.initAutoDelete = function() {
     $('#auto-delete').on('click', function() {
-        if (!confirm($trans.get('www.auto.delete.confirm.text'))) {
-            return false;
-        }
+        var popup = $('#popup');
+        popup.popup({
+            title: $trans.get('www.base.label.attention'),
+            text: $trans.get('www.auto.delete.confirm.text')
+        });
         var self = $(this);
-        if (self.hasClass('deleting')) {
-            return false;
-        }
-        self.addClass('deleting');
-        $.ajax({
-            type: 'post',
-            url: $main.basePath('/auto/delete'),
-            data: {
-                id: self.data('id'),
-                _token: $main.token
-            },
-            dataType: 'json',
-            success: function(result) {
-                if (result.status == 'OK') {
-                    document.location.href = result.data.link;
-                } else {
-                    alert('Error!');
-                }
-                self.removeClass('deleting');
+        popup.find('.ok').on('click', function() {
+            if (self.hasClass('deleting')) {
+                return false;
             }
+            self.addClass('deleting');
+            $.ajax({
+                type: 'post',
+                url: $main.basePath('/auto/delete'),
+                data: {
+                    id: self.data('id'),
+                    _token: $main.token
+                },
+                dataType: 'json',
+                success: function(result) {
+                    if (result.status == 'OK') {
+                        document.location.href = result.data.link;
+                    } else {
+                        alert('Error!');
+                    }
+                    self.removeClass('deleting');
+                }
+            });
+            return false;
         });
         return false;
     });
@@ -404,20 +409,103 @@ $main.initFavorite = function() {
     });
 };
 
+$main.initTooltip = function() {
+    $('.help').tooltip({
+        tooltipClass: 'tooltip-box',
+        position: {
+            my: "center bottom-5",
+            at: "center top"
+        },
+        content: function() {
+            var self = $(this),
+                data = '<p class="t-txt">'+self.attr('title')+'</p>';
+            if (self.data('url')) {
+                data += '<p class="tc"><a href="'+self.data('url')+'" class="btn dib">'+$trans.get('www.tooltip.url.text')+'</a></p>';
+            }
+            return data;
+        },
+        close: function(event, ui) {
+            ui.tooltip.on('mouseover', function() {
+                $(this).stop(true).fadeIn(300);
+            });
+            ui.tooltip.on('mouseout', function() {
+                $(this).fadeOut('300', function() {
+                    $(this).remove();
+                });
+            });
+        }
+    });
+};
+
+$main.initPopup = function() {
+    $.fn.popup = function(options) {
+        var settings = $.extend({
+            title: '',
+            text: ''
+        }, options);
+
+        $('body').addClass('lock');
+
+        var popup = {};
+        popup.self = $(this);
+        popup.self.addClass('popup');
+
+        popup.wrapper = $('<div>').addClass('popup-wrapper');
+        popup.close = $('<div class="fb">X</div>').addClass('close');
+        popup.content = $('<div>').addClass('popup-content');
+
+        popup.title = $('<h3>').addClass('popup-title');
+        popup.text = $('<p>').addClass('popup-text');
+
+        popup.content.append(popup.title.text(settings.title));
+        popup.content.append(popup.text.text(settings.text));
+
+        var links = '<div class="popup-links">'+
+                        '<a href="#" class="btn dib ok">'+$trans.get('www.base.label.ok')+'</a>' +
+                        '<a href="#" class="btn dib cancel">'+$trans.get('www.base.label.cancel')+'</a>' +
+                    '</div>';
+        links = $(links);
+        links.find('.cancel').on('click', function() {
+            popup.remove();
+            return false;
+        });
+        popup.content.append(links);
+
+        popup.wrapper.append(popup.close);
+        popup.wrapper.append(popup.content);
+        popup.self.append(popup.wrapper);
+        popup.self.stop().fadeIn(200);
+
+        popup.remove = function() {
+            popup.self.stop().fadeOut(200, function() {
+                $('body').removeClass('lock');
+                popup.self.removeClass('popup').html('');
+            });
+        };
+
+        popup.self.click(function (e) {
+            if ($(this).has(e.target).length === 0) {
+                popup.remove();
+            }
+        });
+        popup.close.click(function(){
+            popup.remove();
+        });
+        $(document).keydown(function(e){
+            if (e.keyCode == 27) {
+                popup.remove();
+            }
+        });
+    };
+};
+
 $(document).ready(function() {
+
     $main.initHeaderBlocks();
-
-    $main.initTopCars();
-
-    $main.initUrgentCars();
-
-    $main.initRecentlyCars();
 
     $main.initSelect();
 
     $main.initMarkSelect();
-
-    $main.initPriceRange();
 
     $main.initCheckbox();
 
@@ -432,4 +520,6 @@ $(document).ready(function() {
     $main.initSearch();
 
     $main.initFavorite();
+
+    $main.initPopup();
 });

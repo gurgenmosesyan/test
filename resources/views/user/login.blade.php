@@ -45,7 +45,7 @@ $title = trans('www.login.title');
                 {{csrf_field()}}
                 <input type="submit" class="orange-bg fb" value="{{$title}}" />
             </form>
-            <p class="link tc">{{trans('www.login.link_title')}} <a href="{{url_with_lng('/forgot', false)}}" class="orange">{{trans('www.user.forgot.title')}}</a></p>
+            <p class="link tc lh20">{{trans('www.login.link_title')}} <a href="{{url_with_lng('/forgot', false)}}" class="orange">{{trans('www.user.forgot.title')}}</a></p>
         </div>
     </div>
 </div>

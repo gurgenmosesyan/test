@@ -4,11 +4,18 @@ use App\Helpers\Base;
 use App\Models\Config\Manager as ConfManager;
 use App\Models\Ad\Manager as AdManager;
 
+$head->appendStyle('/css/jquery-ui.min.css');
+$head->appendStyle('/css/owl.carousel.css');
+$head->appendScript('/js/jquery-ui.min.js');
+$head->appendScript('/js/owl.carousel.min.js');
+
 $title = trans('www.homepage.title');
 
 $autoEmpty = ConfManager::getAutoEmpty();
 $thinBanners = AdManager::get('thin');
 $bottomBanners = AdManager::get('bottom');
+
+$jsTrans->addTrans(['www.tooltip.url.text']);
 ?>
 @extends('layout')
 
@@ -20,7 +27,7 @@ $bottomBanners = AdManager::get('bottom');
 
     <div id="top-cars" class="fl">
         <h2 class="orange fb"><span class="dib">{{trans('www.top_cars.title')}}</span></h2>
-        <div class="help"><a href="#" class="db"></a></div>
+        <div class="help" title="{{trans('www.top_cars.tooltip.text')}}" data-url="#"></div>
         @if($topCars->isEmpty())
             <div class="no-cars tc">{{trans('www.no_cars')}}</div>
         @else
@@ -187,7 +194,7 @@ $bottomBanners = AdManager::get('bottom');
     <div id="homepage-left" class="fl">
         <div id="urgent-cars" class="small-box">
             <h2 class="orange fb"><span class="dib">{{trans('www.urgent_cars.title')}}</span></h2>
-            <div class="help"><a href="#" class="db"></a></div>
+            <div class="help" title="{{trans('www.urgent_cars.tooltip.text')}}" data-url="#"></div>
             @if($urgentCars->isEmpty())
                 <div class="no-cars tc">{{trans('www.no_cars')}}</div>
             @else
@@ -271,7 +278,7 @@ $bottomBanners = AdManager::get('bottom');
     <div id="calculators" class="fl">
         <div id="parts-calculator" class="calc-box">
             <h2 class="fl fb">{{trans('www.parts_calculator.title')}}</h2>
-            <div class="help fr"><a href="#" class="db"></a></div>
+            <div class="help fr" title="{{trans('www.parts_calculator.tooltip.text')}}"></div>
             <div class="cb"></div>
             <div class="mark-select fl">
                 <div class="select-box">
@@ -326,7 +333,7 @@ $bottomBanners = AdManager::get('bottom');
         </div>
         <div id="tax-calculator" class="calc-box">
             <h2 class="fl fb">{{trans('www.tax_calculator.title')}}</h2>
-            <div class="help fr"><a href="#" class="db"></a></div>
+            <div class="help fr" title="{{trans('www.tax_calculator.tooltip.text')}}"></div>
             <div class="cb"></div>
             <form id="tax-form" action="" method="post">
                 <div class="price-box">
@@ -394,6 +401,13 @@ $bottomBanners = AdManager::get('bottom');
     $main.priceFrom = {{$cCurrency['price_from']}};
     $main.priceTo = {{$cCurrency['price_to']}};
     $main.priceStep = {{$cCurrency['price_step']}};
+    $(document).ready(function() {
+        $main.initTopCars();
+        $main.initUrgentCars();
+        $main.initRecentlyCars();
+        $main.initPriceRange();
+        $main.initTooltip();
+    });
 </script>
 
 @stop
