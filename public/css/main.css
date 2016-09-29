@@ -1474,10 +1474,10 @@ body textarea {
     margin-bottom: 65px;
 }
 #footer .footer-menu li {
-    margin-right: 23px;
+    margin-left: 23px;
 }
-#footer .footer-menu li.last {
-    margin-right: 0;
+#footer .footer-menu li.first {
+    margin-left: 0;
 }
 #footer .footer-menu li a {
     border-bottom: 2px solid #8E9497;
@@ -1611,6 +1611,44 @@ body textarea {
 }
 #popup .btn.cancel {
     background-color: #b7b5b5;
+}
+
+#static {
+    background-color: #ffffff;
+    padding: 25px;
+}
+#static h1 {
+    font-size: 22px;
+    margin-bottom: 25px;
+}
+.html p {
+    margin-bottom: 10px;
+    line-height: 22px;
+}
+.html h2 {
+    font-size: 20px;
+    font-weight: bold;
+}
+.html h3 {
+    font-size: 18px;
+    font-weight: bold;
+}
+.html h4 {
+    font-size: 16px;
+    font-weight: bold;
+}
+.html h5 {
+    font-size: 14px;
+    font-weight: bold;
+}
+.html ul {
+    margin: 12px 0;
+    padding-left: 30px;
+    list-style: disc;
+}
+.html ul li {
+    margin-bottom: 3px;
+    line-height: 22px;
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2),

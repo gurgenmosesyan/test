@@ -113,6 +113,12 @@ $main.save = function() {
     }
     $('.nav-btn', form).prop('disabled', true);
     $main.winStatus($trans.get('admin.base.label.loading'));
+    if (typeof CKEDITOR != 'undefined') {
+        $('textarea.ckeditor').each(function() {
+            var self = $(this);
+            self.val(CKEDITOR.instances[self.attr('name')].getData());
+        });
+    }
     $.ajax({
         method: 'post',
         url: form.attr('action'),
@@ -177,6 +183,10 @@ $main.init = function() {
         $.fn.removeLoading = function() {
             $(this).removeClass('loading');
         };
+
+        if (typeof CKFinder != 'undefined') {
+            CKFinder.setupCKEditor();
+        }
     });
 };
 

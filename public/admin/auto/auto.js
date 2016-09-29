@@ -5,6 +5,7 @@ $auto.imgIndex = 0;
 $auto.initSearchPage = function() {
     var self = this;
     $main.table = $('#data-table').DataTable({
+        "pageLength": 25,
         "autoWidth": false,
         "processing": true,
         "oLanguage": {

@@ -202,4 +202,12 @@ Route::group($params, function () {
     Route::post('/tax/update/{id}', ['uses' => 'TaxController@update', 'as' => 'admin_tax_update', 'permission' => 'tax']);
     Route::post('/tax/delete/{id}', ['uses' => 'TaxController@delete', 'as' => 'admin_tax_delete', 'permission' => 'tax']);
 
+    Route::get('/footerMenu', ['uses' => 'FooterMenuController@table', 'as' => 'admin_footer_menu_table', 'permission' => 'footer_menu']);
+    Route::get('/footerMenu/create', ['uses' => 'FooterMenuController@create', 'as' => 'admin_footer_menu_create', 'permission' => 'footer_menu']);
+    Route::get('/footerMenu/edit/{id}', ['uses' => 'FooterMenuController@edit', 'as' => 'admin_footer_menu_edit', 'permission' => 'footer_menu']);
+    Route::post('/footerMenu', ['uses' => 'FooterMenuController@index', 'as' => 'admin_footer_menu_index', 'permission' => 'footer_menu']);
+    Route::post('/footerMenu/store', ['uses' => 'FooterMenuController@store', 'as' => 'admin_footer_menu_store', 'permission' => 'footer_menu']);
+    Route::post('/footerMenu/update/{id}', ['uses' => 'FooterMenuController@update', 'as' => 'admin_footer_menu_update', 'permission' => 'footer_menu']);
+    Route::post('/footerMenu/delete/{id}', ['uses' => 'FooterMenuController@delete', 'as' => 'admin_footer_menu_delete', 'permission' => 'footer_menu']);
+
 });

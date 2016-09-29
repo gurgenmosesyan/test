@@ -64,6 +64,7 @@ Route::group(['middleware' => ['web', 'front']], function() {
         Route::get('/search', 'SearchController@index');
         Route::get('/auto/{autoId}', 'AutoController@index');
         Route::get('/history', 'HistoryController@index');
+        Route::get('/page/{alias}', 'PageController@index');
 
     });
 

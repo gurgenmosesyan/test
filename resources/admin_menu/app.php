@@ -126,5 +126,10 @@ return [
         'key' => 'tax',
         'path' => route('admin_tax_table'),
         'icon' => 'fa-calculator',
+    ],
+    [
+        'key' => 'footer_menu',
+        'path' => route('admin_footer_menu_table'),
+        'icon' => 'fa-align-left',
     ]
 ];

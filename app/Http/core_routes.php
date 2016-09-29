@@ -18,6 +18,8 @@ Route::group($params, function() {
         Route::get('/image/show', ['uses' => 'ImageUploaderController@show', 'as' => 'core_image_show']);
         Route::post('/image/upload', ['uses' => 'ImageUploaderController@upload', 'as' => 'core_image_upload']);
 
+        Route::post('/makeAlias', ['uses' => 'ApiController@makeAlias', 'as' => 'core_make_alias']);
+
         Route::group(['middleware' => ['access_control']], function() {
 
             Route::get('/admin', ['uses' => 'AdminController@table', 'as' => 'core_admin_table', 'permission' => 'admin']);

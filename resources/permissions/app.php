@@ -25,4 +25,5 @@ return [
     'part',
     'ad',
     'tax',
+    'footer_menu',
 ];

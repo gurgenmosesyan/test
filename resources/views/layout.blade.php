@@ -2,6 +2,7 @@
 use App\Core\Language\Language;
 use App\Models\Currency\CurrencyManager;
 use App\Models\Config\Manager;
+use App\Models\FooterMenu\FooterMenuManager;
 
 $logo = Manager::getLogo();
 
@@ -13,6 +14,8 @@ if (!isset($currencies)) {
     $defCurrency = $currencyManager->defaultCurrency();
     $cCurrency = $currencyManager->currentCurrency();
 }
+
+$footerMenu = FooterMenuManager::get();
 
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -140,12 +143,12 @@ if (!isset($currencies)) {
             <div id="footer">
                 <div class="footer-left fl">
                     <ul class="footer-menu">
-                        <li class="fl"><a href="#">{{trans('www.footer.menu.contact')}}</a></li>
-                        <li class="fl"><a href="#">{{trans('www.footer.menu.faq')}}</a></li>
-                        <li class="fl"><a href="#">{{trans('www.footer.menu.privacy_policy')}}</a></li>
-                        <li class="fl"><a href="#">{{trans('www.footer.menu.terms')}}</a></li>
-                        <li class="fl"><a href="#">{{trans('www.footer.menu.advertisement')}}</a></li>
-                        <li class="fl last"><a href="#">{{trans('www.footer.menu.sell_car')}}</a></li>
+                        @foreach($footerMenu as $key => $value)
+                            <?php $alias = $value->isStatic() ? $value->alias : '/page/'.$value->alias; ?>
+                            <li class="fl{{$key == 0 ? ' first' : ''}}">
+                                <a href="{{url_with_lng($alias)}}">{{$value->title}}</a>
+                            </li>
+                        @endforeach
                         <li class="cb"></li>
                     </ul>
                     <div class="footer-contacts fl">

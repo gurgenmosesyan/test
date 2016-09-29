@@ -186,4 +186,12 @@ return array (
   'system.form.title' => 'Համակարգ',
   'detail.form.title' => 'Մեքնայի տվյալներ',
   'base.label.homepage' => 'Homepage',
+  'footer_menu.form.title' => 'Footer menu',
+  'footer_menu.form.add.sub_title' => 'Add new footer menu',
+  'base.label.title' => 'Title',
+  'base.label.alias' => 'Alias',
+  'base.label.static' => 'Static',
+  'base.label.hidden' => 'Hidden',
+  'base.label.text' => 'Text',
+  'footer_menu.form.edit.sub_title' => 'Footer menu № :id',
 );
