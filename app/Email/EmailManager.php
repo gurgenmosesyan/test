@@ -47,15 +47,16 @@ class EmailManager
 	public function sendEmail(Email $email)
 	{
         try {
-            /*Mail::send(['email.default_html', 'email.default'], ['email' => $email], function($message) use($email) {
+            $template = empty($email->template) ? 'default' : $email->template;
+            Mail::send(['email.'.$template.'_html', 'email.'.$template], ['email' => $email], function($message) use($email) {
                 $message->from($email->from, $email->from_name);
                 $message->to($email->to, $email->to_name);
                 $message->replyTo($email->reply_to);
                 $message->subject($email->subject);
-            });*/
+            });
 
             # Instantiate the client.
-            $mgClient = new Mailgun('key-58ca7914635e0fc6121051e1c4069e31');
+            /*$mgClient = new Mailgun('key-58ca7914635e0fc6121051e1c4069e31');
             $domain = "mg.autotrade.am";
 
             # Make the call to the client.
@@ -65,7 +66,7 @@ class EmailManager
                 'subject' => $email->subject,
                 'text'    => trim(str_replace('&nbsp;', '', strip_tags($email->body))),
                 'html'    => $email->body,
-            ));
+            ));*/
 
             $email->status = Email::STATUS_SENT;
         } catch (Exception $e) {

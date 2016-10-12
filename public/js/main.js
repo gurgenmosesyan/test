@@ -128,11 +128,13 @@ $main.initSelect = function() {
 
 $main.initMarkSelect = function() {
     var quickSearch = $('#quick-search'),
-        calculators = $('#calculators'),
+        partsCalc = $('#parts-calculator'),
+        taxCalc = $('#tax-calculator'),
         sell = $('#sell'),
         search = $('#search');
     $main.markSelect(quickSearch.find('.mark-select select'), quickSearch.find('.model-select .select-box'));
-    $main.markSelect(calculators.find('.mark-select select'), calculators.find('.model-select .select-box'));
+    $main.markSelect(partsCalc.find('.mark-select select'), partsCalc.find('.model-select .select-box'));
+    $main.markSelect(taxCalc.find('.mark-select select'), taxCalc.find('.model-select .select-box'));
     $main.markSelect(sell.find('.mark-select select'), sell.find('.model-select .select-box'));
     $main.markSelect(search.find('.mark-select select'), search.find('.model-select.select-box'));
 };
@@ -265,7 +267,7 @@ $main.initParts = function() {
             $('.parts-loader', partsBlock).removeClass('dpn');
             $.ajax({
                 type: 'post',
-                url: '/api/part',
+                url: $main.basePath('/api/part', false),
                 data: {
                     mark_id: markSelect.val(),
                     model_id: self.val(),
@@ -282,6 +284,36 @@ $main.initParts = function() {
                 }
             });
         }
+    });
+};
+
+$main.initTaxCalc = function() {
+    var taxBox = $('#tax-calculator'),
+        form = taxBox.find('form');
+    taxBox.find('select').change(function() {
+        taxBox.find('.service-price').text('--');
+    });
+    form.submit(function() {
+        $.ajax({
+            type: 'post',
+            url: $main.basePath('/api/tax', false),
+            data: form.serializeArray(),
+            dataType: 'json',
+            success: function(result) {
+                form.find('.form-error').text('');
+                taxBox.find('.service-price').text('--');
+                if (result.status == 'OK') {
+                    for (var i in result.data) {
+                        taxBox.find('.'+i).text(result.data[i]);
+                    }
+                } else if (result.status == 'NOT_FOUND') {
+                    form.find('.form-error').text(result.data.message);
+                } else {
+                    form.find('.form-error').text($trans.get('www.tax.error'));
+                }
+            }
+        });
+        return false;
     });
 };
 
@@ -514,8 +546,6 @@ $(document).ready(function() {
     $main.initQuickSearch();
 
     $main.initPreloadImages();
-
-    $main.initParts();
 
     $main.initSearch();
 

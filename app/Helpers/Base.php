@@ -23,10 +23,10 @@ class Base
         return $price . $cCurrency->$currencyParam;
     }
 
-    public static function partPrice($data, $price, $currencies, $defCurrency, $cCurrency)
+    public static function calcPrice($currencyId, $price, $currencies, $defCurrency, $cCurrency)
     {
-        if ($data['currency_id'] != $cCurrency->id) {
-            $autoCurrency = $currencies[$data['currency_id']];
+        if ($currencyId != $cCurrency->id) {
+            $autoCurrency = $currencies[$currencyId];
 
             if ($defCurrency->id == $autoCurrency->id) {
                 $price = round($price * $cCurrency->rate);
@@ -37,6 +37,6 @@ class Base
                 $price = round($price * $cCurrency->rate);
             }
         }
-        return $price . $cCurrency->sign;
+        return $price;
     }
 }

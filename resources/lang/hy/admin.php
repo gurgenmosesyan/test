@@ -194,4 +194,12 @@ return array (
   'base.label.hidden' => 'Hidden',
   'base.label.text' => 'Text',
   'footer_menu.form.edit.sub_title' => 'Footer menu № :id',
+  'base.label.passenger' => 'Մարդատար',
+  'base.label.truck' => 'Բեռնատար',
+  'base.label.tax_passenger_price' => 'Tax passenger price',
+  'base.label.tax_truck_price' => 'Tax truck price',
+  'base.label.tax_currency' => 'Tax currency',
+  'base.label.tax_passport_price' => 'Tax passport price',
+  'base.label.tax_number_price' => 'Tax number price',
+  'base.label.tax_rename_price' => 'Tax rename price',
 );

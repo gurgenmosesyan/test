@@ -7,6 +7,7 @@ use App\Models\Config\Config;
 use App\Models\Config\Manager;
 use App\Http\Requests\Admin\ConfigRequest;
 use App\Core\Language\Language;
+use App\Models\Currency\Currency;
 
 class ConfigController extends BaseController
 {
@@ -23,6 +24,8 @@ class ConfigController extends BaseController
         $logo = null;
         $watermark = null;
         $autoEmpty = null;
+        $taxPassengerPrice = $taxTruckPrice = $taxCurrency = null;
+        $taxRenamePrice = $taxPassportPrice = $taxNumberPrice = null;
         foreach ($configs as $config) {
             if ($config->key == Config::KEY_LOGO) {
                 $logo = $config;
@@ -30,13 +33,33 @@ class ConfigController extends BaseController
                 $autoEmpty = $config->value;
             } else if ($config->key == Config::KEY_WATERMARK) {
                 $watermark = $config->value;
+            } else if ($config->key == Config::KEY_TAX_PASSENGER_PRICE) {
+                $taxPassengerPrice = $config->value;
+            } else if ($config->key == Config::KEY_TAX_TRUCK_PRICE) {
+                $taxTruckPrice = $config->value;
+            } else if ($config->key == Config::KEY_TAX_RENAME_PRICE) {
+                $taxRenamePrice = $config->value;
+            } else if ($config->key == Config::KEY_TAX_PASSPORT_PRICE) {
+                $taxPassportPrice = $config->value;
+            } else if ($config->key == Config::KEY_TAX_NUMBER_PRICE) {
+                $taxNumberPrice = $config->value;
+            } else if ($config->key == Config::KEY_TAX_CURRENCY) {
+                $taxCurrency = $config->value;
             }
         }
+        $currencies = Currency::active()->ordered()->get();
         return view('admin.config.edit')->with([
             'logo' => $logo,
             'watermark' => $watermark,
             'autoEmpty' => $autoEmpty,
-            'languages' => Language::all()
+            'taxPassengerPrice' => $taxPassengerPrice,
+            'taxTruckPrice' => $taxTruckPrice,
+            'taxRenamePrice' => $taxRenamePrice,
+            'taxPassportPrice' => $taxPassportPrice,
+            'taxNumberPrice' => $taxNumberPrice,
+            'taxCurrency' => $taxCurrency,
+            'languages' => Language::all(),
+            'currencies' => $currencies
         ]);
     }
 

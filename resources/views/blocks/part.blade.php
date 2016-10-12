@@ -32,10 +32,12 @@ for($i = 1; $i < 11; $i++) {
         $class = ' disabled';
         $attr = ' disabled="disabled"';
     } else {
+        $price = Base::calcPrice($part->currency_id, $price, $currencies, $defCurrency, $cCurrency);
         $class = $attr = '';
-        $title .= '<span class="price-info"> '.Base::partPrice($part, $price, $currencies, $defCurrency, $cCurrency);
+        $title .= '<span class="price-info"> '.$price.$cCurrency->sign;
         if (!empty($servicePrice)) {
-            $title .= ', '.trans('www.part.form.service_price_text').' '.Base::partPrice($part, $servicePrice, $currencies, $defCurrency, $cCurrency);;
+            $servicePrice = Base::calcPrice($part->currency_id, $servicePrice, $currencies, $defCurrency, $cCurrency);
+            $title .= ', '.trans('www.part.form.service_price_text').' '.$servicePrice.$cCurrency->sign;
         }
         $title .= '</span>';
     }

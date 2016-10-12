@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Auto\Auto;
+use App\Models\Engine\EngineMl;
 use App\Models\TopCar\TopCar;
 use App\Models\Country\CountryMl;
 use App\Models\Mark\Mark;
@@ -36,6 +37,7 @@ class IndexController extends Controller
         $countries = CountryMl::active()->current()->get();
         $marks = Mark::active()->orderBy('name', 'asc')->get();
         $bodies = Body::active()->inSearch()->ordered()->take(3)->get();
+        $engines = EngineMl::active()->current()->get();
 
         $currencyManager = new CurrencyManager();
         $currencies = $currencyManager->all();
@@ -55,6 +57,7 @@ class IndexController extends Controller
             'countries' => $countries,
             'marks' => $marks,
             'bodies' => $bodies,
+            'engines' => $engines,
             'currencies' => $currencies,
             'defCurrency' => $defCurrency,
             'cCurrency' => $cCurrency,

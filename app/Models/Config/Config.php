@@ -9,6 +9,12 @@ class Config extends Model
     const KEY_LOGO = 'logo';
     const KEY_WATERMARK = 'watermark';
     const KEY_AUTO_EMPTY = 'auto_empty';
+    const KEY_TAX_PASSENGER_PRICE = 'tax_passenger_price';
+    const KEY_TAX_TRUCK_PRICE = 'tax_truck_price';
+    const KEY_TAX_RENAME_PRICE = 'tax_rename_price';
+    const KEY_TAX_PASSPORT_PRICE = 'tax_passport_price';
+    const KEY_TAX_NUMBER_PRICE = 'tax_number_price';
+    const KEY_TAX_CURRENCY = 'tax_currency';
     const IMAGES_PATH = 'images/config';
 
     protected $table = 'config';

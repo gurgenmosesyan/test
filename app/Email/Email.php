@@ -20,6 +20,7 @@ class Email extends Model
 		'reply_to',
 		'subject',
 		'body',
+        'template',
 		'status'
 	];
 }

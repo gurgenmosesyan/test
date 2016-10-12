@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use App\Http\Requests\Request;
+use App\Models\Tax\Tax;
 
 class TaxRequest extends Request
 {
@@ -15,7 +16,8 @@ class TaxRequest extends Request
             'model_id' => 'required|integer|exists:models,id,mark_id,'.$markId.',show_status,1',
             'year' => 'required|integer',
             'engine_id' => 'required|integer|exists:engines,id,show_status,1',
-            'volume' => 'numeric|max:10',
+            'volume' => 'required|numeric|max:10',
+            'body' => 'required|in:'.Tax::BODY_PASSENGER.','.Tax::BODY_TRUCK,
             'currency_id' => 'required|integer|exists:currencies,id,show_status,1',
             'price' => 'required|integer'
         ];

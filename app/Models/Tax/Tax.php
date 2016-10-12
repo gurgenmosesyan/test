@@ -6,6 +6,9 @@ use App\Core\Model;
 
 class Tax extends Model
 {
+    const BODY_PASSENGER = 'passenger';
+    const BODY_TRUCK = 'truck';
+
     protected $table = 'tax';
 
     protected $fillable = [
@@ -14,7 +17,8 @@ class Tax extends Model
         'year',
         'engine_id',
         'volume',
+        'body',
+        'price',
         'currency_id',
-        'price'
     ];
 }

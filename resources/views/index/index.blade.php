@@ -15,7 +15,10 @@ $autoEmpty = ConfManager::getAutoEmpty();
 $thinBanners = AdManager::get('thin');
 $bottomBanners = AdManager::get('bottom');
 
-$jsTrans->addTrans(['www.tooltip.url.text']);
+$jsTrans->addTrans([
+    'www.tooltip.url.text',
+    'www.tax.error'
+]);
 ?>
 @extends('layout')
 
@@ -286,8 +289,8 @@ $jsTrans->addTrans(['www.tooltip.url.text']);
                     <div class="select-title"></div>
                     <select name="mark" data-only_model="true">
                         <option value="">{{trans('www.calculator.mark.select.default')}}</option>
-                        @foreach($marks as $mark)
-                            <option value="{{$mark->id}}">{{$mark->name}}</option>
+                        @foreach($marks as $value)
+                            <option value="{{$value->id}}">{{$value->name}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -317,17 +320,17 @@ $jsTrans->addTrans(['www.tooltip.url.text']);
             </div>
             <div class="calc-price">
                 <p class="calc-result fl">{{trans('www.calculator.parts.text')}}</p>
-                <p class="parts-price fr">--</p>
+                <p class="parts-price tr">--</p>
                 <div class="cb"></div>
             </div>
             <div class="calc-price">
                 <p class="calc-result fl">{{trans('www.calculator.service.text')}}</p>
-                <p class="service-price fr">--</p>
+                <p class="service-price tr">--</p>
                 <div class="cb"></div>
             </div>
             <div class="calc-price fb">
                 <p class="calc-result fl">{{trans('www.calculator.total.text')}}</p>
-                <p class="total-price fr">--</p>
+                <p class="total-price tr">--</p>
                 <div class="cb"></div>
             </div>
         </div>
@@ -336,43 +339,100 @@ $jsTrans->addTrans(['www.tooltip.url.text']);
             <div class="help fr" title="{{trans('www.tax_calculator.tooltip.text')}}"></div>
             <div class="cb"></div>
             <form id="tax-form" action="" method="post">
-                <div class="price-box">
-                    <input type="text" placeholder="{{trans('www.calculator.price.placeholder')}}" />
-                </div>
-                <div class="year-select">
+                <div class="mark-select fl">
                     <div class="select-box">
                         <div class="select-arrow"></div>
                         <div class="select-title"></div>
-                        <select name="year">
-                            <option value="">{{trans('www.calculator.year.select.default')}}</option>
-                            @for($i = date('Y'); $i > 1909; $i--)
-                                <option value="{{$i}}">{{$i}}</option>
-                            @endfor
+                        <select name="mark_id" data-only_model="true">
+                            <option value="">{{trans('www.calculator.mark.select.default')}}</option>
+                            @foreach($marks as $value)
+                                <option value="{{$value->id}}">{{$value->name}}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
+                <div class="model-select fl">
+                    <div class="select-box disabled">
+                        <div class="select-arrow"></div>
+                        <div class="select-title"></div>
+                        <select name="model_id" disabled="disabled">
+                            <option value="">{{trans('www.calculator.model.select.default')}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="cb"></div>
+                <div class="select-box mb15">
+                    <div class="select-arrow"></div>
+                    <div class="select-title"></div>
+                    <select name="year">
+                        <option value="">{{trans('www.calculator.year.select.default')}}</option>
+                        @for($i = date('Y'); $i > 1909; $i--)
+                            <option value="{{$i}}">{{$i}}</option>
+                        @endfor
+                    </select>
+                </div>
+                <div class="select-box mb15">
+                    <div class="select-arrow"></div>
+                    <div class="select-title"></div>
+                    <select name="engine_id" data-only_model="true">
+                        <option value="">{{trans('www.engine.select.default')}}</option>
+                        @foreach($engines as $value)
+                            <option value="{{$value->id}}">{{$value->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="select-box mb25">
+                    <div class="select-arrow"></div>
+                    <div class="select-title"></div>
+                    <select name="volume">
+                        <option value="">{{trans('www.sell_car.engine_volume')}}</option>
+                        <?php $i = 0.1; ?>
+                        @while($i < 10.1)
+                            <?php $i = number_format($i, 1, '.', '.'); ?>
+                            <option value="{{$i}}">{{$i}}</option>
+                            <?php $i += 0.1; ?>
+                        @endwhile
+                    </select>
+                </div>
+                {{csrf_field()}}
                 <div class="submit">
                     <input type="submit" class="fb" value="{{trans('www.calculators.calculate')}}" />
+                    <div class="form-error fs14"></div>
                 </div>
             </form>
             <div class="calc-price">
-                <p class="calc-result fl">{{trans('www.calculator.tax.text')}}</p>
-                <p class="service-price fr">--</p>
+                <p class="calc-result fl">{{trans('www.tax.price')}}</p>
+                <p class="service-price price tr">--</p>
                 <div class="cb"></div>
             </div>
             <div class="calc-price">
-                <p class="calc-result fl">{{trans('www.calculator.vat.text')}}</p>
-                <p class="service-price fr">--</p>
+                <p class="calc-result fl">{{trans('www.tax.customs')}}</p>
+                <p class="service-price customs tr">--</p>
                 <div class="cb"></div>
             </div>
             <div class="calc-price">
-                <p class="calc-result fl">{{trans('www.calculator.ecology.text')}}</p>
-                <p class="service-price fr">--</p>
+                <p class="calc-result fl">{{trans('www.tax.nullification')}}</p>
+                <p class="service-price nullification tr">--</p>
+                <div class="cb"></div>
+            </div>
+            <div class="calc-price">
+                <p class="calc-result fl">{{trans('www.tax.rename')}}</p>
+                <p class="service-price rename tr">--</p>
+                <div class="cb"></div>
+            </div>
+            <div class="calc-price">
+                <p class="calc-result fl">{{trans('www.tax.passport')}}</p>
+                <p class="service-price passport tr">--</p>
+                <div class="cb"></div>
+            </div>
+            <div class="calc-price">
+                <p class="calc-result fl">{{trans('www.tax.number')}}</p>
+                <p class="service-price number tr">--</p>
                 <div class="cb"></div>
             </div>
             <div class="calc-price fb">
                 <p class="calc-result fl">{{trans('www.calculator.total.text')}}</p>
-                <p class="total-price fr">--</p>
+                <p class="service-price total tr">--</p>
                 <div class="cb"></div>
             </div>
         </div>
@@ -407,6 +467,8 @@ $jsTrans->addTrans(['www.tooltip.url.text']);
         $main.initRecentlyCars();
         $main.initPriceRange();
         $main.initTooltip();
+        $main.initParts();
+        $main.initTaxCalc();
     });
 </script>
 

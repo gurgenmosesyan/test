@@ -1,4 +1,5 @@
 <?php
+use App\Models\Tax\Tax;
 
 $head->appendScript('/admin/tax/tax.js');
 
@@ -71,7 +72,7 @@ $jsTrans->addTrans(['admin.base.label.select']);
         </div>
 
         <div class="form-group">
-            <label class="col-sm-3 control-label">{{trans('admin.base.label.engine_volume')}}</label>
+            <label class="col-sm-3 control-label data-req">{{trans('admin.base.label.engine_volume')}}</label>
             <div class="col-sm-3">
                 <select name="volume" class="form-control">
                     <option value="">{{trans('admin.base.label.select')}}</option>
@@ -83,6 +84,17 @@ $jsTrans->addTrans(['admin.base.label.select']);
                     @endwhile
                 </select>
                 <div id="form-error-volume" class="form-error"></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label data-req">{{trans('admin.base.label.body')}}</label>
+            <div class="col-sm-3">
+                <select name="body" class="form-control">
+                    <option value="{{Tax::BODY_PASSENGER}}"{{$tax->body == Tax::BODY_PASSENGER ? ' selected="selected"' : ''}}>{{trans('admin.base.label.passenger')}}</option>
+                    <option value="{{Tax::BODY_TRUCK}}"{{$tax->body == Tax::BODY_TRUCK ? ' selected="selected"' : ''}}>{{trans('admin.base.label.truck')}}</option>
+                </select>
+                <div id="form-error-engine_id" class="form-error"></div>
             </div>
         </div>
 

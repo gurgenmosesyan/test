@@ -34,13 +34,14 @@ class UserManager
             $user->save();
 
             $link = url_with_lng('/activation/'.$user->hash, false);
-            $body = trans('www.user.email.confirm.text', ['link' => '<a href="'.$link.'">'.$link.'</a>']);
+
             $emailManager = new EmailManager();
             $emailManager->storeEmail([
                 'to' => $user->email,
                 'to_name' => $user->first_name.' '.$user->last_name,
                 'subject' => trans('www.user.email.confirm.subject'),
-                'body' => $body
+                'body' => $link,
+                'template' => 'registration'
             ]);
         });
     }
@@ -129,14 +130,14 @@ class UserManager
         $user = User::active()->where('email', $data['email'])->firstOrFail();
 
         $link = url_with_lng('/reset/'.$user->hash, false);
-        $body = trans('www.user.email.forgot.text', ['link' => '<a href="'.$link.'">'.$link.'</a>']);
 
         $emailManager = new EmailManager();
         $emailManager->storeEmail([
             'to' => $user->email,
             'to_name' => $user->first_name.' '.$user->last_name,
             'subject' => trans('www.user.email.forgot.subject'),
-            'body' => $body
+            'body' => $link,
+            'template' => 'reset_password'
         ]);
     }
 

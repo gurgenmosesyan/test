@@ -73,7 +73,7 @@ class Search extends DataTable
         if ($this->orderType == 'asc') {
             $orderType = 'asc';
         }
-        $query->orderBy($orderCol, $orderType);
+        $query->orderBy($orderCol, $orderType)->orderBy('autos.id', 'desc');
     }
 
     protected function constructLimit($query)

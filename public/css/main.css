@@ -60,6 +60,7 @@ html,body {
 .mt10 { margin-top: 10px; }
 .mt20 { margin-top: 20px; }
 .mt25 { margin-top: 25px; }
+.mb15 { margin-bottom: 15px; }
 .mb25 { margin-bottom: 25px; }
 .ml10 { margin-left: 10px; }
 .ml15 { margin-left: 15px; }
@@ -686,12 +687,12 @@ body textarea {
     letter-spacing: 1px;
     max-width: 245px;
 }
-#parts-calculator .mark-select,
-#parts-calculator .model-select {
+#calculators .mark-select,
+#calculators .model-select {
     width: 131px;
     margin: 0 9px 15px 0;
 }
-#parts-calculator .model-select {
+#calculators .model-select {
     margin-right: 0;
 }
 #parts-calculator .checkbox-label {
@@ -760,17 +761,14 @@ body textarea {
 #page input[disabled="disabled"] {
     opacity: 0.5;
 }
-#tax-calculator .price-box {
-    margin-bottom: 15px;
-}
-#tax-calculator .year-select {
-    margin-bottom: 27px;
-}
 #tax-calculator .submit {
     margin-bottom: 27px;
 }
 #tax-calculator .calc-price {
     margin-bottom: 15px;
+}
+#tax-form .form-error {
+    margin-top: 5px;
 }
 
 /* login reg */
@@ -853,8 +851,10 @@ body textarea {
     letter-spacing: 1px;
     width: 100%;
 }
-#login-block .form-error {
+.form-error {
     color: #ff0000;
+}
+#login-block .form-error {
     font-size: 15px;
     margin-top: 4px;
 }
@@ -1120,7 +1120,6 @@ body textarea {
     line-height: 24px;
 }
 #sell .form-error {
-    color: #ff0000;
     font-size: 13px;
     margin-top: 2px;
 }

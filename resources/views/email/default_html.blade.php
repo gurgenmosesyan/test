@@ -15,6 +15,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Title</title>
 
+<style>
+    body {
+        color: #263238;
+        font-family: 'Helvetica-c', 'Helvetica', 'Arian AMU', 'Arial AMU', 'Arial', 'tahoma', sans-serif;
+        text-align: center;
+    }
+    body a {
+        color: #263238;
+    }
+</style>
+
 </head>
 <body>
 
