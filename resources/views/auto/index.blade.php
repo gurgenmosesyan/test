@@ -112,7 +112,7 @@ $jsTrans->addTrans(['www.auto.delete.confirm.text']);
                     @endif
                     <p class="fl key">{{trans('www.auto.engine')}}</p>
                     <p class="fl value">
-                        @if(!empty($auto->volume_1)){{$auto->volume_1.'.'.$auto->volume_2.' / '}}@endif
+                        @if(!empty($auto->volume)){{$auto->volume.' / '}}@endif
                         @if(!empty($auto->horsepower)){{$auto->horsepower.' '.trans('www.horsepower.short').' / '}}@endif
                         {{$auto->engine_ml->name}}
                     </p>

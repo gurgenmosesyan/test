@@ -19,7 +19,7 @@ $title = trans('www.user.activation.title');
                     {{trans('www.user.activation.wrong_hash')}}
                 @else
                     {{trans('www.user.activation.success_message')}}
-                    <a href="{{url_with_lng('/login')}}" class="orange">{{trans('www.login.title')}}</a>
+                    <a href="{{url_with_lng('/login')}}" class="orange">{{trans('www.user.profile.title')}}</a>
                 @endif
             </p>
         </div>

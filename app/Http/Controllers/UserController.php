@@ -70,6 +70,8 @@ class UserController extends Controller
             $manager = new UserManager();
             $user->hash = $manager->generateRandomUniqueHash();
             $user->save();
+            $auth = auth()->guard('user');
+            $auth->login($user);
         }
         return view('user.activation')->with([
             'wrong' => $wrong

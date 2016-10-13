@@ -14,7 +14,7 @@ class FavoriteController extends Controller
     {
         $user = Auth::guard('user')->user();
 
-        $autos = Auto::join('user_favorites as fav', function($query) use($user) {
+        $autos = Auto::select('autos.*')->join('user_favorites as fav', function($query) use($user) {
                 $query->on('fav.auto_id', '=', 'autos.id')->where('fav.user_id', '=', $user->id);
             })
             ->active()

@@ -315,8 +315,8 @@ $autoEmpty = Manager::getAutoEmpty();
                             <span class="title-box db fl">
                                 <span class="title db fb">{{$auto->mark->name.' '.$auto->model->name}}</span>
                                 <span class="details db">
-                                    @if(!empty($auto->volume_1))
-                                        {{$auto->volume_1.'.'.$auto->volume_2}}
+                                    @if(!empty($auto->volume))
+                                        {{$auto->volume}}
                                     @endif
                                     @if(!empty($auto->horsepower))
                                         {{'('.$auto->horsepower.' '.trans('www.horsepower.short').')'}}
