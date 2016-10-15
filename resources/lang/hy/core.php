@@ -22,6 +22,6 @@ return [
     'img.uploader.error.min_height' => 'Image min height must be :min_heightpx, uploaded image height is :file_widthpx',
     'img.uploader.error.max_height' => 'Image max height must be :max_heightpx, uploaded image height is :file_widthpx',
     'img.uploader.error.extension' => 'Image extension must be in :extensions',
-    'img.uploader.error.max_size' => 'You are trying to upload a very large image. Our max size is :max_size MB',
+    'img.uploader.error.max_size' => 'Դուք փորձում եք բեռնել շատ մեծ նկար․ Առավելագուն չափը պետք է լինի :max_size ՄԲ',
     'img.uploader.error.unable_create_dir' => 'Unable create dir, please contact your administrator'
 ];

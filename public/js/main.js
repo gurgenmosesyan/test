@@ -360,7 +360,9 @@ $main.initSearch = function() {
 $main.initAutoImages = function() {
     var auto = $('#auto');
     auto.find('.img-thumb').on('mouseover', function() {
-        auto.find('.main-img').attr('style', 'background-image: url(\''+$(this).attr('href')+'\');');
+        auto.find('.main-img').attr('style', 'background-image: url(\''+$(this).attr('href')+'\');').attr('href', $(this).attr('href'));
+        auto.find('.fancybox.dn').attr('rel', 'images-big');
+        auto.find('.hidden-img'+$(this).data('id')).attr('rel', false);
         auto.find('.img-thumb.active').removeClass('active');
         $(this).addClass('active');
         return false;

@@ -12,7 +12,7 @@ class Uploader extends FileUploader
     const TYPE = 'image';
 
     protected $options = [
-        'file_max_size' => 5,
+        'file_max_size' => 12,
         'extensions' => ['jpg', 'jpeg', 'png', 'gif'],
     ];
 

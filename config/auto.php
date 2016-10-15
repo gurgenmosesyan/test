@@ -17,8 +17,8 @@ return [
             //'height' => 500,
             //'min_width' => 500,
             //'min_height' => 500,
-            'max_width' => 1500,
-            'max_height' => 1500,
+            //'max_width' => 1500,
+            //'max_height' => 1500,
         ]
     ],
 

@@ -181,8 +181,8 @@ $jsTrans->addTrans(['www.auto.delete.confirm.text']);
                             <div class="images">
                                 <?php $images = []; ?>
                                 @foreach($auto->images as $key => $image)
-                                    <a href="{{$image->getImage()}}" class="fancybox dn"{{$key != 0 ? 'rel=images-big' : ''}}></a>
-                                    <a href="{{$image->getImage()}}" class="db fl img-thumb fancybox{{$key%4 == 0 ? ' mln' : ''}}{{$key == 0 ? ' active' : ''}}" rel="images" style="background-image: url('{{$image->getThumb()}}');"></a>
+                                    <a href="{{$image->getImage()}}" class="fancybox dn hidden-img{{$image->id}}"{{$key != 0 ? 'rel=images-big' : ''}}></a>
+                                    <a href="{{$image->getImage()}}" data-id="{{$image->id}}" class="db fl img-thumb fancybox{{$key%4 == 0 ? ' mln' : ''}}{{$key == 0 ? ' active' : ''}}" rel="images" style="background-image: url('{{$image->getThumb()}}');"></a>
                                     <?php $images[] = $image->getImage(); ?>
                                 @endforeach
                                 <div class="cb"></div>

@@ -120,12 +120,12 @@ class Manager
             $image = ImageManager::make($filePath);
             $width = $image->width();
             $height = $image->height();
-            if ($width > $height && $width > 1200) {
-                $image->resize(1200, null, function($constraint) {
+            if ($width > $height && $width > 2048) {
+                $image->resize(2048, null, function($constraint) {
                     $constraint->aspectRatio();
                 });
-            } else if ($height > 1200) {
-                $image->resize(null, 1200, function($constraint) {
+            } else if ($height > 2048) {
+                $image->resize(null, 2048, function($constraint) {
                     $constraint->aspectRatio();
                 });
             }
@@ -156,7 +156,9 @@ class Manager
         foreach ($data as $value) {
             if (empty($value['id'])) {
                 $newImages[] = $value;
-                $setMain = $i == 0 ? true : false;
+                if ($i == 0) {
+                    $setMain = true;
+                }
             } else {
                 $autoImage = AutoImage::findOrFail($value['id']);
                 if (!empty($value['rotate'])) {
@@ -177,6 +179,10 @@ class Manager
             }
             $i++;
         }
+        if (empty($data)) {
+            $auto->image = '';
+            $auto->save();
+        }
         if (!empty($newImages)) {
             $this->storeImages($newImages, $auto, $setMain);
         }
@@ -185,6 +191,8 @@ class Manager
             $imgPath = public_path($deletedImage->getStorePath().'/'.$deletedImage->image);
             if (file_exists($imgPath)) {
                 unlink($imgPath);
+                $pathInfo = pathinfo($imgPath);
+                SaveImage::deleteFolder($pathInfo['dirname'] . '/' . $pathInfo['filename']);
             }
         }
         AutoImage::where('auto_id', $auto->id)->where('show_status', Auto::STATUS_DELETED)->delete();

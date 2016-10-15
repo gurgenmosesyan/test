@@ -79,7 +79,7 @@ class ImageUploaderController extends BaseController
 			$data = ['error' => trans('core.img.uploader.error.extension', ['extensions' => implode(',', $e->getAllowedExtensions())])];
 		} catch (InvalidFileMaxSizeException $e) {
 			$status = 'INVALID_DATA';
-			$data = ['error' => trans('core.img.uploader.error.max_size', ['max_size' => $e->getMaxSize()])];
+			$data = ['error' => trans('core.img.uploader.error.max_size', ['max_size' => $e->getMaxSize()/1024/1024])];
 		} catch (UnableCreateDirException $e) {
 			$status = 'INVALID_DATA';
 			$data = ['error' => trans('core.img.uploader.error.unable_create_dir')];
