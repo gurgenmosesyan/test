@@ -118,20 +118,10 @@ class Manager
 
             $filePath = public_path($images[$i]->getStorePath().'/'.$fileName);
             $image = ImageManager::make($filePath);
-            $width = $image->width();
-            $height = $image->height();
-            if ($width > $height && $width > 2048) {
-                $image->resize(2048, null, function($constraint) {
-                    $constraint->aspectRatio();
-                });
-            } else if ($height > 2048) {
-                $image->resize(null, 2048, function($constraint) {
-                    $constraint->aspectRatio();
-                });
-            }
             if (!empty($value['rotate'])) {
                 $image->rotate($value['rotate']);
             }
+            $this->processImage($image);
             if ($watermark != null) {
                 $image->insert(public_path(Config::IMAGES_PATH.'/'.$watermark->value), 'bottom-right', 15, 10);
             }
@@ -165,6 +155,7 @@ class Manager
                     $filePath = public_path($autoImage->getStorePath().'/'.$autoImage->image);
                     $image = ImageManager::make($filePath);
                     $image->rotate($value['rotate']);
+                    $this->processImage($image);
                     list($newFilePath, $subDir, $fileName) = SaveImage::createPathInfo($autoImage, pathinfo($filePath, PATHINFO_EXTENSION));
                     $image->save($newFilePath.'/'.$subDir.'/'.$fileName);
                     $autoImage->setFile($subDir.'/'.$fileName, 'image');
@@ -196,6 +187,32 @@ class Manager
             }
         }
         AutoImage::where('auto_id', $auto->id)->where('show_status', Auto::STATUS_DELETED)->delete();
+    }
+
+    protected function processImage($image)
+    {
+        $width = $image->width();
+        $height = $image->height();
+
+        $w = 1200;
+        $h = 900;
+        if (($width / $height) > ($w / $h)) {
+            $image->resize(null, $h, function($constraint) {
+                $constraint->aspectRatio();
+            });
+            $width = $image->getWidth();
+            $x = abs(intval(($width - $w) / 2));
+            $image->crop($w, $h, $x, 0);
+        } else if (($width / $height) < ($w / $h)) {
+            $image->resize($w, null, function($constraint) {
+                $constraint->aspectRatio();
+            });
+            $height = $image->getHeight();
+            $y = abs(intval(($height - $h) / 2));
+            $image->crop($w, $h, 0, $y);
+        } else {
+            $image->resize($w, $h);
+        }
     }
 
     public function delete($id)
