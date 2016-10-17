@@ -58,13 +58,4 @@ class SellController extends Controller
             'currenciesData' => $currenciesData
         ]);
     }
-
-    public function success()
-    {
-        if (!Session::get('add_car')) {
-            return redirect()->route('sell', cLng('code'));
-        }
-
-        return view('sell.success');
-    }
 }

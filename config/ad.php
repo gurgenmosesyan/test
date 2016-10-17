@@ -16,8 +16,8 @@ return [
             'extensions' => [
                 'jpg', 'jpeg', 'png', 'gif'
             ],
-            'width' => 519,
-            'height' => 84,
+            'width' => 520,
+            'height' => 95,
         ],
         'right' => [
             'extensions' => [
@@ -30,8 +30,8 @@ return [
             'extensions' => [
                 'jpg', 'jpeg', 'png', 'gif'
             ],
-            'width' => 291,
-            'height' => 248,
+            'width' => 290,
+            'height' => 250,
         ]
     ]
 ];

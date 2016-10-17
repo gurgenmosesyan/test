@@ -21,12 +21,10 @@ class SellApiController extends Controller
             return $this->api('OK');
         }
 
-        $this->manager->add($data);
-
-        $request->session()->flash('add_car', true);
+        $autoId = $this->manager->add($data);
 
         return $this->api('OK', [
-            'link' => route('sell_success', cLng('code'))
+            'link' => url_with_lng('/auto/'.$autoId)
         ]);
     }
 }

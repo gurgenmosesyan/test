@@ -53,7 +53,6 @@ Route::group(['middleware' => ['web', 'front']], function() {
             Route::get('/profile/auto/success', ['uses' => 'UserController@autoUpdated', 'as' => 'auto_updated']);
             Route::get('/logout', ['uses' => 'UserController@logout', 'as' => 'user_logout']);
             Route::get('/sell', ['uses' => 'SellController@index', 'as' => 'sell']);
-            Route::get('/sell/success', ['uses' => 'SellController@success', 'as' => 'sell_success']);
             Route::post('/api/sell', 'SellApiController@add');
             Route::post('/api/region', 'ApiController@region');
             Route::post('/auto/delete', 'UserApiController@deleteAuto');
@@ -63,6 +62,8 @@ Route::group(['middleware' => ['web', 'front']], function() {
         });
 
         Route::get('/search', 'SearchController@index');
+        Route::get('/top-cars', 'TopCarController@index');
+        Route::get('/urgent-cars', 'UrgentCarController@index');
         Route::get('/auto/{autoId}', 'AutoController@index');
         Route::get('/history', 'HistoryController@index');
         Route::get('/page/{alias}', 'PageController@index');

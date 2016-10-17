@@ -16,6 +16,7 @@ use App\Models\Train\TrainMl;
 use App\Models\Transmission\TransmissionMl;
 use App\Image\Image;
 use App\Models\User\User;
+use Auth;
 
 class Auto extends Model
 {

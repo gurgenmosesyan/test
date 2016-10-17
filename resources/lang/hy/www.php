@@ -137,7 +137,6 @@ return array (
   'sell_car.description' => 'Նկարագրություն',
   'sell_car.upload_image' => 'Բեռնել նկարը',
   'sell_car.submit' => 'Ընդունել',
-  'sell_car.add.success_text' => 'Ձեր մեքենան հաջողությամբ ավելացված է: Սպասեք ադմինի հաստատմանը:',
   'body.select.default' => 'Body',
   'transmission.select.default' => 'Փոխանցման տուփ',
   'train.select.default' => 'Train',

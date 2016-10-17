@@ -137,7 +137,6 @@ return array (
   'sell_car.description' => 'Description',
   'sell_car.upload_image' => 'Upload image',
   'sell_car.submit' => 'Accept',
-  'sell_car.add.success_text' => 'Your car successfully added. Wait for admin confirmation.',
   'body.select.default' => 'Body',
   'transmission.select.default' => 'Transmission',
   'train.select.default' => 'Train',

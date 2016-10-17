@@ -9,8 +9,8 @@ return [
             'extensions' => [
                 'jpg', 'jpeg', 'png'
             ],
-            'width' => 229,
-            'height' => 53,
+            'width' => 460,
+            'height' => 110,
         ],
         'watermark' => [
             'extensions' => [

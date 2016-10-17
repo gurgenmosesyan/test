@@ -221,6 +221,8 @@ class Manager
             $this->updateOptions($data['options'], $auto);
             $this->storeImages($data['images'], $auto);
         });
+
+        return $auto->auto_id;
     }
 
     public function updateAuto($data, $id)
@@ -229,6 +231,7 @@ class Manager
         $auto = Auto::active()->where('user_id', $user->id)->where('id', $id)->firstOrFail();
         $data['user_id'] = $user->id;
         $data['term'] = empty($data['term']) ? $auto->term : date('Y-m-d', time()+(60*60*24*7*$data['term']));
+        $data['status'] = Auto::STATUS_PENDING;
         $data = $this->processSave($data);
         DB::transaction(function() use($data, $auto) {
             $auto->update($data);

@@ -137,7 +137,6 @@ return array (
   'sell_car.description' => 'Описание',
   'sell_car.upload_image' => 'Загрузить изображение',
   'sell_car.submit' => 'Принимать',
-  'sell_car.add.success_text' => 'Ваш автомобиль успешно добавлен. Дождитесь подтверждения администратора.',
   'body.select.default' => 'Body',
   'transmission.select.default' => 'Коробка передач',
   'train.select.default' => 'Train',

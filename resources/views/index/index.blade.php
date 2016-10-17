@@ -29,7 +29,7 @@ $jsTrans->addTrans([
     @include('blocks.top_banner')
 
     <div id="top-cars" class="fl">
-        <h2 class="orange fb"><span class="dib">{{trans('www.top_cars.title')}}</span></h2>
+        <h2 class="orange fb"><a href="{{url_with_lng('/top-cars', false)}}" class="dib">{{trans('www.top_cars.title')}}</a></h2>
         <div class="help" title="{{trans('www.top_cars.tooltip.text')}}" data-url="#"></div>
         @if($topCars->isEmpty())
             <div class="no-cars tc">{{trans('www.no_cars')}}</div>
@@ -196,7 +196,7 @@ $jsTrans->addTrans([
 
     <div id="homepage-left" class="fl">
         <div id="urgent-cars" class="small-box">
-            <h2 class="orange fb"><span class="dib">{{trans('www.urgent_cars.title')}}</span></h2>
+            <h2 class="orange fb"><a href="{{url_with_lng('/urgent-cars', false)}}" class="dib">{{trans('www.urgent_cars.title')}}</a></h2>
             <div class="help" title="{{trans('www.urgent_cars.tooltip.text')}}" data-url="#"></div>
             @if($urgentCars->isEmpty())
                 <div class="no-cars tc">{{trans('www.no_cars')}}</div>
@@ -242,7 +242,7 @@ $jsTrans->addTrans([
             @endif
         </div>
         <div id="recently-cars" class="small-box">
-            <h2 class="orange fb"><span class="dib">{{trans('www.recently_cars.title')}}</span></h2>
+            <h2 class="orange fb"><a href="{{url_with_lng('/search', false)}}" class="dib">{{trans('www.recently_cars.title')}}</a></h2>
             @if($recentCars->isEmpty())
                 <div class="no-cars tc">{{trans('www.no_cars')}}</div>
             @else

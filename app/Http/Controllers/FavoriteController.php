@@ -45,7 +45,13 @@ class FavoriteController extends Controller
         if ($action != 'add' && $action != 'delete') {
             return $this->api('INVALID_DATA');
         }
-        $auto = Auto::active()->notBlocked()->term()->where('id', $autoId)->firstOrFail();
+        $auto = Auto::active()->where('id', $autoId)
+            ->where(function($query) use($user) {
+                $query->where('autos.user_id', $user->id)->orWhere(function($query) {
+                    $query->notBlocked()->term();
+                });
+            })->firstOrFail();
+
         if ($action == 'add') {
             $userFav = DB::table('user_favorites')->where('user_id', $user->id)->where('auto_id', $autoId)->first();
             if ($userFav == null) {

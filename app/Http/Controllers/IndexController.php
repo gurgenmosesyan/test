@@ -9,6 +9,7 @@ use App\Models\Country\CountryMl;
 use App\Models\Mark\Mark;
 use App\Models\Body\Body;
 use App\Models\Currency\CurrencyManager;
+use App\Models\UrgentCar\UrgentCar;
 use Auth;
 use DB;
 
@@ -19,7 +20,7 @@ class IndexController extends Controller
         $topCars = TopCar::active()->inDate()->with(['auto' => function($query) {
             $query->term()->with('mark', 'model', 'country_ml', 'region_ml');
         }])->get();
-        $urgentCars = TopCar::active()->inDate()->with(['auto' => function($query) {
+        $urgentCars = UrgentCar::active()->inDate()->with(['auto' => function($query) {
             $query->term()->with('mark', 'model', 'country_ml', 'region_ml');
         }])->get();
         foreach ($topCars as $key => $car) {
