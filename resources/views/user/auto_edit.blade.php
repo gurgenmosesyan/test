@@ -12,6 +12,7 @@ $autoOptions = $auto->options->keyBy('option_id');
 @section('content')
 <script type="text/javascript">
     $sell.images = <?php echo json_encode($auto->images); ?>;
+    $sell.defImgSrc = '{{$auto->image}}';
 </script>
 <div class="page">
 
@@ -449,8 +450,8 @@ $autoOptions = $auto->options->keyBy('option_id');
                 <div class="form-box">
                     <label class="checkbox-label no-select">
                         {{trans('www.sell_car.exchange')}}
+                        <input type="checkbox" name="exchange" value="{{Auto::EXCHANGE}}"{{$auto->isExchange() ? ' checked="checked"' : ''}} />
                     </label>
-                    <input type="checkbox" name="exchange" value="{{Auto::EXCHANGE}}"{{$auto->isExchange() ? ' checked="checked"' : ''}} />
                 </div>
                 <div class="form-box">
                     <label class="checkbox-label no-select">

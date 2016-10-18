@@ -111,6 +111,7 @@ class Manager
         $watermark = Config::where('key', Config::KEY_WATERMARK)->first();
         $images = [];
         $i = 0;
+        $defImgKey = null;
         foreach ($data as $value) {
             $images[$i] = new AutoImage(['show_status' => Auto::STATUS_ACTIVE]);
             $fileName = SaveImage::save($value['image'], $images[$i]);
@@ -126,11 +127,18 @@ class Manager
                 $image->insert(public_path(Config::IMAGES_PATH.'/'.$watermark->value), 'bottom-right', 15, 10);
             }
             $image->save($filePath);
+
+            if (isset($value['default']) && $value['default'] == Auto::IMAGE_DEFAULT) {
+                $defImgKey = $i;
+            }
             $i++;
         }
         if (!empty($images)) {
             $auto->images()->saveMany($images);
-            if ($setMain) {
+            if ($defImgKey !== null) {
+                $auto->image = $images[$defImgKey]->image;
+                $auto->save();
+            } else if ($setMain) {
                 $auto->image = $images[0]->image;
                 $auto->save();
             }
@@ -142,6 +150,7 @@ class Manager
         AutoImage::where('auto_id', $auto->id)->update(['show_status' => Auto::STATUS_DELETED]);
         $newImages = [];
         $setMain = false;
+        $defImg = null;
         $i = 0;
         foreach ($data as $value) {
             if (empty($value['id'])) {
@@ -163,15 +172,17 @@ class Manager
                 }
                 $autoImage->show_status = Auto::STATUS_ACTIVE;
                 $autoImage->save();
-                if ($i == 0) {
-                    $auto->image = $autoImage->image;
-                    $auto->save();
+                if ($i == 0 || (isset($value['default']) && $value['default'] == Auto::IMAGE_DEFAULT)) {
+                    $defImg = $autoImage;
                 }
             }
             $i++;
         }
         if (empty($data)) {
             $auto->image = '';
+            $auto->save();
+        } else if ($defImg !== null) {
+            $auto->image = $defImg->image;
             $auto->save();
         }
         if (!empty($newImages)) {

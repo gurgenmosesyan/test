@@ -76,6 +76,12 @@ $sell.initUploaderForm = function() {
 
 $sell.addImage = function(imgPath, imgVal, id) {
     var idStr = id ? '<input type="hidden" name="images['+$sell.imgIndex+'][id]" value="'+id+'" />' : '';
+    var labelClass = '',
+        checked = '';
+    if (imgPath.indexOf($sell.defImgSrc) != -1) {
+        labelClass = ' active';
+        checked = ' checked="checked"';
+    }
     var html =  '<div class="img-box fl">'+
                     '<div class="img-item tc">'+
                         '<img class="uploaded-image" src="'+imgPath+'" />'+
@@ -83,6 +89,9 @@ $sell.addImage = function(imgPath, imgVal, id) {
                     '<input type="hidden" name="images['+$sell.imgIndex+'][image]" value="'+imgVal+'" />'+
                     '<input type="hidden" class="rotate-input" name="images['+$sell.imgIndex+'][rotate]" value="0" />'+
                     idStr+
+                    '<label class="default dib'+labelClass+'">'+
+                        '<input type="radio" name="images['+$sell.imgIndex+'][default]" value="1"'+checked+' />'+
+                    '</label>'+
                     '<div class="img-tools">'+
                         '<a href="#" class="rotate-left dib"></a>'+
                         '<a href="#" class="rotate-right dib"></a>'+
@@ -92,7 +101,9 @@ $sell.addImage = function(imgPath, imgVal, id) {
                 '</div>';
     html = $(html);
     $sell.initImageTools(html);
-    $('#sell-images').append(html);
+    var sellImages = $('#sell-images');
+    sellImages.append(html);
+    $sell.initDefaultRadio(sellImages);
     $sell.imgIndex++;
 };
 
@@ -108,6 +119,21 @@ $sell.initImageTools = function(html) {
     $('.rotate-right', html).on('click', function() {
         $sell.imgRotate(-90, html);
         return false;
+    });
+};
+
+$sell.initDefaultRadio = function(obj) {
+    var checked = false;
+    $('input:radio', obj).on('change', function() {
+        if ($(this).prop('checked')) {
+            checked = true;
+        }
+        $('input:radio', obj).prop('checked', false);
+        $('.default', obj).removeClass('active');
+        if (checked) {
+            $(this).prop('checked', true);
+            $(this).parent('label').addClass('active');
+        }
     });
 };
 

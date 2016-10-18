@@ -37,6 +37,8 @@ class Auto extends Model
     const NOT_CUSTOM_CLEARED = '0';
     const DAMAGED = '1';
     const NOT_DAMAGED = '0';
+    const IMAGE_DEFAULT = '1';
+    const IMAGE_NOT_DEFAULT = '0';
     const STATUS_PENDING = 'pending';
     const STATUS_APPROVED = 'approved';
     const STATUS_BLOCKED = 'blocked';

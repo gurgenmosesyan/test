@@ -65,7 +65,8 @@ class SellRequest extends Request
             'images' => 'array|max:10',
             'images.*.id' => 'integer',
             'images.*.image' => 'required|core_image',
-            'images.*.rotate' => 'numeric'
+            'images.*.rotate' => 'numeric',
+            'images.*.default' => 'in:'.Auto::IMAGE_DEFAULT.','.Auto::IMAGE_NOT_DEFAULT,
         ];
 
         if ($routeName != 'auto_update') {

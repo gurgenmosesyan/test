@@ -1173,6 +1173,21 @@ body textarea {
     max-height: 100%;
     max-width: 100%;
 }
+#sell-images .default {
+    background: #ffffff url('../images/radio.png') no-repeat;
+    background-size: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+    position: absolute;
+    height: 20px !important;
+    margin: 0 !important;
+    top: 4px;
+    left: 4px;
+    width: 20px !important;
+}
+#sell-images .default.active {
+    background-image: url('../images/radio-active.png');
+}
 #sell-images .img-tools {
     position: absolute;
     top: 4px;
