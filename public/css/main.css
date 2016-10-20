@@ -244,7 +244,7 @@ body textarea {
 #top-cars {
     background-color: #ffffff;
     margin-right: 12px;
-    min-height: 540px;
+    min-height: 578px;
     padding: 26px 20px 2px 21px;
     position: relative;
     width: 777px;
@@ -279,7 +279,7 @@ body textarea {
     line-height: 30px;
 }
 #urgent-cars {
-    min-height: 846px;
+    min-height: 866px;
 }
 #top-cars .help,
 #urgent-cars .help {
@@ -324,7 +324,7 @@ body textarea {
 .auto-item .auto-img {
     background-repeat: no-repeat;
     background-size: cover;
-    height: 177px;
+    height: 184px;
     margin-bottom: 5px;
     position: relative;
     width: 100%;
@@ -637,7 +637,7 @@ body textarea {
     margin-left: 0;
 }
 .small-box .auto-img {
-    height: 132px;
+    height: 137px;
     width: 100%;
 }
 .small-box .favorite-icon {
@@ -1299,7 +1299,7 @@ body textarea {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    height: 148px;
+    height: 154px;
     margin-right: 15px;
     position: relative;
     width: 205px;
@@ -1437,7 +1437,7 @@ body textarea {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    height: 90px;
+    height: 96px;
     margin: 5px 0 0 5px;
     width: 128px;
 }

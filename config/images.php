@@ -8,7 +8,7 @@ return [
         'path' => '/'.Auto::IMAGES_PATH,
         'thumb' => [
             'width' => '245',
-            'height' => '177',
+            'height' => '184',
             'crop' => 'center'
         ]
     ],
@@ -16,7 +16,7 @@ return [
         'path' => '/'.Config::IMAGES_PATH,
         'auto_empty_thumb' => [
             'width' => '245',
-            'height' => '177',
+            'height' => '184',
             'crop' => 'center'
         ]
     ]
