@@ -5,6 +5,7 @@ Route::group(['middleware' => ['web', 'guest:user']], function() {
 });
 
 Route::group(['middleware' => ['web']], function() {
+    Route::get('/language', ['uses' => 'LanguageController@index', 'as' => 'language']);
     Route::post('/api/model', 'ApiController@model');
     Route::post('/api/part', 'ApiController@part');
     Route::post('/api/tax', 'ApiController@tax');

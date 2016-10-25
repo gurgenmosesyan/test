@@ -97,7 +97,7 @@ $footerMenu = FooterMenuManager::get();
                         <ul id="lng-list" class="dpn">
                             @foreach($languages as $lng)
                                 @if($lng->id != cLng('id'))
-                                    <li><a href="{{url('/'.$lng->code.'/')}}" class="db tu tc">{{trans('www.lng.switcher.'.$lng->code)}}</a></li>
+                                    <li><a href="{{route('language', ['code' => $lng->code])}}" class="db tu tc">{{trans('www.lng.switcher.'.$lng->code)}}</a></li>
                                 @endif
                             @endforeach
                         </ul>
@@ -168,7 +168,7 @@ $footerMenu = FooterMenuManager::get();
                             <li class="cb"></li>
                         </ul>
                     </div>
-                    <div class="footer-payments fl">
+                    {{--<div class="footer-payments fl">
                         <p class="tc">{{trans('www.footer.payments.title')}}</p>
                         <ul>
                             <li class="fl">
@@ -182,7 +182,7 @@ $footerMenu = FooterMenuManager::get();
                             </li>
                             <li class="cb"></li>
                         </ul>
-                    </div>
+                    </div>--}}
                     <div class="cb"></div>
                 </div>
                 <div class="footer-right fr">

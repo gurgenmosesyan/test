@@ -52,7 +52,7 @@ $title = trans('www.user.profile.title');
                     </p>
                 </div>
             </div>
-            <div class="profile-right fl">
+            {{--<div class="profile-right fl">
                 <div class="balance">
                     <div class="balance-icon fl"></div>
                     <div class="balance-text fl">
@@ -67,7 +67,7 @@ $title = trans('www.user.profile.title');
                     <a href="#"><img src="{{url('/images/telcell.png')}}" /></a>
                     <a href="#"><img src="{{url('/images/arca.png')}}" /></a>
                 </div>
-            </div>
+            </div>--}}
             <div class="cb"></div>
 
         </div>
