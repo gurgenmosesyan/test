@@ -18,12 +18,17 @@ use App\Models\Color\Color;
 use App\Models\InteriorColor\Color as InteriorColor;
 use App\Models\Wheel\Wheel;
 use Session;
+use Auth;
 
 class SellController extends Controller
 {
     public function index()
     {
-        $auto = new Auto();
+        $user = Auth::guard('user')->user();
+        $autosCount = Auto::active()->where('user_id', $user->id)->count();
+        if ($autosCount >= 10) {
+            return view('sell.limit');
+        }
         $marks = Mark::active()->get();
         $bodies = Body::joinMl()->active()->get();
         $transmissions = Transmission::joinMl()->active()->get();
@@ -40,7 +45,6 @@ class SellController extends Controller
         $currenciesData = Currency::active()->ordered()->get();
 
         return view('sell.index')->with([
-            'auto' => $auto,
             'marks' => $marks,
             'models' => [],
             'bodies' => $bodies,

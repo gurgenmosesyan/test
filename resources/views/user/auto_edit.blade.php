@@ -6,6 +6,8 @@ $head->appendScript('/js/sell.js');
 $title = trans('www.sell_car.title');
 
 $autoOptions = $auto->options->keyBy('option_id');
+
+$jsTrans->addTrans(['www.auto.images.limit.text']);
 ?>
 @extends('layout')
 

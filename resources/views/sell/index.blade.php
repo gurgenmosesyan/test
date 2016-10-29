@@ -7,7 +7,8 @@ $title = trans('www.sell_car.title');
 
 $jsTrans->addTrans([
     'www.sell_car.submit',
-    'www.sell_car.next'
+    'www.sell_car.next',
+    'www.auto.images.limit.text'
 ]);
 ?>
 @extends('layout')

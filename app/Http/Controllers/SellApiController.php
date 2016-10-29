@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Auto\Auto;
 use App\Models\Auto\Manager;
 use App\Http\Requests\SellRequest;
+use Auth;
 
 class SellApiController extends Controller
 {
@@ -19,6 +21,12 @@ class SellApiController extends Controller
         $data = $request->all();
         if ($data['action'] == 'next') {
             return $this->api('OK');
+        }
+
+        $user = Auth::guard('user')->user();
+        $autosCount = Auto::active()->where('user_id', $user->id)->count();
+        if ($autosCount >= 10) {
+            return $this->api('AUTO_LIMIT', null, ['limit' => trans('www.auto.add.limit.text')]);
         }
 
         $autoId = $this->manager->add($data);

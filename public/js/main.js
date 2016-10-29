@@ -474,6 +474,7 @@ $main.initTooltip = function() {
 $main.initPopup = function() {
     $.fn.popup = function(options) {
         var settings = $.extend({
+            alert: false,
             title: '',
             text: ''
         }, options);
@@ -494,12 +495,14 @@ $main.initPopup = function() {
         popup.content.append(popup.title.text(settings.title));
         popup.content.append(popup.text.text(settings.text));
 
+        var cancel = settings.alert ? '' : '<a href="#" class="btn dib cancel">'+$trans.get('www.base.label.cancel')+'</a>';
         var links = '<div class="popup-links">'+
-                        '<a href="#" class="btn dib ok">'+$trans.get('www.base.label.ok')+'</a>' +
-                        '<a href="#" class="btn dib cancel">'+$trans.get('www.base.label.cancel')+'</a>' +
+                        '<a href="#" class="btn dib ok">'+$trans.get('www.base.label.ok')+'</a>'+
+                        cancel+
                     '</div>';
         links = $(links);
-        links.find('.cancel').on('click', function() {
+        var closeClass = settings.alert ? '.ok' : '.cancel';
+        links.find(closeClass).on('click', function() {
             popup.remove();
             return false;
         });

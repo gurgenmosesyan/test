@@ -240,4 +240,8 @@ return array (
   'tax.passport' => 'Տեխ․ անձնագիր։',
   'tax.number' => 'Ավտոպետհամարանիշ։',
   'tax.error' => 'Fill in all fields',
+  '404.title' => '404',
+  '404.text' => 'Էջը չի գտնվել',
+  'auto.images.limit.text' => 'Max images count 10',
+  'auto.add.limit.text' => 'Դուք կարող եք ավելացնել առավելագույնը 10 ավտոմեքենա:',
 );

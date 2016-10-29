@@ -160,7 +160,11 @@ $sell.generateImages = function() {
 $sell.initImageUpload = function() {
     $('#upload-image').on('click', function() {
         if ($('#sell-images').find('.img-box').length > 9) {
-            alert('Max images count 10');
+            $('#popup').popup({
+                alert: true,
+                title: $trans.get('www.base.label.attention'),
+                text: $trans.get('www.auto.images.limit.text')
+            });
             return false;
         }
         $('#iframe-img-uploader').remove();
@@ -315,6 +319,12 @@ $sell.checkPages = function(form, result) {
     }  else if ($sell.page7.hasClass('opened')) {
         if (result.status == 'OK') {
             document.location.href = result.data.link;
+        } else if (result.status == 'AUTO_LIMIT') {
+            $('#popup').popup({
+                alert: true,
+                title: $trans.get('www.base.label.attention'),
+                text: result.errors.limit
+            });
         }
     }
 };
@@ -336,11 +346,7 @@ $sell.initForm = function() {
                 if (result.status != 'OK') {
                     $sell.showErrors(form, result.errors);
                 }
-                if ($sell.pages) {
-                    $sell.checkPages(form, result);
-                } else if (result.status == 'OK') {
-                    document.location.href = result.data.link;
-                }
+                $sell.checkPages(form, result);
                 form.removeClass('loading');
             }
         });
