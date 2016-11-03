@@ -1,6 +1,11 @@
 <?php
+use App\Models\Config\Manager;
 
 $title = trans('www.profile_changed.text');
+$logo = Manager::getLogo();
+$meta->title($title);
+$meta->ogTitle($title);
+$meta->ogImage(url($logo));
 
 ?>
 @extends('layout')
@@ -16,7 +21,7 @@ $title = trans('www.profile_changed.text');
         <br />
         <br />
         <br />
-        <a href="{{route('profile_autos', cLng('code'))}}" class="orange underline">{{trans('www.base.label.back_to_list')}}</a>
+        <a href="{{url_with_lng('/auto/'.$autoId, false)}}" class="orange underline">{{trans('www.base.label.back_to_auto')}}</a>
     </div>
 
 </div>

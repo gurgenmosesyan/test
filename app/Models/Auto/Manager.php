@@ -266,6 +266,6 @@ class Manager
             $this->updateOptions($data['options'], $auto, true);
             $this->updateImages($data['images'], $auto);
         });
-        return true;
+        return $auto;
     }
 }

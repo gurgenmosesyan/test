@@ -1,6 +1,11 @@
 <?php
+use App\Models\Config\Manager;
 
-$title = trans('www.sell_car.title');
+$logo = Manager::getLogo();
+$meta->title(trans('www.sell_car.title'));
+$meta->ogTitle(trans('www.sell_car.title'));
+$meta->ogImage(url($logo));
+$meta->ogUrl(url_with_lng('/sell'));
 
 ?>
 @extends('layout')

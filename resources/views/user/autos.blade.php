@@ -4,6 +4,10 @@ use App\Models\Config\Manager;
 use App\Helpers\Base;
 
 $title = trans('www.user.profile.autos');
+$logo = Manager::getLogo();
+$meta->title($title);
+$meta->ogTitle($title);
+$meta->ogImage(url($logo));
 
 $autoEmpty = Manager::getAutoEmpty();
 ?>

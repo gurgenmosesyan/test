@@ -1,9 +1,14 @@
 <?php
 use App\Models\Auto\Auto;
+use App\Models\Config\Manager;
 
 $head->appendScript('/js/sell.js');
 
-$title = trans('www.sell_car.title');
+$logo = Manager::getLogo();
+$meta->title(trans('www.sell_car.title'));
+$meta->ogTitle(trans('www.sell_car.title'));
+$meta->ogImage(url($logo));
+$meta->ogUrl(url_with_lng('/sell'));
 
 $jsTrans->addTrans([
     'www.sell_car.submit',

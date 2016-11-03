@@ -212,7 +212,8 @@ class UserController extends Controller
         if (!Session::get('auto_updated')) {
             return redirect()->route('profile_autos', cLng('code'));
         }
-        return view('user.auto_updated');
+        $autoId = Session::get('updated_auto_id');
+        return view('user.auto_updated')->with(['autoId' => $autoId]);
     }
 
     public function logout()

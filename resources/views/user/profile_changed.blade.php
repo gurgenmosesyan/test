@@ -1,6 +1,11 @@
 <?php
+use App\Models\Config\Manager;
 
 $title = trans('www.profile_changed.text');
+$logo = Manager::getLogo();
+$meta->title($title);
+$meta->ogTitle($title);
+$meta->ogImage(url($logo));
 
 ?>
 @extends('layout')

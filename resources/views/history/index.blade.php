@@ -2,7 +2,11 @@
 use App\Models\Config\Manager;
 use App\Helpers\Base;
 
-$title = trans('www.history.title');
+$logo = Manager::getLogo();
+$meta->title(trans('www.history.title'));
+$meta->ogTitle(trans('www.history.title'));
+$meta->ogImage(url($logo));
+$meta->ogUrl(url_with_lng('/history'));
 
 $autoEmpty = Manager::getAutoEmpty();
 ?>

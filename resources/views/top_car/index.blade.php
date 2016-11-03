@@ -2,7 +2,14 @@
 use App\Models\Config\Manager;
 use App\Helpers\Base;
 
-$title = trans('www.top_cars.title');
+$logo = Manager::getLogo();
+$meta->title(trans('www.top_cars.title'));
+$meta->description(trans('www.top_cars.description'));
+$meta->keywords(trans('www.top_cars.keywords'));
+$meta->ogTitle(trans('www.top_cars.title'));
+$meta->ogDescription(trans('www.top_cars.description'));
+$meta->ogImage(url($logo));
+$meta->ogUrl(url_with_lng('/top-cars'));
 
 $autoEmpty = Manager::getAutoEmpty();
 ?>

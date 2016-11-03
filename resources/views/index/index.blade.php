@@ -4,12 +4,19 @@ use App\Helpers\Base;
 use App\Models\Config\Manager as ConfManager;
 use App\Models\Ad\Manager as AdManager;
 
+$logo = ConfManager::getLogo();
+$meta->title(trans('www.homepage.title'), false);
+$meta->description(trans('www.homepage.description'));
+$meta->keywords(trans('www.homepage.keywords'));
+$meta->ogTitle(trans('www.homepage.title'));
+$meta->ogDescription(trans('www.homepage.description'));
+$meta->ogImage(url($logo));
+$meta->ogUrl(url_with_lng('/'));
+
 $head->appendStyle('/css/jquery-ui.min.css');
 $head->appendStyle('/css/owl.carousel.css');
 $head->appendScript('/js/jquery-ui.min.js');
 $head->appendScript('/js/owl.carousel.min.js');
-
-$title = trans('www.homepage.title');
 
 $autoEmpty = ConfManager::getAutoEmpty();
 $thinBanners = AdManager::get('thin');
@@ -38,7 +45,7 @@ $jsTrans->addTrans([
                 <div class="box-part">
                     @foreach($topCars->shuffle()->slice(0, 18) as $key => $value)
                         <?php $auto = $value->auto; ?>
-                        @if(($key == 6 || $key == 12) && isset($topCars[$key+1]))
+                        @if(($key == 6 || $key == 12) && isset($topCars[$key]))
                             <div class="cb"></div>
                             </div><div class="box-part">
                         @endif
@@ -205,7 +212,7 @@ $jsTrans->addTrans([
                     <div class="box-part">
                         @foreach($urgentCars->shuffle()->slice(0, 32) as $key => $value)
                             <?php $auto = $value->auto; ?>
-                            @if(($key == 16) && isset($urgentCars[$key+1]))
+                            @if(($key == 16) && isset($urgentCars[$key]))
                                 <div class="cb"></div>
                                 </div><div class="box-part">
                             @endif
@@ -249,7 +256,7 @@ $jsTrans->addTrans([
                 <div class="car-block owl-carousel">
                     <div class="box-part">
                         @foreach($recentCars as $key => $auto)
-                            @if(($key == 4 || $key == 8) && isset($recentCars[$key+1]))
+                            @if(($key == 4 || $key == 8) && isset($recentCars[$key]))
                                 <div class="cb"></div>
                                 </div><div class="box-part">
                             @endif

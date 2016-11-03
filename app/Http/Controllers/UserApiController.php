@@ -146,8 +146,9 @@ class UserApiController extends Controller
     public function autoUpdate(SellRequest $request, $lngCode, $id)
     {
         $autoManager = new Manager();
-        $autoManager->updateAuto($request->all(), $id);
+        $auto = $autoManager->updateAuto($request->all(), $id);
         $request->session()->flash('auto_updated', true);
+        $request->session()->flash('updated_auto_id', $auto->auto_id);
         return $this->api('OK', ['link' => route('auto_updated', cLng('code'))]);
     }
 

@@ -118,6 +118,12 @@ $user.init = function() {
         });
         return false;
     });
+    $('#auto-edit-form').submit(function() {
+        $user.sendForm($(this), function(data) {
+            document.location.href = data.link;
+        });
+        return false;
+    });
     $('#fb-login').on('click', function() {
         $user.FBConnect();
         return false;

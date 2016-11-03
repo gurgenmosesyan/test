@@ -2,7 +2,11 @@
 use App\Models\Config\Manager;
 use App\Helpers\Base;
 
-$title = trans('www.favorites.title');
+$logo = Manager::getLogo();
+$meta->title(trans('www.favorites.title'));
+$meta->ogTitle(trans('www.favorites.title'));
+$meta->ogImage(url($logo));
+$meta->ogUrl(url_with_lng('/favorite'));
 
 $autoEmpty = Manager::getAutoEmpty();
 ?>

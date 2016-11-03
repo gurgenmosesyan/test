@@ -1,9 +1,15 @@
 <?php
 use App\Models\Auto\Auto;
+use App\Models\Config\Manager;
 
 $head->appendScript('/js/sell.js');
+$head->appendScript('/js/user.js');
 
-$title = trans('www.sell_car.title');
+$title = trans('www.base.label.edit');
+$logo = Manager::getLogo();
+$meta->title($title);
+$meta->ogTitle($title);
+$meta->ogImage(url($logo));
 
 $autoOptions = $auto->options->keyBy('option_id');
 
@@ -46,7 +52,7 @@ $jsTrans->addTrans(['www.auto.images.limit.text']);
         @if($auto->isBlocked())
             <p class="status fb">{{trans('www.auto.status.blocked')}}</p>
         @endif
-        <form id="sell-form" action="{{url_with_lng('/profile/auto/'.$auto->id, false)}}" method="post">
+        <form id="auto-edit-form" action="{{url_with_lng('/profile/auto/'.$auto->id, false)}}" method="post">
             <div class="col-2 sell-left fl">
 
                 <div class="form-box">

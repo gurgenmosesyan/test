@@ -1,9 +1,14 @@
 <?php
 use App\Models\User\User;
-
-$head->appendScript('/js/user.js');
+use App\Models\Config\Manager;
 
 $title = trans('www.profile.edit.title');
+$logo = Manager::getLogo();
+$meta->title($title);
+$meta->ogTitle($title);
+$meta->ogImage(url($logo));
+
+$head->appendScript('/js/user.js');
 
 ?>
 @extends('layout')

@@ -14,9 +14,18 @@ if ($auto->isContract()) {
     $price = Base::price($auto, $currencies, $defCurrency, $cCurrency, 'code');
 }
 
-$title = $auto->mark->name.' '.$auto->model->name.' '.$auto->year.', '.strtoupper($price);
-
 $autoEmpty = Manager::getAutoEmpty();
+$autoImage = $auto->getImage($autoEmpty);
+
+$title = $auto->mark->name.' '.$auto->model->name.' '.$auto->year.', '.strtoupper($price);
+$details = $auto->country_ml->name.', '.$auto->year.', '.$auto->mileageInfo().', '.$auto->body_ml->name.', '.$auto->color_ml->name.', '.$auto->engine_ml->name.', '.$auto->transmission_ml->name.', '.$auto->rudder_ml->name;
+$meta->title($title);
+$meta->description($details);
+$meta->keywords($details);
+$meta->ogTitle($title);
+$meta->ogDescription($details);
+$meta->ogImage($autoImage);
+$meta->ogUrl(url_with_lng('/auto/'.$auto->auto_id));
 
 $autoOptions = $auto->options->keyBy('option_id');
 
@@ -169,14 +178,15 @@ $jsTrans->addTrans(['www.auto.delete.confirm.text']);
                         <div class="cb"></div>
                     @endif
                     @if(!empty($auto->description))
-                        <div class="desc mt25">{{$auto->description}}</div>
+                        <div class="desc mt25 lh22">{{$auto->description}}</div>
                     @endif
                 </div>
                 <div class="main-right fl">
 
                     <div class="images-box">
                         <span class="favorite-icon fav-{{$auto->id}} db{{$isFavorite ? ' active' : ''}}" data-id="{{$auto->id}}"></span>
-                        <a class="main-img db fancybox" href="{{$auto->getImage($autoEmpty)}}" rel="images-big" style="background-image: url('{{$auto->getImage($autoEmpty)}}');"></a>
+                        <?php $autoImage = $auto->images->isEmpty() ? $autoImage : $auto->images[0]->getImage(); ?>
+                        <a class="main-img db fancybox" href="{{$autoImage}}" rel="images-big" style="background-image: url('{{$autoImage}}');"></a>
                         @if(!empty($auto->images))
                             <div class="images">
                                 <?php $images = []; ?>

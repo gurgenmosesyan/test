@@ -3,7 +3,13 @@ use App\Models\Auto\Auto;
 use App\Helpers\Base;
 use App\Models\Config\Manager;
 
-$title = trans('www.search.title');
+$logo = Manager::getLogo();
+$meta->title(trans('www.search.title'));
+$meta->description(trans('www.search.description'));
+$meta->keywords(trans('www.search.keywords'));
+$meta->ogTitle(trans('www.search.title'));
+$meta->ogDescription(trans('www.search.description'));
+$meta->ogImage(url($logo));
 
 $jsTrans->addTrans([
     'www.search.all_params',
@@ -440,5 +446,8 @@ $autoEmpty = Manager::getAutoEmpty();
     <div class="cb"></div>
 
 </div>
+<?php
+$meta->ogUrl($autos->url($autos->currentPage()));
+?>
 
 @stop
