@@ -98,6 +98,7 @@ $jsTrans->addTrans(['www.auto.delete.confirm.text']);
                     </div>
                     <div class="cb"></div>
                 </div>
+                <div class="views-count fs14 mt10">{{$auto->views_count}}</div>
             </div>
             <div class="line"></div>
             <div class="main-box">

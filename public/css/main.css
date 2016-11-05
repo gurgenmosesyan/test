@@ -1477,6 +1477,11 @@ body textarea {
 #auto .opt-item img {
     margin-left: 5px;
 }
+#auto .views-count {
+    background: url('../images/eye.png?v=1') no-repeat left center;
+    padding-left: 28px;
+    min-height: 14px;
+}
 
 /* footer */
 #footer-block {

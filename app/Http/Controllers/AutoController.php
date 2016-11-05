@@ -39,6 +39,9 @@ class AutoController extends Controller
 
         $this->setAutoHistory($auto->id);
 
+        $auto->views_count++;
+        $auto->save();
+
         return view('auto.index')->with([
             'auto' => $auto,
             'options' => $options,
