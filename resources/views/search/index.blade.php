@@ -273,7 +273,7 @@ $autoEmpty = Manager::getAutoEmpty();
                 </div>
             </div>
             <div class="cb"></div>
-            <div class="tc">
+            <div class="checkboxes tc">
                 <div class="checkbox dib">
                     <label class="checkbox-label no-select">
                         {{trans('www.checkbox.customs_cleared')}}
@@ -292,7 +292,6 @@ $autoEmpty = Manager::getAutoEmpty();
                         <input type="checkbox" name="partial_pay" value="{{Auto::PARTIAL_PAY}}"{{Auto::PARTIAL_PAY == $reqData['partial_pay'] ? 'checked="checked"' : ''}} />
                     </label>
                 </div>
-                <div class="cb"></div>
             </div>
         </div>
         <div>

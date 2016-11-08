@@ -152,7 +152,8 @@
     width: 100%;
 }
 #top-cars,
-#urgent-cars {
+#urgent-cars,
+#recently-cars {
     min-height: 0;
 }
 #top-cars .help,
@@ -189,6 +190,10 @@
 #recently-cars .owl-buttons .owl-next {
     right: 0 !important;
 }
+.no-cars {
+    position: static;
+    margin-bottom: 35px;
+}
 /* end owl buttons */
 
 #calculators {
@@ -205,9 +210,6 @@
 #calculators .model-select {
     margin: 0 0 15px 0;
     width: 100%;
-}
-#calculators .right-gov {
-    text-align: center;
 }
 #bottom-govs {
     text-align: center;
@@ -232,7 +234,100 @@
     margin: 0 8px 17px;
     width: 100px;
 }
+#main-left {
+    box-sizing: border-box;
+    float: none;
+    width: 100%;
+}
+#static {
+    padding: 20px 15px;
+}
+.right-gov {
+    margin-bottom: 20px;
+    text-align: center;
+}
 
+/* search */
+#search {
+    padding: 21px 15px;
+}
+#search .col {
+    margin-right: 0;
+    width: 100%;
+}
+#search .col-1,
+#search .col-2,
+#search .col-3 {
+    float: none;
+}
+#search .sub-col-1,
+#search .sub-col-2 {
+    width: 48%;
+}
+#search .sub-col-1 {
+    margin-right: 4%;
+}
+#search .mileage {
+    margin-right: 4%;
+    width: 34%;
+}
+#search .mileage-measurement {
+    width: 24%;
+}
+#search .checkboxes {
+    text-align: left;
+}
+#search .show-all-p {
+    padding-top: 8px;
+}
+#paging {
+    padding: 20px 15px;
+    text-align: center;
+}
+#paging ul {
+    display: inline-block;
+}
+
+/* auto list */
+.auto {
+    padding: 15px;
+    text-align: center;
+}
+.auto .auto-img {
+    display: inline-block;
+    float: none;
+    margin: 0 0 10px;
+}
+.auto .title-box {
+    float: none;
+    margin: 0;
+    min-height: 0;
+    padding-bottom: 15px;
+    width: 100%;
+}
+.auto .title {
+    margin-bottom: 10px;
+}
+.auto .country {
+    position: static;
+}
+.auto .auto-info {
+    width: 100%;
+}
+.auto .price {
+    float: none;
+    margin-bottom: 15px;
+    text-align: center;
+    width: 100%;
+}
+.auto .year,
+.auto .mileage {
+    display: inline-block;
+    float: none;
+    margin: 0 15px;
+}
+
+/* footer */
 #footer {
     padding: 15px;
 }
