@@ -8,6 +8,7 @@ use App\Core\Helpers\JsTrans;
 use App\Core\Helpers\Meta;
 use App\Core\Language\Language;
 use App\Core\Image\Uploader;
+use App\Core\Helpers\UserAgent;
 use Validator;
 use DB;
 
@@ -23,6 +24,13 @@ class AppServiceProvider extends ServiceProvider
 		view()->share('head', Head::getInstance());
 		view()->share('jsTrans', new JsTrans());
         view()->share('meta', new Meta());
+
+        $ua = new UserAgent();
+        if ($ua->isIPhone() || $ua->isAndroidMobile() || $ua->isWinPhone()) {
+            view()->share('isMobile', true);
+        } else {
+            view()->share('isMobile', false);
+        }
 
         Validator::extend('ml', function($attribute, $value, $parameters, $validator) {
             if (!is_array($value)) {

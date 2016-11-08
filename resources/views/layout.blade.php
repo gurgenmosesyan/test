@@ -40,14 +40,23 @@ $footerMenu = FooterMenuManager::get();
     $head->appendMainScript('/js/jquery-2.1.4.min.js');
     $head->appendMainScript('/js/main.js');
 
-    $head->renderStyles();
-    $head->renderScripts();
-
     $jsTrans->addTrans([
         'www.base.label.ok',
         'www.base.label.cancel',
         'www.base.label.attention'
     ]);
+
+    if ($isMobile) {
+        $head->appendMainStyle('/css/mobile.css');
+        $head->appendMainScript('/js/mobile.js');
+        $jsTrans->addTrans([
+            'www.price_from',
+            'www.price_to',
+        ]);
+    }
+
+    $head->renderStyles();
+    $head->renderScripts();
     ?>
 </head>
 <body>

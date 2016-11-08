@@ -52,8 +52,9 @@ $main.initPreloadImages = function() {
     $main.preloadImages(images);
 };
 
-$main.initHeaderBlocks = function() {
-    $('#currency-link').on('click', function() {
+$main.initHeaderBlocks = function(html) {
+    html = html || $('#header');
+    html.find('#currency-link').on('click', function() {
         var list = $('#currency-list');
         list.stop().slideToggle(300);
         $('#lng-list').slideUp(300);
@@ -65,7 +66,7 @@ $main.initHeaderBlocks = function() {
         });
         return false;
     });
-    $('#lng-link').on('click', function() {
+    html.find('#lng-link').on('click', function() {
         var list = $('#lng-list');
         list.stop().slideToggle(300);
         $('#currency-list').slideUp(300);

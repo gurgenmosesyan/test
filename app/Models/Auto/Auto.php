@@ -223,7 +223,7 @@ class Auto extends Model
 
     public function interior_color_ml()
     {
-        return $this->belongsTo(InteriorColorMl::class, 'color_id', 'id')->active()->current();
+        return $this->belongsTo(InteriorColorMl::class, 'interior_color_id', 'id')->active()->current();
     }
 
     public function options()

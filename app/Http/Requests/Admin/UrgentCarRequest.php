@@ -15,7 +15,7 @@ class UrgentCarRequest extends Request
             $urgentCarId = ','.$params['id'];
         }
         return [
-            'auto_id' => 'required|integer|exists:autos,id,show_status,1|unique:urgent_cars,auto_id'.$urgentCarId,
+            'auto_id' => 'required|integer|exists:autos,id,show_status,1|unique:urgent_cars,auto_id'.$urgentCarId.',NULL,id,show_status,1',
             'user_id' => 'integer|exists,users,id,show_status,1',
             'deadline' => 'required|date'
         ];

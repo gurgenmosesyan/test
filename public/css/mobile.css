@@ -1,0 +1,254 @@
+/* burger */
+#burger {
+    cursor: pointer;
+    height: 22px;
+    padding: 13px;
+    position: absolute;
+    top: 20px;
+    right: 0;
+    width: 34px;
+}
+#burger span {
+    background-color: #FFA000;
+    border-radius: 2px;
+    height: 4px;
+    position: absolute;
+    left: 13px;
+    width: 34px;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+}
+#burger .burger1 {
+    top: 13px;
+}
+#burger .burger2 {
+    top: 22px;
+}
+#burger .burger3 {
+    top: 31px;
+}
+#burger.open .burger1 {
+    top: 23px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+}
+#burger.open .burger2 {
+    opacity: 0;
+}
+#burger.open .burger3 {
+    top: 23px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+}
+/* end burger */
+/* mobile menu */
+#mobile-menu {
+    background-color: #ffffff;
+    box-sizing: border-box;
+    box-shadow: 0 40px 40px #ffffff;
+    border-top: 1px solid #FFA000;
+    border-bottom: 1px solid #FFA000;
+    padding: 0 15px 15px;
+    position: absolute;
+    top: 94px;
+    left: 0;
+    width: 100%;
+}
+#mobile-menu .sell-car {
+    margin: 15px 0 0;
+}
+#header #mobile-menu .box-link {
+    background-position: left center;
+    height: 24px;
+    line-height: 25px;
+    margin: 0;
+    padding: 9px 0 9px 28px;
+}
+#currency-list a,
+#lng-list a {
+    padding: 5px 0 5px 28px;
+    text-align: left;
+}
+/* end mobile menu */
+#header .header-right,
+#mobile-menu {
+    display: none;
+}
+#homepage-left,
+#footer .footer-left,
+#footer .footer-join,
+#footer .footer-right,
+#footer .footer-contacts {
+    float: none;
+}
+#page .page {
+    padding: 0;
+    width: auto;
+}
+#header {
+    padding: 19px 15px 0;
+    position: relative;
+    z-index: 10;
+}
+#header .header-left {
+    padding-left: 0;
+}
+#quick-search {
+    border-left: none;
+    border-right: none;
+    float: none;
+    padding: 26px 15px;
+    width: auto;
+}
+#quick-search .year-from-select,
+#quick-search .year-to-select {
+    width: 100%;
+}
+#quick-search .year-from-select {
+    margin-right: 0;
+}
+#quick-search .custom-cleared {
+    float: none;
+    margin-bottom: 20px;
+    margin-right: 0;
+}
+#quick-search .search-body-0 {
+    margin-right: 19px;
+}
+#quick-search .country-select,
+#quick-search .mark-select,
+#quick-search .model-select,
+#price-range-box,
+#price-range-box .price-from,
+#quick-search .year-from-select,
+#quick-search .year-to-select {
+    margin-bottom: 20px;
+}
+
+.auto-item,
+.small-box .auto-item {
+    display: inline-block;
+    float: none;
+    margin: 0 0 20px;
+}
+#homepage-left {
+    margin: 0;
+    width: 100%;
+}
+#top-cars,
+#homepage-left .small-box {
+    box-sizing: border-box;
+    float: none;
+    padding: 20px 15px 2px 15px;
+    width: 100%;
+}
+#top-cars,
+#urgent-cars {
+    min-height: 0;
+}
+#top-cars .help,
+#urgent-cars .help {
+    top: 22px;
+    right: 15px;
+}
+#top-cars h2,
+#urgent-cars h2,
+#recently-cars h2 {
+    margin: 0 0 48px;
+}
+/* owl buttons */
+#top-cars .owl-buttons div,
+#urgent-cars .owl-buttons div {
+    top: -37px !important;
+}
+#recently-cars .owl-buttons div {
+    top: -67px !important;
+}
+#top-cars .owl-buttons .owl-prev,
+#urgent-cars .owl-buttons .owl-prev {
+    left: 50%;
+    margin-left: -38px;
+}
+#recently-cars .owl-buttons .owl-prev {
+    right: 42px !important;
+}
+#top-cars .owl-buttons .owl-next,
+#urgent-cars .owl-buttons .owl-next {
+    right: 50% !important;
+    margin-right: -38px;
+}
+#recently-cars .owl-buttons .owl-next {
+    right: 0 !important;
+}
+/* end owl buttons */
+
+#calculators {
+    float: none;
+    width: 100%;
+}
+#calculators .calc-box {
+    box-sizing: border-box;
+    border-left: none;
+    border-right: none;
+    width: 100%;
+}
+#calculators .mark-select,
+#calculators .model-select {
+    margin: 0 0 15px 0;
+    width: 100%;
+}
+#calculators .right-gov {
+    text-align: center;
+}
+#bottom-govs {
+    text-align: center;
+}
+#bottom-govs .bottom-gov {
+    float: none;
+    display: inline-block;
+    margin: 0 0 10px;
+}
+
+/* login */
+#login-inner {
+    box-sizing: border-box;
+    padding: 30px 15px;
+    text-align: center;
+    width: 100%;
+}
+#login-block .fb-login,
+#login-block .google-login {
+    display: inline-block;
+    float: none;
+    margin: 0 8px 17px;
+    width: 100px;
+}
+
+#footer {
+    padding: 15px;
+}
+#footer .footer-menu {
+    margin-bottom: 25px;
+}
+#footer .footer-menu li {
+    margin: 0 23px 15px 0;
+}
+#footer .footer-join p {
+    text-align: left;
+}
+#footer .footer-right {
+    margin: 24px 0 20px;
+    text-align: left;
+}
+#footer .footer-contacts {
+    margin-right: 0;
+}

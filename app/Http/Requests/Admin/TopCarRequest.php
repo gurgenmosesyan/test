@@ -16,7 +16,7 @@ class TopCarRequest extends Request
         }
 
         return [
-            'auto_id' => 'required|integer|exists:autos,id,show_status,1|unique:top_cars,auto_id'.$topCarId,
+            'auto_id' => 'required|integer|exists:autos,id,show_status,1|unique:top_cars,auto_id'.$topCarId.',NULL,id,show_status,1',
             'user_id' => 'integer|exists,users,id,show_status,1',
             'deadline' => 'required|date'
         ];
