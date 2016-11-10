@@ -4,7 +4,7 @@ use App\Models\Auto\AutoImage;
 
 return [
     'paging' => [
-        'count' => 15
+        'count' => 25
     ],
 
     'images' => [

@@ -90,7 +90,7 @@ $jsTrans->addTrans(['www.auto.delete.confirm.text']);
                                 if ($auto->isBlocked()) {
                                     echo '<p class="dib auto-status red fs16">'.trans('www.auto.status.blocked').'</p>';
                                 }
-                                echo '<a href="'.route('auto_edit', [cLng('code'), $auto->id]).'" class="btn dib ml20">'.trans('www.base.label.edit').'</a>';
+                                echo '<a href="'.route('auto_edit', [cLng('code'), $auto->id]).'" class="btn dib">'.trans('www.base.label.edit').'</a>';
                                 echo '<a href="#" id="auto-delete" class="dib btn btn-red ml10" data-id="'.$auto->id.'">'.trans('www.base.label.delete').'</a>';
                             }
                         }

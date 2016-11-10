@@ -327,6 +327,130 @@
     margin: 0 15px;
 }
 
+/* auto inner */
+#auto .top-box {
+    padding: 15px;
+}
+#auto .top-box .mt25 {
+    margin-top: 20px;
+}
+#auto .top-box .auto-status {
+    display: block;
+    margin-bottom: 10px;
+}
+#auto .top-box .mt25 .fl,
+#auto .top-box .mt25 .fr {
+    float: none;
+}
+#auto .top-box .mt25 .fr {
+    margin-top: 15px;
+}
+#auto .main-box {
+    padding: 15px;
+}
+#auto .main-left {
+    float: none;
+    margin-right: 0;
+}
+#auto .main-right {
+    float: none;
+    width: 100%;
+}
+#auto .main-img {
+    height: 220px;
+    margin-bottom: 5px;
+}
+#auto .images {
+    text-align: center;
+}
+#auto .images .img-thumb {
+    display: inline-block;
+    float: none;
+    margin: 0 1px 5px;
+}
+#auto .option {
+    float: none;
+    width: 100%;
+}
+
+/* sell */
+#sell {
+    padding: 15px;
+}
+#sell .sell-page,
+#sell #page6 {
+    width: 100%;
+}
+#sell .form-box {
+    margin-bottom: 15px;
+}
+#sell label,
+#sell .inp {
+    float: none;
+}
+#sell label {
+    box-sizing: border-box;
+    margin: 0 !important;
+    width: 100% !important;
+}
+#sell label span {
+    display: inline;
+    height: auto;
+}
+#sell .inp {
+    margin-top: 3px;
+    width: 100% !important;
+}
+#sell .mileage-input {
+    margin-right: 5%;
+    width: 55%;
+}
+#sell .mileage-select {
+    width: 40%;
+}
+#sell .col-2 {
+    float: none;
+    width: 100%;
+}
+#sell .col-2.sell-left,
+#sell .col-3.sell-left,
+#sell .col-3.sell-middle {
+    margin: 0;
+}
+#sell .col-3 {
+    float: none;
+    width: 100%;
+}
+#reg-success {
+    padding: 40px;
+}
+#sell .auto-limit-txt {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+/* profile */
+#profile .links .link {
+    float: none;
+    margin: 0 0 1px;
+    width: 100%;
+}
+#profile-box {
+    padding: 15px;
+}
+#profile-box .profile-left,
+#profile-box .profile-info {
+    border: none;
+    float: none;
+    width: 100%;
+}
+#profile-box h2 {
+    font-size: 20px;
+}
+#profile-box .profile-info p {
+    font-size: 16px;
+}
+
 /* footer */
 #footer {
     padding: 15px;
