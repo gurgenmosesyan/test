@@ -133,7 +133,6 @@
 #quick-search .year-to-select {
     margin-bottom: 20px;
 }
-
 .auto-item,
 .small-box .auto-item {
     display: inline-block;
@@ -195,7 +194,6 @@
     margin-bottom: 35px;
 }
 /* end owl buttons */
-
 #calculators {
     float: none;
     width: 100%;
@@ -219,7 +217,6 @@
     display: inline-block;
     margin: 0 0 10px;
 }
-
 /* login */
 #login-inner {
     box-sizing: border-box;
@@ -246,7 +243,6 @@
     margin-bottom: 20px;
     text-align: center;
 }
-
 /* search */
 #search {
     padding: 21px 15px;
@@ -287,7 +283,6 @@
 #paging ul {
     display: inline-block;
 }
-
 /* auto list */
 .auto {
     padding: 15px;
@@ -326,7 +321,6 @@
     float: none;
     margin: 0 15px;
 }
-
 /* auto inner */
 #auto .top-box {
     padding: 15px;
@@ -372,7 +366,6 @@
     float: none;
     width: 100%;
 }
-
 /* sell */
 #sell {
     padding: 15px;
@@ -428,7 +421,6 @@
     font-size: 16px;
     line-height: 24px;
 }
-
 /* profile */
 #profile .links .link {
     float: none;
@@ -450,7 +442,30 @@
 #profile-box .profile-info p {
     font-size: 16px;
 }
-
+#edit-form .day {
+    width: 27%;
+}
+#edit-form .year {
+    width: 34%;
+}
+#edit-form .month {
+    width: 37%;
+    margin: 0 1%;
+}
+/* popup */
+.lock {
+    padding-right: 0;
+}
+#popup .popup-wrapper {
+    box-sizing: border-box;
+    left: 0;
+    margin-left: 0;
+    padding: 15px 15px 0;
+    width: 100%;
+}
+#popup .btn {
+    margin: 0 10px 15px;
+}
 /* footer */
 #footer {
     padding: 15px;
