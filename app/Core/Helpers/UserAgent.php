@@ -26,6 +26,14 @@ class UserAgent
 		return strpos($this->userAgent, 'iPhone') !== false;
 	}
 
+    public function isAndroid()
+    {
+        if (strpos($this->userAgent, 'Android') !== false) {
+            return true;
+        }
+        return false;
+    }
+
 	public function isAndroidMobile()
     {
 		$ua = $this->userAgent;

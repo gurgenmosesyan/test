@@ -58,7 +58,10 @@ class SellRequest extends Request
             'damaged' => 'in:'.Auto::DAMAGED.','.Auto::NOT_DAMAGED,
             'vin' => 'max:255',
             'description' => 'max:50000',
-            'additional_phone' => 'max:255',
+            'additional_phone' => [
+                'regex:/^\s*\+\s*?[0-9\s*]{1,}\s*$/',
+                'max:30'
+            ],
             'term' => $termReqStr.'integer|between:1,10',
             'options' => 'array',
             'options.*' => 'integer|exists:options,id,show_status,1',

@@ -29,17 +29,17 @@ class SellController extends Controller
         if ($autosCount >= 10) {
             return view('sell.limit');
         }
-        $marks = Mark::active()->get();
+        $marks = Mark::active()->orderBy('name', 'asc')->get();
         $bodies = Body::joinMl()->active()->get();
         $transmissions = Transmission::joinMl()->active()->get();
         $rudders = Rudder::joinMl()->active()->get();
         $colors = Color::joinMl()->active()->get();
         $interiorColors = InteriorColor::joinMl()->active()->get();
         $engines = Engine::joinMl()->active()->get();
-        $cylinders = Cylinder::active()->get();
+        $cylinders = Cylinder::active()->orderBy('count', 'asc')->get();
         $trains = Train::joinMl()->active()->get();
-        $doors = Door::active()->get();
-        $wheels = Wheel::active()->get();
+        $doors = Door::active()->orderBy('count', 'asc')->get();
+        $wheels = Wheel::active()->orderBy('count', 'asc')->get();
         $countries = Country::joinMl()->active()->get();
         $options = Option::joinMl()->active()->get();
         $currenciesData = Currency::active()->ordered()->get();

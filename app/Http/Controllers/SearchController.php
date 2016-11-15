@@ -34,9 +34,9 @@ class SearchController extends Controller
         $rudders = Rudder::joinMl()->active()->get();
         $colors = Color::joinMl()->active()->get();
         $interiorColors = InteriorColor::joinMl()->active()->get();
-        $cylindersCount = Cylinder::active()->get();
-        $doorsCount = Door::active()->get();
-        $wheels = Wheel::active()->get();
+        $cylindersCount = Cylinder::active()->orderBy('count', 'asc')->get();
+        $doorsCount = Door::active()->orderBy('count', 'asc')->get();
+        $wheels = Wheel::active()->orderBy('count', 'asc')->get();
         $models = [];
 
         $currencyManager = new CurrencyManager();

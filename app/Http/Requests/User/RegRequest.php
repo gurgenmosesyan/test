@@ -23,7 +23,11 @@ class RegRequest extends Request
             're_password' => 'required|same:password',
             'first_name' => 'required|max:255',
             'last_name' => 'required|max:255',
-            'phone' => 'required|max:30'
+            'phone' => [
+                'required',
+                'regex:/^\s*\+\s*?[0-9\s*]{1,}\s*$/',
+                'max:30'
+            ]
         ];
     }
 }

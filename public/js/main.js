@@ -84,13 +84,13 @@ $main.initTopCars = function() {
     $('#top-cars').find('.car-block').owlCarousel({
         singleItem: true,
         stopOnHover: true,
-        autoPlay: 7000,
+        autoPlay: 5000,
         navigation: true,
         navigationText: ['',''],
         //pagination: true,
-        paginationSpeed: 1400,
-        slideSpeed: 1400,
-        rewindSpeed: 2500
+        paginationSpeed: 1300,
+        slideSpeed: 1300,
+        rewindSpeed: 1500
     });
 };
 
@@ -100,8 +100,8 @@ $main.initUrgentCars = function() {
         //autoPlay: 8000,
         navigation: true,
         navigationText: ['',''],
-        paginationSpeed: 1700,
-        slideSpeed: 1700,
+        paginationSpeed: 1500,
+        slideSpeed: 1500,
         rewindSpeed: 1700
     });
 };
@@ -110,7 +110,7 @@ $main.initRecentlyCars = function() {
     $('#recently-cars').find('.car-block').owlCarousel({
         singleItem: true,
         stopOnHover: true,
-        autoPlay: 7000,
+        autoPlay: 5000,
         navigation: true,
         navigationText: ['',''],
         paginationSpeed: 1500,

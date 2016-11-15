@@ -31,7 +31,11 @@ class EditRequest extends Request
             're_password' => 'required_with:password|same:password',
             'first_name' => 'required|max:255',
             'last_name' => 'required|max:255',
-            'phone' => 'required|max:30',
+            'phone' => [
+                'required',
+                'regex:/^\s*\+\s*?[0-9\s*]{1,}\s*$/',
+                'max:30'
+            ],
             'birthday' => 'required|date',
             'gender' => 'required|in:'.User::GENDER_MALE.','.User::GENDER_FEMALE
         ];

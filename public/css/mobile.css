@@ -1,3 +1,6 @@
+body {
+    background-color: #eeeeee;
+}
 /* burger */
 #burger {
     cursor: pointer;
@@ -80,7 +83,8 @@
 }
 /* end mobile menu */
 #header .header-right,
-#mobile-menu {
+#mobile-menu,
+#top-cars {
     display: none;
 }
 #homepage-left,
@@ -104,6 +108,7 @@
 }
 #quick-search {
     border-left: none;
+    border-top: none;
     border-right: none;
     float: none;
     padding: 26px 15px;
@@ -116,10 +121,12 @@
 #quick-search .year-from-select {
     margin-right: 0;
 }
-#quick-search .custom-cleared {
+#quick-search .custom-cleared,
+#quick-search .damaged {
     float: none;
     margin-bottom: 20px;
     margin-right: 0;
+    width: 100%;
 }
 #quick-search .search-body-0 {
     margin-right: 19px;

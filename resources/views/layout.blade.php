@@ -53,6 +53,13 @@ $footerMenu = FooterMenuManager::get();
             'www.price_from',
             'www.price_to',
         ]);
+    } else if ($isTab) {
+        //$head->appendMainStyle('/css/mobile.css');
+        $head->appendMainScript('/js/tab.js');
+        $jsTrans->addTrans([
+                'www.price_from',
+                'www.price_to',
+        ]);
     }
 
     $head->renderStyles();

@@ -169,18 +169,18 @@ class UserController extends Controller
         $user = Auth::guard('user')->user();
         $auto = Auto::active()->where('id', $id)->where('user_id', $user->id)->firstOrFail();
 
-        $marks = Mark::active()->get();
-        $models = Model::active()->where('mark_id', $auto->mark_id)->get();
+        $marks = Mark::active()->orderBy('name', 'asc')->get();
+        $models = Model::active()->where('mark_id', $auto->mark_id)->orderBy('name', 'asc')->get();
         $bodies = Body::joinMl()->active()->get();
         $transmissions = Transmission::joinMl()->active()->get();
         $rudders = Rudder::joinMl()->active()->get();
         $colors = Color::joinMl()->active()->get();
         $interiorColors = InteriorColor::joinMl()->active()->get();
         $engines = Engine::joinMl()->active()->get();
-        $cylinders = Cylinder::active()->get();
+        $cylinders = Cylinder::active()->orderBy('count', 'asc')->get();
         $trains = Train::joinMl()->active()->get();
-        $doors = Door::active()->get();
-        $wheels = Wheel::active()->get();
+        $doors = Door::active()->orderBy('count', 'asc')->get();
+        $wheels = Wheel::active()->orderBy('count', 'asc')->get();
         $countries = Country::joinMl()->active()->get();
         $regions = Region::joinMl()->active()->get();
         $options = Option::joinMl()->active()->get();

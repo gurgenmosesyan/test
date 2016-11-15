@@ -57,6 +57,8 @@ $mobile.init = function() {
     $mobile.initBurger();
 
     $mobile.initPrice();
+
+    $('#top-cars').insertAfter('#quick-search').show();
 };
 
 $(document).ready(function() {

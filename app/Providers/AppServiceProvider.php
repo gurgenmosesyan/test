@@ -26,11 +26,15 @@ class AppServiceProvider extends ServiceProvider
         view()->share('meta', new Meta());
 
         $ua = new UserAgent();
+        $isMobile = false;
+        $isTab = false;
         if ($ua->isIPhone() || $ua->isAndroidMobile() || $ua->isWinPhone()) {
-            view()->share('isMobile', true);
-        } else {
-            view()->share('isMobile', false);
+            $isMobile = true;
+        } else if ($ua->isIPad() || $ua->isAndroid()) {
+            $isTab = true;
         }
+        view()->share('isMobile', $isMobile);
+        view()->share('isTab', $isTab);
 
         Validator::extend('ml', function($attribute, $value, $parameters, $validator) {
             if (!is_array($value)) {
