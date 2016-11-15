@@ -94,6 +94,9 @@ body {
 #footer .footer-contacts {
     float: none;
 }
+#page {
+    min-width: 0;
+}
 #page .page {
     padding: 0;
     width: auto;

@@ -135,7 +135,9 @@ body textarea {
     overflow: hidden !important;
     padding-right: 15px;
 }
-
+#page {
+    min-width: 1230px;
+}
 #page .page {
     margin: 0 auto;
     padding: 0 15px;
