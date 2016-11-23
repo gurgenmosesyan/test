@@ -1144,6 +1144,11 @@ body textarea {
 #sell #upload-image {
     background-color: #bfbaba;
 }
+#sell .img-help {
+    color: #969595;
+    font-size: 13px;
+    margin-top: 5px;
+}
 #sell-images {
     margin: 20px -14px 0;
     overflow: hidden;

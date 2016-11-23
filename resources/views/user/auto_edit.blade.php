@@ -287,7 +287,7 @@ $jsTrans->addTrans(['www.auto.images.limit.text']);
                     <label class="required fl"><span>{{trans('www.sell_car.mileage')}}</span></label>
                     <div class="mileage-box inp fl">
                         <div class="mileage-input fl">
-                            <input type="text" name="mileage" value="{{$auto->mileageInfo(false)}}" />
+                            <input type="text" name="mileage" class="number" value="{{$auto->mileageInfo(false)}}" />
                             <div id="form-error-mileage" class="form-error"></div>
                         </div>
                         <div class="mileage-select fl">
@@ -325,7 +325,7 @@ $jsTrans->addTrans(['www.auto.images.limit.text']);
                 <div class="form-box">
                     <label class="fl"><span>{{trans('www.sell_car.horsepower')}}</span></label>
                     <div class="inp fl">
-                        <input type="text" name="horsepower" maxlength="4" value="{{$auto->horsepower or ''}}" />
+                        <input type="text" name="horsepower" class="number" maxlength="4" value="{{$auto->horsepower or ''}}" />
                         <div id="form-error-horsepower" class="form-error"></div>
                     </div>
                     <div class="cb"></div>
@@ -425,7 +425,7 @@ $jsTrans->addTrans(['www.auto.images.limit.text']);
                     <label class="required fl"><span>{{trans('www.sell_car.price')}}</span></label>
                     <div class="inp fl price">
                         <div class="mileage-input fl">
-                            <input type="text" name="price" value="{{$auto->price or ''}}" />
+                            <input type="text" name="price" class="number" value="{{$auto->price or ''}}" />
                             <div id="form-error-price" class="form-error"></div>
                         </div>
                         <div class="mileage-select fl">
@@ -551,6 +551,7 @@ $jsTrans->addTrans(['www.auto.images.limit.text']);
             <div class="col-1">
                 <div>
                     <a href="#" id="upload-image" class="btn dib">{{trans('www.sell_car.upload_image')}}</a>
+                    <p class="img-help">{{trans('www.sell_car.img.help')}}</p>
                     <div class="dib dpn upload-load"></div>
                     <div id="form-error-images" class="form-error"></div>
                 </div>

@@ -255,4 +255,5 @@ return array (
   'top_cars.keywords' => 'Top cars meta keywords',
   'urgent_cars.description' => 'Urgent cars meta description',
   'urgent_cars.keywords' => 'Urgent cars meta keywrods',
+  'sell_car.img.help' => 'Вы можете загрузить не более 10 изображений',
 );

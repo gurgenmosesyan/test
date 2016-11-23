@@ -354,6 +354,14 @@ $sell.initForm = function() {
     });
 };
 
+$sell.initNumber = function() {
+    $('.number').on('keypress', function(e) {
+        if (e.charCode < 48 || e.charCode > 57) {
+            return false;
+        }
+    });
+};
+
 $sell.init = function() {
 
     $sell.initCountrySelect();
@@ -363,6 +371,8 @@ $sell.init = function() {
     $sell.initPrice();
 
     $sell.initForm();
+
+    $sell.initNumber();
 };
 
 $(document).ready(function() {

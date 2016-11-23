@@ -209,7 +209,7 @@ $jsTrans->addTrans([
                 <div class="form-box">
                     <label class="fl"><span>{{trans('www.sell_car.horsepower')}}</span></label>
                     <div class="inp fl">
-                        <input type="text" name="horsepower" maxlength="4" value="" />
+                        <input type="text" name="horsepower" class="number" maxlength="4" value="" />
                         <div id="form-error-horsepower" class="form-error"></div>
                     </div>
                     <div class="cb"></div>
@@ -249,6 +249,40 @@ $jsTrans->addTrans([
                     <div class="cb"></div>
                 </div>
                 <div class="form-box">
+                    <label class="fl"><span>{{trans('www.sell_car.doors_count')}}</span></label>
+                    <div class="inp fl">
+                        <div class="select-box">
+                            <div class="select-arrow"></div>
+                            <div class="select-title"></div>
+                            <select name="doors">
+                                <option value="">{{trans('www.base.label.select')}}</option>
+                                @foreach($doors as $value)
+                                    <option value="{{$value->count}}">{{$value->count}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div id="form-error-doors" class="form-error"></div>
+                    </div>
+                    <div class="cb"></div>
+                </div>
+                <div class="form-box">
+                    <label class="fl"><span>{{trans('www.sell_car.wheel')}}</span></label>
+                    <div class="inp fl">
+                        <div class="select-box">
+                            <div class="select-arrow"></div>
+                            <div class="select-title"></div>
+                            <select name="wheels">
+                                <option value="">{{trans('www.base.label.select')}}</option>
+                                @foreach($wheels as $value)
+                                    <option value="{{$value->count}}">{{$value->count}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div id="form-error-wheels" class="form-error"></div>
+                    </div>
+                    <div class="cb"></div>
+                </div>
+                <div class="form-box">
                     <label class="fl"><span>{{trans('www.sell_car.vin')}}</span></label>
                     <div class="inp fl">
                         <input type="text" name="vin" value="" />
@@ -260,7 +294,7 @@ $jsTrans->addTrans([
                     <label class="required fl"><span>{{trans('www.sell_car.mileage')}}</span></label>
                     <div class="mileage-box inp fl">
                         <div class="mileage-input fl">
-                            <input type="text" name="mileage" value="" />
+                            <input type="text" name="mileage" class="number" value="" />
                             <div id="form-error-mileage" class="form-error"></div>
                         </div>
                         <div class="mileage-select fl">
@@ -342,7 +376,7 @@ $jsTrans->addTrans([
                     <label class="required fl"><span>{{trans('www.sell_car.price')}}</span></label>
                     <div class="inp fl price">
                         <div class="mileage-input fl">
-                            <input type="text" name="price" value="" />
+                            <input type="text" name="price" class="number" value="" />
                             <div id="form-error-price" class="form-error"></div>
                         </div>
                         <div class="mileage-select fl">
@@ -394,7 +428,7 @@ $jsTrans->addTrans([
                     <div class="form-box">
                         <label class="checkbox-label no-select">
                             {{trans('www.sell_car.customs_cleared')}}
-                            <input type="checkbox" name="custom_cleared" value="{{Auto::CUSTOM_CLEARED}}" />
+                            <input type="checkbox" name="custom_cleared" value="{{Auto::CUSTOM_CLEARED}}" checked="checked" />
                         </label>
                         <div id="form-error-custom_cleared" class="form-error"></div>
                     </div>
@@ -455,6 +489,7 @@ $jsTrans->addTrans([
             <div id="page7" class="sell-page">
                 <div>
                     <a href="#" id="upload-image" class="btn dib">{{trans('www.sell_car.upload_image')}}</a>
+                    <p class="img-help">{{trans('www.sell_car.img.help')}}</p>
                     <div class="dib dpn upload-load"></div>
                     <div id="form-error-images" class="form-error"></div>
                 </div>
