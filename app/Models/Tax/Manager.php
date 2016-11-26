@@ -39,12 +39,13 @@ class Manager
         $result['passport'] = Base::calcPrice($currencyId, $conf[Config::KEY_TAX_PASSPORT_PRICE]->value, $currencies, $defCurrency, $cCurrency);
         $result['number'] = Base::calcPrice($currencyId, $conf[Config::KEY_TAX_NUMBER_PRICE]->value, $currencies, $defCurrency, $cCurrency);
         $result['nullification'] = trans('www.tax.nullification.price');
-        $result['total'] = ($result['price'] + $result['customs'] + $result['rename'] + $result['passport'] + $result['number']) . $sign;
-        $result['price'] .= $sign;
-        $result['customs'] .= $sign;
-        $result['rename'] .= $sign;
-        $result['passport'] .= $sign;
-        $result['number'] .= $sign;
+        $result['total'] = $result['price'] + $result['customs'] + $result['rename'] + $result['passport'] + $result['number'];
+        $result['price'] = number_format($result['price'], 0, '', '.') . $sign;
+        $result['customs'] = number_format($result['customs'], 0, '', '.') . $sign;
+        $result['rename'] = number_format($result['rename'], 0, '', '.') . $sign;
+        $result['passport'] = number_format($result['passport'], 0, '', '.') . $sign;
+        $result['number'] = number_format($result['number'], 0, '', '.') . $sign;
+        $result['total'] = number_format($result['total'], 0, '', '.') . $sign;
         return $result;
     }
 

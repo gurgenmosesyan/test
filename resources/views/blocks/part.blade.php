@@ -8,7 +8,7 @@ if ($part == null) {
         <div class="part-checkbox">
             <label class="checkbox-label no-select disabled">
                 {{trans('www.part.form.part'.$i)}}
-                <input type="checkbox" value="1" disabled="disabled" />
+                <input type="checkbox" value="" disabled="disabled" />
             </label>
         </div>
 <?php
@@ -34,10 +34,10 @@ for($i = 1; $i < 11; $i++) {
     } else {
         $price = Base::calcPrice($part->currency_id, $price, $currencies, $defCurrency, $cCurrency);
         $class = $attr = '';
-        $title .= '<span class="price-info"> '.$price.$cCurrency->sign;
+        $title .= '<span class="price-info"> '.number_format($price, 0, '', '.').$cCurrency->sign;
         if (!empty($servicePrice)) {
             $servicePrice = Base::calcPrice($part->currency_id, $servicePrice, $currencies, $defCurrency, $cCurrency);
-            $title .= ', '.trans('www.part.form.service_price_text').' '.$servicePrice.$cCurrency->sign;
+            $title .= ', '.trans('www.part.form.service_price_text').' '.number_format($servicePrice, 0, '', '.').$cCurrency->sign;
         }
         $title .= '</span>';
     }
