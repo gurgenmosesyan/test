@@ -20,7 +20,7 @@ class Base
                 $price = round($price * $cCurrency->rate);
             }
         }
-        return $price . $cCurrency->$currencyParam;
+        return number_format($price, 0, '.', '.') . $cCurrency->{$currencyParam};
     }
 
     public static function calcPrice($currencyId, $price, $currencies, $defCurrency, $cCurrency)
