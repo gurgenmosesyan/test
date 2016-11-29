@@ -25,7 +25,7 @@ class RegRequest extends Request
             'last_name' => 'required|max:255',
             'phone' => [
                 'required',
-                'regex:/^\s*\+\s*?[0-9\s*]{1,}\s*$/',
+                'regex:/^\s*\+?\s*?[0-9\s*]{1,}\s*$/',
                 'max:30'
             ]
         ];

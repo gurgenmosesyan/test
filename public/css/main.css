@@ -1073,6 +1073,11 @@ body textarea {
     margin-right: 20px;
     width: 190px;
 }
+#sell .sell-page label.resp,
+#sell .col-2 label.resp {
+    box-sizing: border-box;
+    width: 100%;
+}
 #sell .col-3 label {
     display: inline-block;
 }

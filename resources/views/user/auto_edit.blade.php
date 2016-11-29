@@ -13,6 +13,8 @@ $meta->ogImage(url($logo));
 
 $autoOptions = $auto->options->keyBy('option_id');
 
+$user = Auth::guard('user')->user();
+
 $jsTrans->addTrans(['www.auto.images.limit.text']);
 ?>
 @extends('layout')
@@ -407,7 +409,21 @@ $jsTrans->addTrans(['www.auto.images.limit.text']);
                     <div class="cb"></div>
                 </div>
                 <div class="form-box">
-                    <label class="fl"><span>{{trans('www.sell_car.additional_phone')}}</span></label>
+                    <label class="fl"><span>{{trans('www.sell_car.main_phone')}}</span></label>
+                    <div class="inp fl">
+                        <label><span>{{$user->phone}}</span></label>
+                    </div>
+                    <div class="cb"></div>
+                </div>
+                <div class="form-box">
+                    <label class="checkbox-label no-select resp">
+                        {{trans('www.sell_car.hide_main_phone')}}
+                        <input type="checkbox" id="hide-main-phone" name="hide_main_phone" value="{{Auto::HIDE_MAIN_PHONE}}"{!! $auto->hide_main_phone == Auto::HIDE_MAIN_PHONE ? ' checked="checked"' : '' !!} />
+                    </label>
+                    <div id="form-error-hide_main_phone" class="form-error"></div>
+                </div>
+                <div class="form-box">
+                    <label id="additional-phone" class="fl"><span>{{trans('www.sell_car.additional_phone')}}</span></label>
                     <div class="inp fl">
                         <input type="text" name="additional_phone" value="{{$auto->additional_phone or ''}}" />
                         <div id="form-error-additional_phone" class="form-error"></div>

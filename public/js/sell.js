@@ -362,6 +362,17 @@ $sell.initNumber = function() {
     });
 };
 
+$sell.initMainPhone = function() {
+    var additionalPhone = $('#additional-phone');
+    $('#hide-main-phone').change(function() {
+        if ($(this).prop('checked')) {
+            additionalPhone.addClass('required');
+        } else {
+            additionalPhone.removeClass('required');
+        }
+    });
+};
+
 $sell.init = function() {
 
     $sell.initCountrySelect();
@@ -373,6 +384,8 @@ $sell.init = function() {
     $sell.initForm();
 
     $sell.initNumber();
+
+    $sell.initMainPhone();
 };
 
 $(document).ready(function() {

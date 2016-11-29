@@ -42,6 +42,8 @@ class Auto extends Model
     const STATUS_PENDING = 'pending';
     const STATUS_APPROVED = 'approved';
     const STATUS_BLOCKED = 'blocked';
+    const HIDE_MAIN_PHONE = '1';
+    const NOT_HIDE_MAIN_PHONE = '0';
 
     protected $table = 'autos';
 
@@ -83,6 +85,7 @@ class Auto extends Model
         'vin',
         'description',
         'additional_phone',
+        'hide_main_phone',
         'term',
         'status'
     ];

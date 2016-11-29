@@ -59,9 +59,10 @@ class SellRequest extends Request
             'vin' => 'max:255',
             'description' => 'max:50000',
             'additional_phone' => [
-                'regex:/^\s*\+\s*?[0-9\s*]{1,}\s*$/',
+                'regex:/^\s*\+?\s*?[0-9\s*]{1,}\s*$/',
                 'max:30'
             ],
+            'hide_main_phone' => 'in:'.Auto::NOT_HIDE_MAIN_PHONE.','.Auto::HIDE_MAIN_PHONE,
             'term' => $termReqStr.'integer|between:1,10',
             'options' => 'array',
             'options.*' => 'integer|exists:options,id,show_status,1',
@@ -74,6 +75,11 @@ class SellRequest extends Request
 
         if ($routeName != 'auto_update') {
             $rules['action'] = 'required|in:next,submit';
+        }
+
+        $hideMainPhone = $this->get('hide_main_phone');
+        if ($hideMainPhone == Auto::HIDE_MAIN_PHONE) {
+            $rules['additional_phone'][] = 'required';
         }
 
         return $rules;

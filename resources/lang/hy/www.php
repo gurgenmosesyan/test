@@ -256,4 +256,6 @@ return array (
   'urgent_cars.description' => 'Urgent cars meta description',
   'urgent_cars.keywords' => 'Urgent cars meta keywrods',
   'sell_car.img.help' => 'Դուք կարող եք ներբեռնել առավելագույնը 10 նկար',
+  'sell_car.main_phone' => 'Հիմնական հեռախոսահամար',
+  'sell_car.hide_main_phone' => 'Ցույց չտալ հիմնական հեռախոսահամարը',
 );

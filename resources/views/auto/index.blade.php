@@ -168,14 +168,18 @@ $jsTrans->addTrans(['www.auto.delete.confirm.text']);
                     @if($auto->isDamaged())
                         <p>{{trans('www.auto.damaged')}}</p>
                     @endif
-                    @if($auto->user)
+                    @if($auto->user && $auto->hide_main_phone == Auto::NOT_HIDE_MAIN_PHONE)
                         <p class="fl key mt20">{{trans('www.auto.phone')}}</p>
                         <p class="fl value mt20">{{$auto->user->phone}}</p>
-                    @endif
-                    <div class="cb"></div>
-                    @if(!empty($auto->additional_phone))
-                        <p class="fl key">{{trans('www.auto.additional_phone')}}</p>
-                        <p class="fl value">{{$auto->additional_phone}}</p>
+                        <div class="cb"></div>
+                        @if(!empty($auto->additional_phone))
+                            <p class="fl key">{{trans('www.auto.additional_phone')}}</p>
+                            <p class="fl value">{{$auto->additional_phone}}</p>
+                            <div class="cb"></div>
+                        @endif
+                    @elseif(!empty($auto->additional_phone))
+                        <p class="fl key mt20">{{trans('www.auto.phone')}}</p>
+                        <p class="fl value mt20">{{$auto->additional_phone}}</p>
                         <div class="cb"></div>
                     @endif
                     @if(!empty($auto->description))

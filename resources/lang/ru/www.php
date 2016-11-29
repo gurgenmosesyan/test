@@ -256,4 +256,6 @@ return array (
   'urgent_cars.description' => 'Urgent cars meta description',
   'urgent_cars.keywords' => 'Urgent cars meta keywrods',
   'sell_car.img.help' => 'Вы можете загрузить не более 10 изображений',
+  'sell_car.main_phone' => 'Основной телефон',
+  'sell_car.hide_main_phone' => 'Не показывать главный телефон',
 );

@@ -10,6 +10,8 @@ $meta->ogTitle(trans('www.sell_car.title'));
 $meta->ogImage(url($logo));
 $meta->ogUrl(url_with_lng('/sell'));
 
+$user = Auth::guard('user')->user();
+
 $jsTrans->addTrans([
     'www.sell_car.submit',
     'www.sell_car.next',
@@ -396,7 +398,21 @@ $jsTrans->addTrans([
                     <div class="cb"></div>
                 </div>
                 <div class="form-box">
-                    <label class="fl"><span>{{trans('www.sell_car.additional_phone')}}</span></label>
+                    <label class="fl"><span>{{trans('www.sell_car.main_phone')}}</span></label>
+                    <div class="inp fl">
+                        <label><span>{{$user->phone}}</span></label>
+                    </div>
+                    <div class="cb"></div>
+                </div>
+                <div class="form-box">
+                    <label class="checkbox-label no-select resp">
+                        {{trans('www.sell_car.hide_main_phone')}}
+                        <input type="checkbox" id="hide-main-phone" name="hide_main_phone" value="{{Auto::HIDE_MAIN_PHONE}}" />
+                    </label>
+                    <div id="form-error-hide_main_phone" class="form-error"></div>
+                </div>
+                <div class="form-box">
+                    <label id="additional-phone" class="fl"><span>{{trans('www.sell_car.additional_phone')}}</span></label>
                     <div class="inp fl">
                         <input type="text" name="additional_phone" value="" />
                         <div id="form-error-additional_phone" class="form-error"></div>

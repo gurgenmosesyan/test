@@ -86,6 +86,9 @@ class Manager
         if (!isset($data['options'])) {
             $data['options'] = [];
         }
+        if (!isset($data['hide_main_phone'])) {
+            $data['hide_main_phone'] = Auto::NOT_HIDE_MAIN_PHONE;
+        }
         if (!isset($data['images'])) {
             $data['images'] = [];
         }
