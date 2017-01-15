@@ -1,11 +1,10 @@
 <?php
-use App\Models\Config\Manager;
 
 $title = trans('www.auto_deleted.title');
-$logo = Manager::getLogo();
+
 $meta->title($title);
 $meta->ogTitle($title);
-$meta->ogImage(url($logo));
+$meta->ogImage(url('/images/fb-logo.png'));
 
 ?>
 @extends('layout')

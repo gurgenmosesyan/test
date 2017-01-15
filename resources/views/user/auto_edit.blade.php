@@ -1,15 +1,14 @@
 <?php
 use App\Models\Auto\Auto;
-use App\Models\Config\Manager;
 
 $head->appendScript('/js/sell.js');
 $head->appendScript('/js/user.js');
 
 $title = trans('www.base.label.edit');
-$logo = Manager::getLogo();
+
 $meta->title($title);
 $meta->ogTitle($title);
-$meta->ogImage(url($logo));
+$meta->ogImage(url('/images/fb-logo.png'));
 
 $autoOptions = $auto->options->keyBy('option_id');
 

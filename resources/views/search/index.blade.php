@@ -3,13 +3,12 @@ use App\Models\Auto\Auto;
 use App\Helpers\Base;
 use App\Models\Config\Manager;
 
-$logo = Manager::getLogo();
 $meta->title(trans('www.search.title'));
 $meta->description(trans('www.search.description'));
 $meta->keywords(trans('www.search.keywords'));
 $meta->ogTitle(trans('www.search.title'));
 $meta->ogDescription(trans('www.search.description'));
-$meta->ogImage(url($logo));
+$meta->ogImage(url('/images/fb-logo.png'));
 
 $jsTrans->addTrans([
     'www.search.all_params',

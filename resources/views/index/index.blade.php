@@ -4,13 +4,12 @@ use App\Helpers\Base;
 use App\Models\Config\Manager as ConfManager;
 use App\Models\Ad\Manager as AdManager;
 
-$logo = ConfManager::getLogo();
 $meta->title(trans('www.homepage.title'), false);
 $meta->description(trans('www.homepage.description'));
 $meta->keywords(trans('www.homepage.keywords'));
 $meta->ogTitle(trans('www.homepage.title'));
 $meta->ogDescription(trans('www.homepage.description'));
-$meta->ogImage(url($logo));
+$meta->ogImage(url('/images/fb-logo.png'));
 $meta->ogUrl(url_with_lng('/'));
 
 $head->appendStyle('/css/jquery-ui.min.css');

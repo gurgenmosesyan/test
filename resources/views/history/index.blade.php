@@ -2,10 +2,9 @@
 use App\Models\Config\Manager;
 use App\Helpers\Base;
 
-$logo = Manager::getLogo();
 $meta->title(trans('www.history.title'));
 $meta->ogTitle(trans('www.history.title'));
-$meta->ogImage(url($logo));
+$meta->ogImage(url('/images/fb-logo.png'));
 $meta->ogUrl(url_with_lng('/history'));
 
 $autoEmpty = Manager::getAutoEmpty();

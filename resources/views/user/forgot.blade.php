@@ -1,11 +1,10 @@
 <?php
-use App\Models\Config\Manager;
 
 $title = trans('www.user.forgot.title');
-$logo = Manager::getLogo();
+
 $meta->title($title);
 $meta->ogTitle($title);
-$meta->ogImage(url($logo));
+$meta->ogImage(url('/images/fb-logo.png'));
 
 $head->appendScript('/js/user.js');
 

@@ -1,13 +1,11 @@
 <?php
 use App\Models\Auto\Auto;
-use App\Models\Config\Manager;
 
 $head->appendScript('/js/sell.js');
 
-$logo = Manager::getLogo();
 $meta->title(trans('www.sell_car.title'));
 $meta->ogTitle(trans('www.sell_car.title'));
-$meta->ogImage(url($logo));
+$meta->ogImage(url('/images/fb-logo.png'));
 $meta->ogUrl(url_with_lng('/sell'));
 
 $user = Auth::guard('user')->user();

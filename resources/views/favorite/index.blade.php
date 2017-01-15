@@ -5,10 +5,11 @@ use App\Helpers\Base;
 $logo = Manager::getLogo();
 $meta->title(trans('www.favorites.title'));
 $meta->ogTitle(trans('www.favorites.title'));
-$meta->ogImage(url($logo));
+$meta->ogImage(url('/images/fb-logo.png'));
 $meta->ogUrl(url_with_lng('/favorite'));
 
 $autoEmpty = Manager::getAutoEmpty();
+
 ?>
 @extends('layout')
 

@@ -2,13 +2,12 @@
 use App\Models\Config\Manager;
 use App\Helpers\Base;
 
-$logo = Manager::getLogo();
 $meta->title(trans('www.urgent_cars.title'));
 $meta->description(trans('www.urgent_cars.description'));
 $meta->keywords(trans('www.urgent_cars.keywords'));
 $meta->ogTitle(trans('www.urgent_cars.title'));
 $meta->ogDescription(trans('www.urgent_cars.description'));
-$meta->ogImage(url($logo));
+$meta->ogImage(url('/images/fb-logo.png'));
 $meta->ogUrl(url_with_lng('/top-cars'));
 
 $autoEmpty = Manager::getAutoEmpty();
