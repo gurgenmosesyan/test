@@ -1700,6 +1700,26 @@ body textarea {
     font-size: 18px;
 }
 
+#contact-form {
+    max-width: 450px;
+    margin: 0 auto;
+}
+#contact-form .form-box {
+    margin-bottom: 10px;
+}
+#contact-form .form-error {
+    padding-top: 2px;
+}
+#contact-form input[type="submit"] {
+    border-radius: 3px;
+    color: #ffffff;
+    cursor: pointer;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 20px;
+    letter-spacing: 1px;
+}
+
 @media only screen and (-webkit-min-device-pixel-ratio: 2),
 only screen and (-webkit-min-device-pixel-ratio: 1.5),
 only screen and (-moz-min-device-pixel-ratio: 2),

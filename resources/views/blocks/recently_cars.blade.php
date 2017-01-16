@@ -9,7 +9,7 @@ use App\Helpers\Base;
         <div class="car-block owl-carousel">
             <div class="box-part">
                 @foreach($recentCars as $key => $auto)
-                    @if(($key == 4 || $key == 8) && isset($recentCars[$key]))
+                    @if($key == 4 || $key == 8)
                         <div class="cb"></div>
                         </div><div class="box-part">
                     @endif

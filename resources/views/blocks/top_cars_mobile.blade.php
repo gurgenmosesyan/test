@@ -13,7 +13,7 @@ $delimiters = [2=>2, 4=>4, 6=>6, 8=>8, 10=>10, 12=>12, 14=>14, 16=>16];
             <div class="box-part">
                 @foreach($topCars->shuffle()->slice(0, 18) as $key => $value)
                     <?php $auto = $value->auto; ?>
-                    @if(isset($delimiters[$key]) && isset($topCars[$key]))
+                    @if(isset($delimiters[$key]))
                         <div class="cb"></div>
                         </div><div class="box-part">
                     @endif

@@ -67,6 +67,7 @@ Route::group(['middleware' => ['web', 'front']], function() {
         Route::get('/urgent-cars', 'UrgentCarController@index');
         Route::get('/auto/{autoId}', 'AutoController@index');
         Route::get('/history', 'HistoryController@index');
+        Route::post('/api/contacts', 'ContactController@indexApi');
         Route::get('/page/{alias}', 'PageController@index');
 
     });

@@ -24,7 +24,7 @@ class Search extends DataTable
         $this->constructLimit($query);
         $data = $query->get();
         foreach ($data as $value) {
-            $value->auto = $value->mark_name.' '.$value->model_name.' ('.$value->year.')';
+            $value->auto = $value->mark_name.' '.$value->model_name.' - '.$value->year.' - '.$value->auto_id;
             $value->user = $value->first_name.' '.$value->last_name;
         }
         return $data;
@@ -32,7 +32,7 @@ class Search extends DataTable
 
     protected function constructQuery()
     {
-        $query = TopCar::select('top_cars.id', 'top_cars.deadline', 'marks.name as mark_name', 'models.name as model_name', 'autos.year', 'users.first_name', 'users.last_name')
+        $query = TopCar::select('top_cars.id', 'top_cars.deadline', 'marks.name as mark_name', 'models.name as model_name', 'autos.auto_id', 'autos.year', 'users.first_name', 'users.last_name')
             ->join('autos', function($query) {
                 $query->on('autos.id', '=', 'top_cars.auto_id')->where('autos.show_status', '=', TopCar::STATUS_ACTIVE);
             })

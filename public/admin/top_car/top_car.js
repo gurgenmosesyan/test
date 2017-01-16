@@ -28,7 +28,7 @@ $topCar.initSelectBox = function() {
                     autoSearch.removeLoading();
                     if (json.status == 'OK') {
                         response($.map(json.data , function(item) {
-                            item.label = item.mark_name+' '+item.model_name+' ('+item.year+')';
+                            item.label = item.mark_name+' '+item.model_name+' - '+item.year+' - '+item.auto_id;
                             return item;
                         }));
                     }

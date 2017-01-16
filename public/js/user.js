@@ -132,6 +132,20 @@ $user.init = function() {
         $user.googleConnect();
         return false;
     });
+
+    $('#contact-form').submit(function() {
+        var form = $(this);
+        $user.sendForm(form, function(data) {
+            var popup = $('#popup');
+            popup.popup({
+                alert: true,
+                title: $trans.get('www.contact.success.title'),
+                text: $trans.get('www.contact.success.text')
+            });
+            form.find('textarea').val('');
+        });
+        return false;
+    });
 };
 
 $(document).ready(function() {

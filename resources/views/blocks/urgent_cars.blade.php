@@ -11,7 +11,7 @@ use App\Helpers\Base;
             <div class="box-part">
                 @foreach($urgentCars->shuffle()->slice(0, 32) as $key => $value)
                     <?php $auto = $value->auto; ?>
-                    @if($key == 16 && isset($urgentCars[$key]))
+                    @if($key == 16)
                         <div class="cb"></div>
                         </div><div class="box-part">
                     @endif

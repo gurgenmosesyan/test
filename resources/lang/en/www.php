@@ -258,4 +258,12 @@ return array (
   'sell_car.img.help' => 'You can upload max 10 images',
   'sell_car.main_phone' => 'Main phone',
   'sell_car.hide_main_phone' => 'Don\'t show main phone',
+  'base.label.name' => 'Name',
+  'base.label.message' => 'Message',
+  'contacts.to_email' => 'gurgen.mosesyan@gmail.com',
+  'contacts.to_name' => 'Autotrade team',
+  'contacts.subject' => 'New contacts email',
+  'base.label.send' => 'Send',
+  'contact.success.title' => 'Success',
+  'contact.success.text' => 'Your message successfully sent',
 );

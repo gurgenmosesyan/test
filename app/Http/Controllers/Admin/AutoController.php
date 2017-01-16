@@ -173,7 +173,7 @@ class AutoController extends BaseController
         }
         $parts = array_values($parts);
 
-        $autos = Auto::select('autos.id', 'autos.year', 'marks.name as mark_name', 'models.name as model_name')
+        $autos = Auto::select('autos.id', 'autos.auto_id', 'autos.year', 'marks.name as mark_name', 'models.name as model_name')
         ->join('marks', function($query) {
             $query->on('marks.id', '=', 'autos.mark_id')->where('marks.show_status', '=', Mark::STATUS_ACTIVE);
         })

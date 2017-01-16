@@ -258,4 +258,12 @@ return array (
   'sell_car.img.help' => 'Вы можете загрузить не более 10 изображений',
   'sell_car.main_phone' => 'Основной телефон',
   'sell_car.hide_main_phone' => 'Не показывать главный телефон',
+  'base.label.name' => 'Имя',
+  'base.label.message' => 'Сообщение',
+  'contacts.to_email' => 'gurgen.mosesyan@gmail.com',
+  'contacts.to_name' => 'Autotrade team',
+  'contacts.subject' => 'New contacts email',
+  'base.label.send' => 'Отправить',
+  'contact.success.title' => 'Success',
+  'contact.success.text' => 'Your message successfully sent',
 );
