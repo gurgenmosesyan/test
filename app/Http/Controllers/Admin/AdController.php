@@ -7,6 +7,10 @@ use App\Models\Ad\Ad;
 use App\Models\Ad\Manager;
 use App\Models\Ad\Search;
 use App\Http\Requests\Admin\AdRequest;
+use App\Models\Payment\Payment;
+use App\Models\Payment\PaymentManager;
+use Illuminate\Http\Request;
+use DB;
 
 class AdController extends BaseController
 {
@@ -63,6 +67,33 @@ class AdController extends BaseController
     public function delete($id)
     {
         $this->manager->delete($id);
+        return $this->api('OK');
+    }
+
+    public function changeStatus(Request $request)
+    {
+        $id = $request->input('id');
+        $status = $request->input('status');
+        if ($status != Ad::STATUS_CONFIRMED && $status != Ad::STATUS_DECLINED) {
+            return $this->api('INVALID_DATA');
+        }
+
+        $ad = Ad::active()->where('id', $id)->firstOrFail();
+
+        if ($status == Ad::STATUS_DECLINED) {
+            $payment = Payment::where('type', Payment::TYPE_AD)->where('object_id', $ad->id)->where('refund', Payment::NOT_REFUND)->first();
+            if ($payment != null) {
+                $paymentManager = new PaymentManager();
+                $paymentManager->refund($payment);
+            }
+        }
+
+        $ad->status = $status;
+        DB::transaction(function() use($ad) {
+            $ad->save();
+            $this->manager->removeCache($ad->key);
+        });
+
         return $this->api('OK');
     }
 }

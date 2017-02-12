@@ -49,12 +49,37 @@ class Manager
         return $data;
     }
 
+    public static function getPaymentPrices()
+    {
+        $cacheKey = 'payment_prices';
+        $data = Cache::get($cacheKey);
+        if ($data == null) {
+            $data = Config::where('key', Config::KEY_PRICE_TOP_PER_DAY)
+                ->orWhere('key', Config::KEY_PRICE_URGENT_PER_DAY)
+                ->get()->keyBy('key');
+            Cache::forever($cacheKey, $data);
+        }
+        return $data;
+    }
+
+    public static function getPriceAdPerDay()
+    {
+        $cacheKey = 'price_ad_per_day';
+        $data = Cache::get($cacheKey);
+        if ($data == null) {
+            $data = Config::where('key', Config::KEY_PRICE_AD_PER_DAY)->first();
+            Cache::forever($cacheKey, $data);
+        }
+        return $data;
+    }
+
     public function update($data)
     {
         $configs = Config::all();
         DB::transaction(function() use($configs, $data) {
             $logo = $watermark = $autoEmpty = $taxPassengerPrice = $taxTruckPrice = $taxCurrency = null;
             $taxRenamePrice = $taxPassportPrice = $taxNumberPrice = null;
+            $priceTopPerDay = $priceUrgentPerDay = $priceAdPerDay = null;
             foreach ($configs as $config) {
                 if ($config->key == Config::KEY_LOGO) {
                     $logo = $config;
@@ -74,6 +99,12 @@ class Manager
                     $taxNumberPrice = $config;
                 } else if ($config->key == Config::KEY_TAX_CURRENCY) {
                     $taxCurrency = $config;
+                } else if ($config->key == Config::KEY_PRICE_TOP_PER_DAY) {
+                    $priceTopPerDay = $config;
+                } else if ($config->key == Config::KEY_PRICE_URGENT_PER_DAY) {
+                    $priceUrgentPerDay = $config;
+                } else if ($config->key == Config::KEY_PRICE_AD_PER_DAY) {
+                    $priceAdPerDay = $config;
                 }
             }
             $this->updateLogo($data['logo'], $logo);
@@ -85,6 +116,9 @@ class Manager
             $this->updateTaxPassportPrice($data['tax_passport_price'], $taxPassportPrice);
             $this->updateTaxNumberPrice($data['tax_number_price'], $taxNumberPrice);
             $this->updateTaxCurrency($data['tax_currency'], $taxCurrency);
+            $this->updatePriceTopPerDay($data['price_top_per_day'], $priceTopPerDay);
+            $this->updatePriceUrgentPerDay($data['price_urgent_per_day'], $priceUrgentPerDay);
+            $this->updatePriceAdPerDay($data['price_ad_per_day'], $priceAdPerDay);
             $this->removeCache();
         });
     }
@@ -195,10 +229,41 @@ class Manager
         $taxCurrency->save();
     }
 
+    protected function updatePriceTopPerDay($data, $priceTopPerDay)
+    {
+        if ($priceTopPerDay == null) {
+            $priceTopPerDay = new Config();
+            $priceTopPerDay->key = Config::KEY_PRICE_TOP_PER_DAY;
+        }
+        $priceTopPerDay->value = $data;
+        $priceTopPerDay->save();
+    }
+
+    protected function updatePriceUrgentPerDay($data, $priceUrgentPerDay)
+    {
+        if ($priceUrgentPerDay == null) {
+            $priceUrgentPerDay = new Config();
+            $priceUrgentPerDay->key = Config::KEY_PRICE_URGENT_PER_DAY;
+        }
+        $priceUrgentPerDay->value = $data;
+        $priceUrgentPerDay->save();
+    }
+
+    protected function updatePriceAdPerDay($data, $priceAdPerDay)
+    {
+        if ($priceAdPerDay == null) {
+            $priceAdPerDay = new Config();
+            $priceAdPerDay->key = Config::KEY_PRICE_AD_PER_DAY;
+        }
+        $priceAdPerDay->value = $data;
+        $priceAdPerDay->save();
+    }
+
     protected function removeCache()
     {
         Cache::forget('auto_empty');
         Cache::forget('tax_customs');
+        Cache::forget('payment_prices');
 
         $languages = Language::all();
         foreach ($languages as $lng) {

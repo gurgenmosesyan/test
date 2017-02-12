@@ -29,7 +29,7 @@ $meta->ogImage(url('/images/fb-logo.png'));
                 </a>
             </div>
             <div class="link ads-link fl">
-                <a href="#" class="item db fb">
+                <a href="{{url_with_lng('/profile/ads', false)}}" class="item db fb">
                     <span class="icon dib"></span>
                     <span class="text dib">{{trans('www.profile.link.my_ads')}}</span>
                 </a>

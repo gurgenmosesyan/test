@@ -4,6 +4,7 @@ use App\Core\Helpers\ImgUploader;
 use App\Core\Helpers\Calendar;
 
 $head->appendScript('/admin/ad/ad.js');
+
 $pageTitle = trans('admin.ad.form.title');
 $pageMenu = 'ad';
 if ($saveMode == 'add') {

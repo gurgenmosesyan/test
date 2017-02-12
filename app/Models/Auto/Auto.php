@@ -85,6 +85,8 @@ class Auto extends Model
         'vin',
         'description',
         'additional_phone',
+        'additional_phone2',
+        'additional_phone3',
         'hide_main_phone',
         'term',
         'status'
@@ -117,6 +119,11 @@ class Auto extends Model
     public function isBlocked()
     {
         return $this->status == self::STATUS_BLOCKED;
+    }
+
+    public function isInTerm()
+    {
+        return $this->term >= date('Y-m-d');
     }
 
     public function isContract()

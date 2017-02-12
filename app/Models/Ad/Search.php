@@ -64,6 +64,9 @@ class Search extends DataTable
             case 'deadline':
                 $orderCol = 'ads.deadline';
                 break;
+            case 'status':
+                $orderCol = 'ads.status';
+                break;
             default:
                 $orderCol = 'ads.id';
         }
@@ -71,7 +74,7 @@ class Search extends DataTable
         if ($this->orderType == 'asc') {
             $orderType = 'asc';
         }
-        $query->orderBy($orderCol, $orderType);
+        $query->orderBy($orderCol, $orderType)->orderBy('ads.id', 'desc');
     }
 
     protected function constructLimit($query)

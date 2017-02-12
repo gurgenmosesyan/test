@@ -10,7 +10,9 @@ class Ad extends Model
     const KEY_THIN = 'thin';
     const KEY_RIGHT = 'right';
     const KEY_BOTTOM = 'bottom';
-
+    const STATUS_PENDING = 'pending';
+    const STATUS_CONFIRMED = 'confirmed';
+    const STATUS_DECLINED = 'declined';
     const IMAGES_PATH = 'images/cucataxtak';
 
     protected $table = 'ads';
@@ -31,6 +33,11 @@ class Ad extends Model
     public function scopeInDate($query)
     {
         $query->where('deadline', '>=', date('Y-m-d'));
+    }
+
+    public function scopeLatest($query)
+    {
+        return $query->orderBy('ads.id', 'desc');
     }
 
     public function getFile($column)

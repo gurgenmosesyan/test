@@ -417,6 +417,22 @@ $jsTrans->addTrans([
                     </div>
                     <div class="cb"></div>
                 </div>
+                <div class="form-box">
+                    <label class="fl"><span>{{trans('www.sell_car.additional_phone')}} 2</span></label>
+                    <div class="inp fl">
+                        <input type="text" name="additional_phone2" value="" />
+                        <div id="form-error-additional_phone2" class="form-error"></div>
+                    </div>
+                    <div class="cb"></div>
+                </div>
+                <div class="form-box">
+                    <label class="fl"><span>{{trans('www.sell_car.additional_phone')}} 3</span></label>
+                    <div class="inp fl">
+                        <input type="text" name="additional_phone3" value="" />
+                        <div id="form-error-additional_phone3" class="form-error"></div>
+                    </div>
+                    <div class="cb"></div>
+                </div>
                 <div class="col-2 fl">
                     <div class="form-box">
                         <label class="checkbox-label no-select">

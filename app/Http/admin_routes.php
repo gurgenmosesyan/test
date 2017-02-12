@@ -193,6 +193,7 @@ Route::group($params, function () {
     Route::post('/ad/store', ['uses' => 'AdController@store', 'as' => 'admin_ad_store', 'permission' => 'ad']);
     Route::post('/ad/update/{id}', ['uses' => 'AdController@update', 'as' => 'admin_ad_update', 'permission' => 'ad']);
     Route::post('/ad/delete/{id}', ['uses' => 'AdController@delete', 'as' => 'admin_ad_delete', 'permission' => 'ad']);
+    Route::post('/ad/changeStatus', ['uses' => 'AdController@changeStatus', 'as' => 'admin_ad_change_status', 'permission' => 'ad']);
 
     Route::get('/tax', ['uses' => 'TaxController@table', 'as' => 'admin_tax_table', 'permission' => 'tax']);
     Route::get('/tax/create', ['uses' => 'TaxController@create', 'as' => 'admin_tax_create', 'permission' => 'tax']);

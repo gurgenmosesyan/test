@@ -991,6 +991,64 @@ body textarea {
     box-shadow: 0 0 8px #ccc;
 }
 
+#profile-govs {
+    background-color: #ffffff;
+    padding: 20px;
+}
+#profile-govs .add-gov-btn {
+    margin-bottom: 20px;
+}
+#profile-govs .add-gov-btn a {
+    background-color: #00C853;
+    font-size: 11px;
+    line-height: 34px;
+}
+#profile-govs .add-gov-btn a:hover {
+    background-color: #00d959;
+}
+#profile-govs .back-gov-btn a {
+    color: #929292;
+}
+#profile-govs .gov-img {
+    margin-right: 20px;
+    max-width: 250px;
+}
+#profile-govs .gov {
+    border-top: 1px solid #ccc;
+    padding: 20px 0;
+}
+#profile-govs .gov-0 {
+    border-top: 0;
+}
+#profile-govs .gov-info p {
+    margin-bottom: 12px;
+}
+#gov-form {
+    margin: 30px auto;
+    max-width: 500px;
+}
+#gov-form .form-box {
+    margin-bottom: 15px;
+}
+#gov-form label {
+    width: 190px;
+    margin-right: 20px;
+}
+#gov-form .inp {
+    width: 290px;
+}
+#gov-form #upload-gov-img {
+    background-color: #bfbaba;
+}
+#gov-form #image-box {
+    margin-top: 15px;
+}
+#gov-form .form-error {
+    font-size: 14px;
+    padding-top: 5px;
+    line-height: 16px;
+}
+
 #login-block.profile-edit {
     margin-top: 25px;
 }
@@ -1081,12 +1139,14 @@ body textarea {
 #sell .col-3 label {
     display: inline-block;
 }
-#sell label span {
+#sell label span,
+#gov-form label span {
     display: table-cell;
     height: 33px;
     vertical-align: middle;
 }
-#sell .required span:after {
+#sell .required span:after,
+#gov-form .required span:after {
     content: " *" !important;
     color: #dd4b39 !important;
     font-size: 1.5em;
@@ -1246,7 +1306,8 @@ body textarea {
     -o-transform: rotate(90deg);
     transform: rotate(90deg);
 }
-#sell .upload-load {
+#sell .upload-load,
+#gov-form .upload-load {
     background: url('../images/select-loader.gif') no-repeat center center;
     height: 33px;
     vertical-align: top;
@@ -1362,7 +1423,8 @@ body textarea {
 .auto .status.approved {
     color: #5ed236;
 }
-#autos .empty {
+#autos .empty,
+#profile-govs .empty {
     color: #929292;
     font-size: 15px;
     padding: 25px;
@@ -1649,6 +1711,20 @@ body textarea {
 }
 #popup .btn.cancel {
     background-color: #b7b5b5;
+}
+#popup .auto-popup {
+    margin-top: -130px;
+}
+#popup .auto-popup .select-box {
+    margin: 0 auto 7px;
+    width: 150px;
+}
+#popup .auto-popup .price {
+    margin-bottom: 15px;
+}
+#popup .auto-popup .form-error {
+    font-size: 14px;
+    margin-bottom: 15px;
 }
 
 #static {

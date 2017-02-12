@@ -62,6 +62,14 @@ class SellRequest extends Request
                 'regex:/^\s*\+?\s*?[0-9\s*]{1,}\s*$/',
                 'max:30'
             ],
+            'additional_phone2' => [
+                'regex:/^\s*\+?\s*?[0-9\s*]{1,}\s*$/',
+                'max:30'
+            ],
+            'additional_phone3' => [
+                'regex:/^\s*\+?\s*?[0-9\s*]{1,}\s*$/',
+                'max:30'
+            ],
             'hide_main_phone' => 'in:'.Auto::NOT_HIDE_MAIN_PHONE.','.Auto::HIDE_MAIN_PHONE,
             'term' => $termReqStr.'integer|between:1,10',
             'options' => 'array',

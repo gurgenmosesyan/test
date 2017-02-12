@@ -15,6 +15,10 @@ class Config extends Model
     const KEY_TAX_PASSPORT_PRICE = 'tax_passport_price';
     const KEY_TAX_NUMBER_PRICE = 'tax_number_price';
     const KEY_TAX_CURRENCY = 'tax_currency';
+    const KEY_PRICE_TOP_PER_DAY = 'price_top_per_day';
+    const KEY_PRICE_URGENT_PER_DAY = 'price_urgent_per_day';
+    const KEY_PRICE_AD_PER_DAY = 'price_ad_per_day';
+
     const IMAGES_PATH = 'images/config';
 
     protected $table = 'config';

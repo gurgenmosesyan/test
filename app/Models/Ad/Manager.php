@@ -13,7 +13,7 @@ class Manager
         $cacheKey = 'ad_'.$key;
         $data = Cache::get($cacheKey);
         if ($data == null) {
-            $data = Ad::active()->where('key', $key)->get();
+            $data = Ad::active()->where('status', Ad::STATUS_CONFIRMED)->where('key', $key)->get();
             Cache::forever($cacheKey, $data);
         }
         return $data->shuffle();
@@ -24,6 +24,7 @@ class Manager
         $ad = new Ad($data);
         SaveImage::save($data['image'], $ad);
         $ad->user_id = 0;
+        $ad->status = Ad::STATUS_CONFIRMED;
         $ad->show_status = Ad::STATUS_ACTIVE;
         DB::transaction(function() use($ad) {
             $ad->save();
@@ -55,7 +56,7 @@ class Manager
         });
     }
 
-    protected function removeCache($key)
+    public function removeCache($key)
     {
         Cache::forget('ad_'.$key);
     }

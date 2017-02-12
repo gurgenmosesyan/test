@@ -202,4 +202,7 @@ return array (
   'base.label.tax_passport_price' => 'Tax passport price',
   'base.label.tax_number_price' => 'Tax number price',
   'base.label.tax_rename_price' => 'Tax rename price',
+  'base.label.price_top_per_day' => 'Price top car per day',
+  'base.label.price_urgent_per_day' => 'Price urgent car per day',
+  'base.label.price_ad_per_day' => 'Price ad per day',
 );

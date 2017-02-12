@@ -26,6 +26,7 @@ class ConfigController extends BaseController
         $autoEmpty = null;
         $taxPassengerPrice = $taxTruckPrice = $taxCurrency = null;
         $taxRenamePrice = $taxPassportPrice = $taxNumberPrice = null;
+        $priceTopPerDay = $priceUrgentPerDay = $priceAdPerDay = null;
         foreach ($configs as $config) {
             if ($config->key == Config::KEY_LOGO) {
                 $logo = $config;
@@ -45,6 +46,12 @@ class ConfigController extends BaseController
                 $taxNumberPrice = $config->value;
             } else if ($config->key == Config::KEY_TAX_CURRENCY) {
                 $taxCurrency = $config->value;
+            } else if ($config->key == Config::KEY_PRICE_TOP_PER_DAY) {
+                $priceTopPerDay = $config->value;
+            } else if ($config->key == Config::KEY_PRICE_URGENT_PER_DAY) {
+                $priceUrgentPerDay = $config->value;
+            } else if ($config->key == Config::KEY_PRICE_AD_PER_DAY) {
+                $priceAdPerDay = $config->value;
             }
         }
         $currencies = Currency::active()->ordered()->get();
@@ -58,6 +65,9 @@ class ConfigController extends BaseController
             'taxPassportPrice' => $taxPassportPrice,
             'taxNumberPrice' => $taxNumberPrice,
             'taxCurrency' => $taxCurrency,
+            'priceTopPerDay' => $priceTopPerDay,
+            'priceUrgentPerDay' => $priceUrgentPerDay,
+            'priceAdPerDay' => $priceAdPerDay,
             'languages' => Language::all(),
             'currencies' => $currencies
         ]);

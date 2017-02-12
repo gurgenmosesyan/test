@@ -1,0 +1,6 @@
+#data-table .pending {
+    background-color: #F9D9D9;
+}
+#data-table .status-btn {
+    float: right; margin-left: 4px;
+}

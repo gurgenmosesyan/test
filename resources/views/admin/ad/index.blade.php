@@ -1,7 +1,16 @@
 <?php
+$head->appendStyle('/admin/ad/ad.css');
 $head->appendScript('/admin/ad/ad.js');
+
 $pageTitle = $pageSubTitle = trans('admin.ad.form.title');
 $pageMenu = 'ad';
+
+$jsTrans->addTrans([
+    'admin.base.label.attention',
+    'admin.base.label.ok',
+    'admin.auto.modal.status.text'
+]);
+
 ?>
 @extends('core.layout')
 @section('navButtons')
@@ -17,6 +26,7 @@ $pageMenu = 'ad';
             <th>{{trans('admin.base.label.user')}}</th>
             <th>{{trans('admin.base.label.image')}}</th>
             <th>{{trans('admin.base.label.deadline')}}</th>
+            <th>{{trans('admin.base.label.status')}}</th>
             <th class="th-actions"></th>
         </tr>
         </thead>

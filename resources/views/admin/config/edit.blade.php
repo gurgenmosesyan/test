@@ -93,6 +93,30 @@ if ($logo != null) {
             </div>
         </div>
 
+        <div class="form-group">
+            <label class="col-sm-3 control-label data-req">{{trans('admin.base.label.price_top_per_day')}}</label>
+            <div class="col-sm-3">
+                <input type="text" name="price_top_per_day" class="form-control" value="{{$priceTopPerDay}}">
+                <div id="form-error-price_top_per_day" class="form-error"></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label data-req">{{trans('admin.base.label.price_urgent_per_day')}}</label>
+            <div class="col-sm-3">
+                <input type="text" name="price_urgent_per_day" class="form-control" value="{{$priceUrgentPerDay}}">
+                <div id="form-error-price_urgent_per_day" class="form-error"></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label data-req">{{trans('admin.base.label.price_ad_per_day')}}</label>
+            <div class="col-sm-3">
+                <input type="text" name="price_ad_per_day" class="form-control" value="{{$priceAdPerDay}}">
+                <div id="form-error-price_ad_per_day" class="form-error"></div>
+            </div>
+        </div>
+
         {{csrf_field()}}
     </div>
     <div class="box-footer">

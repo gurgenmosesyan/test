@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ad\Ad;
 use App\Models\Auto\Auto;
 use App\Models\Region\Region;
 use App\Models\User\User;
@@ -214,6 +215,21 @@ class UserController extends Controller
         }
         $autoId = Session::get('updated_auto_id');
         return view('user.auto_updated')->with(['autoId' => $autoId]);
+    }
+
+    public function ads()
+    {
+        $user = Auth::guard('user')->user();
+        $ads = Ad::active()->where('user_id', $user->id)->latest()->get();
+
+        return view('user.ads')->with([
+            'ads' => $ads
+        ]);
+    }
+
+    public function adsAdd()
+    {
+        return view('user.ads_add');
     }
 
     public function logout()

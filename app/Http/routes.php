@@ -52,6 +52,8 @@ Route::group(['middleware' => ['web', 'front']], function() {
             Route::get('/profile/autos/{id}', ['uses' => 'UserController@autoEdit', 'as' => 'auto_edit']);
             Route::post('/profile/auto/{id}', ['uses' => 'UserApiController@autoUpdate', 'as' => 'auto_update']);
             Route::get('/profile/auto/success', ['uses' => 'UserController@autoUpdated', 'as' => 'auto_updated']);
+            Route::get('/profile/ads', 'UserController@ads');
+            Route::get('/profile/ads/add', 'UserController@adsAdd');
             Route::get('/logout', ['uses' => 'UserController@logout', 'as' => 'user_logout']);
             Route::get('/sell', ['uses' => 'SellController@index', 'as' => 'sell']);
             Route::post('/api/sell', 'SellApiController@add');
@@ -60,7 +62,14 @@ Route::group(['middleware' => ['web', 'front']], function() {
             Route::get('/auto/deleted', ['uses' => 'UserController@autoDeleted', 'as' => 'auto_deleted']);
             Route::get('/favorite', 'FavoriteController@index');
             Route::post('/api/favorite', 'FavoriteController@favorite');
+
+            Route::post('/api/topCar', 'PaymentController@topCar');
+            Route::post('/api/urgentCar', 'PaymentController@urgentCar');
+            Route::post('/api/ad', 'PaymentController@ad');
         });
+
+        Route::get('/payment/back', 'PaymentController@back');
+        Route::get('/payment/result', 'PaymentController@result');
 
         Route::get('/search', 'SearchController@index');
         Route::get('/top-cars', 'TopCarController@index');

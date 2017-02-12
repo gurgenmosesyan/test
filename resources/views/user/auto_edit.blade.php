@@ -40,7 +40,7 @@ $jsTrans->addTrans(['www.auto.images.limit.text']);
                 </a>
             </div>
             <div class="link ads-link fl">
-                <a href="#" class="item db fb">
+                <a href="{{url_with_lng('/profile/ads', false)}}" class="item db fb">
                     <span class="icon dib"></span>
                     <span class="text dib">{{trans('www.profile.link.my_ads')}}</span>
                 </a>
@@ -238,6 +238,14 @@ $jsTrans->addTrans(['www.auto.images.limit.text']);
                     <div class="cb"></div>
                 </div>
                 <div class="form-box">
+                    <label class="fl"><span>{{trans('www.sell_car.vin')}}</span></label>
+                    <div class="inp fl">
+                        <input type="text" name="vin" value="{{$auto->vin or ''}}" />
+                        <div id="form-error-vin" class="form-error"></div>
+                    </div>
+                    <div class="cb"></div>
+                </div>
+                <div class="form-box">
                     <label class="required fl"><span>{{trans('www.sell_car.term')}}</span></label>
                     <div class="inp fl">
                         <div class="select-box">
@@ -383,14 +391,6 @@ $jsTrans->addTrans(['www.auto.images.limit.text']);
                     <div class="cb"></div>
                 </div>
                 <div class="form-box">
-                    <label class="fl"><span>{{trans('www.sell_car.vin')}}</span></label>
-                    <div class="inp fl">
-                        <input type="text" name="vin" value="{{$auto->vin or ''}}" />
-                        <div id="form-error-vin" class="form-error"></div>
-                    </div>
-                    <div class="cb"></div>
-                </div>
-                <div class="form-box">
                     <label class="fl"><span>{{trans('www.sell_car.wheel')}}</span></label>
                     <div class="inp fl">
                         <div class="select-box">
@@ -426,6 +426,22 @@ $jsTrans->addTrans(['www.auto.images.limit.text']);
                     <div class="inp fl">
                         <input type="text" name="additional_phone" value="{{$auto->additional_phone or ''}}" />
                         <div id="form-error-additional_phone" class="form-error"></div>
+                    </div>
+                    <div class="cb"></div>
+                </div>
+                <div class="form-box">
+                    <label class="fl"><span>{{trans('www.sell_car.additional_phone')}} 2</span></label>
+                    <div class="inp fl">
+                        <input type="text" name="additional_phone2" value="{{$auto->additional_phone2 or ''}}" />
+                        <div id="form-error-additional_phone2" class="form-error"></div>
+                    </div>
+                    <div class="cb"></div>
+                </div>
+                <div class="form-box">
+                    <label class="fl"><span>{{trans('www.sell_car.additional_phone')}} 3</span></label>
+                    <div class="inp fl">
+                        <input type="text" name="additional_phone3" value="{{$auto->additional_phone3 or ''}}" />
+                        <div id="form-error-additional_phone3" class="form-error"></div>
                     </div>
                     <div class="cb"></div>
                 </div>

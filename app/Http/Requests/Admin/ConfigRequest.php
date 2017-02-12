@@ -19,6 +19,9 @@ class ConfigRequest extends Request
             'tax_passport_price' => 'required|integer',
             'tax_number_price' => 'required|integer',
             'tax_currency' => 'required|integer|exists:currencies,id,show_status,1',
+            'price_top_per_day' => 'required|integer',
+            'price_urgent_per_day' => 'required|integer',
+            'price_ad_per_day' => 'required|integer',
         ];
     }
 }
