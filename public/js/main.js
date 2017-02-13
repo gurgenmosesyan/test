@@ -60,7 +60,7 @@ $main.initHeaderBlocks = function(html) {
         $('#lng-list').slideUp(300);
         $(document).unbind('click').bind('click', function(e) {
             if (!$(e.target).parents().is('#currency-list')) {
-                list.stop().slideToggle(300);
+                list.stop().slideUp(300);
                 $(document).unbind('click');
             }
         });
@@ -72,7 +72,7 @@ $main.initHeaderBlocks = function(html) {
         $('#currency-list').slideUp(300);
         $(document).unbind('click').bind('click', function(e) {
             if (!$(e.target).parents().is('#lng-list')) {
-                list.stop().slideToggle(300);
+                list.stop().slideUp(300);
                 $(document).unbind('click');
             }
         });
